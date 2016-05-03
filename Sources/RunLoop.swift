@@ -12,6 +12,10 @@ public struct RunLoop {
     
     let dispatchGroup = dispatch_group_create()
     
+    public init() {
+        
+    }
+    
     public static func runAll() {
         dispatch_main()
     }
