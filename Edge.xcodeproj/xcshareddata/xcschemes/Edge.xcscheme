@@ -6,7 +6,7 @@
         <BuildableReference
           BuildableIdentifier = "primary"
           BlueprintIdentifier = "______Target_Edge"
-          BuildableName = "Edge"
+          BuildableName = "libEdge.dylib"
           BlueprintName = "Edge"
           ReferencedContainer = "container:Edge.xcodeproj">
         </BuildableReference>
