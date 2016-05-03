@@ -23,9 +23,9 @@ import Dispatch
 
 public struct TCPClient: IOStream {
     
-    let loop: RunLoop
+    public let loop: RunLoop
     private let socketFD: SocketFileDescriptor
-    var fd: FileDescriptor {
+    public var fd: FileDescriptor {
         return socketFD
     }
     
@@ -98,9 +98,9 @@ public struct TCPClient: IOStream {
 
 public struct TCPServer: IOStream {
     
-    let loop: RunLoop
+    public let loop: RunLoop
     private let socketFD: SocketFileDescriptor
-    var fd: FileDescriptor {
+    public var fd: FileDescriptor {
         return socketFD
     }
     

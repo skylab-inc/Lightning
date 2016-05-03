@@ -38,7 +38,7 @@ public struct AddressFamily {
 
 public typealias Port = UInt16
 
-protocol FileDescriptor {
+public protocol FileDescriptor {
     
     var rawValue: Int32 { get }
     
@@ -52,7 +52,7 @@ public enum StandardFileDescriptor: Int32, FileDescriptor {
 }
 
 public struct SocketFileDescriptor: CustomDebugStringConvertible, FileDescriptor {
-    let rawValue: Int32
+    public let rawValue: Int32
     let addressFamily: AddressFamily
     let socketType: SocketType
     let blocking: Bool

@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol IOStream {
+public protocol IOStream {
     
     var fd: FileDescriptor {
         get
@@ -24,9 +24,9 @@ protocol IOStream {
     
 }
 
-extension IOStream {
+public extension IOStream {
     
-    func read(minBytes: Int = 1, onRead: (buffer: UnsafeBufferPointer<Int8>) -> ()) {
+    public func read(minBytes: Int = 1, onRead: (buffer: UnsafeBufferPointer<Int8>) -> ()) {
         let readingChannel = dispatch_io_create(DISPATCH_IO_STREAM, fd.rawValue, dispatch_get_main_queue()) { error in
             if error != 0 {
                 print("Error: \(error)")
@@ -49,7 +49,7 @@ extension IOStream {
         }
     }
     
-    func write(buffer: UnsafeBufferPointer<Int8>, onWrite: (() -> ())? = nil) {
+    public func write(buffer: UnsafeBufferPointer<Int8>, onWrite: (() -> ())? = nil) {
         let writeChannel = dispatch_io_create(DISPATCH_IO_STREAM, fd.rawValue, dispatch_get_main_queue()) { error in
             if error != 0 {
                 print("Error: \(error)")

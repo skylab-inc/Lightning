@@ -8,10 +8,10 @@
 
 public struct Pipe: IOStream {
     
-    let loop: RunLoop
-    let fd: FileDescriptor
+    public let loop: RunLoop
+    public let fd: FileDescriptor
     
-    init(loop: RunLoop, fd: StandardFileDescriptor) {
+    public init(loop: RunLoop, fd: StandardFileDescriptor) {
         self.loop = loop
         self.fd = fd
     }
