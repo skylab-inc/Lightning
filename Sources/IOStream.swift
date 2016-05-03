@@ -18,6 +18,8 @@ public protocol IOStream {
         get
     }
     
+    var readChannel: dispatch_io_t { get set }
+    
     func read(minBytes: Int, onRead: (buffer: UnsafeBufferPointer<Int8>) -> ())
     
     func write(buffer: UnsafeBufferPointer<Int8>, onWrite: (() -> ())?)

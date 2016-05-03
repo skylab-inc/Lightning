@@ -29,6 +29,9 @@ public struct TCPClient: IOStream {
         return socketFD
     }
     
+    let connectingSource: dispatch_source_t
+
+    
     public init(loop: RunLoop) {
         self.init(loop: loop, fd: SocketFileDescriptor(socketType: SocketType.stream, addressFamily: AddressFamily.inet))
     }
@@ -36,6 +39,7 @@ public struct TCPClient: IOStream {
     public init(loop: RunLoop, fd: SocketFileDescriptor) {
         self.loop = loop
         self.socketFD = fd
+        self.connectingSource = dispatch_source_create(DISPATCH_SOURCE_TYPE_READ, UInt(fd.rawValue), 0, dispatch_get_main_queue())
     }
     
     public func connect(host: String, port: Port, onConnect: () -> ()) throws {
@@ -78,7 +82,6 @@ public struct TCPClient: IOStream {
         
         // Non-blocking, dispatch connection
         if Error(rawValue: connectRet) == Error.inProgress {
-            let connectingSource = dispatch_source_create(DISPATCH_SOURCE_TYPE_READ, UInt(fd.rawValue), 0, dispatch_get_main_queue())
             dispatch_source_set_event_handler(connectingSource) {
                 var result = 0
                 var resultLength = socklen_t(strideof(result.dynamicType))
@@ -103,6 +106,7 @@ public struct TCPServer: IOStream {
     public var fd: FileDescriptor {
         return socketFD
     }
+    let listeningSource: dispatch_source_t
     
     public init(loop: RunLoop) {
         self.init(loop: loop, fd: SocketFileDescriptor(socketType: SocketType.stream, addressFamily: AddressFamily.inet))
@@ -111,6 +115,8 @@ public struct TCPServer: IOStream {
     public init(loop: RunLoop, fd: SocketFileDescriptor) {
         self.loop = loop
         self.socketFD = fd
+        self.listeningSource = dispatch_source_create(DISPATCH_SOURCE_TYPE_READ, UInt(fd.rawValue), 0, dispatch_get_main_queue())
+
     }
     
     public func bind(host: String, port: Port) throws {
@@ -148,10 +154,8 @@ public struct TCPServer: IOStream {
             throw Error(rawValue: errno)
         }
         debugPrint("Listening on \(fd)...")
-        let listeningSource = dispatch_source_create(DISPATCH_SOURCE_TYPE_READ, UInt(fd.rawValue), 0, dispatch_get_main_queue())
         dispatch_source_set_event_handler(listeningSource) { [fd = self.fd] in
             debugPrint("Connecting...")
-            _ = listeningSource // capture listeningSource
             var socketAddress = sockaddr()
             var sockLen = socklen_t(SOCK_MAXADDRLEN)
             let ret = system_accept(fd.rawValue, &socketAddress, &sockLen)
