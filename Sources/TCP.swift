@@ -29,16 +29,16 @@ public struct TCPClient: IOStream {
         return socketFD
     }
     
-    init(loop: RunLoop) {
+    public init(loop: RunLoop) {
         self.init(loop: loop, fd: SocketFileDescriptor(socketType: SocketType.stream, addressFamily: AddressFamily.inet))
     }
     
-    init(loop: RunLoop, fd: SocketFileDescriptor) {
+    public init(loop: RunLoop, fd: SocketFileDescriptor) {
         self.loop = loop
         self.socketFD = fd
     }
     
-    func connect(host: String, port: Port, onConnect: () -> ()) throws {
+    public func connect(host: String, port: Port, onConnect: () -> ()) throws {
         var addrInfoPointer = UnsafeMutablePointer<addrinfo>(nil)
         
         var hints = addrinfo(
@@ -104,11 +104,11 @@ public struct TCPServer: IOStream {
         return socketFD
     }
     
-    init(loop: RunLoop) {
+    public init(loop: RunLoop) {
         self.init(loop: loop, fd: SocketFileDescriptor(socketType: SocketType.stream, addressFamily: AddressFamily.inet))
     }
     
-    init(loop: RunLoop, fd: SocketFileDescriptor) {
+    public init(loop: RunLoop, fd: SocketFileDescriptor) {
         self.loop = loop
         self.socketFD = fd
     }

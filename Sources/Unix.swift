@@ -151,7 +151,7 @@ public enum Error: Int32, ErrorProtocol {
     
 }
 
-enum AddressFamilyError: ErrorProtocol {
+public enum AddressFamilyError: ErrorProtocol {
     case tryAgain
     case badFlags
     case fail

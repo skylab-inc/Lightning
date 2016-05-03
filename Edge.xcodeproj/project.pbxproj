@@ -17,7 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		__PBXFileRef_Package.swift /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Package.swift; path = /Users/tylercloutier/Developer/SwiftUV/Package.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Package.swift /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Package.swift; path = /Users/tylercloutier/Developer/Edge/Package.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/IOStream.swift /* IOStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOStream.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/Pipe.swift /* Pipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pipe.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/RunLoop.swift /* RunLoop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunLoop.swift; sourceTree = "<group>"; };
@@ -76,8 +76,8 @@
 		"_______Group_Edge" /* Edge */ = {
 			isa = PBXGroup;
 			children = (
-				__PBXFileRef_Sources/IOStream.swift /* IOStream.swift */,
 				__PBXFileRef_Sources/main.swift /* main.swift */,
+				__PBXFileRef_Sources/IOStream.swift /* IOStream.swift */,
 				__PBXFileRef_Sources/Pipe.swift /* Pipe.swift */,
 				__PBXFileRef_Sources/RunLoop.swift /* RunLoop.swift */,
 				__PBXFileRef_Sources/TCP.swift /* TCP.swift */,
@@ -161,6 +161,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				HEADER_SEARCH_PATHS = "/Users/tylercloutier/Developer/Edge/Packages/CUV-2.6.0";
 				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_CFLAGS = "";
@@ -177,6 +178,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				HEADER_SEARCH_PATHS = "/Users/tylercloutier/Developer/Edge/Packages/CUV-2.6.0";
 				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_CFLAGS = "";
