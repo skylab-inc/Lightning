@@ -57,11 +57,11 @@ public struct SocketFileDescriptor: CustomDebugStringConvertible, FileDescriptor
     let socketType: SocketType
     let blocking: Bool
     
-    init(socketType: SocketType, addressFamily: AddressFamily, blocking: Bool = true) {
-        if blocking {
-            self.rawValue = socket(addressFamily.rawValue, socketType.rawValue, 0)
-        } else {
-            self.rawValue = socket(addressFamily.rawValue, socketType.rawValue | O_NONBLOCK, 0)
+    init(socketType: SocketType, addressFamily: AddressFamily, blocking: Bool = false) {
+        self.rawValue = socket(addressFamily.rawValue, socketType.rawValue, 0)
+        if !blocking {
+            let flags = fcntl(self.rawValue, F_GETFL, 0);
+            _ = fcntl(self.rawValue, F_SETFL, flags | O_NONBLOCK)
         }
         self.addressFamily = addressFamily
         self.socketType = socketType

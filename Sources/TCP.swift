@@ -91,10 +91,6 @@ public struct TCPClient: IOStream {
                 var result = 0
                 var resultLength = socklen_t(strideof(result.dynamicType))
                 let ret = getsockopt(self.fd.rawValue, SOL_SOCKET, SO_ERROR, &result, &resultLength)
-                if Error(rawValue: ret) == .inProgress || Error(rawValue: Int32(result)) == .inProgress {
-                    // Still inProgress
-                    return
-                }
                 if ret != 0 {
                     try! { throw Error(rawValue: ret) }()
                 }
