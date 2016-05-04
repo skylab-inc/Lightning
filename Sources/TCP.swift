@@ -20,6 +20,7 @@
     private let system_connect = Darwin.connect
 #endif
 import Dispatch
+import Foundation
 
 public struct TCPClient: IOStream {
     

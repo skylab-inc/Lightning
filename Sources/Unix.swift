@@ -80,7 +80,7 @@ public struct SocketFileDescriptor: CustomDebugStringConvertible, FileDescriptor
     }
 }
 
-public enum Error: Int32, ErrorProtocol {
+public enum Error: ErrorProtocol {
     case access
     case addressInUse
     case invalidFileDesciptor
@@ -101,6 +101,7 @@ public enum Error: Int32, ErrorProtocol {
     case notValidExecutable
     case operationNotSupported
     case inProgress
+    case unknownError
     
     public init(rawValue: Int32) {
         switch rawValue {
@@ -145,7 +146,7 @@ public enum Error: Int32, ErrorProtocol {
         case EINPROGRESS:
             self = inProgress
         default:
-            fatalError("Unknown error code: \(rawValue)")
+            self = unknownError
         }
     }
     
@@ -160,6 +161,7 @@ public enum AddressFamilyError: ErrorProtocol {
     case noName
     case overflow
     case system
+    case unknownError
     
     init(rawValue: Int32) {
         switch rawValue {
@@ -180,7 +182,7 @@ public enum AddressFamilyError: ErrorProtocol {
         case EAI_SYSTEM:
             self = system
         default:
-            fatalError("Unknown error code: \(rawValue)")
+            self = unknownError
         }
     }
 }
