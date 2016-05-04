@@ -18,7 +18,7 @@ public protocol IOStream {
         get
     }
     
-    var readChannel: dispatch_io_t { get set }
+    var channel: dispatch_io_t { get }
     
     func read(minBytes: Int, onRead: (buffer: UnsafeBufferPointer<Int8>) -> ())
     
@@ -29,20 +29,14 @@ public protocol IOStream {
 public extension IOStream {
     
     public func read(minBytes: Int = 1, onRead: (buffer: UnsafeBufferPointer<Int8>) -> ()) {
-        let readingChannel = dispatch_io_create(DISPATCH_IO_STREAM, fd.rawValue, dispatch_get_main_queue()) { error in
-            if error != 0 {
-                print("Error: \(error)")
-            }
-        }
-        dispatch_io_set_low_water(readingChannel, minBytes);
-        dispatch_io_read(readingChannel, off_t(), size_t(INT_MAX), dispatch_get_main_queue()) { done, data, error in
+        dispatch_io_set_low_water(channel, minBytes);
+        dispatch_io_read(channel, off_t(), size_t(INT_MAX), dispatch_get_main_queue()) { done, data, error in
             if error != 0 {
                 print("Error: \(error)")
             }
             if done {
                 return
             }
-            _ = readingChannel
             var p = UnsafePointer<Void>(nil)
             var size: size_t = 0
             _ = dispatch_data_create_map(data, &p, &size)
@@ -52,13 +46,8 @@ public extension IOStream {
     }
     
     public func write(buffer: UnsafeBufferPointer<Int8>, onWrite: (() -> ())? = nil) {
-        let writeChannel = dispatch_io_create(DISPATCH_IO_STREAM, fd.rawValue, dispatch_get_main_queue()) { error in
-            if error != 0 {
-                print("Error: \(error)")
-            }
-        }
         let dispatchData = dispatch_data_create(buffer.baseAddress, buffer.count, dispatch_get_main_queue(), nil)
-        dispatch_io_write(writeChannel, off_t(), dispatchData, dispatch_get_main_queue()) { done, data, error in
+        dispatch_io_write(channel, off_t(), dispatchData, dispatch_get_main_queue()) { done, data, error in
             if error != 0 {
                 print("Error: \(error)")
             }
@@ -66,7 +55,6 @@ public extension IOStream {
             if done {
                 return
             }
-            _ = writeChannel
         }
     }
 }

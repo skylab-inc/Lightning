@@ -28,9 +28,9 @@ public struct TCPClient: IOStream {
     public var fd: FileDescriptor {
         return socketFD
     }
-    
-    let connectingSource: dispatch_source_t
+    public let channel: dispatch_io_t
 
+    let connectingSource: dispatch_source_t
     
     public init(loop: RunLoop) {
         self.init(loop: loop, fd: SocketFileDescriptor(socketType: SocketType.stream, addressFamily: AddressFamily.inet))
@@ -40,6 +40,11 @@ public struct TCPClient: IOStream {
         self.loop = loop
         self.socketFD = fd
         self.connectingSource = dispatch_source_create(DISPATCH_SOURCE_TYPE_READ, UInt(fd.rawValue), 0, dispatch_get_main_queue())
+        self.channel = dispatch_io_create(DISPATCH_IO_STREAM, fd.rawValue, dispatch_get_main_queue()) { error in
+            if error != 0 {
+                print("Error: \(error)")
+            }
+        }
     }
     
     public func connect(host: String, port: Port, onConnect: () -> ()) throws {
@@ -107,6 +112,7 @@ public struct TCPServer: IOStream {
         return socketFD
     }
     let listeningSource: dispatch_source_t
+    public let channel: dispatch_io_t
     
     public init(loop: RunLoop) {
         self.init(loop: loop, fd: SocketFileDescriptor(socketType: SocketType.stream, addressFamily: AddressFamily.inet))
@@ -116,7 +122,11 @@ public struct TCPServer: IOStream {
         self.loop = loop
         self.socketFD = fd
         self.listeningSource = dispatch_source_create(DISPATCH_SOURCE_TYPE_READ, UInt(fd.rawValue), 0, dispatch_get_main_queue())
-
+        self.channel = dispatch_io_create(DISPATCH_IO_STREAM, fd.rawValue, dispatch_get_main_queue()) { error in
+            if error != 0 {
+                print("Error: \(error)")
+            }
+        }
     }
     
     public func bind(host: String, port: Port) throws {
