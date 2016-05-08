@@ -86,8 +86,8 @@ public struct TCPClient: IOStream {
             return
         }
         
-        // Non-blocking, dispatch connection
-        let error = Error(rawValue: connectRet)
+        // Non-blocking, dispatch connection, check errno for connection error.
+        let error = Error(rawValue: errno)
         if error == Error.inProgress {
             dispatch_source_set_event_handler(connectingSource) {
                 var result = 0
