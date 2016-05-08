@@ -1,193 +1,225 @@
 // !$*UTF8*$!
 {
-    archiveVersion = 1;
-    classes = {};
-    objectVersion = 46;
-    rootObject = __RootObject_;
-    objects = {
-        __RootObject_ = {
-            isa = PBXProject;
-            attributes = {LastUpgradeCheck = 9999;};
-            buildConfigurationList = ___RootConfs_;
-            compatibilityVersion = 'Xcode 3.2';
-            developmentRegion = English;
-            hasScannedForEncodings = 0;
-            knownRegions = (en);
-            mainGroup = ___RootGroup_;
-            productRefGroup = ____Products_;
-            projectDirPath = '';
-            projectRoot = '';
-            targets = (______Target_Edge);
-        };
-        '__PBXFileRef_Package.swift' = {
-            isa = PBXFileReference;
-            lastKnownFileType = sourcecode.swift;
-            name = 'Package.swift';
-            path = '/Users/tylercloutier/Developer/Edge/Package.swift';
-            sourceTree = '<group>';
-        };
-        ___RootGroup_ = {
-            isa = PBXGroup;
-            children = ('__PBXFileRef_Package.swift', _____Sources_, Dependencies_, _______Tests_, ____Products_);
-            sourceTree = '<group>';
-        };
-        _______Group_Edge = {
-            isa = PBXGroup;
-            name = Edge;
-            path = 'Sources';
-            sourceTree = '<group>';
-            children = ('__PBXFileRef_Sources/IOStream.swift', '__PBXFileRef_Sources/Pipe.swift', '__PBXFileRef_Sources/RunLoop.swift', '__PBXFileRef_Sources/TCP.swift', '__PBXFileRef_Sources/Unix.swift', '__PBXFileRef_Sources/UVStuff.swift');
-        };
-        '__PBXFileRef_Sources/IOStream.swift' = {
-            isa = PBXFileReference;
-            lastKnownFileType = sourcecode.swift;
-            name = 'IOStream.swift';
-            sourceTree = '<group>';
-        };
-        '__PBXFileRef_Sources/Pipe.swift' = {
-            isa = PBXFileReference;
-            lastKnownFileType = sourcecode.swift;
-            name = 'Pipe.swift';
-            sourceTree = '<group>';
-        };
-        '__PBXFileRef_Sources/RunLoop.swift' = {
-            isa = PBXFileReference;
-            lastKnownFileType = sourcecode.swift;
-            name = 'RunLoop.swift';
-            sourceTree = '<group>';
-        };
-        '__PBXFileRef_Sources/TCP.swift' = {
-            isa = PBXFileReference;
-            lastKnownFileType = sourcecode.swift;
-            name = 'TCP.swift';
-            sourceTree = '<group>';
-        };
-        '__PBXFileRef_Sources/Unix.swift' = {
-            isa = PBXFileReference;
-            lastKnownFileType = sourcecode.swift;
-            name = 'Unix.swift';
-            sourceTree = '<group>';
-        };
-        '__PBXFileRef_Sources/UVStuff.swift' = {
-            isa = PBXFileReference;
-            lastKnownFileType = sourcecode.swift;
-            name = 'UVStuff.swift';
-            sourceTree = '<group>';
-        };
-        ______Target_Edge = {
-            isa = PBXNativeTarget;
-            buildConfigurationList = _______Confs_Edge;
-            buildPhases = (CompilePhase_Edge, ___LinkPhase_Edge);
-            buildRules = ();
-            dependencies = ();
-            name = Edge;
-            productName = Edge;
-            productReference = _____Product_Edge;
-            productType = 'com.apple.product-type.library.dynamic';
-        };
-        _____Product_Edge = {
-            isa = PBXFileReference;
-            explicitFileType = 'compiled.mach-o.dylib';
-            path = 'Edge.dylib';
-            sourceTree = BUILT_PRODUCTS_DIR;
-        };
-        CompilePhase_Edge = {
-            isa = PBXSourcesBuildPhase;
-            files = ('__src_cc_ref_Sources/IOStream.swift', '__src_cc_ref_Sources/Pipe.swift', '__src_cc_ref_Sources/RunLoop.swift', '__src_cc_ref_Sources/TCP.swift', '__src_cc_ref_Sources/Unix.swift', '__src_cc_ref_Sources/UVStuff.swift');
-            runOnlyForDeploymentPostprocessing = 0;
-        };
-        ___LinkPhase_Edge = {
-            isa = PBXFrameworksBuildPhase;
-            files = ();
-            runOnlyForDeploymentPostprocessing = 0;
-        };
-        '__src_cc_ref_Sources/IOStream.swift' = {
-            isa = PBXBuildFile;
-            fileRef = '__PBXFileRef_Sources/IOStream.swift';
-        };
-        '__src_cc_ref_Sources/Pipe.swift' = {
-            isa = PBXBuildFile;
-            fileRef = '__PBXFileRef_Sources/Pipe.swift';
-        };
-        '__src_cc_ref_Sources/RunLoop.swift' = {
-            isa = PBXBuildFile;
-            fileRef = '__PBXFileRef_Sources/RunLoop.swift';
-        };
-        '__src_cc_ref_Sources/TCP.swift' = {
-            isa = PBXBuildFile;
-            fileRef = '__PBXFileRef_Sources/TCP.swift';
-        };
-        '__src_cc_ref_Sources/Unix.swift' = {
-            isa = PBXBuildFile;
-            fileRef = '__PBXFileRef_Sources/Unix.swift';
-        };
-        '__src_cc_ref_Sources/UVStuff.swift' = {
-            isa = PBXBuildFile;
-            fileRef = '__PBXFileRef_Sources/UVStuff.swift';
-        };
-        _LinkFileRef_Edge = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_Edge;
-        };
-        _______Confs_Edge = {
-            isa = XCConfigurationList;
-            buildConfigurations = (___DebugConf_Edge, _ReleaseConf_Edge);
-            defaultConfigurationIsVisible = 0;
-            defaultConfigurationName = Debug;
-        };
-        ___DebugConf_Edge = {
-            isa = XCBuildConfiguration;
-            buildSettings = { DYLIB_INSTALL_NAME_BASE = '$(CONFIGURATION_BUILD_DIR)'; LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = Edge; ENABLE_TESTABILITY = YES; MACOSX_DEPLOYMENT_TARGET = '10.10'; OTHER_SWIFT_FLAGS = ( "-DXcode" ); OTHER_CFLAGS = (  ); COMBINE_HIDPI_IMAGES = YES; SWIFT_OPTIMIZATION_LEVEL = -Onone; OTHER_LDFLAGS = (  ); PRODUCT_NAME = 'lib$(TARGET_NAME)'; };
-            name = Debug;
-        };
-        _ReleaseConf_Edge = {
-            isa = XCBuildConfiguration;
-            buildSettings = { DYLIB_INSTALL_NAME_BASE = '$(CONFIGURATION_BUILD_DIR)'; LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = Edge; ENABLE_TESTABILITY = YES; MACOSX_DEPLOYMENT_TARGET = '10.10'; OTHER_SWIFT_FLAGS = ( "-DXcode" ); OTHER_CFLAGS = (  ); COMBINE_HIDPI_IMAGES = YES; OTHER_LDFLAGS = (  ); PRODUCT_NAME = 'lib$(TARGET_NAME)'; };
-            name = Release;
-        };
-        __Dependency_Edge = {
-            isa = PBXTargetDependency;
-            target = ______Target_Edge;
-        };
-        _____Sources_ = {
-            isa = PBXGroup;
-            children = (_______Group_Edge);
-            name = Sources;
-            sourceTree = '<group>';
-        };
-        Dependencies_ = {
-            isa = PBXGroup;
-            children = ();
-            name = Dependencies;
-            sourceTree = '<group>';
-        };
-        _______Tests_ = {
-            isa = PBXGroup;
-            children = ();
-            name = Tests;
-            sourceTree = '<group>';
-        };
-        ____Products_ = {
-            isa = PBXGroup;
-            children = (_____Product_Edge);
-            name = Products;
-            sourceTree = '<group>';
-        };
-        _______Debug_ = {
-            isa = XCBuildConfiguration;
-            buildSettings = {};
-            name = Debug;
-        };
-        _____Release_ = {
-            isa = XCBuildConfiguration;
-            buildSettings = {};
-            name = Release;
-        };
-        ___RootConfs_ = {
-            isa = XCConfigurationList;
-            buildConfigurations = (_______Debug_, _____Release_);
-            defaultConfigurationIsVisible = 0;
-            defaultConfigurationName = Debug;
-        };
-    };
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		__src_cc_ref_Sources/IOStream.swift /* IOStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/IOStream.swift /* IOStream.swift */; };
+		__src_cc_ref_Sources/Pipe.swift /* Pipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Pipe.swift /* Pipe.swift */; };
+		__src_cc_ref_Sources/RunLoop.swift /* RunLoop.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/RunLoop.swift /* RunLoop.swift */; };
+		__src_cc_ref_Sources/TCP.swift /* TCP.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/TCP.swift /* TCP.swift */; };
+		__src_cc_ref_Sources/UVStuff.swift /* UVStuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/UVStuff.swift /* UVStuff.swift */; };
+		__src_cc_ref_Sources/Unix.swift /* Unix.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Unix.swift /* Unix.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		__PBXFileRef_Package.swift /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Package.swift; path = /Users/tylercloutier/Developer/Edge/Package.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/IOStream.swift /* IOStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOStream.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/Pipe.swift /* Pipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pipe.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/RunLoop.swift /* RunLoop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunLoop.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/TCP.swift /* TCP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCP.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/UVStuff.swift /* UVStuff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVStuff.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/Unix.swift /* Unix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unix.swift; sourceTree = "<group>"; };
+		"_____Product_Edge" /* libEdge.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libEdge.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		"___LinkPhase_Edge" /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		Dependencies_ /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Dependencies;
+			sourceTree = "<group>";
+		};
+		"___RootGroup_" = {
+			isa = PBXGroup;
+			children = (
+				__PBXFileRef_Package.swift /* Package.swift */,
+				"_____Sources_" /* Sources */,
+				Dependencies_ /* Dependencies */,
+				"_______Tests_" /* Tests */,
+				"____Products_" /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		"____Products_" /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				"_____Product_Edge" /* libEdge.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		"_____Sources_" /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				"_______Group_Edge" /* Edge */,
+			);
+			name = Sources;
+			sourceTree = "<group>";
+		};
+		"_______Group_Edge" /* Edge */ = {
+			isa = PBXGroup;
+			children = (
+				__PBXFileRef_Sources/IOStream.swift /* IOStream.swift */,
+				__PBXFileRef_Sources/Pipe.swift /* Pipe.swift */,
+				__PBXFileRef_Sources/RunLoop.swift /* RunLoop.swift */,
+				__PBXFileRef_Sources/TCP.swift /* TCP.swift */,
+				__PBXFileRef_Sources/Unix.swift /* Unix.swift */,
+				__PBXFileRef_Sources/UVStuff.swift /* UVStuff.swift */,
+			);
+			name = Edge;
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		"_______Tests_" /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Tests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		"______Target_Edge" /* Edge */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = "_______Confs_Edge" /* Build configuration list for PBXNativeTarget "Edge" */;
+			buildPhases = (
+				CompilePhase_Edge /* Sources */,
+				"___LinkPhase_Edge" /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Edge;
+			productName = Edge;
+			productReference = "_____Product_Edge" /* libEdge.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		__RootObject_ /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 9999;
+			};
+			buildConfigurationList = "___RootConfs_" /* Build configuration list for PBXProject "Edge" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = "___RootGroup_";
+			productRefGroup = "____Products_" /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				"______Target_Edge" /* Edge */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CompilePhase_Edge /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				__src_cc_ref_Sources/IOStream.swift /* IOStream.swift in Sources */,
+				__src_cc_ref_Sources/Pipe.swift /* Pipe.swift in Sources */,
+				__src_cc_ref_Sources/RunLoop.swift /* RunLoop.swift in Sources */,
+				__src_cc_ref_Sources/TCP.swift /* TCP.swift in Sources */,
+				__src_cc_ref_Sources/Unix.swift /* Unix.swift in Sources */,
+				__src_cc_ref_Sources/UVStuff.swift /* UVStuff.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		_ReleaseConf_Edge /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_INSTALL_NAME_BASE = "$(CONFIGURATION_BUILD_DIR)";
+				ENABLE_TESTABILITY = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_SWIFT_FLAGS = "-DXcode";
+				PRODUCT_MODULE_NAME = Edge;
+				PRODUCT_NAME = "lib$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		"___DebugConf_Edge" /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_INSTALL_NAME_BASE = "$(CONFIGURATION_BUILD_DIR)";
+				ENABLE_TESTABILITY = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_SWIFT_FLAGS = "-DXcode";
+				PRODUCT_MODULE_NAME = Edge;
+				PRODUCT_NAME = "lib$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		"_____Release_" /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		"_______Debug_" /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		"___RootConfs_" /* Build configuration list for PBXProject "Edge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				"_______Debug_" /* Debug */,
+				"_____Release_" /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		"_______Confs_Edge" /* Build configuration list for PBXNativeTarget "Edge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				"___DebugConf_Edge" /* Debug */,
+				_ReleaseConf_Edge /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = __RootObject_ /* Project object */;
 }

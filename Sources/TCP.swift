@@ -87,7 +87,8 @@ public struct TCPClient: IOStream {
         }
         
         // Non-blocking, dispatch connection
-        if Error(rawValue: connectRet) == Error.inProgress {
+        let error = Error(rawValue: connectRet)
+        if error == Error.inProgress {
             dispatch_source_set_event_handler(connectingSource) {
                 var result = 0
                 var resultLength = socklen_t(strideof(result.dynamicType))
@@ -101,6 +102,8 @@ public struct TCPClient: IOStream {
                 onConnect()
             }
             dispatch_resume(connectingSource)
+        } else {
+            throw error
         }
     }
 }
