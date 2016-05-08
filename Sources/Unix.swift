@@ -6,7 +6,22 @@
 //
 //
 
-import Foundation
+
+#if os(Linux)
+import Glibc
+let system_bind = Glibc.bind
+let system_accept = Glibc.accept
+let system_listen = Glibc.listen
+let system_connect = Glibc.connect
+let system_close = Glibc.close
+#else
+import Darwin
+let system_bind = Darwin.bind
+let system_accept = Darwin.accept
+let system_listen = Darwin.listen
+let system_connect = Darwin.connect
+let system_close = Darwin.close
+#endif
 
 public struct SocketType {
     static let stream = SocketType(rawValue: SOCK_STREAM)
@@ -42,6 +57,15 @@ public protocol FileDescriptor {
     
     var rawValue: Int32 { get }
     
+    func close()
+    
+}
+
+extension FileDescriptor {
+    
+    public func close() {
+        system_close(rawValue)
+    }
 }
 
 public enum StandardFileDescriptor: Int32, FileDescriptor {

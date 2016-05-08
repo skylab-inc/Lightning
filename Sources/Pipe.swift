@@ -19,7 +19,7 @@ public struct Pipe: IOStream {
         self.fd = fd
         self.channel = dispatch_io_create(DISPATCH_IO_STREAM, fd.rawValue, dispatch_get_main_queue()) { error in
             if error != 0 {
-                print("Error: \(error)")
+                try! { throw Error(rawValue: error) }()
             }
         }
     }

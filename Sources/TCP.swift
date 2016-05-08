@@ -6,19 +6,6 @@
 //
 //
 
-#if os(Linux)
-    import Glibc
-    private let system_bind = Glibc.bind
-    private let system_accept = Glibc.accept
-    private let system_listen = Glibc.listen
-    private let system_connect = Glibc.connect
-#else
-    import Darwin
-    private let system_bind = Darwin.bind
-    private let system_accept = Darwin.accept
-    private let system_listen = Darwin.listen
-    private let system_connect = Darwin.connect
-#endif
 import Dispatch
 import Foundation
 
@@ -43,7 +30,7 @@ public struct TCPClient: IOStream {
         self.connectingSource = dispatch_source_create(DISPATCH_SOURCE_TYPE_READ, UInt(fd.rawValue), 0, dispatch_get_main_queue())
         self.channel = dispatch_io_create(DISPATCH_IO_STREAM, fd.rawValue, dispatch_get_main_queue()) { error in
             if error != 0 {
-                print("Error: \(error)")
+                try! { throw Error(rawValue: error) }()
             }
         }
     }
@@ -101,6 +88,10 @@ public struct TCPClient: IOStream {
                 }
                 onConnect()
             }
+            dispatch_source_set_cancel_handler(connectingSource) {
+                // Close the socket
+                self.fd.close()
+            }
             dispatch_resume(connectingSource)
         } else {
             throw error
@@ -128,7 +119,7 @@ public struct TCPServer: IOStream {
         self.listeningSource = dispatch_source_create(DISPATCH_SOURCE_TYPE_READ, UInt(fd.rawValue), 0, dispatch_get_main_queue())
         self.channel = dispatch_io_create(DISPATCH_IO_STREAM, fd.rawValue, dispatch_get_main_queue()) { error in
             if error != 0 {
-                print("Error: \(error)")
+                try! { throw Error(rawValue: error) }()
             }
         }
     }
@@ -184,6 +175,10 @@ public struct TCPServer: IOStream {
             )
             let clientConnection = TCPServer(loop: self.loop, fd: clientFileDescriptor)
             onConnect(clientConnection: clientConnection)
+        }
+        dispatch_source_set_cancel_handler(listeningSource) {
+            // Close the socket
+            self.fd.close()
         }
         dispatch_resume(listeningSource)
     }
