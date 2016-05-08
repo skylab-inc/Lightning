@@ -76,7 +76,7 @@ public struct TCPClient: IOStream {
         // Non-blocking, dispatch connection, check errno for connection error.
         let error = Error(rawValue: errno)
         if case Error.inProgress = error {
-            dispatch_source_set_event_handler(connectingSource) {
+            dispatch_source_set_event_handler(connectingSource) { [connectingSource = self.connectingSource] in
                 var result = 0
                 var resultLength = socklen_t(strideof(result.dynamicType))
                 let ret = getsockopt(self.fd.rawValue, SOL_SOCKET, SO_ERROR, &result, &resultLength)
@@ -86,11 +86,9 @@ public struct TCPClient: IOStream {
                 if result != 0 {
                     try! { throw Error(rawValue: Int32(result)) }()
                 }
+                debugPrint("Bytes on connection: \(dispatch_source_get_data(connectingSource))")
+                dispatch_source_cancel(connectingSource)
                 onConnect()
-            }
-            dispatch_source_set_cancel_handler(connectingSource) {
-                // Close the socket
-                self.fd.close()
             }
             dispatch_resume(connectingSource)
         } else {
@@ -159,22 +157,29 @@ public struct TCPServer: IOStream {
             throw Error(rawValue: errno)
         }
         debugPrint("Listening on \(fd)...")
-        dispatch_source_set_event_handler(listeningSource) { [fd = self.fd] in
+        dispatch_source_set_event_handler(listeningSource) { [fd = self.fd, listeningSource = self.listeningSource] in
+            
             debugPrint("Connecting...")
+            
             var socketAddress = sockaddr()
             var sockLen = socklen_t(SOCK_MAXADDRLEN)
-            let ret = system_accept(fd.rawValue, &socketAddress, &sockLen)
-            if ret == StandardFileDescriptor.invalid.rawValue {
-                try! { throw Error(rawValue: ret) }()
+            
+            // Accept connections
+            let numPendingConnections = dispatch_source_get_data(listeningSource)
+            for _ in 0..<numPendingConnections {
+                let ret = system_accept(fd.rawValue, &socketAddress, &sockLen)
+                if ret == StandardFileDescriptor.invalid.rawValue {
+                    try! { throw Error(rawValue: ret) }()
+                }
+                let clientFileDescriptor = SocketFileDescriptor(
+                    rawValue: ret,
+                    socketType: SocketType.stream,
+                    addressFamily: self.socketFD.addressFamily,
+                    blocking: false
+                )
+                let clientConnection = TCPServer(loop: self.loop, fd: clientFileDescriptor)
+                onConnect(clientConnection: clientConnection)
             }
-            let clientFileDescriptor = SocketFileDescriptor(
-                rawValue: ret,
-                socketType: SocketType.stream,
-                addressFamily: self.socketFD.addressFamily,
-                blocking: false
-            )
-            let clientConnection = TCPServer(loop: self.loop, fd: clientFileDescriptor)
-            onConnect(clientConnection: clientConnection)
         }
         dispatch_source_set_cancel_handler(listeningSource) {
             // Close the socket
