@@ -88,7 +88,7 @@ public struct TCPClient: IOStream {
         
         // Non-blocking, dispatch connection, check errno for connection error.
         let error = Error(rawValue: errno)
-        if error == Error.inProgress {
+        if case Error.inProgress = error {
             dispatch_source_set_event_handler(connectingSource) {
                 var result = 0
                 var resultLength = socklen_t(strideof(result.dynamicType))

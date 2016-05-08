@@ -101,7 +101,7 @@ public enum Error: ErrorProtocol {
     case notValidExecutable
     case operationNotSupported
     case inProgress
-    case unknownError
+    case unknownError(code: Int32)
     
     public init(rawValue: Int32) {
         switch rawValue {
@@ -146,7 +146,7 @@ public enum Error: ErrorProtocol {
         case EINPROGRESS:
             self = inProgress
         default:
-            self = unknownError
+            self = unknownError(code: rawValue)
         }
     }
     
