@@ -38,7 +38,7 @@
 		__PBXFileRef_Sources/TCP.swift /* TCP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCP.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/UVStuff.swift /* UVStuff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVStuff.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/Unix.swift /* Unix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unix.swift; sourceTree = "<group>"; };
-		"_____Product_Edge" /* Edge.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; name = Edge.dylib; path = libEdge.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		"_____Product_Edge" /* libEdge.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libEdge.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		"_____Product_Result" /* libResult.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libResult.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -84,7 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				"_____Product_Result" /* libResult.dylib */,
-				"_____Product_Edge" /* Edge.dylib */,
+				"_____Product_Edge" /* libEdge.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -145,7 +145,7 @@
 			);
 			name = Edge;
 			productName = Edge;
-			productReference = "_____Product_Edge" /* Edge.dylib */;
+			productReference = "_____Product_Edge" /* libEdge.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 		"______Target_Result" /* Result */ = {
