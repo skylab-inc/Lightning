@@ -97,7 +97,7 @@ public struct TCPClient: IOStream {
                     try! { throw Error(rawValue: ret) }()
                 }
                 if result != 0 {
-                    try! { throw Error(rawValue: ret) }()
+                    try! { throw Error(rawValue: Int32(result)) }()
                 }
                 onConnect()
             }
