@@ -32,7 +32,7 @@ public extension IOStream {
         dispatch_io_set_low_water(channel, minBytes);
         dispatch_io_read(channel, off_t(), size_t(INT_MAX), dispatch_get_main_queue()) { done, data, error in
             if error != 0 {
-                print("Error: \(error)")
+                try! { throw Error(rawValue: error) }()
             }
             if done {
                 return
@@ -49,7 +49,7 @@ public extension IOStream {
         let dispatchData = dispatch_data_create(buffer.baseAddress, buffer.count, dispatch_get_main_queue(), nil)
         dispatch_io_write(channel, off_t(), dispatchData, dispatch_get_main_queue()) { done, data, error in
             if error != 0 {
-                print("Error: \(error)")
+                try! { throw Error(rawValue: error) }()
             }
             onWrite?()
             if done {
