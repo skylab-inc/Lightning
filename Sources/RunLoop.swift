@@ -16,7 +16,10 @@ public struct RunLoop {
         
     }
     
-    public static func runAll() {
+    public static func runAll(ignoreSigPipe: Bool = true) {
+        if ignoreSigPipe {
+            signal(SIGPIPE, SIG_IGN)
+        }
         dispatch_main()
     }
     
