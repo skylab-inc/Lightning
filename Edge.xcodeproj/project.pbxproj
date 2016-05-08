@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DCD8DF271CDFEDDB007F789D /* TCPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD8DF261CDFEDDB007F789D /* TCPClient.swift */; };
 		_LinkFileRef_Result /* libResult.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_Result" /* libResult.dylib */; };
 		"__src_cc_ref_Packages/Result-2.0.0/Result/Result.swift" /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/Result-2.0.0/Result/Result.swift" /* Result.swift */; };
 		"__src_cc_ref_Packages/Result-2.0.0/Result/ResultType.swift" /* ResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/Result-2.0.0/Result/ResultType.swift" /* ResultType.swift */; };
 		__src_cc_ref_Sources/IOStream.swift /* IOStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/IOStream.swift /* IOStream.swift */; };
 		__src_cc_ref_Sources/Pipe.swift /* Pipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Pipe.swift /* Pipe.swift */; };
 		__src_cc_ref_Sources/RunLoop.swift /* RunLoop.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/RunLoop.swift /* RunLoop.swift */; };
-		__src_cc_ref_Sources/TCP.swift /* TCP.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/TCP.swift /* TCP.swift */; };
+		__src_cc_ref_Sources/TCP.swift /* TCPServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/TCP.swift /* TCPServer.swift */; };
 		__src_cc_ref_Sources/UVStuff.swift /* UVStuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/UVStuff.swift /* UVStuff.swift */; };
 		__src_cc_ref_Sources/Unix.swift /* Unix.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Unix.swift /* Unix.swift */; };
 /* End PBXBuildFile section */
@@ -29,13 +30,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DCD8DF261CDFEDDB007F789D /* TCPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCPClient.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Package.swift /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Package.swift; path = /Users/tylercloutier/Developer/Edge/Package.swift; sourceTree = "<group>"; };
 		"__PBXFileRef_Packages/Result-2.0.0/Result/Result.swift" /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		"__PBXFileRef_Packages/Result-2.0.0/Result/ResultType.swift" /* ResultType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultType.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/IOStream.swift /* IOStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOStream.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/Pipe.swift /* Pipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pipe.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/RunLoop.swift /* RunLoop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunLoop.swift; sourceTree = "<group>"; };
-		__PBXFileRef_Sources/TCP.swift /* TCP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCP.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/TCP.swift /* TCPServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCPServer.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/UVStuff.swift /* UVStuff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVStuff.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/Unix.swift /* Unix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unix.swift; sourceTree = "<group>"; };
 		"_____Product_Edge" /* libEdge.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libEdge.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,7 +105,8 @@
 				__PBXFileRef_Sources/IOStream.swift /* IOStream.swift */,
 				__PBXFileRef_Sources/Pipe.swift /* Pipe.swift */,
 				__PBXFileRef_Sources/RunLoop.swift /* RunLoop.swift */,
-				__PBXFileRef_Sources/TCP.swift /* TCP.swift */,
+				__PBXFileRef_Sources/TCP.swift /* TCPServer.swift */,
+				DCD8DF261CDFEDDB007F789D /* TCPClient.swift */,
 				__PBXFileRef_Sources/Unix.swift /* Unix.swift */,
 				__PBXFileRef_Sources/UVStuff.swift /* UVStuff.swift */,
 			);
@@ -197,8 +200,9 @@
 			files = (
 				__src_cc_ref_Sources/IOStream.swift /* IOStream.swift in Sources */,
 				__src_cc_ref_Sources/Pipe.swift /* Pipe.swift in Sources */,
+				DCD8DF271CDFEDDB007F789D /* TCPClient.swift in Sources */,
 				__src_cc_ref_Sources/RunLoop.swift /* RunLoop.swift in Sources */,
-				__src_cc_ref_Sources/TCP.swift /* TCP.swift in Sources */,
+				__src_cc_ref_Sources/TCP.swift /* TCPServer.swift in Sources */,
 				__src_cc_ref_Sources/Unix.swift /* Unix.swift in Sources */,
 				__src_cc_ref_Sources/UVStuff.swift /* UVStuff.swift in Sources */,
 			);
