@@ -125,6 +125,7 @@ public enum Error: ErrorProtocol {
     case notValidExecutable
     case operationNotSupported
     case inProgress
+    case pipeShutdown
     case unknownError(code: Int32)
     
     public init(rawValue: Int32) {
@@ -169,6 +170,8 @@ public enum Error: ErrorProtocol {
             self = operationNotSupported
         case EINPROGRESS:
             self = inProgress
+        case EPIPE:
+            self = pipeShutdown
         default:
             self = unknownError(code: rawValue)
         }
