@@ -33,6 +33,13 @@ public struct TCPClient: IOStream {
                 try! { throw Error(rawValue: error) }()
             }
         }
+        
+        // Set SO_REUSEADDR
+        var reuseAddr = 1
+        let error = setsockopt(self.fd.rawValue, SOL_SOCKET, SO_REUSEADDR, &reuseAddr, socklen_t(strideof(Int)))
+        if error != 0 {
+            try! { throw Error(rawValue: error) }()
+        }
     }
     
     public func connect(host: String, port: Port, onConnect: () -> ()) throws {
@@ -55,7 +62,7 @@ public struct TCPClient: IOStream {
         }
         
         let addressInfo = addrInfoPointer!.pointee
-        let connectRet = system_connect(fd.rawValue, addressInfo.ai_addr, socklen_t(sizeof(sockaddr)))
+        let connectRet = system_connect(fd.rawValue, addressInfo.ai_addr, socklen_t(strideof(sockaddr)))
         freeaddrinfo(addrInfoPointer)
         
         // Blocking, connect immediately or throw error
@@ -119,6 +126,13 @@ public struct TCPServer: IOStream {
             if error != 0 {
                 try! { throw Error(rawValue: error) }()
             }
+        }
+        
+        // Set SO_REUSEADDR
+        var reuseAddr = 1
+        let error = setsockopt(self.fd.rawValue, SOL_SOCKET, SO_REUSEADDR, &reuseAddr, socklen_t(strideof(Int)))
+        if error != 0 {
+            try! { throw Error(rawValue: error) }()
         }
     }
     
