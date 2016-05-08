@@ -27,7 +27,7 @@ public struct TCPClient: IOStream {
     public init(loop: RunLoop, fd: SocketFileDescriptor) {
         self.loop = loop
         self.socketFD = fd
-        self.connectingSource = dispatch_source_create(DISPATCH_SOURCE_TYPE_READ, UInt(fd.rawValue), 0, dispatch_get_main_queue())
+        self.connectingSource = dispatch_source_create(DISPATCH_SOURCE_TYPE_WRITE, UInt(fd.rawValue), 0, dispatch_get_main_queue())
         self.channel = dispatch_io_create(DISPATCH_IO_STREAM, fd.rawValue, dispatch_get_main_queue()) { error in
             if error != 0 {
                 try! { throw Error(rawValue: error) }()
@@ -83,6 +83,7 @@ public struct TCPClient: IOStream {
         // Non-blocking, dispatch connection, check errno for connection error.
         let error = Error(rawValue: errno)
         if case Error.inProgress = error {
+            // Wait for source to be writable. Then we are connected.
             dispatch_source_set_event_handler(connectingSource) { [connectingSource = self.connectingSource] in
                 var result = 0
                 var resultLength = socklen_t(strideof(result.dynamicType))
@@ -93,7 +94,7 @@ public struct TCPClient: IOStream {
                 if result != 0 {
                     try! { throw Error(rawValue: Int32(result)) }()
                 }
-                debugPrint("Bytes on connection: \(dispatch_source_get_data(connectingSource))")
+                debugPrint("Bytes availabe for connection: \(dispatch_source_get_data(connectingSource))")
                 dispatch_source_cancel(connectingSource)
                 onConnect()
             }

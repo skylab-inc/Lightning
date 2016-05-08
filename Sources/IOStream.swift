@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Result
 
 public protocol IOStream {
     
@@ -22,13 +23,13 @@ public protocol IOStream {
     
     func read(minBytes: Int, onRead: (buffer: UnsafeBufferPointer<Int8>) -> ())
     
-    func write(buffer: UnsafeBufferPointer<Int8>, onWrite: (() -> ())?)
+    func write(buffer: UnsafeBufferPointer<Int8>, onWrite: ((error: Error?) -> ())?)
     
 }
 
 public extension IOStream {
     
-    public func read(minBytes: Int = 1, onRead: (buffer: UnsafeBufferPointer<Int8>) -> ()) {
+    public func read(minBytes: Int = 1, onRead: (buffer: UnsafeBufferPointer<Int8>, error: Error?) -> ()) {
         dispatch_io_set_low_water(channel, minBytes);
         dispatch_io_read(channel, off_t(), size_t(INT_MAX), dispatch_get_main_queue()) { done, data, error in
             if error != 0 {
@@ -45,13 +46,10 @@ public extension IOStream {
         }
     }
     
-    public func write(buffer: UnsafeBufferPointer<Int8>, onWrite: (() -> ())? = nil) {
+    public func write(buffer: UnsafeBufferPointer<Int8>, onWrite: ((error: Error?) -> ())? = nil) {
         let dispatchData = dispatch_data_create(buffer.baseAddress, buffer.count, dispatch_get_main_queue(), nil)
         dispatch_io_write(channel, off_t(), dispatchData, dispatch_get_main_queue()) { done, data, error in
-            if error != 0 {
-                try! { throw Error(rawValue: error) }()
-            }
-            onWrite?()
+            onWrite?(error: Error(rawValue: error))
             if done {
                 return
             }
