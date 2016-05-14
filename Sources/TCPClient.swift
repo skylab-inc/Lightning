@@ -93,7 +93,7 @@ public struct TCPClient: IOStream {
                 if result != 0 {
                     try! { throw Error(rawValue: Int32(result)) }()
                 }
-                debugPrint("Bytes availabe for connection: \(dispatch_source_get_data(connectingSource))")
+                log.debug("Bytes availabe for connection: \(dispatch_source_get_data(connectingSource))")
                 dispatch_source_cancel(connectingSource)
                 onConnect()
             }

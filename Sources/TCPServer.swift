@@ -74,10 +74,10 @@ public struct TCPServer: IOStream {
         if ret != 0 {
             throw Error(rawValue: errno)
         }
-        debugPrint("Listening on \(fd)...")
+        log.debug("Listening on \(fd)...")
         dispatch_source_set_event_handler(listeningSource) { [fd = self.fd, listeningSource = self.listeningSource] in
             
-            debugPrint("Connecting...")
+            log.debug("Connecting...")
             
             var socketAddress = sockaddr()
             var sockLen = socklen_t(SOCK_MAXADDRLEN)

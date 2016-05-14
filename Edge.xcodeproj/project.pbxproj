@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DC4DD2801CE7E2C500863126 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4DD27E1CE7E22E00863126 /* Result.swift */; };
+		DC4DD2831CE7E47C00863126 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4DD2811CE7E46C00863126 /* Logging.swift */; };
 		_LinkFileRef_SwiftyBeaver_via_Edge /* libSwiftyBeaver.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_SwiftyBeaver" /* libSwiftyBeaver.dylib */; };
 		"__src_cc_ref_Packages/SwiftyBeaver-0.5.3/sources/AES256CBC.swift" /* AES256CBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/AES256CBC.swift" /* AES256CBC.swift */; };
 		"__src_cc_ref_Packages/SwiftyBeaver-0.5.3/sources/BaseDestination.swift" /* BaseDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/BaseDestination.swift" /* BaseDestination.swift */; };
@@ -35,6 +36,7 @@
 
 /* Begin PBXFileReference section */
 		DC4DD27E1CE7E22E00863126 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		DC4DD2811CE7E46C00863126 /* Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Edge.xcodeproj/Configs/Project.xcconfig /* Project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Project.xcconfig; path = Edge.xcodeproj/Configs/Project.xcconfig; sourceTree = "<group>"; };
 		__PBXFileRef_Package.swift /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		"__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/AES256CBC.swift" /* AES256CBC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AES256CBC.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				__PBXFileRef_Sources/TCPServer.swift /* TCPServer.swift */,
 				__PBXFileRef_Sources/Unix.swift /* Unix.swift */,
 				DC4DD27E1CE7E22E00863126 /* Result.swift */,
+				DC4DD2811CE7E46C00863126 /* Logging.swift */,
 			);
 			name = Edge;
 			path = Sources;
@@ -219,6 +222,7 @@
 				DC4DD2801CE7E2C500863126 /* Result.swift in Sources */,
 				__src_cc_ref_Sources/TCPServer.swift /* TCPServer.swift in Sources */,
 				__src_cc_ref_Sources/Unix.swift /* Unix.swift in Sources */,
+				DC4DD2831CE7E47C00863126 /* Logging.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
