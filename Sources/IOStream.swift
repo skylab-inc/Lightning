@@ -6,8 +6,7 @@
 //
 //
 
-import Foundation
-import Result
+import Dispatch
 
 public protocol IOStream {
     
@@ -38,7 +37,7 @@ public extension IOStream {
             }
             var p = UnsafePointer<Void>(nil)
             var size: size_t = 0
-            _ = dispatch_data_create_map(data, &p, &size)
+            _ = dispatch_data_create_map(data!, &p, &size)
             let buffer = UnsafeBufferPointer<UInt8>(start: UnsafePointer<UInt8>(p), count: size)
             let array = Array(buffer)
             onRead(result: Result(value: array))
@@ -47,7 +46,10 @@ public extension IOStream {
     
     public func write(buffer: [UInt8], onWrite: ((result: Result<Void, Error>) -> ())? = nil) {
         buffer.withUnsafeBufferPointer { buffer in
-            let dispatchData = dispatch_data_create(buffer.baseAddress, buffer.count, dispatch_get_main_queue(), nil)
+            guard let dispatchData = dispatch_data_create(buffer.baseAddress, buffer.count, dispatch_get_main_queue(), nil) else {
+                onWrite?(result: Result(error: Error(rawValue: -1)))
+                return
+            }
             dispatch_io_write(channel, off_t(), dispatchData, dispatch_get_main_queue()) { done, data, error in
                 if error != 0 {
                     onWrite?(result: Result(error: Error(rawValue: error)))

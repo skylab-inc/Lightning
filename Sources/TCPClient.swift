@@ -6,7 +6,7 @@
 //
 //
 
-import Foundation
+import Dispatch
 
 public struct TCPClient: IOStream {
     

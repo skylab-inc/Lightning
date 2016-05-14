@@ -7,39 +7,50 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DCD8DF271CDFEDDB007F789D /* TCPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD8DF261CDFEDDB007F789D /* TCPClient.swift */; };
-		_LinkFileRef_Result /* libResult.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_Result" /* libResult.dylib */; };
-		"__src_cc_ref_Packages/Result-2.0.0/Result/Result.swift" /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/Result-2.0.0/Result/Result.swift" /* Result.swift */; };
-		"__src_cc_ref_Packages/Result-2.0.0/Result/ResultType.swift" /* ResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/Result-2.0.0/Result/ResultType.swift" /* ResultType.swift */; };
+		DC4DD2801CE7E2C500863126 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4DD27E1CE7E22E00863126 /* Result.swift */; };
+		_LinkFileRef_SwiftyBeaver_via_Edge /* libSwiftyBeaver.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_SwiftyBeaver" /* libSwiftyBeaver.dylib */; };
+		"__src_cc_ref_Packages/SwiftyBeaver-0.5.3/sources/AES256CBC.swift" /* AES256CBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/AES256CBC.swift" /* AES256CBC.swift */; };
+		"__src_cc_ref_Packages/SwiftyBeaver-0.5.3/sources/BaseDestination.swift" /* BaseDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/BaseDestination.swift" /* BaseDestination.swift */; };
+		"__src_cc_ref_Packages/SwiftyBeaver-0.5.3/sources/ConsoleDestination.swift" /* ConsoleDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/ConsoleDestination.swift" /* ConsoleDestination.swift */; };
+		"__src_cc_ref_Packages/SwiftyBeaver-0.5.3/sources/FileDestination.swift" /* FileDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/FileDestination.swift" /* FileDestination.swift */; };
+		"__src_cc_ref_Packages/SwiftyBeaver-0.5.3/sources/SBPlatformDestination.swift" /* SBPlatformDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/SBPlatformDestination.swift" /* SBPlatformDestination.swift */; };
+		"__src_cc_ref_Packages/SwiftyBeaver-0.5.3/sources/SwiftyBeaver.swift" /* SwiftyBeaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/SwiftyBeaver.swift" /* SwiftyBeaver.swift */; };
 		__src_cc_ref_Sources/IOStream.swift /* IOStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/IOStream.swift /* IOStream.swift */; };
 		__src_cc_ref_Sources/Pipe.swift /* Pipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Pipe.swift /* Pipe.swift */; };
 		__src_cc_ref_Sources/RunLoop.swift /* RunLoop.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/RunLoop.swift /* RunLoop.swift */; };
-		__src_cc_ref_Sources/TCP.swift /* TCPServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/TCP.swift /* TCPServer.swift */; };
+		__src_cc_ref_Sources/TCPClient.swift /* TCPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/TCPClient.swift /* TCPClient.swift */; };
+		__src_cc_ref_Sources/TCPServer.swift /* TCPServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/TCPServer.swift /* TCPServer.swift */; };
 		__src_cc_ref_Sources/Unix.swift /* Unix.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Unix.swift /* Unix.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		DCD8DF131CDF4608007F789D /* PBXContainerItemProxy */ = {
+		DC4DD27D1CE7E20900863126 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = __RootObject_ /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = "______Target_Result";
-			remoteInfo = Result;
+			remoteGlobalIDString = "______Target_SwiftyBeaver";
+			remoteInfo = SwiftyBeaver;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		DCD8DF261CDFEDDB007F789D /* TCPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCPClient.swift; sourceTree = "<group>"; };
-		__PBXFileRef_Package.swift /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Package.swift; path = /Users/tylercloutier/Developer/Edge/Package.swift; sourceTree = "<group>"; };
-		"__PBXFileRef_Packages/Result-2.0.0/Result/Result.swift" /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
-		"__PBXFileRef_Packages/Result-2.0.0/Result/ResultType.swift" /* ResultType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultType.swift; sourceTree = "<group>"; };
+		DC4DD27E1CE7E22E00863126 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Edge.xcodeproj/Configs/Project.xcconfig /* Project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Project.xcconfig; path = Edge.xcodeproj/Configs/Project.xcconfig; sourceTree = "<group>"; };
+		__PBXFileRef_Package.swift /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/AES256CBC.swift" /* AES256CBC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AES256CBC.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/BaseDestination.swift" /* BaseDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDestination.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/ConsoleDestination.swift" /* ConsoleDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleDestination.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/FileDestination.swift" /* FileDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDestination.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/SBPlatformDestination.swift" /* SBPlatformDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBPlatformDestination.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/SwiftyBeaver.swift" /* SwiftyBeaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyBeaver.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/IOStream.swift /* IOStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOStream.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/Pipe.swift /* Pipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pipe.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/RunLoop.swift /* RunLoop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunLoop.swift; sourceTree = "<group>"; };
-		__PBXFileRef_Sources/TCP.swift /* TCPServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCPServer.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/TCPClient.swift /* TCPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCPClient.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/TCPServer.swift /* TCPServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCPServer.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/Unix.swift /* Unix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unix.swift; sourceTree = "<group>"; };
 		"_____Product_Edge" /* libEdge.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libEdge.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		"_____Product_Result" /* libResult.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libResult.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		"_____Product_SwiftyBeaver" /* libSwiftyBeaver.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libSwiftyBeaver.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,11 +58,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				_LinkFileRef_Result /* libResult.dylib in Frameworks */,
+				_LinkFileRef_SwiftyBeaver_via_Edge /* libSwiftyBeaver.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		"___LinkPhase_Result" /* Frameworks */ = {
+		"___LinkPhase_SwiftyBeaver" /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
@@ -64,7 +75,7 @@
 		Dependencies_ /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
-				"_______Group_Result" /* Result */,
+				"_______Group_SwiftyBeaver" /* SwiftyBeaver */,
 			);
 			name = Dependencies;
 			sourceTree = "<group>";
@@ -73,9 +84,9 @@
 			isa = PBXGroup;
 			children = (
 				__PBXFileRef_Package.swift /* Package.swift */,
+				"_____Configs_" /* Configs */,
 				"_____Sources_" /* Sources */,
 				Dependencies_ /* Dependencies */,
-				"_______Tests_" /* Tests */,
 				"____Products_" /* Products */,
 			);
 			sourceTree = "<group>";
@@ -83,10 +94,18 @@
 		"____Products_" /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				"_____Product_Result" /* libResult.dylib */,
+				"_____Product_SwiftyBeaver" /* libSwiftyBeaver.dylib */,
 				"_____Product_Edge" /* libEdge.dylib */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		"_____Configs_" /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				__PBXFileRef_Edge.xcodeproj/Configs/Project.xcconfig /* Project.xcconfig */,
+			);
+			name = Configs;
 			sourceTree = "<group>";
 		};
 		"_____Sources_" /* Sources */ = {
@@ -103,29 +122,27 @@
 				__PBXFileRef_Sources/IOStream.swift /* IOStream.swift */,
 				__PBXFileRef_Sources/Pipe.swift /* Pipe.swift */,
 				__PBXFileRef_Sources/RunLoop.swift /* RunLoop.swift */,
-				__PBXFileRef_Sources/TCP.swift /* TCPServer.swift */,
-				DCD8DF261CDFEDDB007F789D /* TCPClient.swift */,
+				__PBXFileRef_Sources/TCPClient.swift /* TCPClient.swift */,
+				__PBXFileRef_Sources/TCPServer.swift /* TCPServer.swift */,
 				__PBXFileRef_Sources/Unix.swift /* Unix.swift */,
+				DC4DD27E1CE7E22E00863126 /* Result.swift */,
 			);
 			name = Edge;
 			path = Sources;
 			sourceTree = "<group>";
 		};
-		"_______Group_Result" /* Result */ = {
+		"_______Group_SwiftyBeaver" /* SwiftyBeaver */ = {
 			isa = PBXGroup;
 			children = (
-				"__PBXFileRef_Packages/Result-2.0.0/Result/Result.swift" /* Result.swift */,
-				"__PBXFileRef_Packages/Result-2.0.0/Result/ResultType.swift" /* ResultType.swift */,
+				"__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/AES256CBC.swift" /* AES256CBC.swift */,
+				"__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/BaseDestination.swift" /* BaseDestination.swift */,
+				"__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/ConsoleDestination.swift" /* ConsoleDestination.swift */,
+				"__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/FileDestination.swift" /* FileDestination.swift */,
+				"__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/SBPlatformDestination.swift" /* SBPlatformDestination.swift */,
+				"__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/SwiftyBeaver.swift" /* SwiftyBeaver.swift */,
 			);
-			name = Result;
-			path = "Packages/Result-2.0.0/Result";
-			sourceTree = "<group>";
-		};
-		"_______Tests_" /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Tests;
+			name = SwiftyBeaver;
+			path = "Packages/SwiftyBeaver-0.5.3/sources";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,27 +158,27 @@
 			buildRules = (
 			);
 			dependencies = (
-				__Dependency_Result /* PBXTargetDependency */,
+				__Dependency_SwiftyBeaver /* PBXTargetDependency */,
 			);
 			name = Edge;
 			productName = Edge;
 			productReference = "_____Product_Edge" /* libEdge.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
-		"______Target_Result" /* Result */ = {
+		"______Target_SwiftyBeaver" /* SwiftyBeaver */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = "_______Confs_Result" /* Build configuration list for PBXNativeTarget "Result" */;
+			buildConfigurationList = "_______Confs_SwiftyBeaver" /* Build configuration list for PBXNativeTarget "SwiftyBeaver" */;
 			buildPhases = (
-				CompilePhase_Result /* Sources */,
-				"___LinkPhase_Result" /* Frameworks */,
+				CompilePhase_SwiftyBeaver /* Sources */,
+				"___LinkPhase_SwiftyBeaver" /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = Result;
-			productName = Result;
-			productReference = "_____Product_Result" /* libResult.dylib */;
+			name = SwiftyBeaver;
+			productName = SwiftyBeaver;
+			productReference = "_____Product_SwiftyBeaver" /* libSwiftyBeaver.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 /* End PBXNativeTarget section */
@@ -184,7 +201,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				"______Target_Result" /* Result */,
+				"______Target_SwiftyBeaver" /* SwiftyBeaver */,
 				"______Target_Edge" /* Edge */,
 			);
 		};
@@ -197,29 +214,34 @@
 			files = (
 				__src_cc_ref_Sources/IOStream.swift /* IOStream.swift in Sources */,
 				__src_cc_ref_Sources/Pipe.swift /* Pipe.swift in Sources */,
-				DCD8DF271CDFEDDB007F789D /* TCPClient.swift in Sources */,
 				__src_cc_ref_Sources/RunLoop.swift /* RunLoop.swift in Sources */,
-				__src_cc_ref_Sources/TCP.swift /* TCPServer.swift in Sources */,
+				__src_cc_ref_Sources/TCPClient.swift /* TCPClient.swift in Sources */,
+				DC4DD2801CE7E2C500863126 /* Result.swift in Sources */,
+				__src_cc_ref_Sources/TCPServer.swift /* TCPServer.swift in Sources */,
 				__src_cc_ref_Sources/Unix.swift /* Unix.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CompilePhase_Result /* Sources */ = {
+		CompilePhase_SwiftyBeaver /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				"__src_cc_ref_Packages/Result-2.0.0/Result/Result.swift" /* Result.swift in Sources */,
-				"__src_cc_ref_Packages/Result-2.0.0/Result/ResultType.swift" /* ResultType.swift in Sources */,
+				"__src_cc_ref_Packages/SwiftyBeaver-0.5.3/sources/AES256CBC.swift" /* AES256CBC.swift in Sources */,
+				"__src_cc_ref_Packages/SwiftyBeaver-0.5.3/sources/BaseDestination.swift" /* BaseDestination.swift in Sources */,
+				"__src_cc_ref_Packages/SwiftyBeaver-0.5.3/sources/ConsoleDestination.swift" /* ConsoleDestination.swift in Sources */,
+				"__src_cc_ref_Packages/SwiftyBeaver-0.5.3/sources/FileDestination.swift" /* FileDestination.swift in Sources */,
+				"__src_cc_ref_Packages/SwiftyBeaver-0.5.3/sources/SBPlatformDestination.swift" /* SBPlatformDestination.swift in Sources */,
+				"__src_cc_ref_Packages/SwiftyBeaver-0.5.3/sources/SwiftyBeaver.swift" /* SwiftyBeaver.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		__Dependency_Result /* PBXTargetDependency */ = {
+		__Dependency_SwiftyBeaver /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = "______Target_Result" /* Result */;
-			targetProxy = DCD8DF131CDF4608007F789D /* PBXContainerItemProxy */;
+			target = "______Target_SwiftyBeaver" /* SwiftyBeaver */;
+			targetProxy = DC4DD27D1CE7E20900863126 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -227,31 +249,23 @@
 		_ReleaseConf_Edge /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				DYLIB_INSTALL_NAME_BASE = "$(CONFIGURATION_BUILD_DIR)";
 				ENABLE_TESTABILITY = YES;
 				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				OTHER_SWIFT_FLAGS = "-DXcode";
-				PRODUCT_MODULE_NAME = Edge;
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "lib$(TARGET_NAME)";
 			};
 			name = Release;
 		};
-		_ReleaseConf_Result /* Release */ = {
+		_ReleaseConf_SwiftyBeaver /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				DYLIB_INSTALL_NAME_BASE = "$(CONFIGURATION_BUILD_DIR)";
 				ENABLE_TESTABILITY = YES;
 				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				OTHER_SWIFT_FLAGS = "-DXcode";
-				PRODUCT_MODULE_NAME = Result;
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "lib$(TARGET_NAME)";
 			};
 			name = Release;
@@ -259,32 +273,24 @@
 		"___DebugConf_Edge" /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				DYLIB_INSTALL_NAME_BASE = "$(CONFIGURATION_BUILD_DIR)";
 				ENABLE_TESTABILITY = YES;
 				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				OTHER_SWIFT_FLAGS = "-DXcode";
-				PRODUCT_MODULE_NAME = Edge;
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "lib$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
-		"___DebugConf_Result" /* Debug */ = {
+		"___DebugConf_SwiftyBeaver" /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				DYLIB_INSTALL_NAME_BASE = "$(CONFIGURATION_BUILD_DIR)";
 				ENABLE_TESTABILITY = YES;
 				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				OTHER_SWIFT_FLAGS = "-DXcode";
-				PRODUCT_MODULE_NAME = Result;
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "lib$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -292,12 +298,14 @@
 		};
 		"_____Release_" /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = __PBXFileRef_Edge.xcodeproj/Configs/Project.xcconfig /* Project.xcconfig */;
 			buildSettings = {
 			};
 			name = Release;
 		};
 		"_______Debug_" /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = __PBXFileRef_Edge.xcodeproj/Configs/Project.xcconfig /* Project.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
@@ -323,11 +331,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		"_______Confs_Result" /* Build configuration list for PBXNativeTarget "Result" */ = {
+		"_______Confs_SwiftyBeaver" /* Build configuration list for PBXNativeTarget "SwiftyBeaver" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				"___DebugConf_Result" /* Debug */,
-				_ReleaseConf_Result /* Release */,
+				"___DebugConf_SwiftyBeaver" /* Debug */,
+				_ReleaseConf_SwiftyBeaver /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

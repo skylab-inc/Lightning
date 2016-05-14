@@ -7,7 +7,6 @@
 //
 
 import Dispatch
-import Foundation
 
 public struct TCPServer: IOStream {
     

@@ -5,9 +5,9 @@
       <BuildActionEntry buildForTesting = "YES" buildForRunning = "YES" buildForProfiling = "YES" buildForArchiving = "YES" buildForAnalyzing = "YES">
         <BuildableReference
           BuildableIdentifier = "primary"
-          BlueprintIdentifier = "______Target_Result"
-          BuildableName = "libResult.dylib"
-          BlueprintName = "Result"
+          BlueprintIdentifier = "______Target_SwiftyBeaver"
+          BuildableName = "libSwiftyBeaver.dylib"
+          BlueprintName = "SwiftyBeaver"
           ReferencedContainer = "container:Edge.xcodeproj">
         </BuildableReference>
       </BuildActionEntry>
