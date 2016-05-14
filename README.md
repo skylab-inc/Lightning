@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://cloud.githubusercontent.com/assets/6432361/15267355/b2bc5d2c-1974-11e6-8670-b1b1323f4535.png" width="224" alt="Edge">
+<img src="https://cloud.githubusercontent.com/assets/6432361/15267819/634be4ee-1981-11e6-9ad6-71f47c633e50.png" width="224" alt="Edge">
 <br/>Serverside non-blocking IO <b>in Swift</b><br/>
 Ask questions on our <a href="https://swiftedge.slack.com">Slack</a>!<br/>
 </p>
