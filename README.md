@@ -1,3 +1,5 @@
+<p align="center"><img src="https://cloud.githubusercontent.com/assets/6432361/15267355/b2bc5d2c-1974-11e6-8670-b1b1323f4535.png)" width="280" alt="Edge">
+
 # Edge
 Edge is an HTTP Server and TCP Client/Server framework written in Swift and inspired by Node.js. It runs on both OS X and Linux. Like Node.js, Edge uses an event-driven, non-blocking I/O model. In the same way that Node.js uses [libuv](http://libuv.org) to implement this model, Edge uses [libdispatch](https://github.com/apple/swift-corelibs-libdispatch). 
 
