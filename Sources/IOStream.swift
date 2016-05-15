@@ -47,7 +47,7 @@ public extension IOStream {
             
             if done {
                 // Reading is complete, check for errors
-                if error != 0 {
+                if error == 0 {
                     onComplete(error: nil)
                 } else {
                     onComplete(error: Error(rawValue: error))
@@ -85,7 +85,7 @@ public extension IOStream {
                 
                 if done {
                     // Writing is complete, check for errors
-                    if error != 0 {
+                    if error == 0 {
                         onComplete?(error: nil)
                     } else {
                         onComplete?(error: Error(rawValue: error))
