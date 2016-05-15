@@ -14,35 +14,38 @@ This makes Edge fast and efficient, but it also means that Edge applications can
 
 Edge is available as a Swift 3 package (No current 2.2 support). Simply add Edge as a dependency to your Swift Package.
 
-    import PackageDescription
+```Swift
+import PackageDescription
 
-    let package = Package(
-        name: "MyProject",
-        dependencies: [
-            .Package(url: "https://github.com/TheArtOfEngineering/Edge.git", majorVersion: 0, minor: xx)
-        ]
-    )
+let package = Package(
+    name: "MyProject",
+    dependencies: [
+        .Package(url: "https://github.com/TheArtOfEngineering/Edge.git", majorVersion: 0, minor: 0)
+    ]
+)
+```
 
 # Usage
+```Swift
+import Edge
+import Foundation
 
-    import Edge
-    import Foundation
-
-    let loop = RunLoop()
-    var server = TCPServer(loop: loop)
+let loop = RunLoop()
+var server = TCPServer(loop: loop)
     
-    try server.bind(host: "0.0.0.0", port: 50000)
+try server.bind(host: "0.0.0.0", port: 50000)
     
-    try server.listen { clientConnection in
-        clientConnection.read(onRead: { buffer in
-            print("Client says:")
-            print(String(bytes: buffer, encoding: NSUTF8StringEncoding)!)
-        }, onComplete: { error in
-            print("Oh, no!")
-        }
+try server.listen { clientConnection in
+    clientConnection.read(onRead: { buffer in
+        let message = String(bytes: buffer, encoding: NSUTF8StringEncoding)!
+        print("Client says \(message)!")
+    }, onComplete: { error in
+        print("Oh, no!")
     }
+}
   
-    RunLoop.runAll()
+RunLoop.runAll()
+```
 
 
 ### Edge is not Node.js
