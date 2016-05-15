@@ -31,14 +31,14 @@ Edge is available as a Swift 3 package (No current 2.2 support). Simply add Edge
     let loop = RunLoop()
     var server = TCPServer(loop: loop)
     
-    try server.bind(host: "localhost", port: 50000)
+    try server.bind(host: "0.0.0.0", port: 50000)
+    
     try server.listen { clientConnection in
-        clientConnection.read { result in
-            if let buffer = result.value {
-                print(String(bytes: buffer, encoding: NSUTF8StringEncoding)!)
-            } else {
-                print(result.error)
-            }
+        clientConnection.read(onRead: { buffer in
+            print("Client says:")
+            print(String(bytes: buffer, encoding: NSUTF8StringEncoding)!)
+        }, onComplete: { error in
+            print("Oh, no!")
         }
     }
   
