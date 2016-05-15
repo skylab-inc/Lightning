@@ -56,7 +56,7 @@ public extension IOStream {
         }
     }
     
-    public func write(buffer: [UInt8], onWrite: ((unwrittenData: [UInt8]?) -> ())? = nil, onComplete: ((error: Error?) -> ())?) {
+    public func write(buffer: [UInt8], onWrite: ((unwrittenData: [UInt8]?) -> ())? = nil, onComplete: ((error: Error?) -> ())? = nil) {
         buffer.withUnsafeBufferPointer { buffer in
             
             // Allocate dispatch data
