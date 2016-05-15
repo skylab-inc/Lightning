@@ -26,6 +26,8 @@ let package = Package(
 ```
 
 # Usage
+
+### TCP
 ```Swift
 import Edge
 import Foundation
