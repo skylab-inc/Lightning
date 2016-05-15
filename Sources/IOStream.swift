@@ -22,7 +22,7 @@ public protocol IOStream {
     
     func read(minBytes: Int, onRead: (result: [UInt8]) -> (), onComplete: (error: Error?) -> ())
     
-    func write(buffer: [UInt8], onWrite: ((unwrittenData: [UInt8]?) -> ())?, onComplete: (error: Error?) -> ())
+    func write(buffer: [UInt8], onWrite: ((unwrittenData: [UInt8]?) -> ())?, onComplete: ((error: Error?) -> ())?)
     
 }
 
@@ -56,12 +56,12 @@ public extension IOStream {
         }
     }
     
-    public func write(buffer: [UInt8], onWrite: ((unwrittenData: [UInt8]?) -> ())? = nil, onComplete: (error: Error?) -> ()) {
+    public func write(buffer: [UInt8], onWrite: ((unwrittenData: [UInt8]?) -> ())? = nil, onComplete: ((error: Error?) -> ())?) {
         buffer.withUnsafeBufferPointer { buffer in
             
             // Allocate dispatch data
             guard let dispatchData = dispatch_data_create(buffer.baseAddress, buffer.count, dispatch_get_main_queue(), nil) else {
-                onComplete(error: .noMemory)
+                onComplete?(error: .noMemory)
                 return
             }
             
@@ -86,9 +86,9 @@ public extension IOStream {
                 if done {
                     // Writing is complete, check for errors
                     if error != 0 {
-                        onComplete(error: nil)
+                        onComplete?(error: nil)
                     } else {
-                        onComplete(error: Error(rawValue: error))
+                        onComplete?(error: Error(rawValue: error))
                     }
                 }
             }
