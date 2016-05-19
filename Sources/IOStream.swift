@@ -30,13 +30,13 @@ public protocol IOStream {
     // Callback registration
     
     /// Registering a callback with onRead will automatically begin the stream
-    func onRead(_: (result: [UInt8]) ->()) -> IOStream
+    mutating func onRead(_: (result: [UInt8]) ->())
     
-    func onClose(_: (error: Error?) -> ()) -> IOStream
+    mutating func onClose(_: (error: Error?) -> ())
     
-    func onWrite(_: (unwrittenData: [UInt8]?) -> ()) -> IOStream
+    mutating func onWrite(_: (unwrittenData: [UInt8]?) -> ())
     
-    func onWritingComplete(_: (error: Error?) -> ()) -> IOStream
+    mutating func onWritingComplete(_: (error: Error?) -> ())
 
     // Write
     func write(buffer: [UInt8])
