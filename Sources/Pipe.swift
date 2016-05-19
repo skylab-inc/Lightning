@@ -14,6 +14,14 @@ public struct Pipe: IOStream {
     public let fd: FileDescriptor
     public let channel: dispatch_io_t
     
+    public var readListeners: [(result: [UInt8]) -> ()] = []
+    
+    public var writeListeners: [(unwrittenData: [UInt8]?) -> ()] = []
+    
+    public var closeListeners: [(error: Error?) -> ()] = []
+    
+    public var writingCompleteListeners: [(error: Error?) -> ()] = []
+    
     public init(loop: RunLoop, fd: StandardFileDescriptor) {
         self.loop = loop
         self.fd = fd
@@ -23,5 +31,4 @@ public struct Pipe: IOStream {
             }
         }
     }
-    
 }

@@ -8,7 +8,7 @@
 
 import Dispatch
 
-public struct TCPClient: IOStream {
+public struct TCPSocket: IOStream {
     
     public let loop: RunLoop
     private let socketFD: SocketFileDescriptor
@@ -16,6 +16,14 @@ public struct TCPClient: IOStream {
         return socketFD
     }
     public let channel: dispatch_io_t
+    
+    public var readListeners: [(result: [UInt8]) -> ()] = []
+    
+    public var writeListeners: [(unwrittenData: [UInt8]?) -> ()] = []
+    
+    public var closeListeners: [(error: Error?) -> ()] = []
+    
+    public var writingCompleteListeners: [(error: Error?) -> ()] = []
     
     let connectingSource: dispatch_source_t
     
@@ -93,7 +101,7 @@ public struct TCPClient: IOStream {
                 if result != 0 {
                     try! { throw Error(rawValue: Int32(result)) }()
                 }
-                log.debug("Bytes availabe for connection: \(dispatch_source_get_data(connectingSource))")
+                log.debug("Bytes available for connection: \(dispatch_source_get_data(connectingSource))")
                 dispatch_source_cancel(connectingSource)
                 onConnect()
             }

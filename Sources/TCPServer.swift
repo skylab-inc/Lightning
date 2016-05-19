@@ -18,6 +18,14 @@ public struct TCPServer: IOStream {
     let listeningSource: dispatch_source_t
     public let channel: dispatch_io_t
     
+    public var readListeners: [(result: [UInt8]) -> ()] = []
+    
+    public var writeListeners: [(unwrittenData: [UInt8]?) -> ()] = []
+    
+    public var closeListeners: [(error: Error?) -> ()] = []
+    
+    public var writingCompleteListeners: [(error: Error?) -> ()] = []
+    
     public init(loop: RunLoop) {
         self.init(loop: loop, fd: SocketFileDescriptor(socketType: SocketType.stream, addressFamily: AddressFamily.inet))
     }
@@ -69,7 +77,7 @@ public struct TCPServer: IOStream {
         }
     }
     
-    public func listen(backlog: Int = 32, onConnect: (clientConnection: TCPServer) -> ()) throws {
+    public func listen(backlog: Int = 32, onConnect: (clientConnection: TCPSocket) -> ()) throws {
         let ret = system_listen(fd.rawValue, Int32(backlog))
         if ret != 0 {
             throw Error(rawValue: errno)
@@ -95,7 +103,9 @@ public struct TCPServer: IOStream {
                     addressFamily: self.socketFD.addressFamily,
                     blocking: false
                 )
-                let clientConnection = TCPServer(loop: self.loop, fd: clientFileDescriptor)
+                
+                // Create the client connection socket and start reading
+                let clientConnection = TCPSocket(loop: self.loop, fd: clientFileDescriptor)
                 onConnect(clientConnection: clientConnection)
             }
         }
