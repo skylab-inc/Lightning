@@ -45,33 +45,6 @@ public protocol IOStream {
 
 extension IOStream {
     
-    func startRead(minBytes: Int = 1) {
-        dispatch_io_set_low_water(channel, minBytes);
-        dispatch_io_read(channel, off_t(), size_t(INT_MAX), dispatch_get_main_queue()) { done, data, error in
-            
-            if let data = data {
-                // First attempt to return the buffer
-                var p = UnsafePointer<Void>(nil)
-                var size: size_t = 0
-                _ = dispatch_data_create_map(data, &p, &size)
-                let buffer = Array(UnsafeBufferPointer<UInt8>(start: UnsafePointer<UInt8>(p), count: size))
-                
-                if buffer.count > 0 {
-                    self.dispatchRead(result: buffer)
-                }
-            }
-            
-            if done {
-                // Reading is complete, check for errors
-                if error == 0 {
-                    self.dispatchClose(error: nil)
-                } else {
-                    self.dispatchClose(error: Error(rawValue: error))
-                }
-            }
-        }
-    }
-    
     func dispatchRead(result: [UInt8]) {
         readListeners.forEach { listener in
             listener(result: result)
@@ -122,6 +95,33 @@ public extension IOStream {
         var stream = self
         stream.writingCompleteListeners.append(writingComplete)
         return stream
+    }
+    
+    func startRead(minBytes: Int = 1) {
+        dispatch_io_set_low_water(channel, minBytes);
+        dispatch_io_read(channel, off_t(), size_t(INT_MAX), dispatch_get_main_queue()) { done, data, error in
+            
+            if let data = data {
+                // First attempt to return the buffer
+                var p = UnsafePointer<Void>(nil)
+                var size: size_t = 0
+                _ = dispatch_data_create_map(data, &p, &size)
+                let buffer = Array(UnsafeBufferPointer<UInt8>(start: UnsafePointer<UInt8>(p), count: size))
+                
+                if buffer.count > 0 {
+                    self.dispatchRead(result: buffer)
+                }
+            }
+            
+            if done {
+                // Reading is complete, check for errors
+                if error == 0 {
+                    self.dispatchClose(error: nil)
+                } else {
+                    self.dispatchClose(error: Error(rawValue: error))
+                }
+            }
+        }
     }
     
     public func write(buffer: [UInt8]) {
