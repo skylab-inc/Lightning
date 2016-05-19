@@ -73,28 +73,20 @@ extension IOStream {
 
 public extension IOStream {
     
-    public func onRead(_ read: (result: [UInt8]) ->()) -> IOStream {
-        var stream = self
-        stream.readListeners.append(read)
-        return stream
+    public mutating func onRead(_ read: (result: [UInt8]) ->()) {
+        self.readListeners.append(read)
     }
     
-    public func onClose(_ close: (error: Error?) -> ()) -> IOStream {
-        var stream = self
-        stream.closeListeners.append(close)
-        return stream
+    public mutating func onClose(_ close: (error: Error?) -> ()) {
+        self.closeListeners.append(close)
     }
     
-    public func onWrite(_ write: (unwrittenData: [UInt8]?) -> ()) -> IOStream {
-        var stream = self
-        stream.writeListeners.append(write)
-        return stream
+    public mutating func onWrite(_ write: (unwrittenData: [UInt8]?) -> ()) {
+        self.writeListeners.append(write)
     }
     
-    public func onWritingComplete(_ writingComplete: (error: Error?) -> ()) -> IOStream {
-        var stream = self
-        stream.writingCompleteListeners.append(writingComplete)
-        return stream
+    public mutating func onWritingComplete(_ writingComplete: (error: Error?) -> ()) {
+        self.writingCompleteListeners.append(writingComplete)
     }
     
     func startRead(minBytes: Int = 1) {
