@@ -8,7 +8,7 @@
 
 import Dispatch
 
-public struct Pipe: IOStream {
+public class Pipe: IOStream {
     
     public let loop: RunLoop
     public let fd: FileDescriptor

@@ -8,7 +8,7 @@
 
 import Dispatch
 
-public protocol IOStream {
+public protocol IOStream: class {
     
     var fd: FileDescriptor { get }
     
@@ -30,13 +30,13 @@ public protocol IOStream {
     // Callback registration
     
     /// Registering a callback with onRead will automatically begin the stream
-    mutating func onRead(_: (result: [UInt8]) ->())
+    func onRead(_: (result: [UInt8]) ->())
     
-    mutating func onClose(_: (error: Error?) -> ())
+    func onClose(_: (error: Error?) -> ())
     
-    mutating func onWrite(_: (unwrittenData: [UInt8]?) -> ())
+    func onWrite(_: (unwrittenData: [UInt8]?) -> ())
     
-    mutating func onWritingComplete(_: (error: Error?) -> ())
+    func onWritingComplete(_: (error: Error?) -> ())
 
     // Write
     func write(buffer: [UInt8])
@@ -73,19 +73,19 @@ extension IOStream {
 
 public extension IOStream {
     
-    public mutating func onRead(_ read: (result: [UInt8]) ->()) {
+    public func onRead(_ read: (result: [UInt8]) ->()) {
         self.readListeners.append(read)
     }
     
-    public mutating func onClose(_ close: (error: Error?) -> ()) {
+    public func onClose(_ close: (error: Error?) -> ()) {
         self.closeListeners.append(close)
     }
     
-    public mutating func onWrite(_ write: (unwrittenData: [UInt8]?) -> ()) {
+    public func onWrite(_ write: (unwrittenData: [UInt8]?) -> ()) {
         self.writeListeners.append(write)
     }
     
-    public mutating func onWritingComplete(_ writingComplete: (error: Error?) -> ()) {
+    public func onWritingComplete(_ writingComplete: (error: Error?) -> ()) {
         self.writingCompleteListeners.append(writingComplete)
     }
     

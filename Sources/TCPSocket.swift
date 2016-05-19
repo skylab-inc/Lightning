@@ -8,7 +8,7 @@
 
 import Dispatch
 
-public struct TCPSocket: IOStream {
+public class TCPSocket: IOStream {
     
     public let loop: RunLoop
     private let socketFD: SocketFileDescriptor
@@ -27,7 +27,7 @@ public struct TCPSocket: IOStream {
     
     let connectingSource: dispatch_source_t
     
-    public init(loop: RunLoop) {
+    public convenience init(loop: RunLoop) {
         self.init(loop: loop, fd: SocketFileDescriptor(socketType: SocketType.stream, addressFamily: AddressFamily.inet))
     }
     

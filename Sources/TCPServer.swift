@@ -8,7 +8,7 @@
 
 import Dispatch
 
-public struct TCPServer: IOStream {
+public class TCPServer: IOStream {
     
     public let loop: RunLoop
     private let socketFD: SocketFileDescriptor
@@ -26,7 +26,7 @@ public struct TCPServer: IOStream {
     
     public var writingCompleteListeners: [(error: Error?) -> ()] = []
     
-    public init(loop: RunLoop) {
+    public convenience init(loop: RunLoop) {
         self.init(loop: loop, fd: SocketFileDescriptor(socketType: SocketType.stream, addressFamily: AddressFamily.inet))
     }
     
