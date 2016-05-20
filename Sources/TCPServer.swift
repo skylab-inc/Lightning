@@ -8,23 +8,11 @@
 
 import Dispatch
 
-public class TCPServer: IOStream {
+public final class TCPServer {
     
     public let loop: RunLoop
-    private let socketFD: SocketFileDescriptor
-    public var fd: FileDescriptor {
-        return socketFD
-    }
-    let listeningSource: dispatch_source_t
-    public let channel: dispatch_io_t
-    
-    public var readListeners: [(result: [UInt8]) -> ()] = []
-    
-    public var writeListeners: [(unwrittenData: [UInt8]?) -> ()] = []
-    
-    public var closeListeners: [(error: Error?) -> ()] = []
-    
-    public var writingCompleteListeners: [(error: Error?) -> ()] = []
+    private let fd: SocketFileDescriptor
+    private let listeningSource: dispatch_source_t
     
     public convenience init(loop: RunLoop) {
         self.init(loop: loop, fd: SocketFileDescriptor(socketType: SocketType.stream, addressFamily: AddressFamily.inet))
@@ -32,12 +20,13 @@ public class TCPServer: IOStream {
     
     public init(loop: RunLoop, fd: SocketFileDescriptor) {
         self.loop = loop
-        self.socketFD = fd
+        self.fd = fd
         self.listeningSource = dispatch_source_create(DISPATCH_SOURCE_TYPE_READ, UInt(fd.rawValue), 0, dispatch_get_main_queue())
-        self.channel = dispatch_io_create(DISPATCH_IO_STREAM, fd.rawValue, dispatch_get_main_queue()) { error in
-            if error != 0 {
-                try! { throw Error(rawValue: error) }()
-            }
+        
+        // Close the socket when the source is canceled.
+        dispatch_source_set_cancel_handler(listeningSource) {
+            // Close the socket
+            self.fd.close()
         }
         
         // Set SO_REUSEADDR
@@ -53,7 +42,7 @@ public class TCPServer: IOStream {
         
         var hints = addrinfo(
             ai_flags: 0,
-            ai_family: socketFD.addressFamily.rawValue,
+            ai_family: fd.addressFamily.rawValue,
             ai_socktype: SOCK_STREAM,
             ai_protocol: IPPROTO_TCP,
             ai_addrlen: 0,
@@ -100,7 +89,7 @@ public class TCPServer: IOStream {
                 let clientFileDescriptor = SocketFileDescriptor(
                     rawValue: ret,
                     socketType: SocketType.stream,
-                    addressFamily: self.socketFD.addressFamily,
+                    addressFamily: self.fd.addressFamily,
                     blocking: false
                 )
                 
@@ -109,10 +98,10 @@ public class TCPServer: IOStream {
                 onConnect(clientConnection: clientConnection)
             }
         }
-        dispatch_source_set_cancel_handler(listeningSource) {
-            // Close the socket
-            self.fd.close()
-        }
         dispatch_resume(listeningSource)
+    }
+    
+    func close() {
+        dispatch_source_cancel(self.listeningSource)
     }
 }

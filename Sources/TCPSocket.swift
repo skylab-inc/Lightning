@@ -8,7 +8,7 @@
 
 import Dispatch
 
-public class TCPSocket: IOStream {
+public final class TCPSocket: WritableIOStream, ReadableIOStream {
     
     public let loop: RunLoop
     private let socketFD: SocketFileDescriptor
@@ -17,15 +17,9 @@ public class TCPSocket: IOStream {
     }
     public let channel: dispatch_io_t
     
-    public var readListeners: [(result: [UInt8]) -> ()] = []
+    public var eventEmitter: IOStreamEventEmitter = IOStreamEventEmitter()
     
-    public var writeListeners: [(unwrittenData: [UInt8]?) -> ()] = []
-    
-    public var closeListeners: [(error: Error?) -> ()] = []
-    
-    public var writingCompleteListeners: [(error: Error?) -> ()] = []
-    
-    let connectingSource: dispatch_source_t
+    private let connectingSource: dispatch_source_t
     
     public convenience init(loop: RunLoop) {
         self.init(loop: loop, fd: SocketFileDescriptor(socketType: SocketType.stream, addressFamily: AddressFamily.inet))
@@ -34,6 +28,8 @@ public class TCPSocket: IOStream {
     public init(loop: RunLoop, fd: SocketFileDescriptor) {
         self.loop = loop
         self.socketFD = fd
+        
+        // Create the dispatch source for listening
         self.connectingSource = dispatch_source_create(DISPATCH_SOURCE_TYPE_WRITE, UInt(fd.rawValue), 0, dispatch_get_main_queue())
         self.channel = dispatch_io_create(DISPATCH_IO_STREAM, fd.rawValue, dispatch_get_main_queue()) { error in
             if error != 0 {
@@ -109,5 +105,9 @@ public class TCPSocket: IOStream {
         } else {
             throw error
         }
+    }
+    
+    func close () {
+        dispatch_source_cancel(self.connectingSource)
     }
 }
