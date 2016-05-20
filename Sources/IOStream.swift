@@ -139,6 +139,7 @@ public extension WritableIOStream {
                     self.eventEmitter.emitError(error: Error(rawValue: error))
                 }
                 
+                log.debug(data)
                 if let data = data where data !== dispatch_data_empty {
                     // Get unwritten data
                     var p = UnsafePointer<Void>(nil)
@@ -204,6 +205,7 @@ public extension ReadableIOStream {
             }
             
             // Deliver data if it is non-empty
+            log.debug(data)
             if let data = data where data !== dispatch_data_empty {
                 var p = UnsafePointer<Void>(nil)
                 var size: size_t = 0
