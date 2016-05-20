@@ -37,13 +37,21 @@ var server = TCPServer(loop: loop)
     
 try server.bind(host: "0.0.0.0", port: 50000)
     
-try server.listen { clientConnection in
-    clientConnection.read(onRead: { buffer in
+try server.listen { connection in
+
+    connection.onRead { buffer in
         let message = String(bytes: buffer, encoding: NSUTF8StringEncoding)!
         print("Client says \(message)!")
-    }, onComplete: { error in
-        print("Oh, no!")
     }
+    
+    connection.onError { error in
+        print("Oh no, there was an error! \(error)")
+    }
+    
+    connection.onClose {
+        print("Goodbye client!")
+    }
+    
 }
   
 RunLoop.runAll()
