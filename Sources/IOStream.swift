@@ -182,6 +182,12 @@ public extension ReadableIOStream {
     
     public func onRead(_ read: (result: [UInt8]) ->()) {
         eventEmitter.readListeners.append(read)
+        if eventEmitter.readListeners.count == 1 {
+            // Start reading after the first listener is added.
+            // If multithreading, this should be an option to disable,
+            // so that other listeners can be added before reading begins.
+            startRead()
+        }
     }
     
     public func onEnd(_ end: () -> ()) {
