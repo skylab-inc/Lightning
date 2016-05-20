@@ -26,36 +26,42 @@ public struct IOStreamEventEmitter {
     
     /// Dispatch functions
     func emitRead(result: [UInt8]) {
-        self.readListeners.forEach { listener in
+        log.debug("Emitting to read listeners: \(readListeners)")
+        readListeners.forEach { listener in
             listener(result: result)
         }
     }
     
     func emitClose() {
+        log.debug("Emitting to close listeners: \(closeListeners)")
         closeListeners.forEach { listener in
             listener()
         }
     }
     
     func emitEnd() {
+        log.debug("Emitting to end listeners: \(endListeners)")
         endListeners.forEach { listener in
             listener()
         }
     }
     
     func emitError(error: Error) {
+        log.debug("Emitting to error listeners: \(errorListeners)")
         errorListeners.forEach { listener in
             listener(error: error)
         }
     }
     
     func emitWrite(unwrittenData: [UInt8]) {
+        log.debug("Emitting to write listeners: \(writeListeners)")
         writeListeners.forEach { listener in
             listener(unwrittenData: unwrittenData)
         }
     }
     
     func emitWriteEnd() {
+        log.debug("Emitting to write end listeners: \(writeEndListeners)")
         writeEndListeners.forEach { listener in
             listener()
         }
