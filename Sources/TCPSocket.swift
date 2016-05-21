@@ -16,10 +16,7 @@ public final class TCPSocket: WritableIOStream, ReadableIOStream {
         return socketFD
     }
     public let channel: dispatch_io_t
-    
     public var eventEmitter: IOStreamEventEmitter = IOStreamEventEmitter()
-    
-    private let connectingSource: dispatch_source_t
     
     public convenience init(loop: RunLoop) {
         self.init(loop: loop, fd: SocketFileDescriptor(socketType: SocketType.stream, addressFamily: AddressFamily.inet))
@@ -29,19 +26,18 @@ public final class TCPSocket: WritableIOStream, ReadableIOStream {
         self.loop = loop
         self.socketFD = fd
         
+        // Set SO_REUSEADDR
+        var reuseAddr = 1
+        let error = setsockopt(self.socketFD.rawValue, SOL_SOCKET, SO_REUSEADDR, &reuseAddr, socklen_t(strideof(Int)))
+        if error != 0 {
+            try! { throw Error(rawValue: error) }()
+        }
+        
         // Create the dispatch source for listening
-        self.connectingSource = dispatch_source_create(DISPATCH_SOURCE_TYPE_WRITE, UInt(fd.rawValue), 0, dispatch_get_main_queue())
         self.channel = dispatch_io_create(DISPATCH_IO_STREAM, fd.rawValue, dispatch_get_main_queue()) { error in
             if error != 0 {
                 try! { throw Error(rawValue: error) }()
             }
-        }
-        
-        // Set SO_REUSEADDR
-        var reuseAddr = 1
-        let error = setsockopt(self.fd.rawValue, SOL_SOCKET, SO_REUSEADDR, &reuseAddr, socklen_t(strideof(Int)))
-        if error != 0 {
-            try! { throw Error(rawValue: error) }()
         }
     }
     
@@ -86,14 +82,8 @@ public final class TCPSocket: WritableIOStream, ReadableIOStream {
         // Non-blocking, dispatch connection, check errno for connection error.
         let error = Error(rawValue: errno)
         if case Error.inProgress = error {
-            
+            // Wait for channel to be writable. Then we are connected.
             dispatch_io_write(channel, off_t(), dispatch_data_empty, dispatch_get_main_queue()) { done, data, error in
-                log.debug("Writing to see if open, done: \(done), data: \(data), error: \(Error(rawValue: error))")
-            }
-            
-            // Wait for source to be writable. Then we are connected.
-            dispatch_source_set_event_handler(connectingSource) { [connectingSource = self.connectingSource] in
-                log.debug("Writing hap")
                 var result = 0
                 var resultLength = socklen_t(strideof(result.dynamicType))
                 let ret = getsockopt(self.fd.rawValue, SOL_SOCKET, SO_ERROR, &result, &resultLength)
@@ -103,22 +93,15 @@ public final class TCPSocket: WritableIOStream, ReadableIOStream {
                 if result != 0 {
                     try! { throw Error(rawValue: Int32(result)) }()
                 }
-                log.debug("Bytes available for connection: \(dispatch_source_get_data(connectingSource))")
-                dispatch_source_cancel(connectingSource)
+                log.debug("Connection established on \(self.fd)")
                 onConnect()
             }
-            dispatch_resume(connectingSource)
         } else {
             throw error
         }
     }
     
     func close () {
-        if dispatch_source_testcancel(self.connectingSource) == 0 {
-            dispatch_source_cancel(self.connectingSource)
-        }
-        dispatch_source_set_cancel_handler(self.connectingSource) { 
-            self.fd.close()
-        }
+        dispatch_io_close(channel, 0)
     }
 }
