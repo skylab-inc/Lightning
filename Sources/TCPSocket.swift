@@ -86,8 +86,14 @@ public final class TCPSocket: WritableIOStream, ReadableIOStream {
         // Non-blocking, dispatch connection, check errno for connection error.
         let error = Error(rawValue: errno)
         if case Error.inProgress = error {
+            
+            dispatch_io_write(channel, off_t(), dispatch_data_empty, dispatch_get_main_queue()) { done, data, error in
+                log.debug("Writing to see if open, done: \(done), data: \(data), error: \(Error(rawValue: error))")
+            }
+            
             // Wait for source to be writable. Then we are connected.
             dispatch_source_set_event_handler(connectingSource) { [connectingSource = self.connectingSource] in
+                log.debug("Writing hap")
                 var result = 0
                 var resultLength = socklen_t(strideof(result.dynamicType))
                 let ret = getsockopt(self.fd.rawValue, SOL_SOCKET, SO_ERROR, &result, &resultLength)
@@ -108,6 +114,11 @@ public final class TCPSocket: WritableIOStream, ReadableIOStream {
     }
     
     func close () {
-        dispatch_source_cancel(self.connectingSource)
+        if dispatch_source_testcancel(self.connectingSource) == 0 {
+            dispatch_source_cancel(self.connectingSource)
+        }
+        dispatch_source_set_cancel_handler(self.connectingSource) { 
+            self.fd.close()
+        }
     }
 }
