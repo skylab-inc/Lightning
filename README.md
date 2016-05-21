@@ -6,9 +6,16 @@ Ask questions on our <a href="https://swiftedge.slack.com">Slack</a>!<br/>
 
 
 # Edge
-Edge is an HTTP Server and TCP Client/Server framework written in Swift and inspired by Node.js. It runs on both OS X and Linux. Like Node.js, Edge uses an event-driven, non-blocking I/O model. In the same way that Node.js uses [libuv](http://libuv.org) to implement this model, Edge uses [libdispatch](https://github.com/apple/swift-corelibs-libdispatch). 
+
+#### Node
+Edge is an HTTP Server and TCP Client/Server framework written in Swift and inspired by [Node.js](https://nodejs.org). It runs on both OS X and Linux. Like Node.js, Edge uses an **event-driven, non-blocking I/O model**. In the same way that Node.js uses [libuv](http://libuv.org) to implement this model, Edge uses [libdispatch](https://github.com/apple/swift-corelibs-libdispatch). 
 
 This makes Edge fast and efficient, but it also means that Edge applications can naturally make use of libdispatch to easily offload heavy processing to a background thread.
+
+> The name Edge is a play on the name Node, as they are both components of [graphs](https://en.wikipedia.org/wiki/Graph_(abstract_data_type)).
+
+#### RxSwift
+Edge's event API is based on the concepts of Functional Reactive Programming and, specifically, [RxSwift](https://github.com/ReactiveX/RxSwift).
 
 # Installation
 
@@ -48,7 +55,7 @@ try server.listen { connection in
         print("Oh no, there was an error! \(error)")
     }
     
-    connection.onClose {
+    connection.onEnd {
         print("Goodbye client!")
     }
     
