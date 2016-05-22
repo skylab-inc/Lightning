@@ -7,6 +7,7 @@
 //
 
 import Dispatch
+import RxSwift
 
 public final class TCPSocket: WritableIOStream, ReadableIOStream {
     
@@ -16,7 +17,6 @@ public final class TCPSocket: WritableIOStream, ReadableIOStream {
         return socketFD
     }
     public let channel: dispatch_io_t
-    public var eventEmitter: IOStreamEventEmitter = IOStreamEventEmitter()
     
     public convenience init(loop: RunLoop) {
         self.init(loop: loop, fd: SocketFileDescriptor(socketType: SocketType.stream, addressFamily: AddressFamily.inet))
@@ -41,67 +41,68 @@ public final class TCPSocket: WritableIOStream, ReadableIOStream {
         }
     }
     
-    public func connect(host: String, port: Port, onConnect: () -> ()) throws {
-        var addrInfoPointer = UnsafeMutablePointer<addrinfo>(nil)
-        
-        var hints = addrinfo(
-            ai_flags: 0,
-            ai_family: socketFD.addressFamily.rawValue,
-            ai_socktype: SOCK_STREAM,
-            ai_protocol: IPPROTO_TCP,
-            ai_addrlen: 0,
-            ai_canonname: nil,
-            ai_addr: nil,
-            ai_next: nil
-        )
-        
-        let ret = getaddrinfo(host, String(port), &hints, &addrInfoPointer)
-        if ret != 0 {
-            throw AddressFamilyError(rawValue: ret)
-        }
-        
-        let addressInfo = addrInfoPointer!.pointee
-        let connectRet = system_connect(fd.rawValue, addressInfo.ai_addr, socklen_t(strideof(sockaddr)))
-        freeaddrinfo(addrInfoPointer)
-        
-        // Blocking, connect immediately or throw error
-        if socketFD.blocking {
-            if connectRet != 0 {
-                throw Error(rawValue: errno)
+    public func connect(host: String, port: Port) -> Observable<()> {
+        return Observable.create { [socketFD, fd, channel] observer in
+            var addrInfoPointer = UnsafeMutablePointer<addrinfo>(nil)
+            
+            var hints = addrinfo(
+                ai_flags: 0,
+                ai_family: socketFD.addressFamily.rawValue,
+                ai_socktype: SOCK_STREAM,
+                ai_protocol: IPPROTO_TCP,
+                ai_addrlen: 0,
+                ai_canonname: nil,
+                ai_addr: nil,
+                ai_next: nil
+            )
+            
+            let ret = getaddrinfo(host, String(port), &hints, &addrInfoPointer)
+            if ret != 0 {
+                observer.onError(error: AddressFamilyError(rawValue: ret))
             }
-            onConnect()
-            return
-        }
-        
-        // Non-blocking, check for immediate connection
-        if connectRet == 0 {
-            onConnect()
-            return
-        }
-        
-        // Non-blocking, dispatch connection, check errno for connection error.
-        let error = Error(rawValue: errno)
-        if case Error.inProgress = error {
-            // Wait for channel to be writable. Then we are connected.
-            dispatch_io_write(channel, off_t(), dispatch_data_empty, dispatch_get_main_queue()) { done, data, error in
-                var result = 0
-                var resultLength = socklen_t(strideof(result.dynamicType))
-                let ret = getsockopt(self.fd.rawValue, SOL_SOCKET, SO_ERROR, &result, &resultLength)
-                if ret != 0 {
-                    try! { throw Error(rawValue: ret) }()
+            
+            let addressInfo = addrInfoPointer!.pointee
+            let connectRet = system_connect(fd.rawValue, addressInfo.ai_addr, socklen_t(strideof(sockaddr)))
+            freeaddrinfo(addrInfoPointer)
+            
+            // Blocking, connect immediately or throw error
+            if socketFD.blocking {
+                if connectRet != 0 {
+                    observer.onError(error: Error(rawValue: errno))
+                } else {
+                    observer.onCompleted()
                 }
-                if result != 0 {
-                    try! { throw Error(rawValue: Int32(result)) }()
-                }
-                log.debug("Connection established on \(self.fd)")
-                onConnect()
+                return NopDisposable.instance
             }
-        } else {
-            throw error
+            
+            // Non-blocking, check for immediate connection
+            if connectRet == 0 {
+                observer.onCompleted()
+                return NopDisposable.instance
+            }
+            
+            // Non-blocking, dispatch connection, check errno for connection error.
+            let error = Error(rawValue: errno)
+            if case Error.inProgress = error {
+                // Wait for channel to be writable. Then we are connected.
+                dispatch_io_write(channel, off_t(), dispatch_data_empty, dispatch_get_main_queue()) { done, data, error in
+                    var result = 0
+                    var resultLength = socklen_t(strideof(result.dynamicType))
+                    let ret = getsockopt(self.fd.rawValue, SOL_SOCKET, SO_ERROR, &result, &resultLength)
+                    if ret != 0 {
+                        observer.onError(error: Error(rawValue: ret))
+                    }
+                    if result != 0 {
+                        observer.onError(error: Error(rawValue: Int32(result)))
+                    }
+                    log.debug("Connection established on \(self.fd)")
+                }
+            } else {
+                observer.onError(error: error)
+            }
+            return AnonymousDisposable {
+                dispatch_io_close(channel, 0)
+            }
         }
-    }
-    
-    func close () {
-        dispatch_io_close(channel, 0)
     }
 }

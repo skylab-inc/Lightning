@@ -7,13 +7,14 @@
 //
 
 import Dispatch
+import RxSwift
+import Foundation
 
 public final class Pipe: WritableIOStream, ReadableIOStream {
     
     public let loop: RunLoop
     public let fd: FileDescriptor
     public let channel: dispatch_io_t
-    public var eventEmitter: IOStreamEventEmitter = IOStreamEventEmitter()
     
     public init(loop: RunLoop, fd: StandardFileDescriptor) {
         self.loop = loop

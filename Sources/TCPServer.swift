@@ -7,6 +7,7 @@
 //
 
 import Dispatch
+import RxSwift
 
 public final class TCPServer {
     
@@ -66,42 +67,43 @@ public final class TCPServer {
         }
     }
     
-    public func listen(backlog: Int = 32, onConnect: (clientConnection: TCPSocket) -> ()) throws {
-        let ret = system_listen(fd.rawValue, Int32(backlog))
-        if ret != 0 {
-            throw Error(rawValue: errno)
-        }
-        log.debug("Listening on \(fd)...")
-        dispatch_source_set_event_handler(listeningSource) { [fd = self.fd, listeningSource = self.listeningSource] in
-            
-            log.debug("Connecting...")
-            
-            var socketAddress = sockaddr()
-            var sockLen = socklen_t(SOCK_MAXADDRLEN)
-            
-            // Accept connections
-            let numPendingConnections = dispatch_source_get_data(listeningSource)
-            for _ in 0..<numPendingConnections {
-                let ret = system_accept(fd.rawValue, &socketAddress, &sockLen)
-                if ret == StandardFileDescriptor.invalid.rawValue {
-                    try! { throw Error(rawValue: ret) }()
-                }
-                let clientFileDescriptor = SocketFileDescriptor(
-                    rawValue: ret,
-                    socketType: SocketType.stream,
-                    addressFamily: self.fd.addressFamily,
-                    blocking: false
-                )
+    public func listen(backlog: Int = 32) -> Observable<TCPSocket> {
+        return Observable.create { observer in
+            let ret = system_listen(self.fd.rawValue, Int32(backlog))
+            if ret != 0 {
+                observer.onError(error: Error(rawValue: errno))
+            }
+            log.debug("Listening on \(self.fd)...")
+            dispatch_source_set_event_handler(self.listeningSource) {
                 
-                // Create the client connection socket and start reading
-                let clientConnection = TCPSocket(loop: self.loop, fd: clientFileDescriptor)
-                onConnect(clientConnection: clientConnection)
+                log.debug("Connecting...")
+                
+                var socketAddress = sockaddr()
+                var sockLen = socklen_t(SOCK_MAXADDRLEN)
+                
+                // Accept connections
+                let numPendingConnections = dispatch_source_get_data(self.listeningSource)
+                for _ in 0..<numPendingConnections {
+                    let ret = system_accept(self.fd.rawValue, &socketAddress, &sockLen)
+                    if ret == StandardFileDescriptor.invalid.rawValue {
+                        observer.onError(error: Error(rawValue: ret))
+                    }
+                    let clientFileDescriptor = SocketFileDescriptor(
+                        rawValue: ret,
+                        socketType: SocketType.stream,
+                        addressFamily: self.fd.addressFamily,
+                        blocking: false
+                    )
+                    
+                    // Create the client connection socket and start reading
+                    let clientConnection = TCPSocket(loop: self.loop, fd: clientFileDescriptor)
+                    observer.onNext(element: clientConnection)
+                }
+            }
+            dispatch_resume(self.listeningSource)
+            return AnonymousDisposable {
+                dispatch_source_cancel(self.listeningSource)
             }
         }
-        dispatch_resume(listeningSource)
-    }
-    
-    func close() {
-        dispatch_source_cancel(self.listeningSource)
     }
 }

@@ -1,354 +1,1896 @@
 // !$*UTF8*$!
 {
-	archiveVersion = 1;
-	classes = {
-	};
-	objectVersion = 46;
-	objects = {
-
-/* Begin PBXBuildFile section */
-		DC4DD2801CE7E2C500863126 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4DD27E1CE7E22E00863126 /* Result.swift */; };
-		DC4DD2831CE7E47C00863126 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4DD2811CE7E46C00863126 /* Logging.swift */; };
-		DCB32EC21CEF098C008036FF /* HTTPStatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB32EC11CEF098C008036FF /* HTTPStatusCode.swift */; };
-		_LinkFileRef_SwiftyBeaver_via_Edge /* libSwiftyBeaver.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_SwiftyBeaver" /* libSwiftyBeaver.dylib */; };
-		"__src_cc_ref_Packages/SwiftyBeaver-0.5.3/sources/AES256CBC.swift" /* AES256CBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/AES256CBC.swift" /* AES256CBC.swift */; };
-		"__src_cc_ref_Packages/SwiftyBeaver-0.5.3/sources/BaseDestination.swift" /* BaseDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/BaseDestination.swift" /* BaseDestination.swift */; };
-		"__src_cc_ref_Packages/SwiftyBeaver-0.5.3/sources/ConsoleDestination.swift" /* ConsoleDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/ConsoleDestination.swift" /* ConsoleDestination.swift */; };
-		"__src_cc_ref_Packages/SwiftyBeaver-0.5.3/sources/FileDestination.swift" /* FileDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/FileDestination.swift" /* FileDestination.swift */; };
-		"__src_cc_ref_Packages/SwiftyBeaver-0.5.3/sources/SBPlatformDestination.swift" /* SBPlatformDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/SBPlatformDestination.swift" /* SBPlatformDestination.swift */; };
-		"__src_cc_ref_Packages/SwiftyBeaver-0.5.3/sources/SwiftyBeaver.swift" /* SwiftyBeaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/SwiftyBeaver.swift" /* SwiftyBeaver.swift */; };
-		__src_cc_ref_Sources/IOStream.swift /* IOStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/IOStream.swift /* IOStream.swift */; };
-		__src_cc_ref_Sources/Pipe.swift /* Pipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Pipe.swift /* Pipe.swift */; };
-		__src_cc_ref_Sources/RunLoop.swift /* RunLoop.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/RunLoop.swift /* RunLoop.swift */; };
-		__src_cc_ref_Sources/TCPClient.swift /* TCPSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/TCPClient.swift /* TCPSocket.swift */; };
-		__src_cc_ref_Sources/TCPServer.swift /* TCPServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/TCPServer.swift /* TCPServer.swift */; };
-		__src_cc_ref_Sources/Unix.swift /* Unix.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Unix.swift /* Unix.swift */; };
-/* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		DC4DD27D1CE7E20900863126 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = __RootObject_ /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = "______Target_SwiftyBeaver";
-			remoteInfo = SwiftyBeaver;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXFileReference section */
-		DC4DD27E1CE7E22E00863126 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
-		DC4DD2811CE7E46C00863126 /* Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
-		DCB32EC11CEF098C008036FF /* HTTPStatusCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPStatusCode.swift; sourceTree = "<group>"; };
-		__PBXFileRef_Edge.xcodeproj/Configs/Project.xcconfig /* Project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Project.xcconfig; path = Edge.xcodeproj/Configs/Project.xcconfig; sourceTree = "<group>"; };
-		__PBXFileRef_Package.swift /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		"__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/AES256CBC.swift" /* AES256CBC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AES256CBC.swift; sourceTree = "<group>"; };
-		"__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/BaseDestination.swift" /* BaseDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDestination.swift; sourceTree = "<group>"; };
-		"__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/ConsoleDestination.swift" /* ConsoleDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleDestination.swift; sourceTree = "<group>"; };
-		"__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/FileDestination.swift" /* FileDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDestination.swift; sourceTree = "<group>"; };
-		"__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/SBPlatformDestination.swift" /* SBPlatformDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBPlatformDestination.swift; sourceTree = "<group>"; };
-		"__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/SwiftyBeaver.swift" /* SwiftyBeaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyBeaver.swift; sourceTree = "<group>"; };
-		__PBXFileRef_Sources/IOStream.swift /* IOStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOStream.swift; sourceTree = "<group>"; };
-		__PBXFileRef_Sources/Pipe.swift /* Pipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pipe.swift; sourceTree = "<group>"; };
-		__PBXFileRef_Sources/RunLoop.swift /* RunLoop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunLoop.swift; sourceTree = "<group>"; };
-		__PBXFileRef_Sources/TCPClient.swift /* TCPSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCPSocket.swift; sourceTree = "<group>"; };
-		__PBXFileRef_Sources/TCPServer.swift /* TCPServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCPServer.swift; sourceTree = "<group>"; };
-		__PBXFileRef_Sources/Unix.swift /* Unix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unix.swift; sourceTree = "<group>"; };
-		"_____Product_Edge" /* libEdge.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libEdge.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		"_____Product_SwiftyBeaver" /* libSwiftyBeaver.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libSwiftyBeaver.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-/* End PBXFileReference section */
-
-/* Begin PBXFrameworksBuildPhase section */
-		"___LinkPhase_Edge" /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 0;
-			files = (
-				_LinkFileRef_SwiftyBeaver_via_Edge /* libSwiftyBeaver.dylib in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		"___LinkPhase_SwiftyBeaver" /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
-
-/* Begin PBXGroup section */
-		Dependencies_ /* Dependencies */ = {
-			isa = PBXGroup;
-			children = (
-				"_______Group_SwiftyBeaver" /* SwiftyBeaver */,
-			);
-			name = Dependencies;
-			sourceTree = "<group>";
-		};
-		"___RootGroup_" = {
-			isa = PBXGroup;
-			children = (
-				__PBXFileRef_Package.swift /* Package.swift */,
-				"_____Configs_" /* Configs */,
-				"_____Sources_" /* Sources */,
-				Dependencies_ /* Dependencies */,
-				"____Products_" /* Products */,
-			);
-			sourceTree = "<group>";
-		};
-		"____Products_" /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				"_____Product_SwiftyBeaver" /* libSwiftyBeaver.dylib */,
-				"_____Product_Edge" /* libEdge.dylib */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		"_____Configs_" /* Configs */ = {
-			isa = PBXGroup;
-			children = (
-				__PBXFileRef_Edge.xcodeproj/Configs/Project.xcconfig /* Project.xcconfig */,
-			);
-			name = Configs;
-			sourceTree = "<group>";
-		};
-		"_____Sources_" /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				"_______Group_Edge" /* Edge */,
-			);
-			name = Sources;
-			sourceTree = "<group>";
-		};
-		"_______Group_Edge" /* Edge */ = {
-			isa = PBXGroup;
-			children = (
-				__PBXFileRef_Sources/Unix.swift /* Unix.swift */,
-				__PBXFileRef_Sources/RunLoop.swift /* RunLoop.swift */,
-				__PBXFileRef_Sources/IOStream.swift /* IOStream.swift */,
-				__PBXFileRef_Sources/Pipe.swift /* Pipe.swift */,
-				__PBXFileRef_Sources/TCPClient.swift /* TCPSocket.swift */,
-				__PBXFileRef_Sources/TCPServer.swift /* TCPServer.swift */,
-				DCB32EC11CEF098C008036FF /* HTTPStatusCode.swift */,
-				DC4DD27E1CE7E22E00863126 /* Result.swift */,
-				DC4DD2811CE7E46C00863126 /* Logging.swift */,
-			);
-			name = Edge;
-			path = Sources;
-			sourceTree = "<group>";
-		};
-		"_______Group_SwiftyBeaver" /* SwiftyBeaver */ = {
-			isa = PBXGroup;
-			children = (
-				"__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/AES256CBC.swift" /* AES256CBC.swift */,
-				"__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/BaseDestination.swift" /* BaseDestination.swift */,
-				"__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/ConsoleDestination.swift" /* ConsoleDestination.swift */,
-				"__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/FileDestination.swift" /* FileDestination.swift */,
-				"__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/SBPlatformDestination.swift" /* SBPlatformDestination.swift */,
-				"__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/SwiftyBeaver.swift" /* SwiftyBeaver.swift */,
-			);
-			name = SwiftyBeaver;
-			path = "Packages/SwiftyBeaver-0.5.3/sources";
-			sourceTree = "<group>";
-		};
-/* End PBXGroup section */
-
-/* Begin PBXNativeTarget section */
-		"______Target_Edge" /* Edge */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = "_______Confs_Edge" /* Build configuration list for PBXNativeTarget "Edge" */;
-			buildPhases = (
-				CompilePhase_Edge /* Sources */,
-				"___LinkPhase_Edge" /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				__Dependency_SwiftyBeaver /* PBXTargetDependency */,
-			);
-			name = Edge;
-			productName = Edge;
-			productReference = "_____Product_Edge" /* libEdge.dylib */;
-			productType = "com.apple.product-type.library.dynamic";
-		};
-		"______Target_SwiftyBeaver" /* SwiftyBeaver */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = "_______Confs_SwiftyBeaver" /* Build configuration list for PBXNativeTarget "SwiftyBeaver" */;
-			buildPhases = (
-				CompilePhase_SwiftyBeaver /* Sources */,
-				"___LinkPhase_SwiftyBeaver" /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = SwiftyBeaver;
-			productName = SwiftyBeaver;
-			productReference = "_____Product_SwiftyBeaver" /* libSwiftyBeaver.dylib */;
-			productType = "com.apple.product-type.library.dynamic";
-		};
-/* End PBXNativeTarget section */
-
-/* Begin PBXProject section */
-		__RootObject_ /* Project object */ = {
-			isa = PBXProject;
-			attributes = {
-				LastUpgradeCheck = 9999;
-			};
-			buildConfigurationList = "___RootConfs_" /* Build configuration list for PBXProject "Edge" */;
-			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
-			hasScannedForEncodings = 0;
-			knownRegions = (
-				en,
-			);
-			mainGroup = "___RootGroup_";
-			productRefGroup = "____Products_" /* Products */;
-			projectDirPath = "";
-			projectRoot = "";
-			targets = (
-				"______Target_SwiftyBeaver" /* SwiftyBeaver */,
-				"______Target_Edge" /* Edge */,
-			);
-		};
-/* End PBXProject section */
-
-/* Begin PBXSourcesBuildPhase section */
-		CompilePhase_Edge /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 0;
-			files = (
-				__src_cc_ref_Sources/IOStream.swift /* IOStream.swift in Sources */,
-				__src_cc_ref_Sources/Pipe.swift /* Pipe.swift in Sources */,
-				__src_cc_ref_Sources/RunLoop.swift /* RunLoop.swift in Sources */,
-				__src_cc_ref_Sources/TCPClient.swift /* TCPSocket.swift in Sources */,
-				DC4DD2801CE7E2C500863126 /* Result.swift in Sources */,
-				__src_cc_ref_Sources/TCPServer.swift /* TCPServer.swift in Sources */,
-				__src_cc_ref_Sources/Unix.swift /* Unix.swift in Sources */,
-				DC4DD2831CE7E47C00863126 /* Logging.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CompilePhase_SwiftyBeaver /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 0;
-			files = (
-				"__src_cc_ref_Packages/SwiftyBeaver-0.5.3/sources/AES256CBC.swift" /* AES256CBC.swift in Sources */,
-				"__src_cc_ref_Packages/SwiftyBeaver-0.5.3/sources/BaseDestination.swift" /* BaseDestination.swift in Sources */,
-				"__src_cc_ref_Packages/SwiftyBeaver-0.5.3/sources/ConsoleDestination.swift" /* ConsoleDestination.swift in Sources */,
-				"__src_cc_ref_Packages/SwiftyBeaver-0.5.3/sources/FileDestination.swift" /* FileDestination.swift in Sources */,
-				"__src_cc_ref_Packages/SwiftyBeaver-0.5.3/sources/SBPlatformDestination.swift" /* SBPlatformDestination.swift in Sources */,
-				"__src_cc_ref_Packages/SwiftyBeaver-0.5.3/sources/SwiftyBeaver.swift" /* SwiftyBeaver.swift in Sources */,
-				DCB32EC21CEF098C008036FF /* HTTPStatusCode.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		__Dependency_SwiftyBeaver /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = "______Target_SwiftyBeaver" /* SwiftyBeaver */;
-			targetProxy = DC4DD27D1CE7E20900863126 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
-/* Begin XCBuildConfiguration section */
-		_ReleaseConf_Edge /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ENABLE_TESTABILITY = YES;
-				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PRODUCT_NAME = "lib$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		_ReleaseConf_SwiftyBeaver /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ENABLE_TESTABILITY = YES;
-				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PRODUCT_NAME = "lib$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		"___DebugConf_Edge" /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ENABLE_TESTABILITY = YES;
-				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PRODUCT_NAME = "lib$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-			};
-			name = Debug;
-		};
-		"___DebugConf_SwiftyBeaver" /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ENABLE_TESTABILITY = YES;
-				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PRODUCT_NAME = "lib$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-			};
-			name = Debug;
-		};
-		"_____Release_" /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = __PBXFileRef_Edge.xcodeproj/Configs/Project.xcconfig /* Project.xcconfig */;
-			buildSettings = {
-			};
-			name = Release;
-		};
-		"_______Debug_" /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = __PBXFileRef_Edge.xcodeproj/Configs/Project.xcconfig /* Project.xcconfig */;
-			buildSettings = {
-			};
-			name = Debug;
-		};
-/* End XCBuildConfiguration section */
-
-/* Begin XCConfigurationList section */
-		"___RootConfs_" /* Build configuration list for PBXProject "Edge" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				"_______Debug_" /* Debug */,
-				"_____Release_" /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		"_______Confs_Edge" /* Build configuration list for PBXNativeTarget "Edge" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				"___DebugConf_Edge" /* Debug */,
-				_ReleaseConf_Edge /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		"_______Confs_SwiftyBeaver" /* Build configuration list for PBXNativeTarget "SwiftyBeaver" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				"___DebugConf_SwiftyBeaver" /* Debug */,
-				_ReleaseConf_SwiftyBeaver /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-/* End XCConfigurationList section */
-	};
-	rootObject = __RootObject_ /* Project object */;
+    archiveVersion = 1;
+    classes = {};
+    objectVersion = 46;
+    rootObject = __RootObject_;
+    objects = {
+        __RootObject_ = {
+            isa = PBXProject;
+            attributes = {LastUpgradeCheck = 9999;};
+            buildConfigurationList = ___RootConfs_;
+            compatibilityVersion = 'Xcode 3.2';
+            developmentRegion = English;
+            hasScannedForEncodings = 0;
+            knownRegions = (en);
+            mainGroup = ___RootGroup_;
+            productRefGroup = ____Products_;
+            projectDirPath = '';
+            projectRoot = '';
+            targets = (______Target_SwiftyBeaver, ______Target_RxBlocking, ______Target_RxSwift, ______Target_Edge);
+        };
+        '__PBXFileRef_Package.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Package.swift';
+            path = 'Package.swift';
+            sourceTree = '<group>';
+        };
+        ___RootGroup_ = {
+            isa = PBXGroup;
+            children = ('__PBXFileRef_Package.swift', _____Configs_, _____Sources_, Dependencies_, _______Tests_, ____Products_);
+            sourceTree = '<group>';
+        };
+        _______Group_SwiftyBeaver = {
+            isa = PBXGroup;
+            name = SwiftyBeaver;
+            path = 'Packages/SwiftyBeaver-0.5.3/sources';
+            sourceTree = '<group>';
+            children = ('__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/AES256CBC.swift', '__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/BaseDestination.swift', '__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/ConsoleDestination.swift', '__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/FileDestination.swift', '__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/SBPlatformDestination.swift', '__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/SwiftyBeaver.swift');
+        };
+        '__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/AES256CBC.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'AES256CBC.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/BaseDestination.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'BaseDestination.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/ConsoleDestination.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'ConsoleDestination.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/FileDestination.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'FileDestination.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/SBPlatformDestination.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'SBPlatformDestination.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/SwiftyBeaver.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'SwiftyBeaver.swift';
+            sourceTree = '<group>';
+        };
+        ______Target_SwiftyBeaver = {
+            isa = PBXNativeTarget;
+            buildConfigurationList = _______Confs_SwiftyBeaver;
+            buildPhases = (CompilePhase_SwiftyBeaver, ___LinkPhase_SwiftyBeaver);
+            buildRules = ();
+            dependencies = ();
+            name = SwiftyBeaver;
+            productName = SwiftyBeaver;
+            productReference = _____Product_SwiftyBeaver;
+            productType = 'com.apple.product-type.library.dynamic';
+        };
+        _____Product_SwiftyBeaver = {
+            isa = PBXFileReference;
+            explicitFileType = 'compiled.mach-o.dylib';
+            path = 'libSwiftyBeaver.dylib';
+            sourceTree = BUILT_PRODUCTS_DIR;
+        };
+        CompilePhase_SwiftyBeaver = {
+            isa = PBXSourcesBuildPhase;
+            files = ('__src_cc_ref_Packages/SwiftyBeaver-0.5.3/sources/AES256CBC.swift', '__src_cc_ref_Packages/SwiftyBeaver-0.5.3/sources/BaseDestination.swift', '__src_cc_ref_Packages/SwiftyBeaver-0.5.3/sources/ConsoleDestination.swift', '__src_cc_ref_Packages/SwiftyBeaver-0.5.3/sources/FileDestination.swift', '__src_cc_ref_Packages/SwiftyBeaver-0.5.3/sources/SBPlatformDestination.swift', '__src_cc_ref_Packages/SwiftyBeaver-0.5.3/sources/SwiftyBeaver.swift');
+            runOnlyForDeploymentPostprocessing = 0;
+        };
+        '__src_cc_ref_Packages/SwiftyBeaver-0.5.3/sources/AES256CBC.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/AES256CBC.swift';
+        };
+        '__src_cc_ref_Packages/SwiftyBeaver-0.5.3/sources/BaseDestination.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/BaseDestination.swift';
+        };
+        '__src_cc_ref_Packages/SwiftyBeaver-0.5.3/sources/ConsoleDestination.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/ConsoleDestination.swift';
+        };
+        '__src_cc_ref_Packages/SwiftyBeaver-0.5.3/sources/FileDestination.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/FileDestination.swift';
+        };
+        '__src_cc_ref_Packages/SwiftyBeaver-0.5.3/sources/SBPlatformDestination.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/SBPlatformDestination.swift';
+        };
+        '__src_cc_ref_Packages/SwiftyBeaver-0.5.3/sources/SwiftyBeaver.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/SwiftyBeaver-0.5.3/sources/SwiftyBeaver.swift';
+        };
+        ___LinkPhase_SwiftyBeaver = {
+            isa = PBXFrameworksBuildPhase;
+            files = ();
+            runOnlyForDeploymentPostprocessing = 0;
+        };
+        _______Confs_SwiftyBeaver = {
+            isa = XCConfigurationList;
+            buildConfigurations = (___DebugConf_SwiftyBeaver, _ReleaseConf_SwiftyBeaver);
+            defaultConfigurationIsVisible = 0;
+            defaultConfigurationName = Debug;
+        };
+        ___DebugConf_SwiftyBeaver = {
+            isa = XCBuildConfiguration;
+            buildSettings = { LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_SWIFT_FLAGS = '$(inherited)'; SWIFT_OPTIMIZATION_LEVEL = '-Onone'; OTHER_LDFLAGS = '$(inherited)'; PRODUCT_NAME = 'lib$(TARGET_NAME)'; };
+            name = Debug;
+        };
+        _ReleaseConf_SwiftyBeaver = {
+            isa = XCBuildConfiguration;
+            buildSettings = { LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_LDFLAGS = '$(inherited)'; PRODUCT_NAME = 'lib$(TARGET_NAME)'; OTHER_SWIFT_FLAGS = '$(inherited)'; };
+            name = Release;
+        };
+        __Dependency_SwiftyBeaver = {
+            isa = PBXTargetDependency;
+            target = ______Target_SwiftyBeaver;
+        };
+        _______Group_RxBlocking = {
+            isa = PBXGroup;
+            name = RxBlocking;
+            path = 'Packages/RxSwift-2.5.0/Sources/RxBlocking';
+            sourceTree = '<group>';
+            children = ('__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxBlocking/BlockingObservable+Operators.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxBlocking/BlockingObservable.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxBlocking/ObservableConvertibleType+Blocking.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxBlocking/RunLoopLock.swift');
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxBlocking/BlockingObservable+Operators.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'BlockingObservable+Operators.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxBlocking/BlockingObservable.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'BlockingObservable.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxBlocking/ObservableConvertibleType+Blocking.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'ObservableConvertibleType+Blocking.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxBlocking/RunLoopLock.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'RunLoopLock.swift';
+            sourceTree = '<group>';
+        };
+        ______Target_RxBlocking = {
+            isa = PBXNativeTarget;
+            buildConfigurationList = _______Confs_RxBlocking;
+            buildPhases = (CompilePhase_RxBlocking, ___LinkPhase_RxBlocking);
+            buildRules = ();
+            dependencies = (__Dependency_RxSwift);
+            name = RxBlocking;
+            productName = RxBlocking;
+            productReference = _____Product_RxBlocking;
+            productType = 'com.apple.product-type.library.dynamic';
+        };
+        _____Product_RxBlocking = {
+            isa = PBXFileReference;
+            explicitFileType = 'compiled.mach-o.dylib';
+            path = 'libRxBlocking.dylib';
+            sourceTree = BUILT_PRODUCTS_DIR;
+        };
+        CompilePhase_RxBlocking = {
+            isa = PBXSourcesBuildPhase;
+            files = ('__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxBlocking/BlockingObservable+Operators.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxBlocking/BlockingObservable.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxBlocking/ObservableConvertibleType+Blocking.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxBlocking/RunLoopLock.swift');
+            runOnlyForDeploymentPostprocessing = 0;
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxBlocking/BlockingObservable+Operators.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxBlocking/BlockingObservable+Operators.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxBlocking/BlockingObservable.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxBlocking/BlockingObservable.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxBlocking/ObservableConvertibleType+Blocking.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxBlocking/ObservableConvertibleType+Blocking.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxBlocking/RunLoopLock.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxBlocking/RunLoopLock.swift';
+        };
+        ___LinkPhase_RxBlocking = {
+            isa = PBXFrameworksBuildPhase;
+            files = (_LinkFileRef_RxSwift_via_RxBlocking);
+            runOnlyForDeploymentPostprocessing = 0;
+        };
+        _LinkFileRef_RxSwift_via_RxBlocking = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_RxSwift;
+        };
+        _______Confs_RxBlocking = {
+            isa = XCConfigurationList;
+            buildConfigurations = (___DebugConf_RxBlocking, _ReleaseConf_RxBlocking);
+            defaultConfigurationIsVisible = 0;
+            defaultConfigurationName = Debug;
+        };
+        ___DebugConf_RxBlocking = {
+            isa = XCBuildConfiguration;
+            buildSettings = { LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_SWIFT_FLAGS = '$(inherited)'; SWIFT_OPTIMIZATION_LEVEL = '-Onone'; OTHER_LDFLAGS = '$(inherited)'; PRODUCT_NAME = 'lib$(TARGET_NAME)'; };
+            name = Debug;
+        };
+        _ReleaseConf_RxBlocking = {
+            isa = XCBuildConfiguration;
+            buildSettings = { LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_LDFLAGS = '$(inherited)'; PRODUCT_NAME = 'lib$(TARGET_NAME)'; OTHER_SWIFT_FLAGS = '$(inherited)'; };
+            name = Release;
+        };
+        __Dependency_RxBlocking = {
+            isa = PBXTargetDependency;
+            target = ______Target_RxBlocking;
+        };
+        _______Group_RxSwift = {
+            isa = PBXGroup;
+            name = RxSwift;
+            path = 'Packages/RxSwift-2.5.0/Sources/RxSwift';
+            sourceTree = '<group>';
+            children = ('__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/AddRef.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Amb.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/AnonymousDisposable.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/AnonymousInvocable.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/AnonymousObservable.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/AnonymousObserver.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/AnyObserver.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/AsyncLock.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Bag.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/BehaviorSubject.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/BinaryDisposable.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/BooleanDisposable.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Buffer.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Cancelable.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Catch.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/CombineLatest+arity.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/CombineLatest+CollectionType.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/CombineLatest.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/CompositeDisposable.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Concat.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ConcurrentDispatchQueueScheduler.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ConcurrentMainScheduler.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ConnectableObservable.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ConnectableObservableType.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/CurrentThreadScheduler.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Debug.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Deferred.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/DelaySubscription.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/DispatchQueueSchedulerQOS.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Disposable.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/DisposeBag.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/DisposeBase.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/DistinctUntilChanged.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Do.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ElementAt.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Empty.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Error.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Errors.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Event.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Filter.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Generate.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/HistoricalScheduler.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/HistoricalSchedulerTimeConverter.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ImmediateScheduler.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ImmediateSchedulerType.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/InfiniteSequence.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/InvocableScheduledItem.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/InvocableType.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Just.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Lock.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/LockOwnerType.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/MainScheduler.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Map.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Merge.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Multicast.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/NAryDisposable.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Never.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/NopDisposable.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+Aggregate.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+Binding.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+Concurrency.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+Creation.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+Debug.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+Extensions.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+Multiple.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+Single.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+StandardSequenceOperators.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+Time.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ObservableConvertibleType.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ObservableType.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ObserveOn.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ObserveOnSerialDispatchQueue.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ObserverBase.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ObserverType.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/OperationQueueScheduler.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Platform.Darwin.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Platform.Linux.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/PriorityQueue.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Producer.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/PublishSubject.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Queue.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Range.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/RecursiveScheduler.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Reduce.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/RefCount.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/RefCountDisposable.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Repeat.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ReplaySubject.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/RetryWhen.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Rx.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/RxMutableBox.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Sample.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Scan.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ScheduledDisposable.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ScheduledItem.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ScheduledItemType.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/SchedulerServices+Emulation.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/SchedulerType.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Sequence.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/SerialDispatchQueueScheduler.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/SerialDisposable.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ShareReplay1.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ShareReplay1WhileConnected.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/SingleAssignmentDisposable.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/SingleAsync.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Sink.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Skip.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/SkipUntil.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/SkipWhile.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/StableCompositeDisposable.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/StartWith.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/String+Rx.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/SubjectType.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/SubscribeOn.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/SubscriptionDisposable.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Switch.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/SynchronizedDisposeType.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/SynchronizedOnType.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/SynchronizedSubscribeType.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/SynchronizedUnsubscribeType.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/TailRecursiveSink.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Take.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/TakeLast.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/TakeUntil.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/TakeWhile.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Throttle.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Timeout.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Timer.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ToArray.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Using.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Variable.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/VirtualTimeConverterType.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/VirtualTimeScheduler.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Window.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/WithLatestFrom.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Zip+arity.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Zip+CollectionType.swift', '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Zip.swift');
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/AddRef.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'AddRef.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Amb.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Amb.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/AnonymousDisposable.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'AnonymousDisposable.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/AnonymousInvocable.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'AnonymousInvocable.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/AnonymousObservable.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'AnonymousObservable.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/AnonymousObserver.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'AnonymousObserver.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/AnyObserver.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'AnyObserver.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/AsyncLock.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'AsyncLock.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Bag.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Bag.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/BehaviorSubject.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'BehaviorSubject.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/BinaryDisposable.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'BinaryDisposable.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/BooleanDisposable.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'BooleanDisposable.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Buffer.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Buffer.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Cancelable.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Cancelable.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Catch.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Catch.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/CombineLatest+arity.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'CombineLatest+arity.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/CombineLatest+CollectionType.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'CombineLatest+CollectionType.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/CombineLatest.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'CombineLatest.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/CompositeDisposable.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'CompositeDisposable.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Concat.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Concat.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ConcurrentDispatchQueueScheduler.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'ConcurrentDispatchQueueScheduler.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ConcurrentMainScheduler.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'ConcurrentMainScheduler.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ConnectableObservable.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'ConnectableObservable.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ConnectableObservableType.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'ConnectableObservableType.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/CurrentThreadScheduler.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'CurrentThreadScheduler.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Debug.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Debug.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Deferred.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Deferred.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/DelaySubscription.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'DelaySubscription.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/DispatchQueueSchedulerQOS.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'DispatchQueueSchedulerQOS.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Disposable.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Disposable.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/DisposeBag.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'DisposeBag.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/DisposeBase.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'DisposeBase.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/DistinctUntilChanged.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'DistinctUntilChanged.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Do.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Do.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ElementAt.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'ElementAt.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Empty.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Empty.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Error.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Error.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Errors.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Errors.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Event.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Event.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Filter.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Filter.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Generate.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Generate.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/HistoricalScheduler.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'HistoricalScheduler.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/HistoricalSchedulerTimeConverter.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'HistoricalSchedulerTimeConverter.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ImmediateScheduler.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'ImmediateScheduler.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ImmediateSchedulerType.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'ImmediateSchedulerType.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/InfiniteSequence.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'InfiniteSequence.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/InvocableScheduledItem.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'InvocableScheduledItem.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/InvocableType.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'InvocableType.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Just.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Just.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Lock.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Lock.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/LockOwnerType.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'LockOwnerType.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/MainScheduler.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'MainScheduler.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Map.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Map.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Merge.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Merge.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Multicast.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Multicast.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/NAryDisposable.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'NAryDisposable.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Never.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Never.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/NopDisposable.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'NopDisposable.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+Aggregate.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Observable+Aggregate.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+Binding.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Observable+Binding.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+Concurrency.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Observable+Concurrency.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+Creation.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Observable+Creation.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+Debug.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Observable+Debug.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+Extensions.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Observable+Extensions.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+Multiple.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Observable+Multiple.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+Single.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Observable+Single.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+StandardSequenceOperators.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Observable+StandardSequenceOperators.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+Time.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Observable+Time.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Observable.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ObservableConvertibleType.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'ObservableConvertibleType.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ObservableType.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'ObservableType.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ObserveOn.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'ObserveOn.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ObserveOnSerialDispatchQueue.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'ObserveOnSerialDispatchQueue.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ObserverBase.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'ObserverBase.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ObserverType.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'ObserverType.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/OperationQueueScheduler.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'OperationQueueScheduler.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Platform.Darwin.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Platform.Darwin.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Platform.Linux.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Platform.Linux.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/PriorityQueue.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'PriorityQueue.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Producer.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Producer.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/PublishSubject.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'PublishSubject.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Queue.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Queue.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Range.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Range.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/RecursiveScheduler.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'RecursiveScheduler.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Reduce.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Reduce.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/RefCount.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'RefCount.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/RefCountDisposable.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'RefCountDisposable.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Repeat.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Repeat.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ReplaySubject.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'ReplaySubject.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/RetryWhen.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'RetryWhen.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Rx.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Rx.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/RxMutableBox.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'RxMutableBox.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Sample.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Sample.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Scan.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Scan.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ScheduledDisposable.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'ScheduledDisposable.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ScheduledItem.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'ScheduledItem.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ScheduledItemType.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'ScheduledItemType.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/SchedulerServices+Emulation.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'SchedulerServices+Emulation.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/SchedulerType.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'SchedulerType.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Sequence.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Sequence.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/SerialDispatchQueueScheduler.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'SerialDispatchQueueScheduler.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/SerialDisposable.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'SerialDisposable.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ShareReplay1.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'ShareReplay1.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ShareReplay1WhileConnected.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'ShareReplay1WhileConnected.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/SingleAssignmentDisposable.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'SingleAssignmentDisposable.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/SingleAsync.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'SingleAsync.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Sink.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Sink.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Skip.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Skip.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/SkipUntil.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'SkipUntil.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/SkipWhile.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'SkipWhile.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/StableCompositeDisposable.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'StableCompositeDisposable.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/StartWith.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'StartWith.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/String+Rx.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'String+Rx.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/SubjectType.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'SubjectType.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/SubscribeOn.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'SubscribeOn.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/SubscriptionDisposable.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'SubscriptionDisposable.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Switch.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Switch.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/SynchronizedDisposeType.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'SynchronizedDisposeType.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/SynchronizedOnType.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'SynchronizedOnType.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/SynchronizedSubscribeType.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'SynchronizedSubscribeType.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/SynchronizedUnsubscribeType.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'SynchronizedUnsubscribeType.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/TailRecursiveSink.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'TailRecursiveSink.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Take.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Take.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/TakeLast.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'TakeLast.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/TakeUntil.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'TakeUntil.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/TakeWhile.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'TakeWhile.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Throttle.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Throttle.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Timeout.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Timeout.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Timer.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Timer.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ToArray.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'ToArray.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Using.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Using.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Variable.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Variable.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/VirtualTimeConverterType.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'VirtualTimeConverterType.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/VirtualTimeScheduler.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'VirtualTimeScheduler.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Window.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Window.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/WithLatestFrom.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'WithLatestFrom.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Zip+arity.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Zip+arity.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Zip+CollectionType.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Zip+CollectionType.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Zip.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Zip.swift';
+            sourceTree = '<group>';
+        };
+        ______Target_RxSwift = {
+            isa = PBXNativeTarget;
+            buildConfigurationList = _______Confs_RxSwift;
+            buildPhases = (CompilePhase_RxSwift, ___LinkPhase_RxSwift);
+            buildRules = ();
+            dependencies = ();
+            name = RxSwift;
+            productName = RxSwift;
+            productReference = _____Product_RxSwift;
+            productType = 'com.apple.product-type.library.dynamic';
+        };
+        _____Product_RxSwift = {
+            isa = PBXFileReference;
+            explicitFileType = 'compiled.mach-o.dylib';
+            path = 'libRxSwift.dylib';
+            sourceTree = BUILT_PRODUCTS_DIR;
+        };
+        CompilePhase_RxSwift = {
+            isa = PBXSourcesBuildPhase;
+            files = ('__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/AddRef.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Amb.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/AnonymousDisposable.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/AnonymousInvocable.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/AnonymousObservable.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/AnonymousObserver.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/AnyObserver.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/AsyncLock.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Bag.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/BehaviorSubject.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/BinaryDisposable.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/BooleanDisposable.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Buffer.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Cancelable.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Catch.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/CombineLatest+arity.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/CombineLatest+CollectionType.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/CombineLatest.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/CompositeDisposable.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Concat.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/ConcurrentDispatchQueueScheduler.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/ConcurrentMainScheduler.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/ConnectableObservable.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/ConnectableObservableType.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/CurrentThreadScheduler.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Debug.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Deferred.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/DelaySubscription.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/DispatchQueueSchedulerQOS.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Disposable.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/DisposeBag.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/DisposeBase.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/DistinctUntilChanged.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Do.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/ElementAt.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Empty.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Error.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Errors.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Event.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Filter.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Generate.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/HistoricalScheduler.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/HistoricalSchedulerTimeConverter.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/ImmediateScheduler.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/ImmediateSchedulerType.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/InfiniteSequence.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/InvocableScheduledItem.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/InvocableType.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Just.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Lock.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/LockOwnerType.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/MainScheduler.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Map.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Merge.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Multicast.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/NAryDisposable.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Never.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/NopDisposable.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+Aggregate.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+Binding.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+Concurrency.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+Creation.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+Debug.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+Extensions.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+Multiple.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+Single.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+StandardSequenceOperators.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+Time.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/ObservableConvertibleType.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/ObservableType.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/ObserveOn.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/ObserveOnSerialDispatchQueue.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/ObserverBase.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/ObserverType.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/OperationQueueScheduler.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Platform.Darwin.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Platform.Linux.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/PriorityQueue.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Producer.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/PublishSubject.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Queue.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Range.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/RecursiveScheduler.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Reduce.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/RefCount.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/RefCountDisposable.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Repeat.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/ReplaySubject.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/RetryWhen.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Rx.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/RxMutableBox.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Sample.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Scan.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/ScheduledDisposable.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/ScheduledItem.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/ScheduledItemType.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/SchedulerServices+Emulation.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/SchedulerType.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Sequence.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/SerialDispatchQueueScheduler.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/SerialDisposable.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/ShareReplay1.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/ShareReplay1WhileConnected.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/SingleAssignmentDisposable.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/SingleAsync.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Sink.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Skip.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/SkipUntil.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/SkipWhile.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/StableCompositeDisposable.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/StartWith.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/String+Rx.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/SubjectType.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/SubscribeOn.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/SubscriptionDisposable.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Switch.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/SynchronizedDisposeType.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/SynchronizedOnType.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/SynchronizedSubscribeType.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/SynchronizedUnsubscribeType.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/TailRecursiveSink.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Take.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/TakeLast.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/TakeUntil.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/TakeWhile.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Throttle.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Timeout.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Timer.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/ToArray.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Using.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Variable.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/VirtualTimeConverterType.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/VirtualTimeScheduler.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Window.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/WithLatestFrom.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Zip+arity.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Zip+CollectionType.swift', '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Zip.swift');
+            runOnlyForDeploymentPostprocessing = 0;
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/AddRef.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/AddRef.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Amb.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Amb.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/AnonymousDisposable.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/AnonymousDisposable.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/AnonymousInvocable.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/AnonymousInvocable.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/AnonymousObservable.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/AnonymousObservable.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/AnonymousObserver.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/AnonymousObserver.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/AnyObserver.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/AnyObserver.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/AsyncLock.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/AsyncLock.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Bag.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Bag.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/BehaviorSubject.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/BehaviorSubject.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/BinaryDisposable.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/BinaryDisposable.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/BooleanDisposable.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/BooleanDisposable.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Buffer.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Buffer.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Cancelable.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Cancelable.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Catch.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Catch.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/CombineLatest+arity.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/CombineLatest+arity.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/CombineLatest+CollectionType.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/CombineLatest+CollectionType.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/CombineLatest.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/CombineLatest.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/CompositeDisposable.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/CompositeDisposable.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Concat.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Concat.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/ConcurrentDispatchQueueScheduler.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ConcurrentDispatchQueueScheduler.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/ConcurrentMainScheduler.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ConcurrentMainScheduler.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/ConnectableObservable.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ConnectableObservable.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/ConnectableObservableType.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ConnectableObservableType.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/CurrentThreadScheduler.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/CurrentThreadScheduler.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Debug.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Debug.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Deferred.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Deferred.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/DelaySubscription.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/DelaySubscription.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/DispatchQueueSchedulerQOS.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/DispatchQueueSchedulerQOS.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Disposable.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Disposable.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/DisposeBag.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/DisposeBag.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/DisposeBase.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/DisposeBase.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/DistinctUntilChanged.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/DistinctUntilChanged.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Do.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Do.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/ElementAt.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ElementAt.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Empty.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Empty.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Error.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Error.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Errors.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Errors.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Event.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Event.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Filter.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Filter.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Generate.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Generate.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/HistoricalScheduler.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/HistoricalScheduler.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/HistoricalSchedulerTimeConverter.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/HistoricalSchedulerTimeConverter.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/ImmediateScheduler.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ImmediateScheduler.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/ImmediateSchedulerType.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ImmediateSchedulerType.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/InfiniteSequence.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/InfiniteSequence.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/InvocableScheduledItem.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/InvocableScheduledItem.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/InvocableType.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/InvocableType.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Just.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Just.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Lock.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Lock.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/LockOwnerType.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/LockOwnerType.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/MainScheduler.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/MainScheduler.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Map.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Map.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Merge.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Merge.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Multicast.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Multicast.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/NAryDisposable.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/NAryDisposable.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Never.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Never.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/NopDisposable.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/NopDisposable.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+Aggregate.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+Aggregate.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+Binding.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+Binding.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+Concurrency.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+Concurrency.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+Creation.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+Creation.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+Debug.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+Debug.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+Extensions.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+Extensions.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+Multiple.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+Multiple.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+Single.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+Single.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+StandardSequenceOperators.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+StandardSequenceOperators.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+Time.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable+Time.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Observable.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/ObservableConvertibleType.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ObservableConvertibleType.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/ObservableType.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ObservableType.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/ObserveOn.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ObserveOn.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/ObserveOnSerialDispatchQueue.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ObserveOnSerialDispatchQueue.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/ObserverBase.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ObserverBase.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/ObserverType.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ObserverType.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/OperationQueueScheduler.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/OperationQueueScheduler.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Platform.Darwin.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Platform.Darwin.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Platform.Linux.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Platform.Linux.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/PriorityQueue.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/PriorityQueue.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Producer.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Producer.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/PublishSubject.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/PublishSubject.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Queue.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Queue.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Range.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Range.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/RecursiveScheduler.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/RecursiveScheduler.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Reduce.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Reduce.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/RefCount.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/RefCount.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/RefCountDisposable.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/RefCountDisposable.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Repeat.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Repeat.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/ReplaySubject.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ReplaySubject.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/RetryWhen.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/RetryWhen.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Rx.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Rx.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/RxMutableBox.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/RxMutableBox.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Sample.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Sample.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Scan.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Scan.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/ScheduledDisposable.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ScheduledDisposable.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/ScheduledItem.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ScheduledItem.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/ScheduledItemType.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ScheduledItemType.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/SchedulerServices+Emulation.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/SchedulerServices+Emulation.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/SchedulerType.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/SchedulerType.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Sequence.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Sequence.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/SerialDispatchQueueScheduler.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/SerialDispatchQueueScheduler.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/SerialDisposable.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/SerialDisposable.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/ShareReplay1.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ShareReplay1.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/ShareReplay1WhileConnected.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ShareReplay1WhileConnected.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/SingleAssignmentDisposable.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/SingleAssignmentDisposable.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/SingleAsync.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/SingleAsync.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Sink.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Sink.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Skip.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Skip.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/SkipUntil.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/SkipUntil.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/SkipWhile.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/SkipWhile.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/StableCompositeDisposable.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/StableCompositeDisposable.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/StartWith.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/StartWith.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/String+Rx.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/String+Rx.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/SubjectType.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/SubjectType.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/SubscribeOn.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/SubscribeOn.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/SubscriptionDisposable.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/SubscriptionDisposable.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Switch.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Switch.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/SynchronizedDisposeType.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/SynchronizedDisposeType.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/SynchronizedOnType.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/SynchronizedOnType.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/SynchronizedSubscribeType.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/SynchronizedSubscribeType.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/SynchronizedUnsubscribeType.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/SynchronizedUnsubscribeType.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/TailRecursiveSink.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/TailRecursiveSink.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Take.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Take.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/TakeLast.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/TakeLast.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/TakeUntil.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/TakeUntil.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/TakeWhile.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/TakeWhile.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Throttle.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Throttle.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Timeout.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Timeout.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Timer.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Timer.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/ToArray.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/ToArray.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Using.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Using.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Variable.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Variable.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/VirtualTimeConverterType.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/VirtualTimeConverterType.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/VirtualTimeScheduler.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/VirtualTimeScheduler.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Window.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Window.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/WithLatestFrom.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/WithLatestFrom.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Zip+arity.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Zip+arity.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Zip+CollectionType.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Zip+CollectionType.swift';
+        };
+        '__src_cc_ref_Packages/RxSwift-2.5.0/Sources/RxSwift/Zip.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/RxSwift-2.5.0/Sources/RxSwift/Zip.swift';
+        };
+        ___LinkPhase_RxSwift = {
+            isa = PBXFrameworksBuildPhase;
+            files = ();
+            runOnlyForDeploymentPostprocessing = 0;
+        };
+        _______Confs_RxSwift = {
+            isa = XCConfigurationList;
+            buildConfigurations = (___DebugConf_RxSwift, _ReleaseConf_RxSwift);
+            defaultConfigurationIsVisible = 0;
+            defaultConfigurationName = Debug;
+        };
+        ___DebugConf_RxSwift = {
+            isa = XCBuildConfiguration;
+            buildSettings = { LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_SWIFT_FLAGS = '$(inherited)'; SWIFT_OPTIMIZATION_LEVEL = '-Onone'; OTHER_LDFLAGS = '$(inherited)'; PRODUCT_NAME = 'lib$(TARGET_NAME)'; };
+            name = Debug;
+        };
+        _ReleaseConf_RxSwift = {
+            isa = XCBuildConfiguration;
+            buildSettings = { LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_LDFLAGS = '$(inherited)'; PRODUCT_NAME = 'lib$(TARGET_NAME)'; OTHER_SWIFT_FLAGS = '$(inherited)'; };
+            name = Release;
+        };
+        __Dependency_RxSwift = {
+            isa = PBXTargetDependency;
+            target = ______Target_RxSwift;
+        };
+        _______Group_Edge = {
+            isa = PBXGroup;
+            name = Edge;
+            path = 'Sources';
+            sourceTree = '<group>';
+            children = ('__PBXFileRef_Sources/HTTPStatusCode.swift', '__PBXFileRef_Sources/IOStream.swift', '__PBXFileRef_Sources/Logging.swift', '__PBXFileRef_Sources/Pipe.swift', '__PBXFileRef_Sources/Result.swift', '__PBXFileRef_Sources/RunLoop.swift', '__PBXFileRef_Sources/TCPServer.swift', '__PBXFileRef_Sources/TCPSocket.swift', '__PBXFileRef_Sources/Unix.swift');
+        };
+        '__PBXFileRef_Sources/HTTPStatusCode.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'HTTPStatusCode.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Sources/IOStream.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'IOStream.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Sources/Logging.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Logging.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Sources/Pipe.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Pipe.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Sources/Result.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Result.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Sources/RunLoop.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'RunLoop.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Sources/TCPServer.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'TCPServer.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Sources/TCPSocket.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'TCPSocket.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Sources/Unix.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            name = 'Unix.swift';
+            sourceTree = '<group>';
+        };
+        ______Target_Edge = {
+            isa = PBXNativeTarget;
+            buildConfigurationList = _______Confs_Edge;
+            buildPhases = (CompilePhase_Edge, ___LinkPhase_Edge);
+            buildRules = ();
+            dependencies = (__Dependency_RxBlocking, __Dependency_RxSwift, __Dependency_SwiftyBeaver);
+            name = Edge;
+            productName = Edge;
+            productReference = _____Product_Edge;
+            productType = 'com.apple.product-type.library.dynamic';
+        };
+        _____Product_Edge = {
+            isa = PBXFileReference;
+            explicitFileType = 'compiled.mach-o.dylib';
+            path = 'libEdge.dylib';
+            sourceTree = BUILT_PRODUCTS_DIR;
+        };
+        CompilePhase_Edge = {
+            isa = PBXSourcesBuildPhase;
+            files = ('__src_cc_ref_Sources/HTTPStatusCode.swift', '__src_cc_ref_Sources/IOStream.swift', '__src_cc_ref_Sources/Logging.swift', '__src_cc_ref_Sources/Pipe.swift', '__src_cc_ref_Sources/Result.swift', '__src_cc_ref_Sources/RunLoop.swift', '__src_cc_ref_Sources/TCPServer.swift', '__src_cc_ref_Sources/TCPSocket.swift', '__src_cc_ref_Sources/Unix.swift');
+            runOnlyForDeploymentPostprocessing = 0;
+        };
+        '__src_cc_ref_Sources/HTTPStatusCode.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Sources/HTTPStatusCode.swift';
+        };
+        '__src_cc_ref_Sources/IOStream.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Sources/IOStream.swift';
+        };
+        '__src_cc_ref_Sources/Logging.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Sources/Logging.swift';
+        };
+        '__src_cc_ref_Sources/Pipe.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Sources/Pipe.swift';
+        };
+        '__src_cc_ref_Sources/Result.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Sources/Result.swift';
+        };
+        '__src_cc_ref_Sources/RunLoop.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Sources/RunLoop.swift';
+        };
+        '__src_cc_ref_Sources/TCPServer.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Sources/TCPServer.swift';
+        };
+        '__src_cc_ref_Sources/TCPSocket.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Sources/TCPSocket.swift';
+        };
+        '__src_cc_ref_Sources/Unix.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Sources/Unix.swift';
+        };
+        ___LinkPhase_Edge = {
+            isa = PBXFrameworksBuildPhase;
+            files = (_LinkFileRef_RxBlocking_via_Edge, _LinkFileRef_RxSwift_via_Edge, _LinkFileRef_SwiftyBeaver_via_Edge);
+            runOnlyForDeploymentPostprocessing = 0;
+        };
+        _LinkFileRef_RxBlocking_via_Edge = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_RxBlocking;
+        };
+        _LinkFileRef_RxSwift_via_Edge = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_RxSwift;
+        };
+        _LinkFileRef_SwiftyBeaver_via_Edge = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_SwiftyBeaver;
+        };
+        _______Confs_Edge = {
+            isa = XCConfigurationList;
+            buildConfigurations = (___DebugConf_Edge, _ReleaseConf_Edge);
+            defaultConfigurationIsVisible = 0;
+            defaultConfigurationName = Debug;
+        };
+        ___DebugConf_Edge = {
+            isa = XCBuildConfiguration;
+            buildSettings = { LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_SWIFT_FLAGS = '$(inherited)'; SWIFT_OPTIMIZATION_LEVEL = '-Onone'; OTHER_LDFLAGS = '$(inherited)'; PRODUCT_NAME = 'lib$(TARGET_NAME)'; };
+            name = Debug;
+        };
+        _ReleaseConf_Edge = {
+            isa = XCBuildConfiguration;
+            buildSettings = { LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_LDFLAGS = '$(inherited)'; PRODUCT_NAME = 'lib$(TARGET_NAME)'; OTHER_SWIFT_FLAGS = '$(inherited)'; };
+            name = Release;
+        };
+        __Dependency_Edge = {
+            isa = PBXTargetDependency;
+            target = ______Target_Edge;
+        };
+        '__PBXFileRef_Edge.xcodeproj/Configs/Project.xcconfig' = {
+            isa = PBXFileReference;
+            lastKnownFileType = text.xcconfig;
+            name = 'Project.xcconfig';
+            path = 'Edge.xcodeproj/Configs/Project.xcconfig';
+            sourceTree = '<group>';
+        };
+        _____Configs_ = {
+            isa = PBXGroup;
+            children = ('__PBXFileRef_Edge.xcodeproj/Configs/Project.xcconfig');
+            name = Configs;
+            sourceTree = '<group>';
+        };
+        _____Sources_ = {
+            isa = PBXGroup;
+            children = (_______Group_SwiftyBeaver, _______Group_RxBlocking, _______Group_RxSwift, _______Group_Edge);
+            name = Sources;
+            sourceTree = '<group>';
+        };
+        Dependencies_ = {
+            isa = PBXGroup;
+            children = (_______Group_SwiftyBeaver, _______Group_RxBlocking, _______Group_RxSwift);
+            name = Dependencies;
+            sourceTree = '<group>';
+        };
+        ____Products_ = {
+            isa = PBXGroup;
+            children = (_____Product_SwiftyBeaver, _____Product_RxBlocking, _____Product_RxSwift, _____Product_Edge);
+            name = Products;
+            sourceTree = '<group>';
+        };
+        _______Debug_ = {
+            isa = XCBuildConfiguration;
+            baseConfigurationReference = '__PBXFileRef_Edge.xcodeproj/Configs/Project.xcconfig';
+            buildSettings = {};
+            name = Debug;
+        };
+        _____Release_ = {
+            isa = XCBuildConfiguration;
+            baseConfigurationReference = '__PBXFileRef_Edge.xcodeproj/Configs/Project.xcconfig';
+            buildSettings = {};
+            name = Release;
+        };
+        ___RootConfs_ = {
+            isa = XCConfigurationList;
+            buildConfigurations = (_______Debug_, _____Release_);
+            defaultConfigurationIsVisible = 0;
+            defaultConfigurationName = Debug;
+        };
+    };
 }
