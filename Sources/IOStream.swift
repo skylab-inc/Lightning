@@ -68,7 +68,8 @@ public extension WritableIOStream {
                     }
                 }
             }
-            return AnonymousDisposable {
+            return AnonymousDisposable { [fd = self.fd] in
+                log.verbose("Disposing \(fd) for writing.")
                 dispatch_io_close(self.channel, 0)
             }
         }
@@ -124,7 +125,8 @@ public extension ReadableIOStream {
                     dispatch_io_close(self.channel, 0)
                 }
             }
-            return AnonymousDisposable {
+            return AnonymousDisposable { [fd = self.fd] in
+                log.verbose("Disposing \(fd) for reading.")
                 dispatch_io_close(self.channel, 0)
             }
         }

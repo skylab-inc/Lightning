@@ -59,6 +59,7 @@ public final class TCPSocket: WritableIOStream, ReadableIOStream {
             let ret = getaddrinfo(host, String(port), &hints, &addrInfoPointer)
             if ret != 0 {
                 observer.onError(error: AddressFamilyError(rawValue: ret))
+                return NopDisposable.instance
             }
             
             let addressInfo = addrInfoPointer!.pointee
@@ -91,9 +92,11 @@ public final class TCPSocket: WritableIOStream, ReadableIOStream {
                     let ret = getsockopt(self.fd.rawValue, SOL_SOCKET, SO_ERROR, &result, &resultLength)
                     if ret != 0 {
                         observer.onError(error: Error(rawValue: ret))
+                        return
                     }
                     if result != 0 {
                         observer.onError(error: Error(rawValue: Int32(result)))
+                        return
                     }
                     log.debug("Connection established on \(self.fd)")
                     observer.onCompleted()
