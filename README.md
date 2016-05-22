@@ -72,7 +72,6 @@ _ = server.listen().subscribeNext { connection in
             }
             
         )
-
 }
 
 RunLoop.runAll()
