@@ -25,6 +25,15 @@ public extension WritableIOStream {
     
     func write(buffer: [UInt8]) -> Observable<[UInt8]> {
         return Observable.create { (observer) -> Disposable in
+            
+            let writeChannel = dispatch_io_create_with_io(
+                DISPATCH_IO_STREAM,
+                self.channel,
+                dispatch_get_main_queue()
+            ) { error in
+                observer.onError(error: Error(rawValue: error))
+            }!
+            
             buffer.withUnsafeBufferPointer { buffer in
                 
                 // Allocate dispatch data
@@ -35,7 +44,7 @@ public extension WritableIOStream {
                 }
                 
                 // Schedule write operation
-                dispatch_io_write(self.channel, off_t(), dispatchData, dispatch_get_main_queue()) { done, data, error in
+                dispatch_io_write(writeChannel, off_t(), dispatchData, dispatch_get_main_queue()) { done, data, error in
                     
                     if error != 0 {
                         // If there was an error emit the error.
@@ -63,14 +72,15 @@ public extension WritableIOStream {
                         } else {
                             // Must be an unrecoverable error, close the channel.
                             // TODO: Maybe don't close if you want half-open channel
-                            dispatch_io_close(self.channel, 0)
+                            // NOTE: This will be done by onCompleted or onError
+                            // dispatch_io_close(self.channel, 0)
                         }
                     }
                 }
             }
             return AnonymousDisposable { [fd = self.fd] in
                 log.verbose("Disposing \(fd) for writing.")
-                dispatch_io_close(self.channel, 0)
+                dispatch_io_close(writeChannel, 0)
             }
         }
     }
@@ -93,8 +103,17 @@ public extension ReadableIOStream {
     
     func read(minBytes: Int = 1) -> Observable<[UInt8]> {
         return Observable.create { (observer) -> Disposable in
-            dispatch_io_set_low_water(self.channel, minBytes);
-            dispatch_io_read(self.channel, off_t(), size_t(INT_MAX), dispatch_get_main_queue()) { done, data, error in
+            
+            let readChannel = dispatch_io_create_with_io(
+                DISPATCH_IO_STREAM,
+                self.channel,
+                dispatch_get_main_queue()
+            ) { error in
+                observer.onError(error: Error(rawValue: error))
+            }!
+            
+            dispatch_io_set_low_water(readChannel, minBytes);
+            dispatch_io_read(readChannel, off_t(), size_t(INT_MAX), dispatch_get_main_queue()) { done, data, error in
                 
                 if error != 0 {
                     // If there was an error emit the error.
@@ -122,12 +141,13 @@ public extension ReadableIOStream {
                     
                     // It's done close the channel
                     // TODO: Maybe don't close if you want half-open channel
-                    dispatch_io_close(self.channel, 0)
+                    // NOTE: This will be done by onCompleted or onError
+                    // dispatch_io_close(readChannel, 0)
                 }
             }
             return AnonymousDisposable { [fd = self.fd] in
                 log.verbose("Disposing \(fd) for reading.")
-                dispatch_io_close(self.channel, 0)
+                dispatch_io_close(readChannel, 0)
             }
         }
     }
