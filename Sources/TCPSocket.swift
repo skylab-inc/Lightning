@@ -96,6 +96,7 @@ public final class TCPSocket: WritableIOStream, ReadableIOStream {
                         observer.onError(error: Error(rawValue: Int32(result)))
                     }
                     log.debug("Connection established on \(self.fd)")
+                    observer.onCompleted()
                 }
             } else {
                 observer.onError(error: error)
