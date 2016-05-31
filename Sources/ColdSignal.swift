@@ -33,7 +33,6 @@ public final class ColdSignal<Value, Error: ErrorProtocol>: SignalType, ColdSign
     public init(_ generator: (ProducedSignal.Observer) -> Disposable?) {
         self.startHandler = generator
     }
-
     
     /// Creates a Signal from the producer, then attaches the given observer to
     /// the Signal as an observer.
