@@ -62,11 +62,7 @@ public final class ColdSignal<Value, Error: ErrorProtocol>: SignalType, ColdSign
         }
     }
     
-    public func start(with observer: Observer) -> Disposable? {
-        let disposable = add(observer: observer)
-        start()
-        return disposable
-    }
+
     
     public func stop() {
         cancelDisposable?.dispose()
@@ -100,12 +96,18 @@ public protocol ColdSignalType {
     func start()
     
     func stop()
-
-    func start(with observer: Observer<Value, Error>) -> Disposable?
+    
+    func add(observer: Observer<Value, Error>) -> Disposable?
 
 }
 
 extension ColdSignalType {
+    
+    public func start(with observer: Observer<Value, Error>) -> Disposable? {
+        let disposable = add(observer: observer)
+        start()
+        return disposable
+    }
 
     /// Convenience override for start(_:) to allow trailing-closure style
     /// invocations.
