@@ -8,7 +8,7 @@
 
 import Foundation
 
-public final class ColdSignal<Value, Error: ErrorProtocol>: SignalType, ColdSignalType, InternalSignalType {
+public final class ColdSignal<Value, Error: ErrorProtocol>: ColdSignalType, InternalSignalType {
     public typealias ProducedSignal = Signal<Value, Error>
     public typealias Observer = Edge.Observer<Value, Error>
     
@@ -85,7 +85,7 @@ public final class ColdSignal<Value, Error: ErrorProtocol>: SignalType, ColdSign
     
 }
 
-public protocol ColdSignalType {
+public protocol ColdSignalType: SignalType {
     /// The type of values being sent on the producer
     associatedtype Value
     
