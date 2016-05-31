@@ -30,7 +30,7 @@
 		__src_cc_ref_Sources/Signal.swift /* Signal.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Signal.swift /* Signal.swift */; };
 		__src_cc_ref_Sources/TCPServer.swift /* TCPServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/TCPServer.swift /* TCPServer.swift */; };
 		__src_cc_ref_Sources/TCPSocket.swift /* TCPSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/TCPSocket.swift /* TCPSocket.swift */; };
-		__src_cc_ref_Sources/Test.swift /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Test.swift /* Test.swift */; };
+		__src_cc_ref_Sources/Test.swift /* Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Test.swift /* Example.swift */; };
 		__src_cc_ref_Sources/Unix.swift /* Unix.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Unix.swift /* Unix.swift */; };
 /* End PBXBuildFile section */
 
@@ -69,7 +69,7 @@
 		__PBXFileRef_Sources/Signal.swift /* Signal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signal.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/TCPServer.swift /* TCPServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCPServer.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/TCPSocket.swift /* TCPSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCPSocket.swift; sourceTree = "<group>"; };
-		__PBXFileRef_Sources/Test.swift /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/Test.swift /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/Unix.swift /* Unix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unix.swift; sourceTree = "<group>"; };
 		"_____Product_Edge" /* libEdge.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libEdge.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		"_____Product_SwiftyBeaver" /* libSwiftyBeaver.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libSwiftyBeaver.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -165,7 +165,7 @@
 				__PBXFileRef_Sources/TCPServer.swift /* TCPServer.swift */,
 				__PBXFileRef_Sources/TCPSocket.swift /* TCPSocket.swift */,
 				__PBXFileRef_Sources/Unix.swift /* Unix.swift */,
-				__PBXFileRef_Sources/Test.swift /* Test.swift */,
+				__PBXFileRef_Sources/Test.swift /* Example.swift */,
 				DC67CC7B1CFD139A0076BEE9 /* Reactive */,
 			);
 			name = Edge;
@@ -269,7 +269,7 @@
 				__src_cc_ref_Sources/Signal.swift /* Signal.swift in Sources */,
 				__src_cc_ref_Sources/TCPServer.swift /* TCPServer.swift in Sources */,
 				__src_cc_ref_Sources/TCPSocket.swift /* TCPSocket.swift in Sources */,
-				__src_cc_ref_Sources/Test.swift /* Test.swift in Sources */,
+				__src_cc_ref_Sources/Test.swift /* Example.swift in Sources */,
 				__src_cc_ref_Sources/Unix.swift /* Unix.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
