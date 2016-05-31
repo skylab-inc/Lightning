@@ -46,32 +46,23 @@ var server = TCPServer(loop: loop)
     
 try server.bind(host: "0.0.0.0", port: 50000)
     
-// Ignore the returned Disposable, since we never want to stop 
-// listening or dispose of a connection.
-_ = server.listen().subscribeNext { connection in
-
-    _ = connection.read()
-        // Convert incoming bytes to a Unicode string.
-        .map {  String(bytes: $0, encoding: NSUTF8StringEncoding)!) }
-        .subscribe(
-            
-            // Subscribe an onNext callback to be called with each new message
-            // until the client sends a FIN packet or there is an error.
-            onNext: { message in
-                print("Client \(connection) says \"\(message)\"!")
-            },
-            
-            // If an error caused the stream to end, print the error.
-            onError: { error in
-                print("Oh no, there was an error! \(error)")
-            },
-            
-            // Say goodbye if the client has ended the connection.
-            onCompleted: {
-                print("Goodbye \(connection)!")
-            }
-            
-        )
+server.listen().startWithNext { connection in
+    let read = connection.read()
+    let strings = read.map { String(bytes: $0, encoding: NSUTF8StringEncoding)! }
+    
+    strings.onNext { message in
+        print("Client \(connection) says \"\(message)\"!")
+    }
+    
+    strings.onFailed { error in
+        print("Oh no, there was an error! \(error)")
+    }
+    
+    strings.onCompleted {
+        print("Goodbye \(connection)!")
+    }
+    
+    read.start()
 }
 
 RunLoop.runAll()
