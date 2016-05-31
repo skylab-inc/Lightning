@@ -65,21 +65,15 @@ public protocol SignalType {
     associatedtype Error: ErrorProtocol
     
     /// Observes the Signal by sending any future events to the given observer.
-    func add(observer: Signal<Value, Error>.Observer) -> Disposable?
-    
+//    func add(observer: Signal<Value, Error>.Observer) -> Disposable?
+    func add(observer: Observer<Value, Error>) -> Disposable?
+
     init(_ generator: (Signal<Value, Error>.Observer) -> Disposable?)
 }
 
-internal protocol InternalSignalType {
-    
-    /// The type of values being sent on the signal.
-    associatedtype Value
-    /// The type of error that can occur on the signal. If errors aren't possible
-    /// then `NoError` can be used.
-    associatedtype Error: ErrorProtocol
+internal protocol InternalSignalType: SignalType {
     
     var observers: Bag<Observer<Value, Error>> { get }
-    
 
 }
 

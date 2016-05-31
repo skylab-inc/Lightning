@@ -86,19 +86,11 @@ public final class ColdSignal<Value, Error: ErrorProtocol>: ColdSignalType, Inte
 }
 
 public protocol ColdSignalType: SignalType {
-    /// The type of values being sent on the producer
-    associatedtype Value
-    
-    /// The type of error that can occur on the producer. If errors aren't possible
-    /// then `NoError` can be used.
-    associatedtype Error: ErrorProtocol
     
     func start()
     
     func stop()
     
-    func add(observer: Observer<Value, Error>) -> Disposable?
-
 }
 
 extension ColdSignalType {
