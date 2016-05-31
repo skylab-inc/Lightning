@@ -14,8 +14,16 @@ This makes Edge fast and efficient, but it also means that Edge applications can
 
 > The name Edge is a play on the name Node, as they are both components of [graphs](https://en.wikipedia.org/wiki/Graph_(abstract_data_type)).
 
-#### RxSwift
-Edge's event API embraces the concepts of Functional Reactive Programming and is implemented with [RxSwift](https://github.com/ReactiveX/RxSwift). 
+#### Reactive Programming
+Edge's event API embraces the concepts of Functional Reactive Programming while still not having any external dependencies. The API is a modified version of [ReactiveCocoa]() and is also inspired by [RxSwift](). 
+
+
+> Why did we reimplement?
+* Edge should be easy to use out of the box.
+* Edge is optimized for maximum performance, which requires careful tuning of the internals.
+* The modified API is meant to be more similar to the familiar concepts of Futures and Promises.
+* We don't want to be opinionated about any one framework. We want it to be easy to integate Edge with either ReactiveCocoa or RxSwift.
+
 >FRP, greatly simplies management of asynchronous events. The general concept is that we can build a spout which pushes out asynchronous events as they happen. Then we hookup a pipeline of transformations that operate on events and pass the transformed values along. We can even do things like merge streams in interesting ways! Take a look at some of these [operations](http://rxmarbles.com) or watch [this talk](https://www.youtube.com/watch?v=XRYN2xt11Ek) about how FRP is used at Netflix. 
 
 # Installation
