@@ -7,7 +7,6 @@
 //
 
 import Dispatch
-import RxSwift
 import Foundation
 
 public final class Pipe: WritableIOStream, ReadableIOStream {

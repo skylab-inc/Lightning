@@ -7,7 +7,6 @@
 //
 
 import Dispatch
-import RxSwift
 
 public final class TCPServer {
     
@@ -67,11 +66,11 @@ public final class TCPServer {
         }
     }
     
-    public func listen(backlog: Int = 32) -> Observable<TCPSocket> {
-        return Observable.create { observer in
+    public func listen(backlog: Int = 32) -> ColdSignal<TCPSocket, Error> {
+        return ColdSignal { observer in
             let ret = system_listen(self.fd.rawValue, Int32(backlog))
             if ret != 0 {
-                observer.onError(error: Error(rawValue: errno))
+                observer.sendFailed(Error(rawValue: errno))
             }
             log.debug("Listening on \(self.fd)...")
             dispatch_source_set_event_handler(self.listeningSource) {
@@ -86,7 +85,7 @@ public final class TCPServer {
                 for _ in 0..<numPendingConnections {
                     let ret = system_accept(self.fd.rawValue, &socketAddress, &sockLen)
                     if ret == StandardFileDescriptor.invalid.rawValue {
-                        observer.onError(error: Error(rawValue: ret))
+                        observer.sendFailed(Error(rawValue: ret))
                     }
                     let clientFileDescriptor = SocketFileDescriptor(
                         rawValue: ret,
@@ -97,11 +96,11 @@ public final class TCPServer {
                     
                     // Create the client connection socket and start reading
                     let clientConnection = TCPSocket(loop: self.loop, fd: clientFileDescriptor)
-                    observer.onNext(element: clientConnection)
+                    observer.sendNext(clientConnection)
                 }
             }
             dispatch_resume(self.listeningSource)
-            return AnonymousDisposable {
+            return ActionDisposable {
                 dispatch_source_cancel(self.listeningSource)
             }
         }

@@ -7,7 +7,6 @@
 //
 
 import Dispatch
-import RxSwift
 
 public final class TCPSocket: WritableIOStream, ReadableIOStream {
     
@@ -41,8 +40,9 @@ public final class TCPSocket: WritableIOStream, ReadableIOStream {
         }
     }
     
-    public func connect(host: String, port: Port) -> Observable<()> {
-        return Observable.create { [socketFD, fd, channel] observer in
+    public func connect(host: String, port: Port) -> ColdSignal<(), Error> {
+        
+        return ColdSignal { [socketFD, fd, channel] observer in
             var addrInfoPointer = UnsafeMutablePointer<addrinfo>(nil)
             
             var hints = addrinfo(
@@ -58,8 +58,8 @@ public final class TCPSocket: WritableIOStream, ReadableIOStream {
             
             let ret = getaddrinfo(host, String(port), &hints, &addrInfoPointer)
             if ret != 0 {
-                observer.onError(error: AddressFamilyError(rawValue: ret))
-                return NopDisposable.instance
+                observer.sendFailed(Error.addressFamilyError(error: AddressFamilyError(rawValue: ret)))
+                return nil
             }
             
             let addressInfo = addrInfoPointer!.pointee
@@ -69,17 +69,17 @@ public final class TCPSocket: WritableIOStream, ReadableIOStream {
             // Blocking, connect immediately or throw error
             if socketFD.blocking {
                 if connectRet != 0 {
-                    observer.onError(error: Error(rawValue: errno))
+                    observer.sendFailed(Error(rawValue: errno))
                 } else {
-                    observer.onCompleted()
+                    observer.sendCompleted()
                 }
-                return NopDisposable.instance
+                return nil
             }
             
             // Non-blocking, check for immediate connection
             if connectRet == 0 {
-                observer.onCompleted()
-                return NopDisposable.instance
+                observer.sendCompleted()
+                return nil
             }
             
             // Non-blocking, dispatch connection, check errno for connection error.
@@ -91,20 +91,20 @@ public final class TCPSocket: WritableIOStream, ReadableIOStream {
                     var resultLength = socklen_t(strideof(result.dynamicType))
                     let ret = getsockopt(self.fd.rawValue, SOL_SOCKET, SO_ERROR, &result, &resultLength)
                     if ret != 0 {
-                        observer.onError(error: Error(rawValue: ret))
+                        observer.sendFailed(Error(rawValue: ret))
                         return
                     }
                     if result != 0 {
-                        observer.onError(error: Error(rawValue: Int32(result)))
+                        observer.sendFailed(Error(rawValue: Int32(result)))
                         return
                     }
                     log.debug("Connection established on \(self.fd)")
-                    observer.onCompleted()
+                    observer.sendCompleted()
                 }
             } else {
-                observer.onError(error: error)
+                observer.sendFailed(error)
             }
-            return AnonymousDisposable {
+            return ActionDisposable {
                 dispatch_io_close(channel, 0)
             }
         }

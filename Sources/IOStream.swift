@@ -7,7 +7,7 @@
 //
 
 import Dispatch
-import RxSwift
+
 
 public protocol WritableIOStream: class {
     
@@ -17,21 +17,20 @@ public protocol WritableIOStream: class {
     
     var channel: dispatch_io_t { get }
     
-    func write(buffer: [UInt8]) -> Observable<[UInt8]>
+    func write(buffer: [UInt8]) -> ColdSignal<[UInt8], Error>
 
 }
 
 public extension WritableIOStream {
     
-    func write(buffer: [UInt8]) -> Observable<[UInt8]> {
-        return Observable.create { (observer) -> Disposable in
-            
+    func write(buffer: [UInt8]) -> ColdSignal<[UInt8], Error> {
+        return ColdSignal { observer in
             let writeChannel = dispatch_io_create_with_io(
                 DISPATCH_IO_STREAM,
                 self.channel,
                 dispatch_get_main_queue()
             ) { error in
-                observer.onError(error: Error(rawValue: error))
+                observer.sendFailed(Error(rawValue: error))
             }!
             
             buffer.withUnsafeBufferPointer { buffer in
@@ -39,7 +38,7 @@ public extension WritableIOStream {
                 // Allocate dispatch data
                 guard let dispatchData = dispatch_data_create(buffer.baseAddress, buffer.count, dispatch_get_main_queue(), nil) else {
                     // Emit error as the channel was never open.
-                    observer.onError(error: Error.noMemory)
+                    observer.sendFailed(Error.noMemory)
                     return
                 }
                 
@@ -48,10 +47,10 @@ public extension WritableIOStream {
                     
                     if error != 0 {
                         // If there was an error emit the error.
-                        observer.onError(error: Error(rawValue: error))
+                        observer.sendFailed(Error(rawValue: error))
                     }
                     
-                    log.debug(data)
+                    log.debug("Unwritten data: " + String(data))
                     if let data = data where data !== dispatch_data_empty {
                         // Get unwritten data
                         var p = UnsafePointer<Void>(nil)
@@ -60,7 +59,7 @@ public extension WritableIOStream {
                         let buffer = Array(UnsafeBufferPointer<UInt8>(start: UnsafePointer<UInt8>(p), count: size))
                         
                         // Emit the unwritten data as next
-                        observer.onNext(element: buffer)
+                        observer.sendNext(buffer)
                     }
                     
                     if done {
@@ -68,7 +67,7 @@ public extension WritableIOStream {
                             // If the done param is set and there is no error,
                             // all data has been written, emit writing end.
                             // DO NOT emit end otherwise!
-                            observer.onCompleted()
+                            observer.sendCompleted()
                         } else {
                             // Must be an unrecoverable error, close the channel.
                             // TODO: Maybe don't close if you want half-open channel
@@ -78,7 +77,7 @@ public extension WritableIOStream {
                     }
                 }
             }
-            return AnonymousDisposable { [fd = self.fd] in
+            return ActionDisposable { [fd = self.fd] in
                 log.verbose("Disposing \(fd) for writing.")
                 dispatch_io_close(writeChannel, 0)
             }
@@ -95,21 +94,22 @@ public protocol ReadableIOStream: class {
     
     var channel: dispatch_io_t { get }
 
-    func read(minBytes: Int) -> Observable<[UInt8]>
+    func read(minBytes: Int) -> ColdSignal<[UInt8], Error>
     
 }
 
 public extension ReadableIOStream {
     
-    func read(minBytes: Int = 1) -> Observable<[UInt8]> {
-        return Observable.create { (observer) -> Disposable in
+    func read(minBytes: Int = 1) -> ColdSignal<[UInt8], Error> {
+        
+        return ColdSignal { observer in
             
             let readChannel = dispatch_io_create_with_io(
                 DISPATCH_IO_STREAM,
                 self.channel,
                 dispatch_get_main_queue()
             ) { error in
-                observer.onError(error: Error(rawValue: error))
+                observer.sendFailed(Error(rawValue: error))
             }!
             
             dispatch_io_set_low_water(readChannel, minBytes);
@@ -117,7 +117,7 @@ public extension ReadableIOStream {
                 
                 if error != 0 {
                     // If there was an error emit the error.
-                    observer.onError(error: Error(rawValue: error))
+                    observer.sendFailed(Error(rawValue: error))
                 }
                 
                 // Deliver data if it is non-empty
@@ -128,15 +128,15 @@ public extension ReadableIOStream {
                     _ = dispatch_data_create_map(data, &p, &size)
                     let buffer = Array(UnsafeBufferPointer<UInt8>(start: UnsafePointer<UInt8>(p), count: size))
                     
-                    observer.onNext(element: buffer)
+                    observer.sendNext(buffer)
                 }
-
+                
                 if done {
                     if error == 0 {
                         // If the done param is set and there is no error,
                         // all data has been read, emit end.
                         // DO NOT emit end otherwise!
-                        observer.onCompleted()
+                        observer.sendCompleted()
                     }
                     
                     // It's done close the channel
@@ -145,8 +145,8 @@ public extension ReadableIOStream {
                     // dispatch_io_close(readChannel, 0)
                 }
             }
-            return AnonymousDisposable { [fd = self.fd] in
-                log.verbose("Disposing \(fd) for reading.")
+            return ActionDisposable { [fd = self.fd] in
+                log.verbose("Disposing \(fd) for writing.")
                 dispatch_io_close(readChannel, 0)
             }
         }

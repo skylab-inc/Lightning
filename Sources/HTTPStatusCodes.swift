@@ -1,5 +1,5 @@
 //
-//  HTTPStatusCode.swift
+//  HTTPStatusCodes.swift
 //  Edge
 //
 //  Created by Tyler Fleming Cloutier on 5/20/16.

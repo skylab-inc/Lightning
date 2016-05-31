@@ -126,6 +126,7 @@ public enum Error: ErrorProtocol {
     case operationNotSupported
     case inProgress
     case pipeShutdown
+    case addressFamilyError(error: AddressFamilyError)
     case unknownError(code: Int32)
     
     public init(rawValue: Int32) {
