@@ -16,21 +16,25 @@ func main() {
     
     try! server.bind(host: "0.0.0.0", port: 50000)
     
-    let listen = server.listen()
-    listen.onNext { connection in
-        
+    server.listen().startWithNext { connection in
         let read = connection.read()
-        read.onNext { buffer in
-
+        
+        let strings = read.map { String(bytes: $0, encoding: NSUTF8StringEncoding)! }
+        
+        strings.onNext { message in
+            print("Client \(connection) says \"\(message)\"!")
         }
+        
+        strings.onFailed { error in
+            print("Oh no, there was an error! \(error)")
+        }
+        
+        strings.onCompleted {
+            print("Goodbye \(connection)!")
+        }
+        
         read.start()
-        
     }
-    listen.onCompleted {
-        
-    }
-    listen.start()
-    
     
     
 //    listen.observeNext { connection in

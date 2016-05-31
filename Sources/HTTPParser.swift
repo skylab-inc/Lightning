@@ -7,13 +7,13 @@
 //
 
 import Foundation
-import CHTTPParser
+//import CHTTPParser
 
-
-func dataCallback(parserPointer: UnsafeMutablePointer<http_parser>?, dataPointer: UnsafePointer<Int8>?, length: Int) -> Int32 {
-    
-    return 0
-}
+//
+//func dataCallback(parserPointer: UnsafeMutablePointer<http_parser>?, dataPointer: UnsafePointer<Int8>?, length: Int) -> Int32 {
+//    
+//    return 0
+//}
 
 
 //public var ORDINARY: Int32 { get }

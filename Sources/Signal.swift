@@ -42,36 +42,6 @@ public final class Signal<Value, Error: ErrorProtocol>: SignalType, InternalSign
         generatorDisposable.innerDisposable = generator(inputObserver)
     }
     
-    /// A Signal that never sends any events to its observers.
-    public static var never: Signal {
-        return self.init { _ in nil }
-    }
-    
-    /// A Signal that completes immediately without emitting any value.
-    public static var empty: Signal {
-        return self.init { observer in
-            observer.sendCompleted()
-            return nil
-        }
-    }
-    
-    /// Creates a Signal that will be controlled by sending events to the given
-    /// observer.
-    ///
-    /// The Signal will remain alive until a terminating event is sent to the
-    /// observer.
-    public static func pipe() -> (Signal, Observer) {
-        var observer: Observer!
-        let signal = self.init { innerObserver in
-            observer = innerObserver
-            return nil
-        }
-        
-        return (signal, observer)
-    }
-    
-
-    
     /// Observes the Signal by sending any future events to the given observer. If
     /// the Signal has already terminated, the observer will immediately receive an
     /// `Interrupted` event.
@@ -194,7 +164,21 @@ extension SignalType {
     
     /// A producer for a Signal that never sends any events to its observers.
     public static var never: Self {
-        return self.init { _ in return }
+        return self.init { _ in return nil }
+    }
+    
+    /// Creates a Signal that will be controlled by sending events to the given
+    /// observer.
+    ///
+    /// The Signal will remain alive until a terminating event is sent to the
+    /// observer.
+    public static func pipe() -> (Self, Signal<Value, Error>.Observer) {
+        var observer: Signal<Value, Error>.Observer!
+        let signal = self.init { innerObserver in
+            observer = innerObserver
+            return nil
+        }
+        return (signal, observer)
     }
     
     /// Creates a SignalProducer that will attempt the given operation once for

@@ -8,7 +8,7 @@
 
 import Foundation
 
-public final class ColdSignal<Value, Error: ErrorProtocol>: SignalType, InternalSignalType {
+public final class ColdSignal<Value, Error: ErrorProtocol>: SignalType, ColdSignalType, InternalSignalType {
     public typealias ProducedSignal = Signal<Value, Error>
     public typealias Observer = Edge.Observer<Value, Error>
     
@@ -63,12 +63,17 @@ public final class ColdSignal<Value, Error: ErrorProtocol>: SignalType, Internal
         }
     }
     
+    public func start(with observer: Observer) -> Disposable? {
+        let disposable = add(observer: observer)
+        start()
+        return disposable
+    }
+    
     public func stop() {
         cancelDisposable?.dispose()
         //TODO: probably send interrupt
         started = false
     }
-    
     
     /// Observes the SignalProducer by sending any future events to the given observer. If
     /// the Signal has already terminated, the observer will immediately receive an
@@ -83,12 +88,6 @@ public final class ColdSignal<Value, Error: ErrorProtocol>: SignalType, Internal
         }
     }
     
-    public func start(with observer: Observer) -> Disposable? {
-        let disposable = add(observer: observer)
-        start()
-        return disposable
-    }
-    
 }
 
 public protocol ColdSignalType {
@@ -99,65 +98,60 @@ public protocol ColdSignalType {
     /// then `NoError` can be used.
     associatedtype Error: ErrorProtocol
     
-    /// Extracts a signal producer from the receiver.
-    var producer: ColdSignal<Value, Error> { get }
+    func start()
     
+    func stop()
+
     func start(with observer: Observer<Value, Error>) -> Disposable?
 
 }
 
-extension ColdSignal: ColdSignalType {
-    public var producer: ColdSignal {
-        return self
-    }
-}
-
 extension ColdSignalType {
 
-//    /// Convenience override for start(_:) to allow trailing-closure style
-//    /// invocations.
-//    public func start(_ observerAction: Signal<Value, Error>.Observer.Action) -> Disposable? {
-//        return start(with: Observer(observerAction))
-//    }
-//    
-//    /// Creates a Signal from the producer, then adds exactly one observer to
-//    /// the Signal, which will invoke the given callback when `next` events are
-//    /// received.
-//    ///
-//    /// Returns a Disposable which can be used to interrupt the work associated
-//    /// with the Signal, and prevent any future callbacks from being invoked.
-//    public func startWithNext(next: (Value) -> Void) -> Disposable? {
-//        return start(with: Observer(next: next))
-//    }
-//    
-//    /// Creates a Signal from the producer, then adds exactly one observer to
-//    /// the Signal, which will invoke the given callback when a `completed` event is
-//    /// received.
-//    ///
-//    /// Returns a Disposable which can be used to interrupt the work associated
-//    /// with the Signal.
-//    public func startWithCompleted(completed: () -> Void) -> Disposable? {
-//        return start(with: Observer(completed: completed))
-//    }
-//    
-//    /// Creates a Signal from the producer, then adds exactly one observer to
-//    /// the Signal, which will invoke the given callback when a `failed` event is
-//    /// received.
-//    ///
-//    /// Returns a Disposable which can be used to interrupt the work associated
-//    /// with the Signal.
-//    public func startWithFailed(failed: (Error) -> Void) -> Disposable? {
-//        return start(with: Observer(failed: failed))
-//    }
-//    
-//    /// Creates a Signal from the producer, then adds exactly one observer to
-//    /// the Signal, which will invoke the given callback when an `interrupted` event is
-//    /// received.
-//    ///
-//    /// Returns a Disposable which can be used to interrupt the work associated
-//    /// with the Signal.
-//    public func startWithInterrupted(interrupted: () -> Void) -> Disposable? {
-//        return start(with: Observer(interrupted: interrupted))
-//    }
+    /// Convenience override for start(_:) to allow trailing-closure style
+    /// invocations.
+    public func start(_ observerAction: Signal<Value, Error>.Observer.Action) -> Disposable? {
+        return start(with: Observer(observerAction))
+    }
+    
+    /// Creates a Signal from the producer, then adds exactly one observer to
+    /// the Signal, which will invoke the given callback when `next` events are
+    /// received.
+    ///
+    /// Returns a Disposable which can be used to interrupt the work associated
+    /// with the Signal, and prevent any future callbacks from being invoked.
+    public func startWithNext(next: (Value) -> Void) -> Disposable? {
+        return start(with: Observer(next: next))
+    }
+    
+    /// Creates a Signal from the producer, then adds exactly one observer to
+    /// the Signal, which will invoke the given callback when a `completed` event is
+    /// received.
+    ///
+    /// Returns a Disposable which can be used to interrupt the work associated
+    /// with the Signal.
+    public func startWithCompleted(completed: () -> Void) -> Disposable? {
+        return start(with: Observer(completed: completed))
+    }
+    
+    /// Creates a Signal from the producer, then adds exactly one observer to
+    /// the Signal, which will invoke the given callback when a `failed` event is
+    /// received.
+    ///
+    /// Returns a Disposable which can be used to interrupt the work associated
+    /// with the Signal.
+    public func startWithFailed(failed: (Error) -> Void) -> Disposable? {
+        return start(with: Observer(failed: failed))
+    }
+    
+    /// Creates a Signal from the producer, then adds exactly one observer to
+    /// the Signal, which will invoke the given callback when an `interrupted` event is
+    /// received.
+    ///
+    /// Returns a Disposable which can be used to interrupt the work associated
+    /// with the Signal.
+    public func startWithInterrupted(interrupted: () -> Void) -> Disposable? {
+        return start(with: Observer(interrupted: interrupted))
+    }
 
 }
