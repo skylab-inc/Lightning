@@ -10,8 +10,6 @@ import Dispatch
 
 public struct RunLoop {
     
-    let dispatchGroup = dispatch_group_create()
-    
     public init() {
         
     }

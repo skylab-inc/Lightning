@@ -3,8 +3,8 @@ import PackageDescription
 let package = Package(
     name: "Edge",
     dependencies: [
-        .Package(url: "https://github.com/SwiftyBeaver/SwiftyBeaver.git", majorVersion: 0),
-        .Package(url: "../CHTTPParser", majorVersion: 0),
-        //.Package(url: "https://github.com/antitypical/Result.git", majorVersion: 2)
+        .Package(url: "https://github.com/SwiftOnEdge/Reactive.git", majorVersion: 0, minor: 0),
+        .Package(url: "https://github.com/SwiftOnEdge/IOStream.git", majorVersion: 0, minor: 0),
+        .Package(url: "https://github.com/SwiftOnEdge/TCP.git", majorVersion: 0, minor: 0),
     ]
 )
