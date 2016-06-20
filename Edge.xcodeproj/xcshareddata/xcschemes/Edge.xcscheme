@@ -6,7 +6,7 @@
         <BuildableReference
           BuildableIdentifier = "primary"
           BlueprintIdentifier = "______Target_C7"
-          BuildableName = "libC7.dylib"
+          BuildableName = "C7.framework"
           BlueprintName = "C7"
           ReferencedContainer = "container:Edge.xcodeproj">
         </BuildableReference>
@@ -15,7 +15,7 @@
         <BuildableReference
           BuildableIdentifier = "primary"
           BlueprintIdentifier = "______Target_Log"
-          BuildableName = "libLog.dylib"
+          BuildableName = "Log.framework"
           BlueprintName = "Log"
           ReferencedContainer = "container:Edge.xcodeproj">
         </BuildableReference>
@@ -24,7 +24,7 @@
         <BuildableReference
           BuildableIdentifier = "primary"
           BlueprintIdentifier = "______Target_Reactive"
-          BuildableName = "libReactive.dylib"
+          BuildableName = "Reactive.framework"
           BlueprintName = "Reactive"
           ReferencedContainer = "container:Edge.xcodeproj">
         </BuildableReference>
@@ -33,7 +33,7 @@
         <BuildableReference
           BuildableIdentifier = "primary"
           BlueprintIdentifier = "______Target_POSIX"
-          BuildableName = "libPOSIX.dylib"
+          BuildableName = "POSIX.framework"
           BlueprintName = "POSIX"
           ReferencedContainer = "container:Edge.xcodeproj">
         </BuildableReference>
@@ -41,18 +41,9 @@
       <BuildActionEntry buildForTesting = "YES" buildForRunning = "YES" buildForProfiling = "YES" buildForArchiving = "YES" buildForAnalyzing = "YES">
         <BuildableReference
           BuildableIdentifier = "primary"
-          BlueprintIdentifier = "______Target_StandardOutputAppender"
-          BuildableName = "libStandardOutputAppender.dylib"
-          BlueprintName = "StandardOutputAppender"
-          ReferencedContainer = "container:Edge.xcodeproj">
-        </BuildableReference>
-      </BuildActionEntry>
-      <BuildActionEntry buildForTesting = "YES" buildForRunning = "YES" buildForProfiling = "YES" buildForArchiving = "YES" buildForAnalyzing = "YES">
-        <BuildableReference
-          BuildableIdentifier = "primary"
-          BlueprintIdentifier = "______Target_POSIXExtensions"
-          BuildableName = "libPOSIXExtensions.dylib"
-          BlueprintName = "POSIXExtensions"
+          BlueprintIdentifier = "______Target_Edge"
+          BuildableName = "Edge.framework"
+          BlueprintName = "Edge"
           ReferencedContainer = "container:Edge.xcodeproj">
         </BuildableReference>
       </BuildActionEntry>
@@ -60,7 +51,7 @@
         <BuildableReference
           BuildableIdentifier = "primary"
           BlueprintIdentifier = "______Target_IOStream"
-          BuildableName = "libIOStream.dylib"
+          BuildableName = "IOStream.framework"
           BlueprintName = "IOStream"
           ReferencedContainer = "container:Edge.xcodeproj">
         </BuildableReference>
@@ -68,18 +59,27 @@
       <BuildActionEntry buildForTesting = "YES" buildForRunning = "YES" buildForProfiling = "YES" buildForArchiving = "YES" buildForAnalyzing = "YES">
         <BuildableReference
           BuildableIdentifier = "primary"
-          BlueprintIdentifier = "______Target_TCP"
-          BuildableName = "libTCP.dylib"
-          BlueprintName = "TCP"
+          BlueprintIdentifier = "______Target_POSIXExtensions"
+          BuildableName = "POSIXExtensions.framework"
+          BlueprintName = "POSIXExtensions"
           ReferencedContainer = "container:Edge.xcodeproj">
         </BuildableReference>
       </BuildActionEntry>
       <BuildActionEntry buildForTesting = "YES" buildForRunning = "YES" buildForProfiling = "YES" buildForArchiving = "YES" buildForAnalyzing = "YES">
         <BuildableReference
           BuildableIdentifier = "primary"
-          BlueprintIdentifier = "______Target_Edge"
-          BuildableName = "libEdge.dylib"
-          BlueprintName = "Edge"
+          BlueprintIdentifier = "______Target_RunLoop"
+          BuildableName = "RunLoop.framework"
+          BlueprintName = "RunLoop"
+          ReferencedContainer = "container:Edge.xcodeproj">
+        </BuildableReference>
+      </BuildActionEntry>
+      <BuildActionEntry buildForTesting = "YES" buildForRunning = "YES" buildForProfiling = "YES" buildForArchiving = "YES" buildForAnalyzing = "YES">
+        <BuildableReference
+          BuildableIdentifier = "primary"
+          BlueprintIdentifier = "______Target_TCP"
+          BuildableName = "TCP.framework"
+          BlueprintName = "TCP"
           ReferencedContainer = "container:Edge.xcodeproj">
         </BuildableReference>
       </BuildActionEntry>
@@ -91,6 +91,16 @@
     selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
     shouldUseLaunchSchemeArgsEnv = "YES">
     <Testables>
+    <TestableReference
+      skipped = "NO">
+      <BuildableReference
+        BuildableIdentifier = "primary"
+        BlueprintIdentifier = "______Target_TCPTestSuite"
+        BuildableName = "TCPTestSuite.xctest"
+        BlueprintName = "TCPTestSuite"
+        ReferencedContainer = "container:Edge.xcodeproj">
+      </BuildableReference>
+    </TestableReference>
     </Testables>
   </TestAction>
 </Scheme>
