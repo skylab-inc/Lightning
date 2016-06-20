@@ -18,7 +18,7 @@ public struct RunLoop {
         if ignoreSigPipe {
             signal(SIGPIPE, SIG_IGN)
         }
-        dispatch_main()
+        dispatchMain()
     }
     
 }
