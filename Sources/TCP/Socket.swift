@@ -11,7 +11,6 @@ import Reactive
 import POSIX
 import POSIXExtensions
 import Log
-import StandardOutputAppender
 import IOStream
 
 
