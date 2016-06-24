@@ -49,9 +49,7 @@ let package = Package(
 import Edge
 import Foundation
 
-let loop = RunLoop()
-var server = TCPServer(loop: loop)
-    
+let server = try! TCP.Server()
 try server.bind(host: "0.0.0.0", port: 50000)
     
 server.listen().startWithNext { connection in
