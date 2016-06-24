@@ -9,3 +9,4 @@
 @_exported import Reactive
 @_exported import IOStream
 @_exported import TCP
+@_exported import RunLoop
