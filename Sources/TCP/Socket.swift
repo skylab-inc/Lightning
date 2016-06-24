@@ -32,17 +32,19 @@ public final class Socket: WritableIOStream, ReadableIOStream {
     public init(fd: SocketFileDescriptor, reuseAddress: Bool = defaultReuseAddress) throws {
         self.socketFD = fd
         
-        // Set SO_REUSEADDR
-        var reuseAddr = 1
-        let error = setsockopt(self.socketFD.rawValue, SOL_SOCKET, SO_REUSEADDR, &reuseAddr, socklen_t(strideof(Int)))
-        if let systemError = SystemError(errorNumber: error) {
-            throw systemError
+        if reuseAddress {
+            // Set SO_REUSEADDR
+            var reuseAddr = 1
+            let error = setsockopt(self.socketFD.rawValue, SOL_SOCKET, SO_REUSEADDR, &reuseAddr, socklen_t(strideof(Int)))
+            if let systemError = SystemError(errorNumber: error) {
+                throw systemError
+            }
         }
         
         // Create the dispatch source for listening
         self.channel = DispatchIO(type: .stream, fileDescriptor: fd.rawValue, queue: .main) { error in
-            if error != 0 {
-                try! { throw SystemError(errorNumber: error)! }()
+            if let systemError = SystemError(errorNumber: error) {
+                try! { throw systemError }()
             }
         }
     }

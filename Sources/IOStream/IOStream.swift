@@ -31,7 +31,7 @@ public extension WritableIOStream {
             let writeChannel = DispatchIO(
                 type: .stream,
                 io: self.channel,
-                queue: DispatchQueue.main
+                queue: .main
             ) { error in
                 if let systemError = SystemError(errorNumber: error) {
                     observer.sendFailed(systemError)
@@ -41,7 +41,12 @@ public extension WritableIOStream {
             buffer.withUnsafeBufferPointer { buffer in
                 
                 // Allocate dispatch data
-                let dispatchData = DispatchData(bytes: buffer)
+                // TODO: This does not seem right.
+                // Work around crash for now.
+                let dispatchData = DispatchData(
+                    bytesNoCopy: buffer,
+                    deallocator: .custom(nil, { })
+                )
                 
                 // Schedule write operation
                 writeChannel.write(offset: off_t(), data: dispatchData, queue: .main) { done, data, error in

@@ -28,14 +28,6 @@ public final class Server {
     
     public init(fd: SocketFileDescriptor, reuseAddress: Bool = defaultReuseAddress) throws {
         self.fd = fd
-        self.listeningSource = DispatchSource.read(fileDescriptor: self.fd.rawValue, queue: .main)
-        
-        // Close the socket when the source is canceled.
-        listeningSource.setCancelHandler {
-            // Close the socket
-            self.fd.close()
-        }        
-        
         if reuseAddress {
             // Set SO_REUSEADDR
             var reuseAddr = 1
@@ -44,6 +36,16 @@ public final class Server {
                 throw SystemError(errorNumber: errno)!
             }
         }
+        
+        self.listeningSource = DispatchSource.read(fileDescriptor: self.fd.rawValue, queue: .main)
+        
+        // Close the socket when the source is canceled.
+        listeningSource.setCancelHandler {
+            // Close the socket
+            self.fd.close()
+        }        
+        
+
     }
     
     public func bind(host: String, port: Port) throws {

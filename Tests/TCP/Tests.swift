@@ -5,8 +5,9 @@ class TestBasic: XCTestCase {
 
     func testClientServer() {
 
-        let interruptExpectation = expectation(withDescription: "readInterrupt")
-        let completeWriteExpectation = expectation(withDescription: "completeWrite")
+        let interruptExpectation = expectation(withDescription: "Did not receive an interrupted read.")
+        let receiveMessageExpectation = expectation(withDescription: "Did not receive any message.")
+        let completeWriteExpectation = expectation(withDescription: "Did not complete write.")
         let server = try! Server()
         try! server.bind(host: "localhost", port: 50000)
 
@@ -15,6 +16,7 @@ class TestBasic: XCTestCase {
             let strings = read.map { String(bytes: $0, encoding: .utf8)! }
 
             strings.onNext { message in
+                receiveMessageExpectation.fulfill()
                 XCTAssert(message == "This is a test", "Incorrect message.")
                 read.stop()
             }
@@ -52,7 +54,7 @@ class TestBasic: XCTestCase {
         }
         connect.start()
 
-        waitForExpectations(withTimeout: 1) { _ in }
+        waitForExpectations(withTimeout: 1)
     }
 
 }

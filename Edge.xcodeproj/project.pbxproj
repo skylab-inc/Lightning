@@ -209,7 +209,7 @@
 		__PBXFileRef_TCP_Info.plist /* TCP_Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = TCP_Info.plist; path = Edge.xcodeproj/TCP_Info.plist; sourceTree = SOURCE_ROOT; };
 		__PBXFileRef_Tests/TCP/Tests.swift /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		"_____Product_C7" /* C7.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = C7.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		"_____Product_Edge" /* Edge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Edge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"_____Product_Edge" /* Edge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Edge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"_____Product_IOStream" /* IOStream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = IOStream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"_____Product_Log" /* Log.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Log.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"_____Product_POSIX" /* POSIX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = POSIX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -217,7 +217,7 @@
 		"_____Product_Reactive" /* Reactive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Reactive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"_____Product_RunLoop" /* RunLoop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RunLoop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"_____Product_TCP" /* TCP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TCP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		"_____Product_TCPTestSuite" /* TCPTestSuite.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = TCPTestSuite.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		"_____Product_TCPTestSuite" /* TCPTestSuite.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = TCPTestSuite.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
