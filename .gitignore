@@ -89,6 +89,7 @@ DerivedData/
 xcuserdata/
 
 ## Other
+*.xcodeproj
 *.xcodeproj/*.plist
 *.moved-aside
 *.xcuserstate

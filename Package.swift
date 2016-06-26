@@ -11,6 +11,14 @@ let package = Package(
             dependencies: ["POSIXExtensions", "IOStream"]
         ),
         Target(
+            name: "HTTP",
+            dependencies: [
+                "POSIXExtensions",
+                "IOStream",
+                "TCP"
+            ]
+        ),
+        Target(
             name: "IOStream",
             dependencies: ["POSIXExtensions"]
         ),
@@ -25,6 +33,9 @@ let package = Package(
     dependencies: [
         .Package(url: "https://github.com/SwiftOnEdge/Reactive.git", majorVersion: 0, minor: 0),
         .Package(url: "https://github.com/Zewo/POSIX.git", majorVersion: 0, minor: 5),
-        .Package(url: "https://github.com/Zewo/Log.git", majorVersion: 0, minor: 8)
+        .Package(url: "https://github.com/Zewo/Log.git", majorVersion: 0, minor: 8),
+        .Package(url: "https://github.com/open-swift/C7.git", majorVersion: 0, minor: 8),
+        .Package(url: "https://github.com/Zewo/CHTTPParser.git", majorVersion: 0, minor: 5),
+        .Package(url: "https://github.com/Zewo/URI.git", majorVersion: 0, minor: 8),
     ]
 )
