@@ -23,12 +23,236 @@
 // SOFTWARE.
 
 import CHTTPParser
-@_exported import URI
+import Foundation
 
-typealias Parser = UnsafeMutablePointer<http_parser>
+typealias CParserPointer = UnsafeMutablePointer<http_parser>
+typealias RawParserPointer = UnsafeMutablePointer<RawParser>
+
+private func bridge<T : AnyObject>(_ obj : T) -> UnsafeMutablePointer<Void> {
+    return UnsafeMutablePointer(OpaquePointer(bitPattern: Unmanaged.passUnretained(obj)))
+}
+
+private func bridge<T : AnyObject>(_ ptr : UnsafeMutablePointer<Void>) -> T {
+    return Unmanaged<T>.fromOpaque(OpaquePointer(ptr)).takeUnretainedValue()
+}
 
 struct ParseError: ErrorProtocol {
     let description: String
+}
+
+public struct RequestParser {
+    private let parser: FullMessageParser
+    
+    init(onRequest: ((Request) -> Void)? = nil) {
+        self.parser = FullMessageParser(type: HTTP_REQUEST) { parseState in
+            let request = Request(
+                method: parseState.method,
+                uri: parseState.uri,
+                version: parseState.version,
+                rawHeaders: parseState.rawHeaders,
+                body: parseState.body
+            )
+            onRequest?(request)
+        }
+    }
+    
+    public func parse(_ data: [UInt8]) throws {
+        try parser.parse(data)
+    }
+    
+}
+
+public struct ResponseParser {
+    private let parser: FullMessageParser
+    
+    init(onResponse: ((Response) -> Void)? = nil) {
+        self.parser = FullMessageParser(type: HTTP_RESPONSE) { parseState in
+            let response = Response(
+                version: parseState.version,
+                status: parseState.statusCode,
+                rawHeaders: parseState.rawHeaders,
+                body: parseState.body
+            )
+            onResponse?(response)
+        }
+    }
+    
+    public func parse(_ data: [UInt8]) throws {
+        try parser.parse(data)
+    }
+    
+}
+
+private final class FullMessageParser {
+    
+    struct ParseState {
+        
+        var version: Version = Version(major: 0, minor: 0)
+        var rawHeaders: [String] = []
+        var body: [UInt8] = []
+        var currentHeaderField = ""
+        
+        // Response
+        var statusCode: Status! = nil
+        var statusPhrase = ""
+        var cookies: [String] = []
+        var currentCookie = ""
+        
+        // Request
+        var method: Method! = nil
+        var uri = ""
+        
+    }
+    
+    var state = ParseState()
+    let onComplete: (ParseState) -> ()
+    let rawParser: RawParser
+    
+    init(type: http_parser_type, onComplete: (ParseState) -> ()) {
+        self.onComplete = onComplete
+        self.rawParser = RawParser(type: type)
+        self.rawParser.delegate = self
+    }
+    
+    func parse(_ data: [UInt8]) throws {
+        try rawParser.parse(data)
+    }
+    
+}
+
+extension FullMessageParser: RawParserDelegate {
+    
+    func onMessageBegin() throws {
+        // No state change
+    }
+    
+    func onURL(data: UnsafeBufferPointer<UInt8>) throws {
+        guard let uri = String(bytes: data, encoding: .utf8) else {
+            throw ParseError(description: "URI could not be encoded as UTF8.")
+        }
+        state.uri += uri
+    }
+    
+    func onStatus(data: UnsafeBufferPointer<UInt8>) throws {
+        guard let partialStatusPhrase = String(bytes: data, encoding: .utf8) else {
+            throw ParseError(description: "Status phrase could not be encoded as UTF8.")
+        }
+        state.statusPhrase += partialStatusPhrase
+    }
+    
+    func onHeaderField(data: UnsafeBufferPointer<UInt8>) throws {
+        guard let partialHeaderField = String(bytes: data, encoding: .utf8) else {
+            throw ParseError(description: "Header field could not be encoded as UTF8.")
+        }
+        if state.rawHeaders.count % 2 == 0 {
+            state.rawHeaders.append("")
+        }
+        state.rawHeaders[state.rawHeaders.count - 1] += partialHeaderField
+    }
+    
+    func onHeaderValue(data: UnsafeBufferPointer<UInt8>) throws {
+        guard let partialHeaderValue = String(bytes: data, encoding: .utf8) else {
+            throw ParseError(description: "Header value could not be encoded as UTF8.")
+        }
+        if state.rawHeaders.count % 2 == 1 {
+            state.rawHeaders.append("")
+        }
+        state.rawHeaders[state.rawHeaders.count - 1] += partialHeaderValue
+    }
+    
+    func onHeadersComplete(
+        method: Int,
+        statusCode: Int,
+        majorVersion: Int,
+        minorVersion: Int
+    ) throws -> HeadersCompleteDirective {
+        let method = Method(code: method)
+        let version = Version(major: majorVersion, minor: minorVersion)
+        state.statusCode = Status(statusCode: statusCode)
+        state.version = version
+        state.method = method
+        return .none
+    }
+    
+    func onBody(data: UnsafeBufferPointer<UInt8>) throws {
+        state.body += Array(data)
+    }
+    
+    func onMessageComplete() throws {
+        onComplete(state)
+        // Reset state
+        state = ParseState()
+    }
+    
+    func onChunkHeader() throws {
+        // No state change
+    }
+    
+    func onChunkComplete() throws {
+        // No state change
+    }
+    
+}
+
+public enum HeadersCompleteDirective {
+    case none
+    case noBody
+    case noBodyNoFurtherResponses
+}
+
+public protocol RawParserDelegate: class {
+
+    func onMessageBegin() throws
+    func onMessageComplete() throws
+    
+    func onURL(data: UnsafeBufferPointer<UInt8>) throws
+    func onStatus(data: UnsafeBufferPointer<UInt8>) throws
+    func onHeaderField(data: UnsafeBufferPointer<UInt8>) throws
+    func onHeaderValue(data: UnsafeBufferPointer<UInt8>) throws
+    
+    func onHeadersComplete(
+        method: Int,
+        statusCode: Int,
+        majorVersion: Int,
+        minorVersion: Int
+    ) throws -> HeadersCompleteDirective
+    
+    func onBody(data: UnsafeBufferPointer<UInt8>) throws
+    
+    func onChunkHeader() throws
+    func onChunkComplete() throws
+    
+}
+
+public final class RawParser {
+    var parser = http_parser()
+    var type: http_parser_type
+    private weak var delegate: RawParserDelegate?
+    
+    public init(type: http_parser_type, delegate: RawParserDelegate? = nil) {
+        self.type = type
+        self.delegate = delegate
+        reset()
+    }
+    
+    func reset() {
+        http_parser_init(&parser, self.type)
+        
+        // Set self as the context. self must be a reference type.
+        parser.data = bridge(self)
+    }
+    
+    public func parse(_ data: [UInt8]) throws {
+        let bytesParsed = http_parser_execute(&parser, &requestSettings, UnsafePointer(data), data.count)
+        guard bytesParsed == data.count else {
+            reset()
+            let errorName = http_errno_name(http_errno(parser.http_errno))!
+            let errorDescription = http_errno_description(http_errno(parser.http_errno))!
+            let error = ParseError(description: "\(String(validatingUTF8: errorName)!): \(String(validatingUTF8: errorDescription)!)")
+            throw error
+        }
+    }
+
 }
 
 extension Method {
@@ -72,8 +296,137 @@ extension Method {
     }
 }
 
-extension UnsafeMutablePointer {
-    func withPointee<R>(_ body: @noescape (inout pointer: Pointee) throws -> R) rethrows -> R {
-        return try body(pointer: &pointee)
+var requestSettings: http_parser_settings = {
+    var settings = http_parser_settings()
+    http_parser_settings_init(&settings)
+    
+    settings.on_message_begin    = onMessageBegin
+    settings.on_url              = onURL
+    settings.on_status           = onStatus
+    settings.on_header_field     = onHeaderField
+    settings.on_header_value     = onHeaderValue
+    settings.on_headers_complete = onHeadersComplete
+    settings.on_body             = onBody
+    settings.on_message_complete = onMessageComplete
+    settings.on_chunk_header     = onChunkHeader
+    settings.on_chunk_complete   = onChunkComplete
+
+    return settings
+}()
+
+
+// MARK: C function pointer spring boards
+private func onMessageBegin(_ parser: CParserPointer?) -> Int32 {
+    let rawParser: RawParser = bridge(parser!.pointee.data)
+    do {
+        try rawParser.delegate?.onMessageBegin()
+    } catch {
+        return 1
+    }
+    return 0
+}
+
+private func onURL(_ parser: CParserPointer?, data: UnsafePointer<Int8>?, length: Int) -> Int32 {
+    let rawParser: RawParser = bridge(parser!.pointee.data)
+    do {
+        try rawParser.delegate?.onURL(data: UnsafeBufferPointer(start: UnsafePointer<UInt8>(data), count: length))
+    } catch {
+        return 1
+    }
+    return 0
+}
+
+private func onStatus(_ parser: CParserPointer?, data: UnsafePointer<Int8>?, length: Int) -> Int32 {
+    let rawParser: RawParser = bridge(parser!.pointee.data)
+    do {
+        try rawParser.delegate?.onStatus(data: UnsafeBufferPointer(start: UnsafePointer<UInt8>(data), count: length))
+    } catch {
+        return 1
+    }
+    return 0
+}
+
+private func onHeaderField(_ parser: CParserPointer?, data: UnsafePointer<Int8>?, length: Int) -> Int32 {
+    let rawParser: RawParser = bridge(parser!.pointee.data)
+    do {
+        try rawParser.delegate?.onHeaderField(data: UnsafeBufferPointer(start: UnsafePointer<UInt8>(data), count: length))
+    } catch {
+        return 1
+    }
+    return 0
+}
+
+private func onHeaderValue(_ parser: CParserPointer?, data: UnsafePointer<Int8>?, length: Int) -> Int32 {
+    let rawParser: RawParser = bridge(parser!.pointee.data)
+    do {
+        try rawParser.delegate?.onHeaderValue(data: UnsafeBufferPointer(start: UnsafePointer<UInt8>(data), count: length))
+    } catch {
+        return 1
+    }
+    return 0
+}
+
+private func onHeadersComplete(_ parser: CParserPointer?) -> Int32 {
+    let rawParser: RawParser = bridge(parser!.pointee.data)
+    let method = Int(rawParser.parser.method)
+    let statusCode = Int(rawParser.parser.status_code)
+    let majorVersion = Int(rawParser.parser.http_major)
+    let minorVersion = Int(rawParser.parser.http_minor)
+    do {
+        let directive = try rawParser.delegate?.onHeadersComplete(
+            method: method,
+            statusCode: statusCode,
+            majorVersion: majorVersion,
+            minorVersion: minorVersion
+        )
+        switch directive {
+        case .none: return 0
+        case .none?: return 0
+        case .noBody?: return 1
+        case .noBodyNoFurtherResponses?: return 2
+        }
+    } catch {
+        return 3 // on_headers_complete is a special snowflake
     }
 }
+
+private func onBody(_ parser: CParserPointer?, data: UnsafePointer<Int8>?, length: Int) -> Int32 {
+    let rawParser: RawParser = bridge(parser!.pointee.data)
+    do {
+        try rawParser.delegate?.onBody(data: UnsafeBufferPointer(start: UnsafePointer<UInt8>(data), count: length))
+    } catch {
+        return 1
+    }
+    return 0
+}
+
+private func onMessageComplete(_ parser: CParserPointer?) -> Int32 {
+    let rawParser: RawParser = bridge(parser!.pointee.data)
+    do {
+        try rawParser.delegate?.onMessageComplete()
+    } catch {
+        return 1
+    }
+    return 0
+}
+
+private func onChunkHeader(_ parser: CParserPointer?) -> Int32 {
+    let rawParser: RawParser = bridge(parser!.pointee.data)
+    do {
+        try rawParser.delegate?.onChunkHeader()
+    } catch {
+        return 1
+    }
+    return 0
+}
+
+private func onChunkComplete(_ parser: CParserPointer?) -> Int32 {
+    let rawParser: RawParser = bridge(parser!.pointee.data)
+    do {
+        try rawParser.delegate?.onChunkComplete()
+    } catch {
+        return 1
+    }
+    return 0
+}
+

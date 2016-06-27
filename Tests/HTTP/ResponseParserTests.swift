@@ -1,9 +1,8 @@
-/*
-
-import XCTest
-@testable import HTTPParser
+/*import XCTest
+@testable import HTTP
 
 class ResponseParserTests: XCTestCase {
+ 
     func testInvalidResponse() {
         let parser = ResponseParser()
         do {
@@ -340,6 +339,7 @@ class ResponseParserTests: XCTestCase {
             }
         #endif
     }
+    */
 //
 //    func testUpgradeResponses() {
 //        let parser = HTTPResponseParser { _ in
@@ -539,7 +539,7 @@ class ResponseParserTests: XCTestCase {
 //        XCTAssert(uri.query["for"] == "")
 //        XCTAssert(uri.fragment == "yeah")
 //    }
-}
+/*}
 
 
 
@@ -558,5 +558,5 @@ extension ResponseParserTests {
             ("testManyResponses", testManyResponses),
         ]
     }
-}
-*/
+}*/
+

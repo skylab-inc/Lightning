@@ -8,7 +8,7 @@ class RequestParserTests: XCTestCase {
         let parser = RequestParser()
         let data = ("INVALID / HTTP/1.1\r\n" + "\r\n")
         do {
-            try parser.parse(data)
+            try parser.parse(Array(data.utf8))
         } catch {
             expectParseError.fulfill()
         }
@@ -57,13 +57,13 @@ class RequestParserTests: XCTestCase {
             let parser = RequestParser { request in
                 numberParsed += 1
                 XCTAssert(request.method == Method(code: i))
-                XCTAssert(request.uri.path == "/")
+                XCTAssert(request.uri == "/")
                 XCTAssert(request.version.major == 1)
                 XCTAssert(request.version.minor == 1)
-                XCTAssert(request.headers.count == 0)
+                XCTAssert(request.rawHeaders.count == 0)
             }
             do {
-                try parser.parse(data)
+                try parser.parse(Array(data.utf8))
             } catch {
                 XCTFail("Parsing error \(error) for method \(method)")
             }
@@ -76,10 +76,10 @@ class RequestParserTests: XCTestCase {
         let parser = RequestParser { request in
             numberParsed += 1
             XCTAssert(request.method == .get)
-            XCTAssert(request.uri.path == "/")
+            XCTAssert(request.uri == "/")
             XCTAssert(request.version.major == 1)
             XCTAssert(request.version.minor == 1)
-            XCTAssert(request.headers.count == 0)
+            XCTAssert(request.rawHeaders.count == 0)
         }
         let dataArray = [
             "GET / HT",
@@ -89,7 +89,7 @@ class RequestParserTests: XCTestCase {
         ]
         do {
             for data in dataArray {
-                try parser.parse(data)
+                try parser.parse(Array(data.utf8))
             }
         } catch {
             XCTFail("Parsing error \(error).")
@@ -105,13 +105,14 @@ class RequestParserTests: XCTestCase {
         let parser = RequestParser { request in
             numberParsed += 1
             XCTAssert(request.method == .get)
-            XCTAssert(request.uri.path == "/")
+            XCTAssert(request.uri == "/")
             XCTAssert(request.version.major == 1)
             XCTAssert(request.version.minor == 1)
-            XCTAssert(request.headers["Host"] == "swift.org")
+            XCTAssert(request.rawHeaders[0] == "Host")
+            XCTAssert(request.rawHeaders[1] == "swift.org")
         }
         do {
-            try parser.parse(data)
+            try parser.parse(Array(data.utf8))
         } catch {
             XCTFail("Parsing error \(error).")
         }
@@ -123,10 +124,11 @@ class RequestParserTests: XCTestCase {
         let parser = RequestParser { request in
             numberParsed += 1
             XCTAssert(request.method == .get)
-            XCTAssert(request.uri.path == "/")
+            XCTAssert(request.uri == "/")
             XCTAssert(request.version.major == 1)
             XCTAssert(request.version.minor == 1)
-            XCTAssert(request.headers["Host"] == "swift.org")
+            XCTAssert(request.rawHeaders[0] == "Host")
+            XCTAssert(request.rawHeaders[1] == "swift.org")
         }
         let dataArray = [
             "GET / HTT",
@@ -142,7 +144,7 @@ class RequestParserTests: XCTestCase {
         ]
         do {
             for data in dataArray {
-                try parser.parse(data)
+                try parser.parse(Array(data.utf8))
             }
         } catch {
             XCTFail("Parsing error \(error).")
@@ -155,11 +157,15 @@ class RequestParserTests: XCTestCase {
         let parser = RequestParser { request in
             numberParsed += 1
             XCTAssert(request.method == .get)
-            XCTAssert(request.uri.path == "/")
+            XCTAssert(request.uri == "/")
             XCTAssert(request.version.major == 1)
             XCTAssert(request.version.minor == 1)
-            XCTAssert(request.headers["Host"] == "swift.org")
-            XCTAssert(request.headers["Cookie"] == "server=swift, lang=swift")
+            XCTAssert(request.rawHeaders[0] == "Host")
+            XCTAssert(request.rawHeaders[1] == "swift.org")
+            XCTAssert(request.rawHeaders[2] == "Cookie")
+            XCTAssert(request.rawHeaders[3] == "server=swift")
+            XCTAssert(request.rawHeaders[4] == "Cookie")
+            XCTAssert(request.rawHeaders[5] == "lang=swift")
         }
         let dataArray = [
             "GET / HTT",
@@ -178,7 +184,7 @@ class RequestParserTests: XCTestCase {
         ]
         do {
             for data in dataArray {
-                try parser.parse(data)
+                try parser.parse(Array(data.utf8))
             }
         } catch {
             XCTFail("Parsing error \(error).")
@@ -191,17 +197,18 @@ class RequestParserTests: XCTestCase {
         let parser = RequestParser { request in
             numberParsed += 1
             XCTAssert(request.method == .post)
-            XCTAssert(request.uri.path == "/")
+            XCTAssert(request.uri == "/")
             XCTAssert(request.version.major == 1)
             XCTAssert(request.version.minor == 1)
-            XCTAssert(request.headers["Content-Length"] == "5")
+            XCTAssert(request.rawHeaders[0] == "Content-Length")
+            XCTAssert(request.rawHeaders[1] == "5")
         }
         let data = ("POST / HTTP/1.1\r\n" +
                 "Content-Length: 5\r\n" +
                 "\r\n" +
                 "Swift")
         do {
-            try parser.parse(data)
+            try parser.parse(Array(data.utf8))
         } catch {
             XCTFail("Parsing error \(error).")
         }
@@ -213,10 +220,11 @@ class RequestParserTests: XCTestCase {
         let parser = RequestParser { request in
             numberParsed += 1
             XCTAssert(request.method == .post)
-            XCTAssert(request.uri.path == "/profile")
+            XCTAssert(request.uri == "/profile")
             XCTAssert(request.version.major == 1)
             XCTAssert(request.version.minor == 1)
-            XCTAssert(request.headers["Content-Length"] == "5")
+            XCTAssert(request.rawHeaders[0] == "Content-Length")
+            XCTAssert(request.rawHeaders[1] == "5")
         }
         let dataArray = [
             "PO",
@@ -233,7 +241,7 @@ class RequestParserTests: XCTestCase {
         ]
         do {
             for data in dataArray {
-                try parser.parse(data)
+                try parser.parse(Array(data.utf8))
             }
         } catch {
             XCTFail("Parsing error \(error).")
@@ -247,16 +255,16 @@ class RequestParserTests: XCTestCase {
             numberParsed += 1
             if numberParsed == 1 {
                 XCTAssert(request.method == .get)
-                XCTAssert(request.uri.path == "/")
+                XCTAssert(request.uri == "/")
                 XCTAssert(request.version.major == 1)
                 XCTAssert(request.version.minor == 1)
-                XCTAssert(request.headers.count == 0)
+                XCTAssert(request.rawHeaders.count == 0)
             } else if numberParsed == 2 {
                 XCTAssert(request.method == .head)
-                XCTAssert(request.uri.path == "/profile")
+                XCTAssert(request.uri == "/profile")
                 XCTAssert(request.version.major == 1)
                 XCTAssert(request.version.minor == 1)
-                XCTAssert(request.headers.count == 0)
+                XCTAssert(request.rawHeaders.count == 0)
             }
         }
         let dataArray = [
@@ -271,7 +279,7 @@ class RequestParserTests: XCTestCase {
         ]
         do {
             for data in dataArray {
-                try parser.parse(data)
+                try parser.parse(Array(data.utf8))
             }
         } catch {
             XCTFail("Parsing error \(error).")
@@ -285,21 +293,21 @@ class RequestParserTests: XCTestCase {
             numberParsed += 1
             if numberParsed == 1 {
                 XCTAssert(request.method == .get)
-                XCTAssert(request.uri.path == "/")
+                XCTAssert(request.uri == "/")
                 XCTAssert(request.version.major == 1)
                 XCTAssert(request.version.minor == 1)
-                XCTAssert(request.headers.count == 0)
+                XCTAssert(request.rawHeaders.count == 0)
             } else if numberParsed == 2 {
                 XCTAssert(request.method == .head)
-                XCTAssert(request.uri.path == "/profile")
+                XCTAssert(request.uri == "/profile")
                 XCTAssert(request.version.major == 1)
                 XCTAssert(request.version.minor == 1)
-                XCTAssert(request.headers.count == 0)
+                XCTAssert(request.rawHeaders.count == 0)
             }
         }
         let data = "GET / HTTP/1.1\r\n\r\nHEAD /profile HTTP/1.1\r\n\r\n"
         do {
-            try parser.parse(data)
+            try parser.parse(Array(data.utf8))
         } catch {
             XCTFail("Parsing error \(error).")
         }
@@ -318,14 +326,15 @@ class RequestParserTests: XCTestCase {
                 let parser = RequestParser { request in
                     numberParsed += 1
                     XCTAssert(request.method == .post)
-                    XCTAssert(request.uri.path == "/")
+                    XCTAssert(request.uri == "/")
                     XCTAssert(request.version.major == 1)
                     XCTAssert(request.version.minor == 1)
-                    XCTAssert(request.headers["Content-Length"] == "5")
+                    XCTAssert(request.rawHeaders[0] == "Content-Length")
+                    XCTAssert(request.rawHeaders[1] == "5")
                 }
                 for _ in 0 ..< messageNumber {
                     do {
-                        try parser.parse(data)
+                        try parser.parse(Array(data.utf8))
                     } catch {
                         XCTFail("Parsing error \(error).")
                     }
@@ -544,12 +553,12 @@ extension RequestParserTests {
             ("testShortRequests", testShortRequests),
             ("testDiscontinuousShortRequest", testDiscontinuousShortRequest),
             ("testMediumRequest", testMediumRequest),
-            /*("testDiscontinuousMediumRequest", testDiscontinuousMediumRequest),
+            ("testDiscontinuousMediumRequest", testDiscontinuousMediumRequest),
             ("testDiscontinuousMediumRequestMultipleCookie", testDiscontinuousMediumRequestMultipleCookie),
             ("testCompleteRequest", testCompleteRequest),
             ("testDiscontinuousCompleteRequest", testDiscontinuousCompleteRequest),
             ("testMultipleShortRequestsInTheSameStream", testMultipleShortRequestsInTheSameStream),
-            ("testManyRequests", testManyRequests),*/
+            ("testManyRequests", testManyRequests),
         ]
     }
 }
