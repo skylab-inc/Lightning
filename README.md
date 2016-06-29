@@ -15,7 +15,7 @@ This makes Edge fast and efficient, but it also means that Edge applications can
 > The name Edge is a play on the name Node, as they are both components of [graphs](https://en.wikipedia.org/wiki/Graph_(abstract_data_type)).
 
 #### Reactive Programming
-Edge's event API embraces the concepts of Functional Reactive Programming while still not having any external dependencies. The API is a modified version of [ReactiveCocoa]() and is also inspired by [RxSwift](). 
+Edge's event API embraces the concepts of Functional Reactive Programming while still not having any external dependencies. The API is called [Reactive](https://github.com/SwiftOnEdge/Reactive) and it is a modified version of [ReactiveCocoa](https://github.com/ReactiveCocoa/ReactiveCocoa), but also inspired by [RxSwift](https://github.com/ReactiveX/RxSwift). 
 
 
 > Why did we reimplement?
