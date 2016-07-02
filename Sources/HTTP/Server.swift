@@ -16,10 +16,6 @@ public final class Server {
     
     private var observer: Observer<Request, SystemError>! = nil
     
-    init() {
-
-    }
-    
     public func listen(host: String, port: Port) -> ColdSignal<Request, SystemError> {
         return ColdSignal { observer in
             self.observer = observer

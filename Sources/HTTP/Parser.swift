@@ -24,6 +24,7 @@
 
 import CHTTPParser
 import Foundation
+import S4
 
 typealias CParserPointer = UnsafeMutablePointer<http_parser>
 typealias RawParserPointer = UnsafeMutablePointer<RawParser>
@@ -87,7 +88,7 @@ private final class FullMessageParser {
     
     struct ParseState {
         
-        var version: Version = Version(major: 0, minor: 0)
+        var version: S4.Version = S4.Version(major: 0, minor: 0)
         var rawHeaders: [String] = []
         var body: [UInt8] = []
         var currentHeaderField = ""
@@ -99,7 +100,7 @@ private final class FullMessageParser {
         var currentCookie = ""
         
         // Request
-        var method: Method! = nil
+        var method: S4.Method! = nil
         var uri = ""
         
     }
@@ -167,7 +168,7 @@ extension FullMessageParser: RawParserDelegate {
         minorVersion: Int
     ) throws -> HeadersCompleteDirective {
         let method = Method(code: method)
-        let version = Version(major: majorVersion, minor: minorVersion)
+        let version = S4.Version(major: majorVersion, minor: minorVersion)
         state.statusCode = Status(statusCode: statusCode)
         state.version = version
         state.method = method
@@ -255,7 +256,7 @@ public final class RawParser {
 
 }
 
-extension Method {
+extension S4.Method {
     init(code: Int) {
         switch code {
         case 00: self = delete
