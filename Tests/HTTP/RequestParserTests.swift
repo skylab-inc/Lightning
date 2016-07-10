@@ -58,7 +58,7 @@ class RequestParserTests: XCTestCase {
             let parser = RequestParser { request in
                 numberParsed += 1
                 XCTAssert(request.method == Method(code: i))
-                XCTAssert(request.uri == "/")
+                XCTAssert(request.uri.path == "/")
                 XCTAssert(request.version.major == 1)
                 XCTAssert(request.version.minor == 1)
                 XCTAssert(request.rawHeaders.count == 0)
@@ -77,7 +77,7 @@ class RequestParserTests: XCTestCase {
         let parser = RequestParser { request in
             numberParsed += 1
             XCTAssert(request.method == .get)
-            XCTAssert(request.uri == "/")
+            XCTAssert(request.uri.path == "/")
             XCTAssert(request.version.major == 1)
             XCTAssert(request.version.minor == 1)
             XCTAssert(request.rawHeaders.count == 0)
@@ -106,7 +106,7 @@ class RequestParserTests: XCTestCase {
         let parser = RequestParser { request in
             numberParsed += 1
             XCTAssert(request.method == .get)
-            XCTAssert(request.uri == "/")
+            XCTAssert(request.uri.path == "/")
             XCTAssert(request.version.major == 1)
             XCTAssert(request.version.minor == 1)
             XCTAssert(request.rawHeaders[0] == "Host")
@@ -125,7 +125,7 @@ class RequestParserTests: XCTestCase {
         let parser = RequestParser { request in
             numberParsed += 1
             XCTAssert(request.method == .get)
-            XCTAssert(request.uri == "/")
+            XCTAssert(request.uri.path == "/")
             XCTAssert(request.version.major == 1)
             XCTAssert(request.version.minor == 1)
             XCTAssert(request.rawHeaders[0] == "Host")
@@ -158,7 +158,7 @@ class RequestParserTests: XCTestCase {
         let parser = RequestParser { request in
             numberParsed += 1
             XCTAssert(request.method == .get)
-            XCTAssert(request.uri == "/")
+            XCTAssert(request.uri.path == "/")
             XCTAssert(request.version.major == 1)
             XCTAssert(request.version.minor == 1)
             XCTAssert(request.rawHeaders[0] == "Host")
@@ -198,7 +198,7 @@ class RequestParserTests: XCTestCase {
         let parser = RequestParser { request in
             numberParsed += 1
             XCTAssert(request.method == .post)
-            XCTAssert(request.uri == "/")
+            XCTAssert(request.uri.path == "/")
             XCTAssert(request.version.major == 1)
             XCTAssert(request.version.minor == 1)
             XCTAssert(request.rawHeaders[0] == "Content-Length")
@@ -221,7 +221,7 @@ class RequestParserTests: XCTestCase {
         let parser = RequestParser { request in
             numberParsed += 1
             XCTAssert(request.method == .post)
-            XCTAssert(request.uri == "/profile")
+            XCTAssert(request.uri.path == "/profile")
             XCTAssert(request.version.major == 1)
             XCTAssert(request.version.minor == 1)
             XCTAssert(request.rawHeaders[0] == "Content-Length")
@@ -256,13 +256,13 @@ class RequestParserTests: XCTestCase {
             numberParsed += 1
             if numberParsed == 1 {
                 XCTAssert(request.method == .get)
-                XCTAssert(request.uri == "/")
+                XCTAssert(request.uri.path == "/")
                 XCTAssert(request.version.major == 1)
                 XCTAssert(request.version.minor == 1)
                 XCTAssert(request.rawHeaders.count == 0)
             } else if numberParsed == 2 {
                 XCTAssert(request.method == .head)
-                XCTAssert(request.uri == "/profile")
+                XCTAssert(request.uri.path == "/profile")
                 XCTAssert(request.version.major == 1)
                 XCTAssert(request.version.minor == 1)
                 XCTAssert(request.rawHeaders.count == 0)
@@ -294,13 +294,13 @@ class RequestParserTests: XCTestCase {
             numberParsed += 1
             if numberParsed == 1 {
                 XCTAssert(request.method == .get)
-                XCTAssert(request.uri == "/")
+                XCTAssert(request.uri.path == "/")
                 XCTAssert(request.version.major == 1)
                 XCTAssert(request.version.minor == 1)
                 XCTAssert(request.rawHeaders.count == 0)
             } else if numberParsed == 2 {
                 XCTAssert(request.method == .head)
-                XCTAssert(request.uri == "/profile")
+                XCTAssert(request.uri.path == "/profile")
                 XCTAssert(request.version.major == 1)
                 XCTAssert(request.version.minor == 1)
                 XCTAssert(request.rawHeaders.count == 0)
@@ -327,7 +327,7 @@ class RequestParserTests: XCTestCase {
                 let parser = RequestParser { request in
                     numberParsed += 1
                     XCTAssert(request.method == .post)
-                    XCTAssert(request.uri == "/")
+                    XCTAssert(request.uri.path == "/")
                     XCTAssert(request.version.major == 1)
                     XCTAssert(request.version.minor == 1)
                     XCTAssert(request.rawHeaders[0] == "Content-Length")
