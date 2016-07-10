@@ -1,4 +1,5 @@
 import XCTest
+import S4
 @testable import HTTP
 
 class RequestParserTests: XCTestCase {

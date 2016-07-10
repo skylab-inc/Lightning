@@ -25,6 +25,7 @@
 import CHTTPParser
 import Foundation
 import S4
+import URI
 
 typealias CParserPointer = UnsafeMutablePointer<http_parser>
 typealias RawParserPointer = UnsafeMutablePointer<RawParser>
@@ -42,18 +43,21 @@ struct ParseError: ErrorProtocol {
 }
 
 public struct RequestParser {
-    private let parser: FullMessageParser
+    private let parser: FullMessageParser!
+    var onRequest: ((Request) -> Void)?
     
     init(onRequest: ((Request) -> Void)? = nil) {
-        self.parser = FullMessageParser(type: HTTP_REQUEST) { parseState in
+        self.onRequest = onRequest
+        self.parser = FullMessageParser(type: HTTP_REQUEST)
+        self.parser.onComplete = { parseState in
             let request = Request(
-                method: parseState.method,
-                uri: parseState.uri,
-                version: parseState.version,
+                method: S4.Method(code: parseState.method),
+                uri: try URI(parseState.uri),
+                version: Version(major: parseState.version.major, minor: parseState.version.minor),
                 rawHeaders: parseState.rawHeaders,
                 body: parseState.body
             )
-            onRequest?(request)
+            self.onRequest?(request)
         }
     }
     
@@ -69,8 +73,8 @@ public struct ResponseParser {
     init(onResponse: ((Response) -> Void)? = nil) {
         self.parser = FullMessageParser(type: HTTP_RESPONSE) { parseState in
             let response = Response(
-                version: parseState.version,
-                status: parseState.statusCode,
+                version: Version(major: parseState.version.major, minor: parseState.version.minor),
+                status: Status(statusCode: parseState.statusCode),
                 rawHeaders: parseState.rawHeaders,
                 body: parseState.body
             )
@@ -88,28 +92,25 @@ private final class FullMessageParser {
     
     struct ParseState {
         
-        var version: S4.Version = S4.Version(major: 0, minor: 0)
+        var version: (major: Int, minor: Int) = (0, 0)
         var rawHeaders: [String] = []
         var body: [UInt8] = []
-        var currentHeaderField = ""
         
         // Response
-        var statusCode: Status! = nil
+        var statusCode: Int! = nil
         var statusPhrase = ""
-        var cookies: [String] = []
-        var currentCookie = ""
         
         // Request
-        var method: S4.Method! = nil
+        var method: Int! = nil
         var uri = ""
         
     }
     
     var state = ParseState()
-    let onComplete: (ParseState) -> ()
+    var onComplete: ((ParseState) throws -> ())?
     let rawParser: RawParser
     
-    init(type: http_parser_type, onComplete: (ParseState) -> ()) {
+    init(type: http_parser_type, onComplete: ((ParseState) throws -> ())? = nil) {
         self.onComplete = onComplete
         self.rawParser = RawParser(type: type)
         self.rawParser.delegate = self
@@ -167,10 +168,8 @@ extension FullMessageParser: RawParserDelegate {
         majorVersion: Int,
         minorVersion: Int
     ) throws -> HeadersCompleteDirective {
-        let method = Method(code: method)
-        let version = S4.Version(major: majorVersion, minor: minorVersion)
-        state.statusCode = Status(statusCode: statusCode)
-        state.version = version
+        state.statusCode = statusCode
+        state.version = (major: majorVersion, minor: minorVersion)
         state.method = method
         return .none
     }
@@ -180,7 +179,7 @@ extension FullMessageParser: RawParserDelegate {
     }
     
     func onMessageComplete() throws {
-        onComplete(state)
+        try onComplete?(state)
         // Reset state
         state = ParseState()
     }
