@@ -20,7 +20,7 @@ public final class ClientConnection {
         self.socket = socket
     }
     
-    func read() -> ColdSignal<Request, S4.ClientError> {
+    public func read() -> ColdSignal<Request, S4.ClientError> {
         return ColdSignal { observer in
             let read = self.socket.read()
             self.parser.onRequest = { request in

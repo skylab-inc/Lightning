@@ -49,7 +49,7 @@ public final class Socket: WritableIOStream, ReadableIOStream {
         }
     }
     
-    public func connect(host: String, port: Port) -> ColdSignal<(), SystemError> {
+    public func connect(host: String, port: Port) -> ColdSignal<Socket, SystemError> {
         
         return ColdSignal { [socketFD, fd, channel] observer in
             var addrInfoPointer = UnsafeMutablePointer<addrinfo>(nil)
@@ -112,6 +112,7 @@ public final class Socket: WritableIOStream, ReadableIOStream {
                         return
                     }
                     Socket.logger.debug("Connection established on \(self.fd)")
+                    observer.sendNext(self)
                     observer.sendCompleted()
                 }
             } else if let error = error {

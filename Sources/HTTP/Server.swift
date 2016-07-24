@@ -14,6 +14,8 @@ import TCP
 
 public final class Server {
     
+    public init() {}
+    
     public func listen(host: String, port: Port) -> ColdSignal<ClientConnection, SystemError> {
         return ColdSignal { observer in
             

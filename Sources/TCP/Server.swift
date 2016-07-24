@@ -15,6 +15,7 @@ import IOStream
 
 
 public final class Server {
+    
     private static let logger = Logger(name: "Edge.TCP.Server", appender: StandardOutputAppender())
     private static let defaultReuseAddress = true
     

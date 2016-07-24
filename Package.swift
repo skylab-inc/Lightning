@@ -27,7 +27,7 @@ let package = Package(
         ),
         Target(
             name: "Edge",
-            dependencies: ["TCP", "IOStream", "RunLoop"]
+            dependencies: ["TCP", "IOStream", "RunLoop", "HTTP"]
         ),
     ],
     dependencies: [
