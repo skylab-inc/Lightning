@@ -8,7 +8,7 @@
 
 import Foundation
 import TCP
-import Reactive
+import Reflex
 import S4
 
 public final class ClientConnection {

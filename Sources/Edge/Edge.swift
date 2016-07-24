@@ -6,7 +6,7 @@
 //
 //
 
-@_exported import Reactive
+@_exported import Reflex
 @_exported import IOStream
 @_exported import TCP
 @_exported import RunLoop

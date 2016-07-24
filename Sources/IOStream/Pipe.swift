@@ -10,7 +10,7 @@ import Dispatch
 import POSIX
 import POSIXExtensions
 import Log
-import Reactive
+import Reflex
 
 public final class Pipe: WritableIOStream, ReadableIOStream {
     

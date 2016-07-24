@@ -7,7 +7,7 @@
 //
 
 import Dispatch
-import Reactive
+import Reflex
 import POSIX
 import POSIXExtensions
 import Log
