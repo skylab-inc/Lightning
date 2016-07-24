@@ -31,25 +31,25 @@ typealias CParserPointer = UnsafeMutablePointer<http_parser>
 typealias RawParserPointer = UnsafeMutablePointer<RawParser>
 
 private func bridge<T : AnyObject>(_ obj : T) -> UnsafeMutablePointer<Void> {
-    return UnsafeMutablePointer(OpaquePointer(bitPattern: Unmanaged.passUnretained(obj)))
+    return Unmanaged.passUnretained(obj).toOpaque()
 }
 
 private func bridge<T : AnyObject>(_ ptr : UnsafeMutablePointer<Void>) -> T {
-    return Unmanaged<T>.fromOpaque(OpaquePointer(ptr)).takeUnretainedValue()
+    return Unmanaged<T>.fromOpaque(ptr).takeUnretainedValue()
 }
 
 struct ParseError: ErrorProtocol {
     let description: String
 }
 
-public struct RequestParser {
+public class RequestParser {
     private let parser: FullMessageParser!
-    var onRequest: ((Request) -> Void)?
+    var onRequest:  ((Request) -> Void)?
     
     init(onRequest: ((Request) -> Void)? = nil) {
         self.onRequest = onRequest
         self.parser = FullMessageParser(type: HTTP_REQUEST)
-        self.parser.onComplete = { parseState in
+        self.parser.onComplete = { [weak self] parseState in
             let request = Request(
                 method: S4.Method(code: parseState.method),
                 uri: try URI(parseState.uri),
@@ -57,7 +57,7 @@ public struct RequestParser {
                 rawHeaders: parseState.rawHeaders,
                 body: parseState.body
             )
-            self.onRequest?(request)
+            self?.onRequest?(request)
         }
     }
     
@@ -67,18 +67,21 @@ public struct RequestParser {
     
 }
 
-public struct ResponseParser {
+public class ResponseParser {
     private let parser: FullMessageParser
+    var onResponse:  ((Response) -> Void)?
     
     init(onResponse: ((Response) -> Void)? = nil) {
-        self.parser = FullMessageParser(type: HTTP_RESPONSE) { parseState in
+        self.onResponse = onResponse
+        self.parser = FullMessageParser(type: HTTP_RESPONSE)
+        self.parser.onComplete = { [weak self] parseState in
             let response = Response(
                 version: Version(major: parseState.version.major, minor: parseState.version.minor),
                 status: Status(statusCode: parseState.statusCode),
                 rawHeaders: parseState.rawHeaders,
                 body: parseState.body
             )
-            onResponse?(response)
+            self?.onResponse?(response)
         }
     }
     
