@@ -604,7 +604,7 @@
 			dependencies = (
 			);
 			name = SwiftPackageManager;
-			passBuildSettingsInEnvironment = 1;
+			passBuildSettingsInEnvironment = 0;
 			productName = SwiftPackageManager;
 		};
 /* End PBXLegacyTarget section */
@@ -648,7 +648,6 @@
 			buildPhases = (
 				CompilePhase_Edge /* Sources */,
 				"___LinkPhase_Edge" /* Frameworks */,
-				DCC649F01DB4164E00AA3DAC /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -892,22 +891,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		DCC649F01DB4164E00AA3DAC /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CompilePhase_CHTTPParser /* Sources */ = {
