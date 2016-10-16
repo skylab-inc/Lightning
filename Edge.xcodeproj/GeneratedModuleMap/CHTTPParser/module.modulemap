@@ -1,0 +1,5 @@
+framework module CHTTPParser {
+    umbrella "/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CHTTPParser-0.14.0/Sources/include"
+    link framework "CHTTPParser"
+    export *
+}

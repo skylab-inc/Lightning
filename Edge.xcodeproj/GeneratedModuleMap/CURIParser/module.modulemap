@@ -1,0 +1,5 @@
+framework module CURIParser {
+    umbrella "/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CURIParser-0.6.0/Sources/include"
+    link framework "CURIParser"
+    export *
+}

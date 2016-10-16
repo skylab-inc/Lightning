@@ -1,0 +1,1356 @@
+// !$*UTF8*$!
+{
+    archiveVersion = 1;
+    classes = {};
+    objectVersion = 46;
+    rootObject = __RootObject_;
+    objects = {
+        __RootObject_ = {
+            isa = PBXProject;
+            attributes = {LastUpgradeCheck = 9999;};
+            buildConfigurationList = ___RootConfs_;
+            compatibilityVersion = 'Xcode 3.2';
+            developmentRegion = English;
+            hasScannedForEncodings = 0;
+            knownRegions = (en);
+            mainGroup = ___RootGroup_;
+            productRefGroup = ____Products_;
+            projectDirPath = '';
+            projectRoot = '';
+            targets = (______Target_Reflex, ______Target_CPOSIX, ______Target_POSIX, ______Target_CHTTPParser, ______Target_Edge, ______Target_HTTP, ______Target_IOStream, ______Target_POSIXExtensions, ______Target_RunLoop, ______Target_TCP, ______Target_HTTPTests, ______Target_TCPTests);
+        };
+        '__PBXFileRef_Package.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'Package.swift';
+            sourceTree = '<group>';
+        };
+        ___RootGroup_ = {
+            isa = PBXGroup;
+            children = ('__PBXFileRef_Package.swift', _____Configs_, _____Sources_,  Dependencies_, _______Tests_, ____Products_);
+            sourceTree = '<group>';
+        };
+        _______Group_Reflex = {
+            isa = PBXGroup;
+            name = 'Reflex';
+            path = 'Packages/Reflex-0.2.1/Sources';
+            sourceTree = '<group>';
+            children = ('__PBXFileRef_Packages/Reflex-0.2.1/Sources/Bag.swift', '__PBXFileRef_Packages/Reflex-0.2.1/Sources/ColdSignal.swift', '__PBXFileRef_Packages/Reflex-0.2.1/Sources/Disposable.swift', '__PBXFileRef_Packages/Reflex-0.2.1/Sources/Event.swift', '__PBXFileRef_Packages/Reflex-0.2.1/Sources/Observer.swift', '__PBXFileRef_Packages/Reflex-0.2.1/Sources/Signal.swift');
+        };
+        '__PBXFileRef_Packages/Reflex-0.2.1/Sources/Bag.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'Bag.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/Reflex-0.2.1/Sources/ColdSignal.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'ColdSignal.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/Reflex-0.2.1/Sources/Disposable.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'Disposable.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/Reflex-0.2.1/Sources/Event.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'Event.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/Reflex-0.2.1/Sources/Observer.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'Observer.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/Reflex-0.2.1/Sources/Signal.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'Signal.swift';
+            sourceTree = '<group>';
+        };
+        ______Target_Reflex = {
+            isa = PBXNativeTarget;
+            buildConfigurationList = _______Confs_Reflex;
+            buildPhases = (CompilePhase_Reflex, ___LinkPhase_Reflex);
+            buildRules = ();
+            dependencies = ();
+            name = 'Reflex';
+            productName = Reflex;
+            productReference = _____Product_Reflex;
+            productType = 'com.apple.product-type.framework';
+        };
+        _____Product_Reflex = {
+            isa = PBXFileReference;
+            explicitFileType = 'wrapper.framework';
+            path = 'Reflex.framework';
+            sourceTree = BUILT_PRODUCTS_DIR;
+        };
+        CompilePhase_Reflex = {
+            isa = PBXSourcesBuildPhase;
+            files = ('__src_cc_ref_Packages/Reflex-0.2.1/Sources/Bag.swift', '__src_cc_ref_Packages/Reflex-0.2.1/Sources/ColdSignal.swift', '__src_cc_ref_Packages/Reflex-0.2.1/Sources/Disposable.swift', '__src_cc_ref_Packages/Reflex-0.2.1/Sources/Event.swift', '__src_cc_ref_Packages/Reflex-0.2.1/Sources/Observer.swift', '__src_cc_ref_Packages/Reflex-0.2.1/Sources/Signal.swift');
+            runOnlyForDeploymentPostprocessing = 0;
+        };
+        '__src_cc_ref_Packages/Reflex-0.2.1/Sources/Bag.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/Reflex-0.2.1/Sources/Bag.swift';
+        };
+        '__src_cc_ref_Packages/Reflex-0.2.1/Sources/ColdSignal.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/Reflex-0.2.1/Sources/ColdSignal.swift';
+        };
+        '__src_cc_ref_Packages/Reflex-0.2.1/Sources/Disposable.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/Reflex-0.2.1/Sources/Disposable.swift';
+        };
+        '__src_cc_ref_Packages/Reflex-0.2.1/Sources/Event.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/Reflex-0.2.1/Sources/Event.swift';
+        };
+        '__src_cc_ref_Packages/Reflex-0.2.1/Sources/Observer.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/Reflex-0.2.1/Sources/Observer.swift';
+        };
+        '__src_cc_ref_Packages/Reflex-0.2.1/Sources/Signal.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/Reflex-0.2.1/Sources/Signal.swift';
+        };
+        ___LinkPhase_Reflex = {
+            isa = PBXFrameworksBuildPhase;
+            files = ();
+            runOnlyForDeploymentPostprocessing = 0;
+        };
+        _______Confs_Reflex = {
+            isa = XCConfigurationList;
+            buildConfigurations = (___DebugConf_Reflex, _ReleaseConf_Reflex);
+            defaultConfigurationIsVisible = 0;
+            defaultConfigurationName = Debug;
+        };
+        ___DebugConf_Reflex = {
+            isa = XCBuildConfiguration;
+            buildSettings = { SWIFT_VERSION = '3.0'; LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_SWIFT_FLAGS = '$(inherited)'; INFOPLIST_FILE = 'Edge.xcodeproj/Reflex_Info.plist'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; SWIFT_OPTIMIZATION_LEVEL = '-Onone'; PRODUCT_BUNDLE_IDENTIFIER = 'Reflex'; PRODUCT_NAME = '$(TARGET_NAME:c99extidentifier)'; OTHER_LDFLAGS = '$(inherited)'; };
+            name = Debug;
+        };
+        _ReleaseConf_Reflex = {
+            isa = XCBuildConfiguration;
+            buildSettings = { SWIFT_VERSION = '3.0'; LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_SWIFT_FLAGS = '$(inherited)'; INFOPLIST_FILE = 'Edge.xcodeproj/Reflex_Info.plist'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; PRODUCT_BUNDLE_IDENTIFIER = 'Reflex'; PRODUCT_NAME = '$(TARGET_NAME:c99extidentifier)'; OTHER_LDFLAGS = '$(inherited)'; };
+            name = Release;
+        };
+        __Dependency_Reflex = {
+            isa = PBXTargetDependency;
+            target = ______Target_Reflex;
+        };
+        _______Group_CPOSIX = {
+            isa = PBXGroup;
+            name = 'CPOSIX';
+            path = 'Packages/CPOSIX-0.14.0/Sources/CPOSIX';
+            sourceTree = '<group>';
+            children = ('__PBXFileRef_Packages/CPOSIX-0.14.0/Sources/CPOSIX/posix.c');
+        };
+        '__PBXFileRef_Packages/CPOSIX-0.14.0/Sources/CPOSIX/posix.c' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.c.c;
+            path = 'posix.c';
+            sourceTree = '<group>';
+        };
+        ______Target_CPOSIX = {
+            isa = PBXNativeTarget;
+            buildConfigurationList = _______Confs_CPOSIX;
+            buildPhases = (CompilePhase_CPOSIX, ___LinkPhase_CPOSIX);
+            buildRules = ();
+            dependencies = ();
+            name = 'CPOSIX';
+            productName = CPOSIX;
+            productReference = _____Product_CPOSIX;
+            productType = 'com.apple.product-type.framework';
+        };
+        _____Product_CPOSIX = {
+            isa = PBXFileReference;
+            explicitFileType = 'wrapper.framework';
+            path = 'CPOSIX.framework';
+            sourceTree = BUILT_PRODUCTS_DIR;
+        };
+        CompilePhase_CPOSIX = {
+            isa = PBXSourcesBuildPhase;
+            files = ('__src_cc_ref_Packages/CPOSIX-0.14.0/Sources/CPOSIX/posix.c');
+            runOnlyForDeploymentPostprocessing = 0;
+        };
+        '__src_cc_ref_Packages/CPOSIX-0.14.0/Sources/CPOSIX/posix.c' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/CPOSIX-0.14.0/Sources/CPOSIX/posix.c';
+        };
+        ___LinkPhase_CPOSIX = {
+            isa = PBXFrameworksBuildPhase;
+            files = ();
+            runOnlyForDeploymentPostprocessing = 0;
+        };
+        _______Confs_CPOSIX = {
+            isa = XCConfigurationList;
+            buildConfigurations = (___DebugConf_CPOSIX, _ReleaseConf_CPOSIX);
+            defaultConfigurationIsVisible = 0;
+            defaultConfigurationName = Debug;
+        };
+        ___DebugConf_CPOSIX = {
+            isa = XCBuildConfiguration;
+            buildSettings = { LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_SWIFT_FLAGS = '$(inherited)'; DEFINES_MODULE = 'YES'; SWIFT_VERSION = '3.0'; MODULEMAP_FILE = 'Edge.xcodeproj/GeneratedModuleMap/CPOSIX/module.modulemap'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; SWIFT_OPTIMIZATION_LEVEL = '-Onone'; INFOPLIST_FILE = 'Edge.xcodeproj/CPOSIX_Info.plist'; PRODUCT_BUNDLE_IDENTIFIER = 'CPOSIX'; PRODUCT_NAME = '$(TARGET_NAME:c99extidentifier)'; OTHER_LDFLAGS = '$(inherited)'; };
+            name = Debug;
+        };
+        _ReleaseConf_CPOSIX = {
+            isa = XCBuildConfiguration;
+            buildSettings = { SWIFT_VERSION = '3.0'; MODULEMAP_FILE = 'Edge.xcodeproj/GeneratedModuleMap/CPOSIX/module.modulemap'; LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_SWIFT_FLAGS = '$(inherited)'; INFOPLIST_FILE = 'Edge.xcodeproj/CPOSIX_Info.plist'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; DEFINES_MODULE = 'YES'; PRODUCT_BUNDLE_IDENTIFIER = 'CPOSIX'; PRODUCT_NAME = '$(TARGET_NAME:c99extidentifier)'; OTHER_LDFLAGS = '$(inherited)'; };
+            name = Release;
+        };
+        __Dependency_CPOSIX = {
+            isa = PBXTargetDependency;
+            target = ______Target_CPOSIX;
+        };
+        _______Group_POSIX = {
+            isa = PBXGroup;
+            name = 'POSIX';
+            path = 'Packages/POSIX-0.14.1/Sources/POSIX';
+            sourceTree = '<group>';
+            children = ('__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Condition.swift', '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Environment.swift', '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/FileDescriptor.swift', '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Lock.swift', '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/PID.swift', '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Regex.swift', '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Spawn.swift', '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/System.swift', '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/SystemError.swift', '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Thread.swift', '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Wait.swift');
+        };
+        '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Condition.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'Condition.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Environment.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'Environment.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/FileDescriptor.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'FileDescriptor.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Lock.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'Lock.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/PID.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'PID.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Regex.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'Regex.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Spawn.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'Spawn.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/System.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'System.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/SystemError.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'SystemError.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Thread.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'Thread.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Wait.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'Wait.swift';
+            sourceTree = '<group>';
+        };
+        ______Target_POSIX = {
+            isa = PBXNativeTarget;
+            buildConfigurationList = _______Confs_POSIX;
+            buildPhases = (CompilePhase_POSIX, ___LinkPhase_POSIX);
+            buildRules = ();
+            dependencies = (__Dependency_CPOSIX);
+            name = 'POSIX';
+            productName = POSIX;
+            productReference = _____Product_POSIX;
+            productType = 'com.apple.product-type.framework';
+        };
+        _____Product_POSIX = {
+            isa = PBXFileReference;
+            explicitFileType = 'wrapper.framework';
+            path = 'POSIX.framework';
+            sourceTree = BUILT_PRODUCTS_DIR;
+        };
+        CompilePhase_POSIX = {
+            isa = PBXSourcesBuildPhase;
+            files = ('__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/Condition.swift', '__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/Environment.swift', '__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/FileDescriptor.swift', '__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/Lock.swift', '__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/PID.swift', '__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/Regex.swift', '__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/Spawn.swift', '__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/System.swift', '__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/SystemError.swift', '__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/Thread.swift', '__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/Wait.swift');
+            runOnlyForDeploymentPostprocessing = 0;
+        };
+        '__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/Condition.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Condition.swift';
+        };
+        '__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/Environment.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Environment.swift';
+        };
+        '__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/FileDescriptor.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/FileDescriptor.swift';
+        };
+        '__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/Lock.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Lock.swift';
+        };
+        '__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/PID.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/PID.swift';
+        };
+        '__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/Regex.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Regex.swift';
+        };
+        '__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/Spawn.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Spawn.swift';
+        };
+        '__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/System.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/System.swift';
+        };
+        '__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/SystemError.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/SystemError.swift';
+        };
+        '__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/Thread.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Thread.swift';
+        };
+        '__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/Wait.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Wait.swift';
+        };
+        ___LinkPhase_POSIX = {
+            isa = PBXFrameworksBuildPhase;
+            files = (_LinkFileRef_CPOSIX_via_POSIX);
+            runOnlyForDeploymentPostprocessing = 0;
+        };
+        _LinkFileRef_CPOSIX_via_POSIX = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_CPOSIX;
+        };
+        _______Confs_POSIX = {
+            isa = XCConfigurationList;
+            buildConfigurations = (___DebugConf_POSIX, _ReleaseConf_POSIX);
+            defaultConfigurationIsVisible = 0;
+            defaultConfigurationName = Debug;
+        };
+        ___DebugConf_POSIX = {
+            isa = XCBuildConfiguration;
+            buildSettings = { SWIFT_VERSION = '3.0'; LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_SWIFT_FLAGS = '$(inherited)'; INFOPLIST_FILE = 'Edge.xcodeproj/POSIX_Info.plist'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; SWIFT_OPTIMIZATION_LEVEL = '-Onone'; HEADER_SEARCH_PATHS = '/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include'; PRODUCT_BUNDLE_IDENTIFIER = 'POSIX'; PRODUCT_NAME = '$(TARGET_NAME:c99extidentifier)'; OTHER_LDFLAGS = '$(inherited)'; };
+            name = Debug;
+        };
+        _ReleaseConf_POSIX = {
+            isa = XCBuildConfiguration;
+            buildSettings = { SWIFT_VERSION = '3.0'; LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_SWIFT_FLAGS = '$(inherited)'; INFOPLIST_FILE = 'Edge.xcodeproj/POSIX_Info.plist'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; HEADER_SEARCH_PATHS = '/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include'; PRODUCT_BUNDLE_IDENTIFIER = 'POSIX'; PRODUCT_NAME = '$(TARGET_NAME:c99extidentifier)'; OTHER_LDFLAGS = '$(inherited)'; };
+            name = Release;
+        };
+        __Dependency_POSIX = {
+            isa = PBXTargetDependency;
+            target = ______Target_POSIX;
+        };
+        _______Group_CHTTPParser = {
+            isa = PBXGroup;
+            name = 'CHTTPParser';
+            path = 'Packages/CHTTPParser-0.14.0/Sources';
+            sourceTree = '<group>';
+            children = ('__PBXFileRef_Packages/CHTTPParser-0.14.0/Sources/http_parser.c');
+        };
+        '__PBXFileRef_Packages/CHTTPParser-0.14.0/Sources/http_parser.c' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.c.c;
+            path = 'http_parser.c';
+            sourceTree = '<group>';
+        };
+        ______Target_CHTTPParser = {
+            isa = PBXNativeTarget;
+            buildConfigurationList = _______Confs_CHTTPParser;
+            buildPhases = (CompilePhase_CHTTPParser, ___LinkPhase_CHTTPParser);
+            buildRules = ();
+            dependencies = ();
+            name = 'CHTTPParser';
+            productName = CHTTPParser;
+            productReference = _____Product_CHTTPParser;
+            productType = 'com.apple.product-type.framework';
+        };
+        _____Product_CHTTPParser = {
+            isa = PBXFileReference;
+            explicitFileType = 'wrapper.framework';
+            path = 'CHTTPParser.framework';
+            sourceTree = BUILT_PRODUCTS_DIR;
+        };
+        CompilePhase_CHTTPParser = {
+            isa = PBXSourcesBuildPhase;
+            files = ('__src_cc_ref_Packages/CHTTPParser-0.14.0/Sources/http_parser.c');
+            runOnlyForDeploymentPostprocessing = 0;
+        };
+        '__src_cc_ref_Packages/CHTTPParser-0.14.0/Sources/http_parser.c' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/CHTTPParser-0.14.0/Sources/http_parser.c';
+        };
+        ___LinkPhase_CHTTPParser = {
+            isa = PBXFrameworksBuildPhase;
+            files = ();
+            runOnlyForDeploymentPostprocessing = 0;
+        };
+        _______Confs_CHTTPParser = {
+            isa = XCConfigurationList;
+            buildConfigurations = (___DebugConf_CHTTPParser, _ReleaseConf_CHTTPParser);
+            defaultConfigurationIsVisible = 0;
+            defaultConfigurationName = Debug;
+        };
+        ___DebugConf_CHTTPParser = {
+            isa = XCBuildConfiguration;
+            buildSettings = { LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_SWIFT_FLAGS = '$(inherited)'; DEFINES_MODULE = 'YES'; SWIFT_VERSION = '3.0'; MODULEMAP_FILE = 'Edge.xcodeproj/GeneratedModuleMap/CHTTPParser/module.modulemap'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; SWIFT_OPTIMIZATION_LEVEL = '-Onone'; INFOPLIST_FILE = 'Edge.xcodeproj/CHTTPParser_Info.plist'; PRODUCT_BUNDLE_IDENTIFIER = 'CHTTPParser'; PRODUCT_NAME = '$(TARGET_NAME:c99extidentifier)'; OTHER_LDFLAGS = '$(inherited)'; };
+            name = Debug;
+        };
+        _ReleaseConf_CHTTPParser = {
+            isa = XCBuildConfiguration;
+            buildSettings = { SWIFT_VERSION = '3.0'; MODULEMAP_FILE = 'Edge.xcodeproj/GeneratedModuleMap/CHTTPParser/module.modulemap'; LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_SWIFT_FLAGS = '$(inherited)'; INFOPLIST_FILE = 'Edge.xcodeproj/CHTTPParser_Info.plist'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; DEFINES_MODULE = 'YES'; PRODUCT_BUNDLE_IDENTIFIER = 'CHTTPParser'; PRODUCT_NAME = '$(TARGET_NAME:c99extidentifier)'; OTHER_LDFLAGS = '$(inherited)'; };
+            name = Release;
+        };
+        __Dependency_CHTTPParser = {
+            isa = PBXTargetDependency;
+            target = ______Target_CHTTPParser;
+        };
+        _______Group_Edge = {
+            isa = PBXGroup;
+            name = 'Edge';
+            path = 'Sources/Edge';
+            sourceTree = '<group>';
+            children = ('__PBXFileRef_Sources/Edge/Application.swift', '__PBXFileRef_Sources/Edge/Edge.swift');
+        };
+        '__PBXFileRef_Sources/Edge/Application.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'Application.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Sources/Edge/Edge.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'Edge.swift';
+            sourceTree = '<group>';
+        };
+        ______Target_Edge = {
+            isa = PBXNativeTarget;
+            buildConfigurationList = _______Confs_Edge;
+            buildPhases = (CompilePhase_Edge, ___LinkPhase_Edge);
+            buildRules = ();
+            dependencies = (__Dependency_Reflex, __Dependency_CPOSIX, __Dependency_POSIX, __Dependency_CHTTPParser, __Dependency_TCP, __Dependency_IOStream, __Dependency_RunLoop, __Dependency_HTTP);
+            name = 'Edge';
+            productName = Edge;
+            productReference = _____Product_Edge;
+            productType = 'com.apple.product-type.framework';
+        };
+        _____Product_Edge = {
+            isa = PBXFileReference;
+            explicitFileType = 'wrapper.framework';
+            path = 'Edge.framework';
+            sourceTree = BUILT_PRODUCTS_DIR;
+        };
+        CompilePhase_Edge = {
+            isa = PBXSourcesBuildPhase;
+            files = ('__src_cc_ref_Sources/Edge/Application.swift', '__src_cc_ref_Sources/Edge/Edge.swift');
+            runOnlyForDeploymentPostprocessing = 0;
+        };
+        '__src_cc_ref_Sources/Edge/Application.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Sources/Edge/Application.swift';
+        };
+        '__src_cc_ref_Sources/Edge/Edge.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Sources/Edge/Edge.swift';
+        };
+        ___LinkPhase_Edge = {
+            isa = PBXFrameworksBuildPhase;
+            files = (_LinkFileRef_Reflex_via_Edge, _LinkFileRef_CPOSIX_via_Edge, _LinkFileRef_POSIX_via_Edge, _LinkFileRef_CHTTPParser_via_Edge, _LinkFileRef_POSIXExtensions_via_Edge, _LinkFileRef_IOStream_via_Edge, _LinkFileRef_TCP_via_Edge, _LinkFileRef_RunLoop_via_Edge, _LinkFileRef_HTTP_via_Edge);
+            runOnlyForDeploymentPostprocessing = 0;
+        };
+        _LinkFileRef_Reflex_via_Edge = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_Reflex;
+        };
+        _LinkFileRef_CPOSIX_via_Edge = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_CPOSIX;
+        };
+        _LinkFileRef_POSIX_via_Edge = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_POSIX;
+        };
+        _LinkFileRef_CHTTPParser_via_Edge = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_CHTTPParser;
+        };
+        _LinkFileRef_POSIXExtensions_via_Edge = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_POSIXExtensions;
+        };
+        _LinkFileRef_IOStream_via_Edge = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_IOStream;
+        };
+        _LinkFileRef_TCP_via_Edge = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_TCP;
+        };
+        _LinkFileRef_RunLoop_via_Edge = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_RunLoop;
+        };
+        _LinkFileRef_HTTP_via_Edge = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_HTTP;
+        };
+        _______Confs_Edge = {
+            isa = XCConfigurationList;
+            buildConfigurations = (___DebugConf_Edge, _ReleaseConf_Edge);
+            defaultConfigurationIsVisible = 0;
+            defaultConfigurationName = Debug;
+        };
+        ___DebugConf_Edge = {
+            isa = XCBuildConfiguration;
+            buildSettings = { SWIFT_VERSION = '3.0'; LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_SWIFT_FLAGS = '$(inherited)'; INFOPLIST_FILE = 'Edge.xcodeproj/Edge_Info.plist'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; SWIFT_OPTIMIZATION_LEVEL = '-Onone'; HEADER_SEARCH_PATHS = '/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include /Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CHTTPParser-0.14.0/Sources/include'; PRODUCT_BUNDLE_IDENTIFIER = 'Edge'; PRODUCT_NAME = '$(TARGET_NAME:c99extidentifier)'; OTHER_LDFLAGS = '$(inherited)'; };
+            name = Debug;
+        };
+        _ReleaseConf_Edge = {
+            isa = XCBuildConfiguration;
+            buildSettings = { SWIFT_VERSION = '3.0'; LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_SWIFT_FLAGS = '$(inherited)'; INFOPLIST_FILE = 'Edge.xcodeproj/Edge_Info.plist'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; HEADER_SEARCH_PATHS = '/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include /Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CHTTPParser-0.14.0/Sources/include'; PRODUCT_BUNDLE_IDENTIFIER = 'Edge'; PRODUCT_NAME = '$(TARGET_NAME:c99extidentifier)'; OTHER_LDFLAGS = '$(inherited)'; };
+            name = Release;
+        };
+        __Dependency_Edge = {
+            isa = PBXTargetDependency;
+            target = ______Target_Edge;
+        };
+        _______Group_HTTP = {
+            isa = PBXGroup;
+            name = 'HTTP';
+            path = 'Sources/HTTP';
+            sourceTree = '<group>';
+            children = ('__PBXFileRef_Sources/HTTP/ClientConnection.swift', '__PBXFileRef_Sources/HTTP/Error.swift', '__PBXFileRef_Sources/HTTP/Method.swift', '__PBXFileRef_Sources/HTTP/Parser.swift', '__PBXFileRef_Sources/HTTP/Request.swift', '__PBXFileRef_Sources/HTTP/Response.swift', '__PBXFileRef_Sources/HTTP/Serializable.swift', '__PBXFileRef_Sources/HTTP/Server.swift', '__PBXFileRef_Sources/HTTP/Status.swift', '__PBXFileRef_Sources/HTTP/Version.swift');
+        };
+        '__PBXFileRef_Sources/HTTP/ClientConnection.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'ClientConnection.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Sources/HTTP/Error.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'Error.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Sources/HTTP/Method.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'Method.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Sources/HTTP/Parser.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'Parser.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Sources/HTTP/Request.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'Request.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Sources/HTTP/Response.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'Response.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Sources/HTTP/Serializable.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'Serializable.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Sources/HTTP/Server.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'Server.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Sources/HTTP/Status.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'Status.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Sources/HTTP/Version.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'Version.swift';
+            sourceTree = '<group>';
+        };
+        ______Target_HTTP = {
+            isa = PBXNativeTarget;
+            buildConfigurationList = _______Confs_HTTP;
+            buildPhases = (CompilePhase_HTTP, ___LinkPhase_HTTP);
+            buildRules = ();
+            dependencies = (__Dependency_Reflex, __Dependency_CPOSIX, __Dependency_POSIX, __Dependency_CHTTPParser, __Dependency_POSIXExtensions, __Dependency_IOStream, __Dependency_TCP);
+            name = 'HTTP';
+            productName = HTTP;
+            productReference = _____Product_HTTP;
+            productType = 'com.apple.product-type.framework';
+        };
+        _____Product_HTTP = {
+            isa = PBXFileReference;
+            explicitFileType = 'wrapper.framework';
+            path = 'HTTP.framework';
+            sourceTree = BUILT_PRODUCTS_DIR;
+        };
+        CompilePhase_HTTP = {
+            isa = PBXSourcesBuildPhase;
+            files = ('__src_cc_ref_Sources/HTTP/ClientConnection.swift', '__src_cc_ref_Sources/HTTP/Error.swift', '__src_cc_ref_Sources/HTTP/Method.swift', '__src_cc_ref_Sources/HTTP/Parser.swift', '__src_cc_ref_Sources/HTTP/Request.swift', '__src_cc_ref_Sources/HTTP/Response.swift', '__src_cc_ref_Sources/HTTP/Serializable.swift', '__src_cc_ref_Sources/HTTP/Server.swift', '__src_cc_ref_Sources/HTTP/Status.swift', '__src_cc_ref_Sources/HTTP/Version.swift');
+            runOnlyForDeploymentPostprocessing = 0;
+        };
+        '__src_cc_ref_Sources/HTTP/ClientConnection.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Sources/HTTP/ClientConnection.swift';
+        };
+        '__src_cc_ref_Sources/HTTP/Error.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Sources/HTTP/Error.swift';
+        };
+        '__src_cc_ref_Sources/HTTP/Method.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Sources/HTTP/Method.swift';
+        };
+        '__src_cc_ref_Sources/HTTP/Parser.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Sources/HTTP/Parser.swift';
+        };
+        '__src_cc_ref_Sources/HTTP/Request.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Sources/HTTP/Request.swift';
+        };
+        '__src_cc_ref_Sources/HTTP/Response.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Sources/HTTP/Response.swift';
+        };
+        '__src_cc_ref_Sources/HTTP/Serializable.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Sources/HTTP/Serializable.swift';
+        };
+        '__src_cc_ref_Sources/HTTP/Server.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Sources/HTTP/Server.swift';
+        };
+        '__src_cc_ref_Sources/HTTP/Status.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Sources/HTTP/Status.swift';
+        };
+        '__src_cc_ref_Sources/HTTP/Version.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Sources/HTTP/Version.swift';
+        };
+        ___LinkPhase_HTTP = {
+            isa = PBXFrameworksBuildPhase;
+            files = (_LinkFileRef_Reflex_via_HTTP, _LinkFileRef_CPOSIX_via_HTTP, _LinkFileRef_POSIX_via_HTTP, _LinkFileRef_CHTTPParser_via_HTTP, _LinkFileRef_POSIXExtensions_via_HTTP, _LinkFileRef_IOStream_via_HTTP, _LinkFileRef_TCP_via_HTTP);
+            runOnlyForDeploymentPostprocessing = 0;
+        };
+        _LinkFileRef_Reflex_via_HTTP = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_Reflex;
+        };
+        _LinkFileRef_CPOSIX_via_HTTP = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_CPOSIX;
+        };
+        _LinkFileRef_POSIX_via_HTTP = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_POSIX;
+        };
+        _LinkFileRef_CHTTPParser_via_HTTP = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_CHTTPParser;
+        };
+        _LinkFileRef_POSIXExtensions_via_HTTP = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_POSIXExtensions;
+        };
+        _LinkFileRef_IOStream_via_HTTP = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_IOStream;
+        };
+        _LinkFileRef_TCP_via_HTTP = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_TCP;
+        };
+        _______Confs_HTTP = {
+            isa = XCConfigurationList;
+            buildConfigurations = (___DebugConf_HTTP, _ReleaseConf_HTTP);
+            defaultConfigurationIsVisible = 0;
+            defaultConfigurationName = Debug;
+        };
+        ___DebugConf_HTTP = {
+            isa = XCBuildConfiguration;
+            buildSettings = { SWIFT_VERSION = '3.0'; LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_SWIFT_FLAGS = '$(inherited)'; INFOPLIST_FILE = 'Edge.xcodeproj/HTTP_Info.plist'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; SWIFT_OPTIMIZATION_LEVEL = '-Onone'; HEADER_SEARCH_PATHS = '/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include /Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CHTTPParser-0.14.0/Sources/include'; PRODUCT_BUNDLE_IDENTIFIER = 'HTTP'; PRODUCT_NAME = '$(TARGET_NAME:c99extidentifier)'; OTHER_LDFLAGS = '$(inherited)'; };
+            name = Debug;
+        };
+        _ReleaseConf_HTTP = {
+            isa = XCBuildConfiguration;
+            buildSettings = { SWIFT_VERSION = '3.0'; LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_SWIFT_FLAGS = '$(inherited)'; INFOPLIST_FILE = 'Edge.xcodeproj/HTTP_Info.plist'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; HEADER_SEARCH_PATHS = '/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include /Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CHTTPParser-0.14.0/Sources/include'; PRODUCT_BUNDLE_IDENTIFIER = 'HTTP'; PRODUCT_NAME = '$(TARGET_NAME:c99extidentifier)'; OTHER_LDFLAGS = '$(inherited)'; };
+            name = Release;
+        };
+        __Dependency_HTTP = {
+            isa = PBXTargetDependency;
+            target = ______Target_HTTP;
+        };
+        _______Group_IOStream = {
+            isa = PBXGroup;
+            name = 'IOStream';
+            path = 'Sources/IOStream';
+            sourceTree = '<group>';
+            children = ('__PBXFileRef_Sources/IOStream/IOStream.swift', '__PBXFileRef_Sources/IOStream/Pipe.swift');
+        };
+        '__PBXFileRef_Sources/IOStream/IOStream.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'IOStream.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Sources/IOStream/Pipe.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'Pipe.swift';
+            sourceTree = '<group>';
+        };
+        ______Target_IOStream = {
+            isa = PBXNativeTarget;
+            buildConfigurationList = _______Confs_IOStream;
+            buildPhases = (CompilePhase_IOStream, ___LinkPhase_IOStream);
+            buildRules = ();
+            dependencies = (__Dependency_Reflex, __Dependency_CPOSIX, __Dependency_POSIX, __Dependency_CHTTPParser, __Dependency_POSIXExtensions);
+            name = 'IOStream';
+            productName = IOStream;
+            productReference = _____Product_IOStream;
+            productType = 'com.apple.product-type.framework';
+        };
+        _____Product_IOStream = {
+            isa = PBXFileReference;
+            explicitFileType = 'wrapper.framework';
+            path = 'IOStream.framework';
+            sourceTree = BUILT_PRODUCTS_DIR;
+        };
+        CompilePhase_IOStream = {
+            isa = PBXSourcesBuildPhase;
+            files = ('__src_cc_ref_Sources/IOStream/IOStream.swift', '__src_cc_ref_Sources/IOStream/Pipe.swift');
+            runOnlyForDeploymentPostprocessing = 0;
+        };
+        '__src_cc_ref_Sources/IOStream/IOStream.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Sources/IOStream/IOStream.swift';
+        };
+        '__src_cc_ref_Sources/IOStream/Pipe.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Sources/IOStream/Pipe.swift';
+        };
+        ___LinkPhase_IOStream = {
+            isa = PBXFrameworksBuildPhase;
+            files = (_LinkFileRef_Reflex_via_IOStream, _LinkFileRef_CPOSIX_via_IOStream, _LinkFileRef_POSIX_via_IOStream, _LinkFileRef_CHTTPParser_via_IOStream, _LinkFileRef_POSIXExtensions_via_IOStream);
+            runOnlyForDeploymentPostprocessing = 0;
+        };
+        _LinkFileRef_Reflex_via_IOStream = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_Reflex;
+        };
+        _LinkFileRef_CPOSIX_via_IOStream = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_CPOSIX;
+        };
+        _LinkFileRef_POSIX_via_IOStream = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_POSIX;
+        };
+        _LinkFileRef_CHTTPParser_via_IOStream = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_CHTTPParser;
+        };
+        _LinkFileRef_POSIXExtensions_via_IOStream = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_POSIXExtensions;
+        };
+        _______Confs_IOStream = {
+            isa = XCConfigurationList;
+            buildConfigurations = (___DebugConf_IOStream, _ReleaseConf_IOStream);
+            defaultConfigurationIsVisible = 0;
+            defaultConfigurationName = Debug;
+        };
+        ___DebugConf_IOStream = {
+            isa = XCBuildConfiguration;
+            buildSettings = { SWIFT_VERSION = '3.0'; LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_SWIFT_FLAGS = '$(inherited)'; INFOPLIST_FILE = 'Edge.xcodeproj/IOStream_Info.plist'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; SWIFT_OPTIMIZATION_LEVEL = '-Onone'; HEADER_SEARCH_PATHS = '/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include /Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CHTTPParser-0.14.0/Sources/include'; PRODUCT_BUNDLE_IDENTIFIER = 'IOStream'; PRODUCT_NAME = '$(TARGET_NAME:c99extidentifier)'; OTHER_LDFLAGS = '$(inherited)'; };
+            name = Debug;
+        };
+        _ReleaseConf_IOStream = {
+            isa = XCBuildConfiguration;
+            buildSettings = { SWIFT_VERSION = '3.0'; LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_SWIFT_FLAGS = '$(inherited)'; INFOPLIST_FILE = 'Edge.xcodeproj/IOStream_Info.plist'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; HEADER_SEARCH_PATHS = '/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include /Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CHTTPParser-0.14.0/Sources/include'; PRODUCT_BUNDLE_IDENTIFIER = 'IOStream'; PRODUCT_NAME = '$(TARGET_NAME:c99extidentifier)'; OTHER_LDFLAGS = '$(inherited)'; };
+            name = Release;
+        };
+        __Dependency_IOStream = {
+            isa = PBXTargetDependency;
+            target = ______Target_IOStream;
+        };
+        _______Group_POSIXExtensions = {
+            isa = PBXGroup;
+            name = 'POSIXExtensions';
+            path = 'Sources/POSIXExtensions';
+            sourceTree = '<group>';
+            children = ('__PBXFileRef_Sources/POSIXExtensions/FileDescriptor.swift', '__PBXFileRef_Sources/POSIXExtensions/Socket.swift');
+        };
+        '__PBXFileRef_Sources/POSIXExtensions/FileDescriptor.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'FileDescriptor.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Sources/POSIXExtensions/Socket.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'Socket.swift';
+            sourceTree = '<group>';
+        };
+        ______Target_POSIXExtensions = {
+            isa = PBXNativeTarget;
+            buildConfigurationList = _______Confs_POSIXExtensions;
+            buildPhases = (CompilePhase_POSIXExtensions, ___LinkPhase_POSIXExtensions);
+            buildRules = ();
+            dependencies = (__Dependency_Reflex, __Dependency_CPOSIX, __Dependency_POSIX, __Dependency_CHTTPParser);
+            name = 'POSIXExtensions';
+            productName = POSIXExtensions;
+            productReference = _____Product_POSIXExtensions;
+            productType = 'com.apple.product-type.framework';
+        };
+        _____Product_POSIXExtensions = {
+            isa = PBXFileReference;
+            explicitFileType = 'wrapper.framework';
+            path = 'POSIXExtensions.framework';
+            sourceTree = BUILT_PRODUCTS_DIR;
+        };
+        CompilePhase_POSIXExtensions = {
+            isa = PBXSourcesBuildPhase;
+            files = ('__src_cc_ref_Sources/POSIXExtensions/FileDescriptor.swift', '__src_cc_ref_Sources/POSIXExtensions/Socket.swift');
+            runOnlyForDeploymentPostprocessing = 0;
+        };
+        '__src_cc_ref_Sources/POSIXExtensions/FileDescriptor.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Sources/POSIXExtensions/FileDescriptor.swift';
+        };
+        '__src_cc_ref_Sources/POSIXExtensions/Socket.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Sources/POSIXExtensions/Socket.swift';
+        };
+        ___LinkPhase_POSIXExtensions = {
+            isa = PBXFrameworksBuildPhase;
+            files = (_LinkFileRef_Reflex_via_POSIXExtensions, _LinkFileRef_CPOSIX_via_POSIXExtensions, _LinkFileRef_POSIX_via_POSIXExtensions, _LinkFileRef_CHTTPParser_via_POSIXExtensions);
+            runOnlyForDeploymentPostprocessing = 0;
+        };
+        _LinkFileRef_Reflex_via_POSIXExtensions = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_Reflex;
+        };
+        _LinkFileRef_CPOSIX_via_POSIXExtensions = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_CPOSIX;
+        };
+        _LinkFileRef_POSIX_via_POSIXExtensions = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_POSIX;
+        };
+        _LinkFileRef_CHTTPParser_via_POSIXExtensions = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_CHTTPParser;
+        };
+        _______Confs_POSIXExtensions = {
+            isa = XCConfigurationList;
+            buildConfigurations = (___DebugConf_POSIXExtensions, _ReleaseConf_POSIXExtensions);
+            defaultConfigurationIsVisible = 0;
+            defaultConfigurationName = Debug;
+        };
+        ___DebugConf_POSIXExtensions = {
+            isa = XCBuildConfiguration;
+            buildSettings = { SWIFT_VERSION = '3.0'; LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_SWIFT_FLAGS = '$(inherited)'; INFOPLIST_FILE = 'Edge.xcodeproj/POSIXExtensions_Info.plist'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; SWIFT_OPTIMIZATION_LEVEL = '-Onone'; HEADER_SEARCH_PATHS = '/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include /Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CHTTPParser-0.14.0/Sources/include'; PRODUCT_BUNDLE_IDENTIFIER = 'POSIXExtensions'; PRODUCT_NAME = '$(TARGET_NAME:c99extidentifier)'; OTHER_LDFLAGS = '$(inherited)'; };
+            name = Debug;
+        };
+        _ReleaseConf_POSIXExtensions = {
+            isa = XCBuildConfiguration;
+            buildSettings = { SWIFT_VERSION = '3.0'; LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_SWIFT_FLAGS = '$(inherited)'; INFOPLIST_FILE = 'Edge.xcodeproj/POSIXExtensions_Info.plist'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; HEADER_SEARCH_PATHS = '/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include /Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CHTTPParser-0.14.0/Sources/include'; PRODUCT_BUNDLE_IDENTIFIER = 'POSIXExtensions'; PRODUCT_NAME = '$(TARGET_NAME:c99extidentifier)'; OTHER_LDFLAGS = '$(inherited)'; };
+            name = Release;
+        };
+        __Dependency_POSIXExtensions = {
+            isa = PBXTargetDependency;
+            target = ______Target_POSIXExtensions;
+        };
+        _______Group_RunLoop = {
+            isa = PBXGroup;
+            name = 'RunLoop';
+            path = 'Sources/RunLoop';
+            sourceTree = '<group>';
+            children = ('__PBXFileRef_Sources/RunLoop/RunLoop.swift');
+        };
+        '__PBXFileRef_Sources/RunLoop/RunLoop.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'RunLoop.swift';
+            sourceTree = '<group>';
+        };
+        ______Target_RunLoop = {
+            isa = PBXNativeTarget;
+            buildConfigurationList = _______Confs_RunLoop;
+            buildPhases = (CompilePhase_RunLoop, ___LinkPhase_RunLoop);
+            buildRules = ();
+            dependencies = (__Dependency_Reflex, __Dependency_CPOSIX, __Dependency_POSIX, __Dependency_CHTTPParser);
+            name = 'RunLoop';
+            productName = RunLoop;
+            productReference = _____Product_RunLoop;
+            productType = 'com.apple.product-type.framework';
+        };
+        _____Product_RunLoop = {
+            isa = PBXFileReference;
+            explicitFileType = 'wrapper.framework';
+            path = 'RunLoop.framework';
+            sourceTree = BUILT_PRODUCTS_DIR;
+        };
+        CompilePhase_RunLoop = {
+            isa = PBXSourcesBuildPhase;
+            files = ('__src_cc_ref_Sources/RunLoop/RunLoop.swift');
+            runOnlyForDeploymentPostprocessing = 0;
+        };
+        '__src_cc_ref_Sources/RunLoop/RunLoop.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Sources/RunLoop/RunLoop.swift';
+        };
+        ___LinkPhase_RunLoop = {
+            isa = PBXFrameworksBuildPhase;
+            files = (_LinkFileRef_Reflex_via_RunLoop, _LinkFileRef_CPOSIX_via_RunLoop, _LinkFileRef_POSIX_via_RunLoop, _LinkFileRef_CHTTPParser_via_RunLoop);
+            runOnlyForDeploymentPostprocessing = 0;
+        };
+        _LinkFileRef_Reflex_via_RunLoop = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_Reflex;
+        };
+        _LinkFileRef_CPOSIX_via_RunLoop = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_CPOSIX;
+        };
+        _LinkFileRef_POSIX_via_RunLoop = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_POSIX;
+        };
+        _LinkFileRef_CHTTPParser_via_RunLoop = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_CHTTPParser;
+        };
+        _______Confs_RunLoop = {
+            isa = XCConfigurationList;
+            buildConfigurations = (___DebugConf_RunLoop, _ReleaseConf_RunLoop);
+            defaultConfigurationIsVisible = 0;
+            defaultConfigurationName = Debug;
+        };
+        ___DebugConf_RunLoop = {
+            isa = XCBuildConfiguration;
+            buildSettings = { SWIFT_VERSION = '3.0'; LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_SWIFT_FLAGS = '$(inherited)'; INFOPLIST_FILE = 'Edge.xcodeproj/RunLoop_Info.plist'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; SWIFT_OPTIMIZATION_LEVEL = '-Onone'; HEADER_SEARCH_PATHS = '/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include /Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CHTTPParser-0.14.0/Sources/include'; PRODUCT_BUNDLE_IDENTIFIER = 'RunLoop'; PRODUCT_NAME = '$(TARGET_NAME:c99extidentifier)'; OTHER_LDFLAGS = '$(inherited)'; };
+            name = Debug;
+        };
+        _ReleaseConf_RunLoop = {
+            isa = XCBuildConfiguration;
+            buildSettings = { SWIFT_VERSION = '3.0'; LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_SWIFT_FLAGS = '$(inherited)'; INFOPLIST_FILE = 'Edge.xcodeproj/RunLoop_Info.plist'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; HEADER_SEARCH_PATHS = '/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include /Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CHTTPParser-0.14.0/Sources/include'; PRODUCT_BUNDLE_IDENTIFIER = 'RunLoop'; PRODUCT_NAME = '$(TARGET_NAME:c99extidentifier)'; OTHER_LDFLAGS = '$(inherited)'; };
+            name = Release;
+        };
+        __Dependency_RunLoop = {
+            isa = PBXTargetDependency;
+            target = ______Target_RunLoop;
+        };
+        _______Group_TCP = {
+            isa = PBXGroup;
+            name = 'TCP';
+            path = 'Sources/TCP';
+            sourceTree = '<group>';
+            children = ('__PBXFileRef_Sources/TCP/Server.swift', '__PBXFileRef_Sources/TCP/Socket.swift');
+        };
+        '__PBXFileRef_Sources/TCP/Server.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'Server.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Sources/TCP/Socket.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'Socket.swift';
+            sourceTree = '<group>';
+        };
+        ______Target_TCP = {
+            isa = PBXNativeTarget;
+            buildConfigurationList = _______Confs_TCP;
+            buildPhases = (CompilePhase_TCP, ___LinkPhase_TCP);
+            buildRules = ();
+            dependencies = (__Dependency_Reflex, __Dependency_CPOSIX, __Dependency_POSIX, __Dependency_CHTTPParser, __Dependency_POSIXExtensions, __Dependency_IOStream);
+            name = 'TCP';
+            productName = TCP;
+            productReference = _____Product_TCP;
+            productType = 'com.apple.product-type.framework';
+        };
+        _____Product_TCP = {
+            isa = PBXFileReference;
+            explicitFileType = 'wrapper.framework';
+            path = 'TCP.framework';
+            sourceTree = BUILT_PRODUCTS_DIR;
+        };
+        CompilePhase_TCP = {
+            isa = PBXSourcesBuildPhase;
+            files = ('__src_cc_ref_Sources/TCP/Server.swift', '__src_cc_ref_Sources/TCP/Socket.swift');
+            runOnlyForDeploymentPostprocessing = 0;
+        };
+        '__src_cc_ref_Sources/TCP/Server.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Sources/TCP/Server.swift';
+        };
+        '__src_cc_ref_Sources/TCP/Socket.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Sources/TCP/Socket.swift';
+        };
+        ___LinkPhase_TCP = {
+            isa = PBXFrameworksBuildPhase;
+            files = (_LinkFileRef_Reflex_via_TCP, _LinkFileRef_CPOSIX_via_TCP, _LinkFileRef_POSIX_via_TCP, _LinkFileRef_CHTTPParser_via_TCP, _LinkFileRef_POSIXExtensions_via_TCP, _LinkFileRef_IOStream_via_TCP);
+            runOnlyForDeploymentPostprocessing = 0;
+        };
+        _LinkFileRef_Reflex_via_TCP = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_Reflex;
+        };
+        _LinkFileRef_CPOSIX_via_TCP = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_CPOSIX;
+        };
+        _LinkFileRef_POSIX_via_TCP = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_POSIX;
+        };
+        _LinkFileRef_CHTTPParser_via_TCP = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_CHTTPParser;
+        };
+        _LinkFileRef_POSIXExtensions_via_TCP = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_POSIXExtensions;
+        };
+        _LinkFileRef_IOStream_via_TCP = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_IOStream;
+        };
+        _______Confs_TCP = {
+            isa = XCConfigurationList;
+            buildConfigurations = (___DebugConf_TCP, _ReleaseConf_TCP);
+            defaultConfigurationIsVisible = 0;
+            defaultConfigurationName = Debug;
+        };
+        ___DebugConf_TCP = {
+            isa = XCBuildConfiguration;
+            buildSettings = { SWIFT_VERSION = '3.0'; LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_SWIFT_FLAGS = '$(inherited)'; INFOPLIST_FILE = 'Edge.xcodeproj/TCP_Info.plist'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; SWIFT_OPTIMIZATION_LEVEL = '-Onone'; HEADER_SEARCH_PATHS = '/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include /Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CHTTPParser-0.14.0/Sources/include'; PRODUCT_BUNDLE_IDENTIFIER = 'TCP'; PRODUCT_NAME = '$(TARGET_NAME:c99extidentifier)'; OTHER_LDFLAGS = '$(inherited)'; };
+            name = Debug;
+        };
+        _ReleaseConf_TCP = {
+            isa = XCBuildConfiguration;
+            buildSettings = { SWIFT_VERSION = '3.0'; LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_SWIFT_FLAGS = '$(inherited)'; INFOPLIST_FILE = 'Edge.xcodeproj/TCP_Info.plist'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; HEADER_SEARCH_PATHS = '/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include /Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CHTTPParser-0.14.0/Sources/include'; PRODUCT_BUNDLE_IDENTIFIER = 'TCP'; PRODUCT_NAME = '$(TARGET_NAME:c99extidentifier)'; OTHER_LDFLAGS = '$(inherited)'; };
+            name = Release;
+        };
+        __Dependency_TCP = {
+            isa = PBXTargetDependency;
+            target = ______Target_TCP;
+        };
+        _______Group_HTTPTests = {
+            isa = PBXGroup;
+            name = 'HTTPTests';
+            path = 'Tests/HTTPTests';
+            sourceTree = '<group>';
+            children = ('__PBXFileRef_Tests/HTTPTests/RequestParserTests.swift', '__PBXFileRef_Tests/HTTPTests/ResponseParserTests.swift');
+        };
+        '__PBXFileRef_Tests/HTTPTests/RequestParserTests.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'RequestParserTests.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Tests/HTTPTests/ResponseParserTests.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'ResponseParserTests.swift';
+            sourceTree = '<group>';
+        };
+        ______Target_HTTPTests = {
+            isa = PBXNativeTarget;
+            buildConfigurationList = _______Confs_HTTPTests;
+            buildPhases = (CompilePhase_HTTPTests, ___LinkPhase_HTTPTests);
+            buildRules = ();
+            dependencies = (__Dependency_Reflex, __Dependency_CPOSIX, __Dependency_POSIX, __Dependency_CHTTPParser, __Dependency_HTTP);
+            name = 'HTTPTests';
+            productName = HTTPTests;
+            productReference = _____Product_HTTPTests;
+            productType = 'com.apple.product-type.bundle.unit-test';
+        };
+        _____Product_HTTPTests = {
+            isa = PBXFileReference;
+            explicitFileType = 'compiled.mach-o.wrapper.cfbundle';
+            path = 'HTTPTests.xctest';
+            sourceTree = BUILT_PRODUCTS_DIR;
+        };
+        CompilePhase_HTTPTests = {
+            isa = PBXSourcesBuildPhase;
+            files = ('__src_cc_ref_Tests/HTTPTests/RequestParserTests.swift', '__src_cc_ref_Tests/HTTPTests/ResponseParserTests.swift');
+            runOnlyForDeploymentPostprocessing = 0;
+        };
+        '__src_cc_ref_Tests/HTTPTests/RequestParserTests.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Tests/HTTPTests/RequestParserTests.swift';
+        };
+        '__src_cc_ref_Tests/HTTPTests/ResponseParserTests.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Tests/HTTPTests/ResponseParserTests.swift';
+        };
+        ___LinkPhase_HTTPTests = {
+            isa = PBXFrameworksBuildPhase;
+            files = (_LinkFileRef_Reflex_via_HTTPTests, _LinkFileRef_CPOSIX_via_HTTPTests, _LinkFileRef_POSIX_via_HTTPTests, _LinkFileRef_CHTTPParser_via_HTTPTests, _LinkFileRef_POSIXExtensions_via_HTTPTests, _LinkFileRef_IOStream_via_HTTPTests, _LinkFileRef_TCP_via_HTTPTests, _LinkFileRef_HTTP_via_HTTPTests);
+            runOnlyForDeploymentPostprocessing = 0;
+        };
+        _LinkFileRef_Reflex_via_HTTPTests = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_Reflex;
+        };
+        _LinkFileRef_CPOSIX_via_HTTPTests = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_CPOSIX;
+        };
+        _LinkFileRef_POSIX_via_HTTPTests = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_POSIX;
+        };
+        _LinkFileRef_CHTTPParser_via_HTTPTests = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_CHTTPParser;
+        };
+        _LinkFileRef_POSIXExtensions_via_HTTPTests = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_POSIXExtensions;
+        };
+        _LinkFileRef_IOStream_via_HTTPTests = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_IOStream;
+        };
+        _LinkFileRef_TCP_via_HTTPTests = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_TCP;
+        };
+        _LinkFileRef_HTTP_via_HTTPTests = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_HTTP;
+        };
+        _______Confs_HTTPTests = {
+            isa = XCConfigurationList;
+            buildConfigurations = (___DebugConf_HTTPTests, _ReleaseConf_HTTPTests);
+            defaultConfigurationIsVisible = 0;
+            defaultConfigurationName = Debug;
+        };
+        ___DebugConf_HTTPTests = {
+            isa = XCBuildConfiguration;
+            buildSettings = { LD_RUNPATH_SEARCH_PATHS = '@loader_path/../Frameworks'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; HEADER_SEARCH_PATHS = '/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include /Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CHTTPParser-0.14.0/Sources/include'; OTHER_SWIFT_FLAGS = '$(inherited)'; INFOPLIST_FILE = 'Edge.xcodeproj/HTTPTests_Info.plist'; SWIFT_OPTIMIZATION_LEVEL = '-Onone'; EMBEDDED_CONTENT_CONTAINS_SWIFT = 'YES'; OTHER_LDFLAGS = '$(inherited)'; SWIFT_VERSION = '3.0'; };
+            name = Debug;
+        };
+        _ReleaseConf_HTTPTests = {
+            isa = XCBuildConfiguration;
+            buildSettings = { LD_RUNPATH_SEARCH_PATHS = '@loader_path/../Frameworks'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; HEADER_SEARCH_PATHS = '/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include /Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CHTTPParser-0.14.0/Sources/include'; OTHER_SWIFT_FLAGS = '$(inherited)'; INFOPLIST_FILE = 'Edge.xcodeproj/HTTPTests_Info.plist'; EMBEDDED_CONTENT_CONTAINS_SWIFT = 'YES'; OTHER_LDFLAGS = '$(inherited)'; SWIFT_VERSION = '3.0'; };
+            name = Release;
+        };
+        __Dependency_HTTPTests = {
+            isa = PBXTargetDependency;
+            target = ______Target_HTTPTests;
+        };
+        _______Group_TCPTests = {
+            isa = PBXGroup;
+            name = 'TCPTests';
+            path = 'Tests/TCPTests';
+            sourceTree = '<group>';
+            children = ('__PBXFileRef_Tests/TCPTests/Tests.swift');
+        };
+        '__PBXFileRef_Tests/TCPTests/Tests.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'Tests.swift';
+            sourceTree = '<group>';
+        };
+        ______Target_TCPTests = {
+            isa = PBXNativeTarget;
+            buildConfigurationList = _______Confs_TCPTests;
+            buildPhases = (CompilePhase_TCPTests, ___LinkPhase_TCPTests);
+            buildRules = ();
+            dependencies = (__Dependency_Reflex, __Dependency_CPOSIX, __Dependency_POSIX, __Dependency_CHTTPParser, __Dependency_TCP);
+            name = 'TCPTests';
+            productName = TCPTests;
+            productReference = _____Product_TCPTests;
+            productType = 'com.apple.product-type.bundle.unit-test';
+        };
+        _____Product_TCPTests = {
+            isa = PBXFileReference;
+            explicitFileType = 'compiled.mach-o.wrapper.cfbundle';
+            path = 'TCPTests.xctest';
+            sourceTree = BUILT_PRODUCTS_DIR;
+        };
+        CompilePhase_TCPTests = {
+            isa = PBXSourcesBuildPhase;
+            files = ('__src_cc_ref_Tests/TCPTests/Tests.swift');
+            runOnlyForDeploymentPostprocessing = 0;
+        };
+        '__src_cc_ref_Tests/TCPTests/Tests.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Tests/TCPTests/Tests.swift';
+        };
+        ___LinkPhase_TCPTests = {
+            isa = PBXFrameworksBuildPhase;
+            files = (_LinkFileRef_Reflex_via_TCPTests, _LinkFileRef_CPOSIX_via_TCPTests, _LinkFileRef_POSIX_via_TCPTests, _LinkFileRef_CHTTPParser_via_TCPTests, _LinkFileRef_POSIXExtensions_via_TCPTests, _LinkFileRef_IOStream_via_TCPTests, _LinkFileRef_TCP_via_TCPTests);
+            runOnlyForDeploymentPostprocessing = 0;
+        };
+        _LinkFileRef_Reflex_via_TCPTests = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_Reflex;
+        };
+        _LinkFileRef_CPOSIX_via_TCPTests = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_CPOSIX;
+        };
+        _LinkFileRef_POSIX_via_TCPTests = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_POSIX;
+        };
+        _LinkFileRef_CHTTPParser_via_TCPTests = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_CHTTPParser;
+        };
+        _LinkFileRef_POSIXExtensions_via_TCPTests = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_POSIXExtensions;
+        };
+        _LinkFileRef_IOStream_via_TCPTests = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_IOStream;
+        };
+        _LinkFileRef_TCP_via_TCPTests = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_TCP;
+        };
+        _______Confs_TCPTests = {
+            isa = XCConfigurationList;
+            buildConfigurations = (___DebugConf_TCPTests, _ReleaseConf_TCPTests);
+            defaultConfigurationIsVisible = 0;
+            defaultConfigurationName = Debug;
+        };
+        ___DebugConf_TCPTests = {
+            isa = XCBuildConfiguration;
+            buildSettings = { LD_RUNPATH_SEARCH_PATHS = '@loader_path/../Frameworks'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; HEADER_SEARCH_PATHS = '/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include /Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CHTTPParser-0.14.0/Sources/include'; OTHER_SWIFT_FLAGS = '$(inherited)'; INFOPLIST_FILE = 'Edge.xcodeproj/TCPTests_Info.plist'; SWIFT_OPTIMIZATION_LEVEL = '-Onone'; EMBEDDED_CONTENT_CONTAINS_SWIFT = 'YES'; OTHER_LDFLAGS = '$(inherited)'; SWIFT_VERSION = '3.0'; };
+            name = Debug;
+        };
+        _ReleaseConf_TCPTests = {
+            isa = XCBuildConfiguration;
+            buildSettings = { LD_RUNPATH_SEARCH_PATHS = '@loader_path/../Frameworks'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; HEADER_SEARCH_PATHS = '/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include /Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CHTTPParser-0.14.0/Sources/include'; OTHER_SWIFT_FLAGS = '$(inherited)'; INFOPLIST_FILE = 'Edge.xcodeproj/TCPTests_Info.plist'; EMBEDDED_CONTENT_CONTAINS_SWIFT = 'YES'; OTHER_LDFLAGS = '$(inherited)'; SWIFT_VERSION = '3.0'; };
+            name = Release;
+        };
+        __Dependency_TCPTests = {
+            isa = PBXTargetDependency;
+            target = ______Target_TCPTests;
+        };
+        '__PBXFileRef_Edge.xcodeproj/Configs/Project.xcconfig' = {
+            isa = PBXFileReference;
+            lastKnownFileType = text.xcconfig;
+            path = 'Edge.xcodeproj/Configs/Project.xcconfig';
+            sourceTree = '<group>';
+        };
+        _____Configs_ = {
+            isa = PBXGroup;
+            children = ('__PBXFileRef_Edge.xcodeproj/Configs/Project.xcconfig');
+            name = Configs;
+            sourceTree = '<group>';
+        };
+        _____Sources_ = {
+            isa = PBXGroup;
+            children = (_______Group_Reflex, _______Group_CPOSIX, _______Group_POSIX, _______Group_CHTTPParser, _______Group_Edge, _______Group_HTTP, _______Group_IOStream, _______Group_POSIXExtensions, _______Group_RunLoop, _______Group_TCP);
+            name = Sources;
+            sourceTree = '<group>';
+        };
+        Dependencies_ = {
+            isa = PBXGroup;
+            children = (_______Group_CPOSIX, _______Group_POSIX, _______Group_Reflex, _______Group_CHTTPParser);
+            name = Dependencies;
+            sourceTree = '<group>';
+        };
+        _______Tests_ = {
+            isa = PBXGroup;
+            children = (_______Group_HTTPTests, _______Group_TCPTests);
+            name = Tests;
+            sourceTree = '<group>';
+        };
+       TestProducts_ = {
+            isa = PBXGroup;
+            children = (_____Product_HTTPTests, _____Product_TCPTests);
+            name = Tests;
+            sourceTree = '<group>';
+        };
+        ____Products_ = {
+            isa = PBXGroup;
+            children = (TestProducts_, _____Product_Reflex, _____Product_CPOSIX, _____Product_POSIX, _____Product_CHTTPParser, _____Product_Edge, _____Product_HTTP, _____Product_IOStream, _____Product_POSIXExtensions, _____Product_RunLoop, _____Product_TCP);
+            name = Products;
+            sourceTree = '<group>';
+        };
+        _______Debug_ = {
+            isa = XCBuildConfiguration;
+            baseConfigurationReference = '__PBXFileRef_Edge.xcodeproj/Configs/Project.xcconfig';
+            buildSettings = {};
+            name = Debug;
+        };
+        _____Release_ = {
+            isa = XCBuildConfiguration;
+            baseConfigurationReference = '__PBXFileRef_Edge.xcodeproj/Configs/Project.xcconfig';
+            buildSettings = {};
+            name = Release;
+        };
+        ___RootConfs_ = {
+            isa = XCConfigurationList;
+            buildConfigurations = (_______Debug_, _____Release_);
+            defaultConfigurationIsVisible = 0;
+            defaultConfigurationName = Debug;
+        };
+    };
+}
