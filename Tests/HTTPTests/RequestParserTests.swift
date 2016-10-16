@@ -1,11 +1,10 @@
 import XCTest
-import S4
 @testable import HTTP
 
 class RequestParserTests: XCTestCase {
 
     func testInvalidMethod() {
-        let expectParseError = expectation(withDescription: "Invalid request did not throw an error.")
+        let expectParseError = expectation(description: "Invalid request did not throw an error.")
         let parser = RequestParser()
         let data = ("INVALID / HTTP/1.1\r\n" + "\r\n")
         do {
@@ -13,7 +12,7 @@ class RequestParserTests: XCTestCase {
         } catch {
             expectParseError.fulfill()
         }
-        waitForExpectations(withTimeout: 0)
+        waitForExpectations(timeout: 0)
     }
 
     func testShortRequests() {

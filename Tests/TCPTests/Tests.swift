@@ -5,9 +5,9 @@ class TestBasic: XCTestCase {
 
     func testClientServer() {
 
-        let interruptExpectation = expectation(withDescription: "Did not receive an interrupted read.")
-        let receiveMessageExpectation = expectation(withDescription: "Did not receive any message.")
-        let completeWriteExpectation = expectation(withDescription: "Did not complete write.")
+        let interruptExpectation = expectation(description: "Did not receive an interrupted read.")
+        let receiveMessageExpectation = expectation(description: "Did not receive any message.")
+        let completeWriteExpectation = expectation(description: "Did not complete write.")
         let server = try! Server()
         try! server.bind(host: "localhost", port: 50000)
 
@@ -54,7 +54,7 @@ class TestBasic: XCTestCase {
         }
         connect.start()
 
-        waitForExpectations(withTimeout: 1)
+        waitForExpectations(timeout: 1)
     }
 
 }
