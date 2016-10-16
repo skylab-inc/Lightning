@@ -89,7 +89,7 @@ xcuserdata/
 
 ## Other
 #*.xcodeproj
-*.xcodeproj/*.plist
+#*.xcodeproj/*.plist
 *.moved-aside
 *.xcuserstate
 
