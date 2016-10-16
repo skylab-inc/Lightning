@@ -6,11 +6,11 @@
 //
 //
 
-import S4
+import Foundation
 
 public struct Request: Serializable {
-    public var method: S4.Method
-    public var uri: URI
+    public var method: Method
+    public var uri: URL
     public var version: Version
     public var rawHeaders: [String]
     public var body: [UInt8]
@@ -35,7 +35,7 @@ public struct Request: Serializable {
         return headerString.utf8 + body
     }
 
-    public init(method: S4.Method, uri: URI, version: Version, rawHeaders: [String], body: [UInt8]) {
+    public init(method: Method, uri: URL, version: Version, rawHeaders: [String], body: [UInt8]) {
         self.method = method
         self.uri = uri
         self.version = version
@@ -44,5 +44,4 @@ public struct Request: Serializable {
         self.storage = [:]
     }
     
-
 }

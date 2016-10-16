@@ -11,13 +11,12 @@ import POSIX
 import POSIXExtensions
 import Reflex
 import HTTP
-import S4
 
 public final class Application {
     
     var subApps = [Application]()
     let server = HTTP.Server()
-    var clientSignals = [Signal<HTTP.Request, S4.ClientError>]()
+    var clientSignals = [Signal<HTTP.Request, ClientError>]()
     
     init() {
         
@@ -43,7 +42,7 @@ public final class Application {
         }
     }
     
-    public func get(_ path: String, _ map: (HTTP.Request) -> HTTP.Response) {
+    public func get(_ path: String, _ map: @escaping (HTTP.Request) -> HTTP.Response) {
         for signal in self.clientSignals {
             signal.filter { request in
                 request.method == .get && path == request.uri.path

@@ -24,21 +24,19 @@
 
 import CHTTPParser
 import Foundation
-import S4
-import URI
 
 typealias CParserPointer = UnsafeMutablePointer<http_parser>
 typealias RawParserPointer = UnsafeMutablePointer<RawParser>
 
-private func bridge<T : AnyObject>(_ obj : T) -> UnsafeMutablePointer<Void> {
+private func bridge<T : AnyObject>(_ obj : T) -> UnsafeMutableRawPointer {
     return Unmanaged.passUnretained(obj).toOpaque()
 }
 
-private func bridge<T : AnyObject>(_ ptr : UnsafeMutablePointer<Void>) -> T {
+private func bridge<T : AnyObject>(_ ptr : UnsafeMutableRawPointer) -> T {
     return Unmanaged<T>.fromOpaque(ptr).takeUnretainedValue()
 }
 
-struct ParseError: ErrorProtocol {
+struct ParseError: Error {
     let description: String
 }
 
@@ -50,9 +48,13 @@ public class RequestParser {
         self.onRequest = onRequest
         self.parser = FullMessageParser(type: HTTP_REQUEST)
         self.parser.onComplete = { [weak self] parseState in
+            guard let uri = URL(string: parseState.uri) else {
+                throw ParseError(description: "URL not valid.")
+            }
+            
             let request = Request(
-                method: S4.Method(code: parseState.method),
-                uri: try URI(parseState.uri),
+                method: Method(code: parseState.method),
+                uri: uri,
                 version: Version(major: parseState.version.major, minor: parseState.version.minor),
                 rawHeaders: parseState.rawHeaders,
                 body: parseState.body
@@ -230,7 +232,7 @@ public protocol RawParserDelegate: class {
 public final class RawParser {
     var parser = http_parser()
     var type: http_parser_type
-    private weak var delegate: RawParserDelegate?
+    fileprivate weak var delegate: RawParserDelegate?
     
     public init(type: http_parser_type, delegate: RawParserDelegate? = nil) {
         self.type = type
@@ -246,57 +248,18 @@ public final class RawParser {
     }
     
     public func parse(_ data: [UInt8]) throws {
-        let bytesParsed = http_parser_execute(&parser, &requestSettings, UnsafePointer(data), data.count)
-        guard bytesParsed == data.count else {
-            reset()
-            let errorName = http_errno_name(http_errno(parser.http_errno))!
-            let errorDescription = http_errno_description(http_errno(parser.http_errno))!
-            let error = ParseError(description: "\(String(validatingUTF8: errorName)!): \(String(validatingUTF8: errorDescription)!)")
-            throw error
+        try UnsafePointer(data).withMemoryRebound(to: Int8.self, capacity: data.count) { convertedPointer in
+            let bytesParsed = http_parser_execute(&parser, &requestSettings, convertedPointer, data.count)
+            guard bytesParsed == data.count else {
+                reset()
+                let errorName = http_errno_name(http_errno(parser.http_errno))!
+                let errorDescription = http_errno_description(http_errno(parser.http_errno))!
+                let error = ParseError(description: "\(String(validatingUTF8: errorName)!): \(String(validatingUTF8: errorDescription)!)")
+                throw error
+            }
         }
     }
 
-}
-
-extension S4.Method {
-    init(code: Int) {
-        switch code {
-        case 00: self = delete
-        case 01: self = get
-        case 02: self = head
-        case 03: self = post
-        case 04: self = put
-        case 05: self = connect
-        case 06: self = options
-        case 07: self = trace
-        case 08: self = other(method: "COPY")
-        case 09: self = other(method: "LOCK")
-        case 10: self = other(method: "MKCOL")
-        case 11: self = other(method: "MOVE")
-        case 12: self = other(method: "PROPFIND")
-        case 13: self = other(method: "PROPPATCH")
-        case 14: self = other(method: "SEARCH")
-        case 15: self = other(method: "UNLOCK")
-        case 16: self = other(method: "BIND")
-        case 17: self = other(method: "REBIND")
-        case 18: self = other(method: "UNBIND")
-        case 19: self = other(method: "ACL")
-        case 20: self = other(method: "REPORT")
-        case 21: self = other(method: "MKACTIVITY")
-        case 22: self = other(method: "CHECKOUT")
-        case 23: self = other(method: "MERGE")
-        case 24: self = other(method: "MSEARCH")
-        case 25: self = other(method: "NOTIFY")
-        case 26: self = other(method: "SUBSCRIBE")
-        case 27: self = other(method: "UNSUBSCRIBE")
-        case 28: self = patch
-        case 29: self = other(method: "PURGE")
-        case 30: self = other(method: "MKCALENDAR")
-        case 31: self = other(method: "LINK")
-        case 32: self = other(method: "UNLINK")
-        default: self = other(method: "UNKNOWN")
-        }
-    }
 }
 
 var requestSettings: http_parser_settings = {
@@ -332,7 +295,9 @@ private func onMessageBegin(_ parser: CParserPointer?) -> Int32 {
 private func onURL(_ parser: CParserPointer?, data: UnsafePointer<Int8>?, length: Int) -> Int32 {
     let rawParser: RawParser = bridge(parser!.pointee.data)
     do {
-        try rawParser.delegate?.onURL(data: UnsafeBufferPointer(start: UnsafePointer<UInt8>(data), count: length))
+        try data?.withMemoryRebound(to: UInt8.self, capacity: length) { convertedPointer in
+            try rawParser.delegate?.onURL(data: UnsafeBufferPointer(start: convertedPointer, count: length))
+        }
     } catch {
         return 1
     }
@@ -342,7 +307,9 @@ private func onURL(_ parser: CParserPointer?, data: UnsafePointer<Int8>?, length
 private func onStatus(_ parser: CParserPointer?, data: UnsafePointer<Int8>?, length: Int) -> Int32 {
     let rawParser: RawParser = bridge(parser!.pointee.data)
     do {
-        try rawParser.delegate?.onStatus(data: UnsafeBufferPointer(start: UnsafePointer<UInt8>(data), count: length))
+        try data?.withMemoryRebound(to: UInt8.self, capacity: length) { convertedPointer in
+            try rawParser.delegate?.onStatus(data: UnsafeBufferPointer(start: convertedPointer, count: length))
+        }
     } catch {
         return 1
     }
@@ -352,7 +319,9 @@ private func onStatus(_ parser: CParserPointer?, data: UnsafePointer<Int8>?, len
 private func onHeaderField(_ parser: CParserPointer?, data: UnsafePointer<Int8>?, length: Int) -> Int32 {
     let rawParser: RawParser = bridge(parser!.pointee.data)
     do {
-        try rawParser.delegate?.onHeaderField(data: UnsafeBufferPointer(start: UnsafePointer<UInt8>(data), count: length))
+        try data?.withMemoryRebound(to: UInt8.self, capacity: length) { convertedPointer in
+            try rawParser.delegate?.onHeaderField(data: UnsafeBufferPointer(start: convertedPointer, count: length))
+        }
     } catch {
         return 1
     }
@@ -362,7 +331,9 @@ private func onHeaderField(_ parser: CParserPointer?, data: UnsafePointer<Int8>?
 private func onHeaderValue(_ parser: CParserPointer?, data: UnsafePointer<Int8>?, length: Int) -> Int32 {
     let rawParser: RawParser = bridge(parser!.pointee.data)
     do {
-        try rawParser.delegate?.onHeaderValue(data: UnsafeBufferPointer(start: UnsafePointer<UInt8>(data), count: length))
+        try data?.withMemoryRebound(to: UInt8.self, capacity: length) { convertedPointer in
+            try rawParser.delegate?.onHeaderValue(data: UnsafeBufferPointer(start: convertedPointer, count: length))
+        }
     } catch {
         return 1
     }
@@ -396,7 +367,9 @@ private func onHeadersComplete(_ parser: CParserPointer?) -> Int32 {
 private func onBody(_ parser: CParserPointer?, data: UnsafePointer<Int8>?, length: Int) -> Int32 {
     let rawParser: RawParser = bridge(parser!.pointee.data)
     do {
-        try rawParser.delegate?.onBody(data: UnsafeBufferPointer(start: UnsafePointer<UInt8>(data), count: length))
+        try data?.withMemoryRebound(to: UInt8.self, capacity: length) { convertedPointer in
+            try rawParser.delegate?.onBody(data:UnsafeBufferPointer(start: convertedPointer, count: length))
+        }
     } catch {
         return 1
     }

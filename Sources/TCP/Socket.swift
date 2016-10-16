@@ -10,16 +10,14 @@ import Dispatch
 import Reflex
 import POSIX
 import POSIXExtensions
-import Log
 import IOStream
 
 
 public final class Socket: WritableIOStream, ReadableIOStream {
-    private static let logger = Logger(name: "Edge.TCP.Socket", appender: StandardOutputAppender())
     private static let defaultReuseAddress = true
     
     private let socketFD: SocketFileDescriptor
-    public var fd: FileDescriptor {
+    public var fd: POSIXExtensions.FileDescriptor {
         return socketFD
     }
     public let channel: DispatchIO
@@ -35,7 +33,7 @@ public final class Socket: WritableIOStream, ReadableIOStream {
         if reuseAddress {
             // Set SO_REUSEADDR
             var reuseAddr = 1
-            let error = setsockopt(self.socketFD.rawValue, SOL_SOCKET, SO_REUSEADDR, &reuseAddr, socklen_t(strideof(Int)))
+            let error = setsockopt(self.socketFD.rawValue, SOL_SOCKET, SO_REUSEADDR, &reuseAddr, socklen_t(MemoryLayout<Int>.stride))
             if let systemError = SystemError(errorNumber: error) {
                 throw systemError
             }
@@ -52,7 +50,7 @@ public final class Socket: WritableIOStream, ReadableIOStream {
     public func connect(host: String, port: Port) -> ColdSignal<Socket, SystemError> {
         
         return ColdSignal { [socketFD, fd, channel] observer in
-            var addrInfoPointer = UnsafeMutablePointer<addrinfo>(nil)
+            var addrInfoPointer: UnsafeMutablePointer<addrinfo>? = nil
             
             var hints = addrinfo(
                 ai_flags: 0,
@@ -72,7 +70,7 @@ public final class Socket: WritableIOStream, ReadableIOStream {
             }
             
             let addressInfo = addrInfoPointer!.pointee
-            let connectRet = systemConnect(fd.rawValue, addressInfo.ai_addr, socklen_t(strideof(sockaddr)))
+            let connectRet = systemConnect(fd.rawValue, addressInfo.ai_addr, socklen_t(MemoryLayout<sockaddr>.stride))
             freeaddrinfo(addrInfoPointer)
             
             // Blocking, connect immediately or throw error
@@ -97,7 +95,7 @@ public final class Socket: WritableIOStream, ReadableIOStream {
                 // Wait for channel to be writable. Then we are connected.
                 channel.write(offset: off_t(), data: .empty, queue: .main) { done, data, error in
                     var result = 0
-                    var resultLength = socklen_t(strideof(result.dynamicType))
+                    var resultLength = socklen_t(MemoryLayout<Int>.stride)
                     let ret = getsockopt(self.fd.rawValue, SOL_SOCKET, SO_ERROR, &result, &resultLength)
                     if let systemError = SystemError(errorNumber: ret) {
                         observer.sendFailed(systemError)
@@ -111,7 +109,6 @@ public final class Socket: WritableIOStream, ReadableIOStream {
                         observer.sendFailed(systemError)
                         return
                     }
-                    Socket.logger.debug("Connection established on \(self.fd)")
                     observer.sendNext(self)
                     observer.sendCompleted()
                 }
@@ -119,7 +116,6 @@ public final class Socket: WritableIOStream, ReadableIOStream {
                 observer.sendFailed(error)
             }
             return ActionDisposable {
-                Socket.logger.trace("Disposing IO Channel")
                 channel.close()
             }
         }

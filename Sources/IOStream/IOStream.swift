@@ -10,13 +10,10 @@ import Dispatch
 import Reflex
 import POSIX
 import POSIXExtensions
-import Log
-
-let logger = Logger(name: "Edge.IOStream", appender: StandardOutputAppender())
 
 public protocol WritableIOStream: class {
     
-    var fd: FileDescriptor { get }
+    var fd: POSIXExtensions.FileDescriptor { get }
     
     var channel: DispatchIO { get }
     
@@ -56,9 +53,7 @@ public extension WritableIOStream {
                         observer.sendFailed(systemError)
                     }
                     
-                    logger.trace("Unwritten data: " + String(data))
-                    
-                    if let data = data where !data.isEmpty {
+                    if let data = data, !data.isEmpty {
                         // Get unwritten data
                         data.enumerateBytes { (buffer, byteIndex, stop) in
                             observer.sendNext(Array(buffer))
@@ -80,8 +75,7 @@ public extension WritableIOStream {
                     }
                 }
             }
-            return ActionDisposable { [fd = self.fd] in
-                logger.trace("Disposing \(fd) for writing.")
+            return ActionDisposable {
                 writeChannel.close()
             }
         }
@@ -91,7 +85,7 @@ public extension WritableIOStream {
 
 public protocol ReadableIOStream: class {
     
-    var fd: FileDescriptor { get }
+    var fd: POSIXExtensions.FileDescriptor { get }
     
     var channel: DispatchIO { get }
 
@@ -120,9 +114,7 @@ public extension ReadableIOStream {
                 }
                 
                 // Deliver data if it is non-empty
-                logger.trace("Read data: " + String(data))
-                
-                if let data = data where !data.isEmpty {
+                if let data = data, !data.isEmpty {
                     data.enumerateBytes { (buffer, byteIndex, stop) in
                         observer.sendNext(Array(buffer))
                     }
@@ -142,8 +134,7 @@ public extension ReadableIOStream {
                     // dispatch_io_close(readChannel, 0)
                 }
             }
-            return ActionDisposable { [fd = self.fd] in
-                logger.trace("Disposing \(fd) for reading.")
+            return ActionDisposable {
                 readChannel.close()
             }
         }

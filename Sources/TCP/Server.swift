@@ -10,13 +10,11 @@ import Dispatch
 import Reflex
 import POSIX
 import POSIXExtensions
-import Log
 import IOStream
 
 
 public final class Server {
     
-    private static let logger = Logger(name: "Edge.TCP.Server", appender: StandardOutputAppender())
     private static let defaultReuseAddress = true
     
     private let fd: SocketFileDescriptor
@@ -32,13 +30,14 @@ public final class Server {
         if reuseAddress {
             // Set SO_REUSEADDR
             var reuseAddr = 1
-            let error = setsockopt(self.fd.rawValue, SOL_SOCKET, SO_REUSEADDR, &reuseAddr, socklen_t(strideof(Int)))
+            let error = setsockopt(self.fd.rawValue, SOL_SOCKET, SO_REUSEADDR, &reuseAddr, socklen_t(MemoryLayout<Int>.stride))
             if error != 0 {
                 throw SystemError(errorNumber: errno)!
             }
         }
         
-        self.listeningSource = DispatchSource.read(fileDescriptor: self.fd.rawValue, queue: .main)
+        
+        self.listeningSource = DispatchSource.makeReadSource(fileDescriptor: self.fd.rawValue, queue: .main)
         
         // Close the socket when the source is canceled.
         listeningSource.setCancelHandler {
@@ -50,7 +49,7 @@ public final class Server {
     }
     
     public func bind(host: String, port: Port) throws {
-        var addrInfoPointer = UnsafeMutablePointer<addrinfo>(nil)
+        var addrInfoPointer: UnsafeMutablePointer<addrinfo>? = nil
         
         var hints = addrinfo(
             ai_flags: 0,
@@ -70,7 +69,7 @@ public final class Server {
         
         let addressInfo = addrInfoPointer!.pointee
         
-        let bindRet = systemBind(fd.rawValue, addressInfo.ai_addr, socklen_t(sizeof(sockaddr)))
+        let bindRet = systemBind(fd.rawValue, addressInfo.ai_addr, socklen_t(MemoryLayout<sockaddr>.stride))
         freeaddrinfo(addrInfoPointer)
         
         if bindRet != 0 {
@@ -85,11 +84,8 @@ public final class Server {
                 observer.sendFailed(SystemError(errorNumber: errno)!)
                 return nil
             }
-            Server.logger.debug("Listening on \(self.fd)...")
             self.listeningSource.setEventHandler {
-                
-                Server.logger.debug("Connecting...")
-                
+                                
                 var socketAddress = sockaddr()
                 var sockLen = socklen_t(SOCK_MAXADDRLEN)
                 
@@ -124,7 +120,6 @@ public final class Server {
                 self.listeningSource.resume()
             }
             return ActionDisposable {
-                Server.logger.trace("Disposing listeningSource")
                 self.listeningSource.cancel()
             }
         }

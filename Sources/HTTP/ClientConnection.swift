@@ -9,7 +9,6 @@
 import Foundation
 import TCP
 import Reflex
-import S4
 
 public final class ClientConnection {
     
@@ -20,7 +19,7 @@ public final class ClientConnection {
         self.socket = socket
     }
     
-    public func read() -> ColdSignal<Request, S4.ClientError> {
+    public func read() -> ColdSignal<Request, ClientError> {
         return ColdSignal { observer in
             let read = self.socket.read()
             self.parser.onRequest = { request in

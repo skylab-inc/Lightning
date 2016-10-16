@@ -31,12 +31,8 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .Package(url: "https://github.com/SwiftOnEdge/Reflex.git", majorVersion: 0, minor: 1),
-        .Package(url: "https://github.com/Zewo/POSIX.git", majorVersion: 0, minor: 5),
-        .Package(url: "https://github.com/Zewo/Log.git", majorVersion: 0, minor: 9),
-        .Package(url: "https://github.com/Zewo/CHTTPParser.git", majorVersion: 0, minor: 5),
-        .Package(url: "https://github.com/Zewo/URI.git", majorVersion: 0, minor: 9),
-        .Package(url: "https://github.com/open-swift/C7.git", majorVersion: 0, minor: 9),
-        .Package(url: "https://github.com/open-swift/S4.git", majorVersion: 0, minor: 10),
+        .Package(url: "https://github.com/SwiftOnEdge/Reflex.git", majorVersion: 0, minor: 2),
+        .Package(url: "https://github.com/Zewo/POSIX.git", majorVersion: 0, minor: 14),
+        .Package(url: "https://github.com/Zewo/CHTTPParser.git", majorVersion: 0, minor: 14),
     ]
 )
