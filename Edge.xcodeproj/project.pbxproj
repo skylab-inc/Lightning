@@ -1,1356 +1,1788 @@
 // !$*UTF8*$!
 {
-    archiveVersion = 1;
-    classes = {};
-    objectVersion = 46;
-    rootObject = __RootObject_;
-    objects = {
-        __RootObject_ = {
-            isa = PBXProject;
-            attributes = {LastUpgradeCheck = 9999;};
-            buildConfigurationList = ___RootConfs_;
-            compatibilityVersion = 'Xcode 3.2';
-            developmentRegion = English;
-            hasScannedForEncodings = 0;
-            knownRegions = (en);
-            mainGroup = ___RootGroup_;
-            productRefGroup = ____Products_;
-            projectDirPath = '';
-            projectRoot = '';
-            targets = (______Target_Reflex, ______Target_CPOSIX, ______Target_POSIX, ______Target_CHTTPParser, ______Target_Edge, ______Target_HTTP, ______Target_IOStream, ______Target_POSIXExtensions, ______Target_RunLoop, ______Target_TCP, ______Target_HTTPTests, ______Target_TCPTests);
-        };
-        '__PBXFileRef_Package.swift' = {
-            isa = PBXFileReference;
-            lastKnownFileType = sourcecode.swift;
-            path = 'Package.swift';
-            sourceTree = '<group>';
-        };
-        ___RootGroup_ = {
-            isa = PBXGroup;
-            children = ('__PBXFileRef_Package.swift', _____Configs_, _____Sources_,  Dependencies_, _______Tests_, ____Products_);
-            sourceTree = '<group>';
-        };
-        _______Group_Reflex = {
-            isa = PBXGroup;
-            name = 'Reflex';
-            path = 'Packages/Reflex-0.2.1/Sources';
-            sourceTree = '<group>';
-            children = ('__PBXFileRef_Packages/Reflex-0.2.1/Sources/Bag.swift', '__PBXFileRef_Packages/Reflex-0.2.1/Sources/ColdSignal.swift', '__PBXFileRef_Packages/Reflex-0.2.1/Sources/Disposable.swift', '__PBXFileRef_Packages/Reflex-0.2.1/Sources/Event.swift', '__PBXFileRef_Packages/Reflex-0.2.1/Sources/Observer.swift', '__PBXFileRef_Packages/Reflex-0.2.1/Sources/Signal.swift');
-        };
-        '__PBXFileRef_Packages/Reflex-0.2.1/Sources/Bag.swift' = {
-            isa = PBXFileReference;
-            lastKnownFileType = sourcecode.swift;
-            path = 'Bag.swift';
-            sourceTree = '<group>';
-        };
-        '__PBXFileRef_Packages/Reflex-0.2.1/Sources/ColdSignal.swift' = {
-            isa = PBXFileReference;
-            lastKnownFileType = sourcecode.swift;
-            path = 'ColdSignal.swift';
-            sourceTree = '<group>';
-        };
-        '__PBXFileRef_Packages/Reflex-0.2.1/Sources/Disposable.swift' = {
-            isa = PBXFileReference;
-            lastKnownFileType = sourcecode.swift;
-            path = 'Disposable.swift';
-            sourceTree = '<group>';
-        };
-        '__PBXFileRef_Packages/Reflex-0.2.1/Sources/Event.swift' = {
-            isa = PBXFileReference;
-            lastKnownFileType = sourcecode.swift;
-            path = 'Event.swift';
-            sourceTree = '<group>';
-        };
-        '__PBXFileRef_Packages/Reflex-0.2.1/Sources/Observer.swift' = {
-            isa = PBXFileReference;
-            lastKnownFileType = sourcecode.swift;
-            path = 'Observer.swift';
-            sourceTree = '<group>';
-        };
-        '__PBXFileRef_Packages/Reflex-0.2.1/Sources/Signal.swift' = {
-            isa = PBXFileReference;
-            lastKnownFileType = sourcecode.swift;
-            path = 'Signal.swift';
-            sourceTree = '<group>';
-        };
-        ______Target_Reflex = {
-            isa = PBXNativeTarget;
-            buildConfigurationList = _______Confs_Reflex;
-            buildPhases = (CompilePhase_Reflex, ___LinkPhase_Reflex);
-            buildRules = ();
-            dependencies = ();
-            name = 'Reflex';
-            productName = Reflex;
-            productReference = _____Product_Reflex;
-            productType = 'com.apple.product-type.framework';
-        };
-        _____Product_Reflex = {
-            isa = PBXFileReference;
-            explicitFileType = 'wrapper.framework';
-            path = 'Reflex.framework';
-            sourceTree = BUILT_PRODUCTS_DIR;
-        };
-        CompilePhase_Reflex = {
-            isa = PBXSourcesBuildPhase;
-            files = ('__src_cc_ref_Packages/Reflex-0.2.1/Sources/Bag.swift', '__src_cc_ref_Packages/Reflex-0.2.1/Sources/ColdSignal.swift', '__src_cc_ref_Packages/Reflex-0.2.1/Sources/Disposable.swift', '__src_cc_ref_Packages/Reflex-0.2.1/Sources/Event.swift', '__src_cc_ref_Packages/Reflex-0.2.1/Sources/Observer.swift', '__src_cc_ref_Packages/Reflex-0.2.1/Sources/Signal.swift');
-            runOnlyForDeploymentPostprocessing = 0;
-        };
-        '__src_cc_ref_Packages/Reflex-0.2.1/Sources/Bag.swift' = {
-            isa = PBXBuildFile;
-            fileRef = '__PBXFileRef_Packages/Reflex-0.2.1/Sources/Bag.swift';
-        };
-        '__src_cc_ref_Packages/Reflex-0.2.1/Sources/ColdSignal.swift' = {
-            isa = PBXBuildFile;
-            fileRef = '__PBXFileRef_Packages/Reflex-0.2.1/Sources/ColdSignal.swift';
-        };
-        '__src_cc_ref_Packages/Reflex-0.2.1/Sources/Disposable.swift' = {
-            isa = PBXBuildFile;
-            fileRef = '__PBXFileRef_Packages/Reflex-0.2.1/Sources/Disposable.swift';
-        };
-        '__src_cc_ref_Packages/Reflex-0.2.1/Sources/Event.swift' = {
-            isa = PBXBuildFile;
-            fileRef = '__PBXFileRef_Packages/Reflex-0.2.1/Sources/Event.swift';
-        };
-        '__src_cc_ref_Packages/Reflex-0.2.1/Sources/Observer.swift' = {
-            isa = PBXBuildFile;
-            fileRef = '__PBXFileRef_Packages/Reflex-0.2.1/Sources/Observer.swift';
-        };
-        '__src_cc_ref_Packages/Reflex-0.2.1/Sources/Signal.swift' = {
-            isa = PBXBuildFile;
-            fileRef = '__PBXFileRef_Packages/Reflex-0.2.1/Sources/Signal.swift';
-        };
-        ___LinkPhase_Reflex = {
-            isa = PBXFrameworksBuildPhase;
-            files = ();
-            runOnlyForDeploymentPostprocessing = 0;
-        };
-        _______Confs_Reflex = {
-            isa = XCConfigurationList;
-            buildConfigurations = (___DebugConf_Reflex, _ReleaseConf_Reflex);
-            defaultConfigurationIsVisible = 0;
-            defaultConfigurationName = Debug;
-        };
-        ___DebugConf_Reflex = {
-            isa = XCBuildConfiguration;
-            buildSettings = { SWIFT_VERSION = '3.0'; LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_SWIFT_FLAGS = '$(inherited)'; INFOPLIST_FILE = 'Edge.xcodeproj/Reflex_Info.plist'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; SWIFT_OPTIMIZATION_LEVEL = '-Onone'; PRODUCT_BUNDLE_IDENTIFIER = 'Reflex'; PRODUCT_NAME = '$(TARGET_NAME:c99extidentifier)'; OTHER_LDFLAGS = '$(inherited)'; };
-            name = Debug;
-        };
-        _ReleaseConf_Reflex = {
-            isa = XCBuildConfiguration;
-            buildSettings = { SWIFT_VERSION = '3.0'; LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_SWIFT_FLAGS = '$(inherited)'; INFOPLIST_FILE = 'Edge.xcodeproj/Reflex_Info.plist'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; PRODUCT_BUNDLE_IDENTIFIER = 'Reflex'; PRODUCT_NAME = '$(TARGET_NAME:c99extidentifier)'; OTHER_LDFLAGS = '$(inherited)'; };
-            name = Release;
-        };
-        __Dependency_Reflex = {
-            isa = PBXTargetDependency;
-            target = ______Target_Reflex;
-        };
-        _______Group_CPOSIX = {
-            isa = PBXGroup;
-            name = 'CPOSIX';
-            path = 'Packages/CPOSIX-0.14.0/Sources/CPOSIX';
-            sourceTree = '<group>';
-            children = ('__PBXFileRef_Packages/CPOSIX-0.14.0/Sources/CPOSIX/posix.c');
-        };
-        '__PBXFileRef_Packages/CPOSIX-0.14.0/Sources/CPOSIX/posix.c' = {
-            isa = PBXFileReference;
-            lastKnownFileType = sourcecode.c.c;
-            path = 'posix.c';
-            sourceTree = '<group>';
-        };
-        ______Target_CPOSIX = {
-            isa = PBXNativeTarget;
-            buildConfigurationList = _______Confs_CPOSIX;
-            buildPhases = (CompilePhase_CPOSIX, ___LinkPhase_CPOSIX);
-            buildRules = ();
-            dependencies = ();
-            name = 'CPOSIX';
-            productName = CPOSIX;
-            productReference = _____Product_CPOSIX;
-            productType = 'com.apple.product-type.framework';
-        };
-        _____Product_CPOSIX = {
-            isa = PBXFileReference;
-            explicitFileType = 'wrapper.framework';
-            path = 'CPOSIX.framework';
-            sourceTree = BUILT_PRODUCTS_DIR;
-        };
-        CompilePhase_CPOSIX = {
-            isa = PBXSourcesBuildPhase;
-            files = ('__src_cc_ref_Packages/CPOSIX-0.14.0/Sources/CPOSIX/posix.c');
-            runOnlyForDeploymentPostprocessing = 0;
-        };
-        '__src_cc_ref_Packages/CPOSIX-0.14.0/Sources/CPOSIX/posix.c' = {
-            isa = PBXBuildFile;
-            fileRef = '__PBXFileRef_Packages/CPOSIX-0.14.0/Sources/CPOSIX/posix.c';
-        };
-        ___LinkPhase_CPOSIX = {
-            isa = PBXFrameworksBuildPhase;
-            files = ();
-            runOnlyForDeploymentPostprocessing = 0;
-        };
-        _______Confs_CPOSIX = {
-            isa = XCConfigurationList;
-            buildConfigurations = (___DebugConf_CPOSIX, _ReleaseConf_CPOSIX);
-            defaultConfigurationIsVisible = 0;
-            defaultConfigurationName = Debug;
-        };
-        ___DebugConf_CPOSIX = {
-            isa = XCBuildConfiguration;
-            buildSettings = { LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_SWIFT_FLAGS = '$(inherited)'; DEFINES_MODULE = 'YES'; SWIFT_VERSION = '3.0'; MODULEMAP_FILE = 'Edge.xcodeproj/GeneratedModuleMap/CPOSIX/module.modulemap'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; SWIFT_OPTIMIZATION_LEVEL = '-Onone'; INFOPLIST_FILE = 'Edge.xcodeproj/CPOSIX_Info.plist'; PRODUCT_BUNDLE_IDENTIFIER = 'CPOSIX'; PRODUCT_NAME = '$(TARGET_NAME:c99extidentifier)'; OTHER_LDFLAGS = '$(inherited)'; };
-            name = Debug;
-        };
-        _ReleaseConf_CPOSIX = {
-            isa = XCBuildConfiguration;
-            buildSettings = { SWIFT_VERSION = '3.0'; MODULEMAP_FILE = 'Edge.xcodeproj/GeneratedModuleMap/CPOSIX/module.modulemap'; LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_SWIFT_FLAGS = '$(inherited)'; INFOPLIST_FILE = 'Edge.xcodeproj/CPOSIX_Info.plist'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; DEFINES_MODULE = 'YES'; PRODUCT_BUNDLE_IDENTIFIER = 'CPOSIX'; PRODUCT_NAME = '$(TARGET_NAME:c99extidentifier)'; OTHER_LDFLAGS = '$(inherited)'; };
-            name = Release;
-        };
-        __Dependency_CPOSIX = {
-            isa = PBXTargetDependency;
-            target = ______Target_CPOSIX;
-        };
-        _______Group_POSIX = {
-            isa = PBXGroup;
-            name = 'POSIX';
-            path = 'Packages/POSIX-0.14.1/Sources/POSIX';
-            sourceTree = '<group>';
-            children = ('__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Condition.swift', '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Environment.swift', '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/FileDescriptor.swift', '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Lock.swift', '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/PID.swift', '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Regex.swift', '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Spawn.swift', '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/System.swift', '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/SystemError.swift', '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Thread.swift', '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Wait.swift');
-        };
-        '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Condition.swift' = {
-            isa = PBXFileReference;
-            lastKnownFileType = sourcecode.swift;
-            path = 'Condition.swift';
-            sourceTree = '<group>';
-        };
-        '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Environment.swift' = {
-            isa = PBXFileReference;
-            lastKnownFileType = sourcecode.swift;
-            path = 'Environment.swift';
-            sourceTree = '<group>';
-        };
-        '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/FileDescriptor.swift' = {
-            isa = PBXFileReference;
-            lastKnownFileType = sourcecode.swift;
-            path = 'FileDescriptor.swift';
-            sourceTree = '<group>';
-        };
-        '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Lock.swift' = {
-            isa = PBXFileReference;
-            lastKnownFileType = sourcecode.swift;
-            path = 'Lock.swift';
-            sourceTree = '<group>';
-        };
-        '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/PID.swift' = {
-            isa = PBXFileReference;
-            lastKnownFileType = sourcecode.swift;
-            path = 'PID.swift';
-            sourceTree = '<group>';
-        };
-        '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Regex.swift' = {
-            isa = PBXFileReference;
-            lastKnownFileType = sourcecode.swift;
-            path = 'Regex.swift';
-            sourceTree = '<group>';
-        };
-        '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Spawn.swift' = {
-            isa = PBXFileReference;
-            lastKnownFileType = sourcecode.swift;
-            path = 'Spawn.swift';
-            sourceTree = '<group>';
-        };
-        '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/System.swift' = {
-            isa = PBXFileReference;
-            lastKnownFileType = sourcecode.swift;
-            path = 'System.swift';
-            sourceTree = '<group>';
-        };
-        '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/SystemError.swift' = {
-            isa = PBXFileReference;
-            lastKnownFileType = sourcecode.swift;
-            path = 'SystemError.swift';
-            sourceTree = '<group>';
-        };
-        '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Thread.swift' = {
-            isa = PBXFileReference;
-            lastKnownFileType = sourcecode.swift;
-            path = 'Thread.swift';
-            sourceTree = '<group>';
-        };
-        '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Wait.swift' = {
-            isa = PBXFileReference;
-            lastKnownFileType = sourcecode.swift;
-            path = 'Wait.swift';
-            sourceTree = '<group>';
-        };
-        ______Target_POSIX = {
-            isa = PBXNativeTarget;
-            buildConfigurationList = _______Confs_POSIX;
-            buildPhases = (CompilePhase_POSIX, ___LinkPhase_POSIX);
-            buildRules = ();
-            dependencies = (__Dependency_CPOSIX);
-            name = 'POSIX';
-            productName = POSIX;
-            productReference = _____Product_POSIX;
-            productType = 'com.apple.product-type.framework';
-        };
-        _____Product_POSIX = {
-            isa = PBXFileReference;
-            explicitFileType = 'wrapper.framework';
-            path = 'POSIX.framework';
-            sourceTree = BUILT_PRODUCTS_DIR;
-        };
-        CompilePhase_POSIX = {
-            isa = PBXSourcesBuildPhase;
-            files = ('__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/Condition.swift', '__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/Environment.swift', '__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/FileDescriptor.swift', '__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/Lock.swift', '__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/PID.swift', '__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/Regex.swift', '__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/Spawn.swift', '__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/System.swift', '__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/SystemError.swift', '__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/Thread.swift', '__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/Wait.swift');
-            runOnlyForDeploymentPostprocessing = 0;
-        };
-        '__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/Condition.swift' = {
-            isa = PBXBuildFile;
-            fileRef = '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Condition.swift';
-        };
-        '__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/Environment.swift' = {
-            isa = PBXBuildFile;
-            fileRef = '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Environment.swift';
-        };
-        '__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/FileDescriptor.swift' = {
-            isa = PBXBuildFile;
-            fileRef = '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/FileDescriptor.swift';
-        };
-        '__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/Lock.swift' = {
-            isa = PBXBuildFile;
-            fileRef = '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Lock.swift';
-        };
-        '__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/PID.swift' = {
-            isa = PBXBuildFile;
-            fileRef = '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/PID.swift';
-        };
-        '__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/Regex.swift' = {
-            isa = PBXBuildFile;
-            fileRef = '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Regex.swift';
-        };
-        '__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/Spawn.swift' = {
-            isa = PBXBuildFile;
-            fileRef = '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Spawn.swift';
-        };
-        '__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/System.swift' = {
-            isa = PBXBuildFile;
-            fileRef = '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/System.swift';
-        };
-        '__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/SystemError.swift' = {
-            isa = PBXBuildFile;
-            fileRef = '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/SystemError.swift';
-        };
-        '__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/Thread.swift' = {
-            isa = PBXBuildFile;
-            fileRef = '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Thread.swift';
-        };
-        '__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/Wait.swift' = {
-            isa = PBXBuildFile;
-            fileRef = '__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Wait.swift';
-        };
-        ___LinkPhase_POSIX = {
-            isa = PBXFrameworksBuildPhase;
-            files = (_LinkFileRef_CPOSIX_via_POSIX);
-            runOnlyForDeploymentPostprocessing = 0;
-        };
-        _LinkFileRef_CPOSIX_via_POSIX = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_CPOSIX;
-        };
-        _______Confs_POSIX = {
-            isa = XCConfigurationList;
-            buildConfigurations = (___DebugConf_POSIX, _ReleaseConf_POSIX);
-            defaultConfigurationIsVisible = 0;
-            defaultConfigurationName = Debug;
-        };
-        ___DebugConf_POSIX = {
-            isa = XCBuildConfiguration;
-            buildSettings = { SWIFT_VERSION = '3.0'; LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_SWIFT_FLAGS = '$(inherited)'; INFOPLIST_FILE = 'Edge.xcodeproj/POSIX_Info.plist'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; SWIFT_OPTIMIZATION_LEVEL = '-Onone'; HEADER_SEARCH_PATHS = '/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include'; PRODUCT_BUNDLE_IDENTIFIER = 'POSIX'; PRODUCT_NAME = '$(TARGET_NAME:c99extidentifier)'; OTHER_LDFLAGS = '$(inherited)'; };
-            name = Debug;
-        };
-        _ReleaseConf_POSIX = {
-            isa = XCBuildConfiguration;
-            buildSettings = { SWIFT_VERSION = '3.0'; LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_SWIFT_FLAGS = '$(inherited)'; INFOPLIST_FILE = 'Edge.xcodeproj/POSIX_Info.plist'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; HEADER_SEARCH_PATHS = '/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include'; PRODUCT_BUNDLE_IDENTIFIER = 'POSIX'; PRODUCT_NAME = '$(TARGET_NAME:c99extidentifier)'; OTHER_LDFLAGS = '$(inherited)'; };
-            name = Release;
-        };
-        __Dependency_POSIX = {
-            isa = PBXTargetDependency;
-            target = ______Target_POSIX;
-        };
-        _______Group_CHTTPParser = {
-            isa = PBXGroup;
-            name = 'CHTTPParser';
-            path = 'Packages/CHTTPParser-0.14.0/Sources';
-            sourceTree = '<group>';
-            children = ('__PBXFileRef_Packages/CHTTPParser-0.14.0/Sources/http_parser.c');
-        };
-        '__PBXFileRef_Packages/CHTTPParser-0.14.0/Sources/http_parser.c' = {
-            isa = PBXFileReference;
-            lastKnownFileType = sourcecode.c.c;
-            path = 'http_parser.c';
-            sourceTree = '<group>';
-        };
-        ______Target_CHTTPParser = {
-            isa = PBXNativeTarget;
-            buildConfigurationList = _______Confs_CHTTPParser;
-            buildPhases = (CompilePhase_CHTTPParser, ___LinkPhase_CHTTPParser);
-            buildRules = ();
-            dependencies = ();
-            name = 'CHTTPParser';
-            productName = CHTTPParser;
-            productReference = _____Product_CHTTPParser;
-            productType = 'com.apple.product-type.framework';
-        };
-        _____Product_CHTTPParser = {
-            isa = PBXFileReference;
-            explicitFileType = 'wrapper.framework';
-            path = 'CHTTPParser.framework';
-            sourceTree = BUILT_PRODUCTS_DIR;
-        };
-        CompilePhase_CHTTPParser = {
-            isa = PBXSourcesBuildPhase;
-            files = ('__src_cc_ref_Packages/CHTTPParser-0.14.0/Sources/http_parser.c');
-            runOnlyForDeploymentPostprocessing = 0;
-        };
-        '__src_cc_ref_Packages/CHTTPParser-0.14.0/Sources/http_parser.c' = {
-            isa = PBXBuildFile;
-            fileRef = '__PBXFileRef_Packages/CHTTPParser-0.14.0/Sources/http_parser.c';
-        };
-        ___LinkPhase_CHTTPParser = {
-            isa = PBXFrameworksBuildPhase;
-            files = ();
-            runOnlyForDeploymentPostprocessing = 0;
-        };
-        _______Confs_CHTTPParser = {
-            isa = XCConfigurationList;
-            buildConfigurations = (___DebugConf_CHTTPParser, _ReleaseConf_CHTTPParser);
-            defaultConfigurationIsVisible = 0;
-            defaultConfigurationName = Debug;
-        };
-        ___DebugConf_CHTTPParser = {
-            isa = XCBuildConfiguration;
-            buildSettings = { LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_SWIFT_FLAGS = '$(inherited)'; DEFINES_MODULE = 'YES'; SWIFT_VERSION = '3.0'; MODULEMAP_FILE = 'Edge.xcodeproj/GeneratedModuleMap/CHTTPParser/module.modulemap'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; SWIFT_OPTIMIZATION_LEVEL = '-Onone'; INFOPLIST_FILE = 'Edge.xcodeproj/CHTTPParser_Info.plist'; PRODUCT_BUNDLE_IDENTIFIER = 'CHTTPParser'; PRODUCT_NAME = '$(TARGET_NAME:c99extidentifier)'; OTHER_LDFLAGS = '$(inherited)'; };
-            name = Debug;
-        };
-        _ReleaseConf_CHTTPParser = {
-            isa = XCBuildConfiguration;
-            buildSettings = { SWIFT_VERSION = '3.0'; MODULEMAP_FILE = 'Edge.xcodeproj/GeneratedModuleMap/CHTTPParser/module.modulemap'; LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_SWIFT_FLAGS = '$(inherited)'; INFOPLIST_FILE = 'Edge.xcodeproj/CHTTPParser_Info.plist'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; DEFINES_MODULE = 'YES'; PRODUCT_BUNDLE_IDENTIFIER = 'CHTTPParser'; PRODUCT_NAME = '$(TARGET_NAME:c99extidentifier)'; OTHER_LDFLAGS = '$(inherited)'; };
-            name = Release;
-        };
-        __Dependency_CHTTPParser = {
-            isa = PBXTargetDependency;
-            target = ______Target_CHTTPParser;
-        };
-        _______Group_Edge = {
-            isa = PBXGroup;
-            name = 'Edge';
-            path = 'Sources/Edge';
-            sourceTree = '<group>';
-            children = ('__PBXFileRef_Sources/Edge/Application.swift', '__PBXFileRef_Sources/Edge/Edge.swift');
-        };
-        '__PBXFileRef_Sources/Edge/Application.swift' = {
-            isa = PBXFileReference;
-            lastKnownFileType = sourcecode.swift;
-            path = 'Application.swift';
-            sourceTree = '<group>';
-        };
-        '__PBXFileRef_Sources/Edge/Edge.swift' = {
-            isa = PBXFileReference;
-            lastKnownFileType = sourcecode.swift;
-            path = 'Edge.swift';
-            sourceTree = '<group>';
-        };
-        ______Target_Edge = {
-            isa = PBXNativeTarget;
-            buildConfigurationList = _______Confs_Edge;
-            buildPhases = (CompilePhase_Edge, ___LinkPhase_Edge);
-            buildRules = ();
-            dependencies = (__Dependency_Reflex, __Dependency_CPOSIX, __Dependency_POSIX, __Dependency_CHTTPParser, __Dependency_TCP, __Dependency_IOStream, __Dependency_RunLoop, __Dependency_HTTP);
-            name = 'Edge';
-            productName = Edge;
-            productReference = _____Product_Edge;
-            productType = 'com.apple.product-type.framework';
-        };
-        _____Product_Edge = {
-            isa = PBXFileReference;
-            explicitFileType = 'wrapper.framework';
-            path = 'Edge.framework';
-            sourceTree = BUILT_PRODUCTS_DIR;
-        };
-        CompilePhase_Edge = {
-            isa = PBXSourcesBuildPhase;
-            files = ('__src_cc_ref_Sources/Edge/Application.swift', '__src_cc_ref_Sources/Edge/Edge.swift');
-            runOnlyForDeploymentPostprocessing = 0;
-        };
-        '__src_cc_ref_Sources/Edge/Application.swift' = {
-            isa = PBXBuildFile;
-            fileRef = '__PBXFileRef_Sources/Edge/Application.swift';
-        };
-        '__src_cc_ref_Sources/Edge/Edge.swift' = {
-            isa = PBXBuildFile;
-            fileRef = '__PBXFileRef_Sources/Edge/Edge.swift';
-        };
-        ___LinkPhase_Edge = {
-            isa = PBXFrameworksBuildPhase;
-            files = (_LinkFileRef_Reflex_via_Edge, _LinkFileRef_CPOSIX_via_Edge, _LinkFileRef_POSIX_via_Edge, _LinkFileRef_CHTTPParser_via_Edge, _LinkFileRef_POSIXExtensions_via_Edge, _LinkFileRef_IOStream_via_Edge, _LinkFileRef_TCP_via_Edge, _LinkFileRef_RunLoop_via_Edge, _LinkFileRef_HTTP_via_Edge);
-            runOnlyForDeploymentPostprocessing = 0;
-        };
-        _LinkFileRef_Reflex_via_Edge = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_Reflex;
-        };
-        _LinkFileRef_CPOSIX_via_Edge = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_CPOSIX;
-        };
-        _LinkFileRef_POSIX_via_Edge = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_POSIX;
-        };
-        _LinkFileRef_CHTTPParser_via_Edge = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_CHTTPParser;
-        };
-        _LinkFileRef_POSIXExtensions_via_Edge = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_POSIXExtensions;
-        };
-        _LinkFileRef_IOStream_via_Edge = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_IOStream;
-        };
-        _LinkFileRef_TCP_via_Edge = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_TCP;
-        };
-        _LinkFileRef_RunLoop_via_Edge = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_RunLoop;
-        };
-        _LinkFileRef_HTTP_via_Edge = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_HTTP;
-        };
-        _______Confs_Edge = {
-            isa = XCConfigurationList;
-            buildConfigurations = (___DebugConf_Edge, _ReleaseConf_Edge);
-            defaultConfigurationIsVisible = 0;
-            defaultConfigurationName = Debug;
-        };
-        ___DebugConf_Edge = {
-            isa = XCBuildConfiguration;
-            buildSettings = { SWIFT_VERSION = '3.0'; LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_SWIFT_FLAGS = '$(inherited)'; INFOPLIST_FILE = 'Edge.xcodeproj/Edge_Info.plist'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; SWIFT_OPTIMIZATION_LEVEL = '-Onone'; HEADER_SEARCH_PATHS = '/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include /Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CHTTPParser-0.14.0/Sources/include'; PRODUCT_BUNDLE_IDENTIFIER = 'Edge'; PRODUCT_NAME = '$(TARGET_NAME:c99extidentifier)'; OTHER_LDFLAGS = '$(inherited)'; };
-            name = Debug;
-        };
-        _ReleaseConf_Edge = {
-            isa = XCBuildConfiguration;
-            buildSettings = { SWIFT_VERSION = '3.0'; LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_SWIFT_FLAGS = '$(inherited)'; INFOPLIST_FILE = 'Edge.xcodeproj/Edge_Info.plist'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; HEADER_SEARCH_PATHS = '/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include /Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CHTTPParser-0.14.0/Sources/include'; PRODUCT_BUNDLE_IDENTIFIER = 'Edge'; PRODUCT_NAME = '$(TARGET_NAME:c99extidentifier)'; OTHER_LDFLAGS = '$(inherited)'; };
-            name = Release;
-        };
-        __Dependency_Edge = {
-            isa = PBXTargetDependency;
-            target = ______Target_Edge;
-        };
-        _______Group_HTTP = {
-            isa = PBXGroup;
-            name = 'HTTP';
-            path = 'Sources/HTTP';
-            sourceTree = '<group>';
-            children = ('__PBXFileRef_Sources/HTTP/ClientConnection.swift', '__PBXFileRef_Sources/HTTP/Error.swift', '__PBXFileRef_Sources/HTTP/Method.swift', '__PBXFileRef_Sources/HTTP/Parser.swift', '__PBXFileRef_Sources/HTTP/Request.swift', '__PBXFileRef_Sources/HTTP/Response.swift', '__PBXFileRef_Sources/HTTP/Serializable.swift', '__PBXFileRef_Sources/HTTP/Server.swift', '__PBXFileRef_Sources/HTTP/Status.swift', '__PBXFileRef_Sources/HTTP/Version.swift');
-        };
-        '__PBXFileRef_Sources/HTTP/ClientConnection.swift' = {
-            isa = PBXFileReference;
-            lastKnownFileType = sourcecode.swift;
-            path = 'ClientConnection.swift';
-            sourceTree = '<group>';
-        };
-        '__PBXFileRef_Sources/HTTP/Error.swift' = {
-            isa = PBXFileReference;
-            lastKnownFileType = sourcecode.swift;
-            path = 'Error.swift';
-            sourceTree = '<group>';
-        };
-        '__PBXFileRef_Sources/HTTP/Method.swift' = {
-            isa = PBXFileReference;
-            lastKnownFileType = sourcecode.swift;
-            path = 'Method.swift';
-            sourceTree = '<group>';
-        };
-        '__PBXFileRef_Sources/HTTP/Parser.swift' = {
-            isa = PBXFileReference;
-            lastKnownFileType = sourcecode.swift;
-            path = 'Parser.swift';
-            sourceTree = '<group>';
-        };
-        '__PBXFileRef_Sources/HTTP/Request.swift' = {
-            isa = PBXFileReference;
-            lastKnownFileType = sourcecode.swift;
-            path = 'Request.swift';
-            sourceTree = '<group>';
-        };
-        '__PBXFileRef_Sources/HTTP/Response.swift' = {
-            isa = PBXFileReference;
-            lastKnownFileType = sourcecode.swift;
-            path = 'Response.swift';
-            sourceTree = '<group>';
-        };
-        '__PBXFileRef_Sources/HTTP/Serializable.swift' = {
-            isa = PBXFileReference;
-            lastKnownFileType = sourcecode.swift;
-            path = 'Serializable.swift';
-            sourceTree = '<group>';
-        };
-        '__PBXFileRef_Sources/HTTP/Server.swift' = {
-            isa = PBXFileReference;
-            lastKnownFileType = sourcecode.swift;
-            path = 'Server.swift';
-            sourceTree = '<group>';
-        };
-        '__PBXFileRef_Sources/HTTP/Status.swift' = {
-            isa = PBXFileReference;
-            lastKnownFileType = sourcecode.swift;
-            path = 'Status.swift';
-            sourceTree = '<group>';
-        };
-        '__PBXFileRef_Sources/HTTP/Version.swift' = {
-            isa = PBXFileReference;
-            lastKnownFileType = sourcecode.swift;
-            path = 'Version.swift';
-            sourceTree = '<group>';
-        };
-        ______Target_HTTP = {
-            isa = PBXNativeTarget;
-            buildConfigurationList = _______Confs_HTTP;
-            buildPhases = (CompilePhase_HTTP, ___LinkPhase_HTTP);
-            buildRules = ();
-            dependencies = (__Dependency_Reflex, __Dependency_CPOSIX, __Dependency_POSIX, __Dependency_CHTTPParser, __Dependency_POSIXExtensions, __Dependency_IOStream, __Dependency_TCP);
-            name = 'HTTP';
-            productName = HTTP;
-            productReference = _____Product_HTTP;
-            productType = 'com.apple.product-type.framework';
-        };
-        _____Product_HTTP = {
-            isa = PBXFileReference;
-            explicitFileType = 'wrapper.framework';
-            path = 'HTTP.framework';
-            sourceTree = BUILT_PRODUCTS_DIR;
-        };
-        CompilePhase_HTTP = {
-            isa = PBXSourcesBuildPhase;
-            files = ('__src_cc_ref_Sources/HTTP/ClientConnection.swift', '__src_cc_ref_Sources/HTTP/Error.swift', '__src_cc_ref_Sources/HTTP/Method.swift', '__src_cc_ref_Sources/HTTP/Parser.swift', '__src_cc_ref_Sources/HTTP/Request.swift', '__src_cc_ref_Sources/HTTP/Response.swift', '__src_cc_ref_Sources/HTTP/Serializable.swift', '__src_cc_ref_Sources/HTTP/Server.swift', '__src_cc_ref_Sources/HTTP/Status.swift', '__src_cc_ref_Sources/HTTP/Version.swift');
-            runOnlyForDeploymentPostprocessing = 0;
-        };
-        '__src_cc_ref_Sources/HTTP/ClientConnection.swift' = {
-            isa = PBXBuildFile;
-            fileRef = '__PBXFileRef_Sources/HTTP/ClientConnection.swift';
-        };
-        '__src_cc_ref_Sources/HTTP/Error.swift' = {
-            isa = PBXBuildFile;
-            fileRef = '__PBXFileRef_Sources/HTTP/Error.swift';
-        };
-        '__src_cc_ref_Sources/HTTP/Method.swift' = {
-            isa = PBXBuildFile;
-            fileRef = '__PBXFileRef_Sources/HTTP/Method.swift';
-        };
-        '__src_cc_ref_Sources/HTTP/Parser.swift' = {
-            isa = PBXBuildFile;
-            fileRef = '__PBXFileRef_Sources/HTTP/Parser.swift';
-        };
-        '__src_cc_ref_Sources/HTTP/Request.swift' = {
-            isa = PBXBuildFile;
-            fileRef = '__PBXFileRef_Sources/HTTP/Request.swift';
-        };
-        '__src_cc_ref_Sources/HTTP/Response.swift' = {
-            isa = PBXBuildFile;
-            fileRef = '__PBXFileRef_Sources/HTTP/Response.swift';
-        };
-        '__src_cc_ref_Sources/HTTP/Serializable.swift' = {
-            isa = PBXBuildFile;
-            fileRef = '__PBXFileRef_Sources/HTTP/Serializable.swift';
-        };
-        '__src_cc_ref_Sources/HTTP/Server.swift' = {
-            isa = PBXBuildFile;
-            fileRef = '__PBXFileRef_Sources/HTTP/Server.swift';
-        };
-        '__src_cc_ref_Sources/HTTP/Status.swift' = {
-            isa = PBXBuildFile;
-            fileRef = '__PBXFileRef_Sources/HTTP/Status.swift';
-        };
-        '__src_cc_ref_Sources/HTTP/Version.swift' = {
-            isa = PBXBuildFile;
-            fileRef = '__PBXFileRef_Sources/HTTP/Version.swift';
-        };
-        ___LinkPhase_HTTP = {
-            isa = PBXFrameworksBuildPhase;
-            files = (_LinkFileRef_Reflex_via_HTTP, _LinkFileRef_CPOSIX_via_HTTP, _LinkFileRef_POSIX_via_HTTP, _LinkFileRef_CHTTPParser_via_HTTP, _LinkFileRef_POSIXExtensions_via_HTTP, _LinkFileRef_IOStream_via_HTTP, _LinkFileRef_TCP_via_HTTP);
-            runOnlyForDeploymentPostprocessing = 0;
-        };
-        _LinkFileRef_Reflex_via_HTTP = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_Reflex;
-        };
-        _LinkFileRef_CPOSIX_via_HTTP = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_CPOSIX;
-        };
-        _LinkFileRef_POSIX_via_HTTP = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_POSIX;
-        };
-        _LinkFileRef_CHTTPParser_via_HTTP = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_CHTTPParser;
-        };
-        _LinkFileRef_POSIXExtensions_via_HTTP = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_POSIXExtensions;
-        };
-        _LinkFileRef_IOStream_via_HTTP = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_IOStream;
-        };
-        _LinkFileRef_TCP_via_HTTP = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_TCP;
-        };
-        _______Confs_HTTP = {
-            isa = XCConfigurationList;
-            buildConfigurations = (___DebugConf_HTTP, _ReleaseConf_HTTP);
-            defaultConfigurationIsVisible = 0;
-            defaultConfigurationName = Debug;
-        };
-        ___DebugConf_HTTP = {
-            isa = XCBuildConfiguration;
-            buildSettings = { SWIFT_VERSION = '3.0'; LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_SWIFT_FLAGS = '$(inherited)'; INFOPLIST_FILE = 'Edge.xcodeproj/HTTP_Info.plist'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; SWIFT_OPTIMIZATION_LEVEL = '-Onone'; HEADER_SEARCH_PATHS = '/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include /Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CHTTPParser-0.14.0/Sources/include'; PRODUCT_BUNDLE_IDENTIFIER = 'HTTP'; PRODUCT_NAME = '$(TARGET_NAME:c99extidentifier)'; OTHER_LDFLAGS = '$(inherited)'; };
-            name = Debug;
-        };
-        _ReleaseConf_HTTP = {
-            isa = XCBuildConfiguration;
-            buildSettings = { SWIFT_VERSION = '3.0'; LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_SWIFT_FLAGS = '$(inherited)'; INFOPLIST_FILE = 'Edge.xcodeproj/HTTP_Info.plist'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; HEADER_SEARCH_PATHS = '/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include /Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CHTTPParser-0.14.0/Sources/include'; PRODUCT_BUNDLE_IDENTIFIER = 'HTTP'; PRODUCT_NAME = '$(TARGET_NAME:c99extidentifier)'; OTHER_LDFLAGS = '$(inherited)'; };
-            name = Release;
-        };
-        __Dependency_HTTP = {
-            isa = PBXTargetDependency;
-            target = ______Target_HTTP;
-        };
-        _______Group_IOStream = {
-            isa = PBXGroup;
-            name = 'IOStream';
-            path = 'Sources/IOStream';
-            sourceTree = '<group>';
-            children = ('__PBXFileRef_Sources/IOStream/IOStream.swift', '__PBXFileRef_Sources/IOStream/Pipe.swift');
-        };
-        '__PBXFileRef_Sources/IOStream/IOStream.swift' = {
-            isa = PBXFileReference;
-            lastKnownFileType = sourcecode.swift;
-            path = 'IOStream.swift';
-            sourceTree = '<group>';
-        };
-        '__PBXFileRef_Sources/IOStream/Pipe.swift' = {
-            isa = PBXFileReference;
-            lastKnownFileType = sourcecode.swift;
-            path = 'Pipe.swift';
-            sourceTree = '<group>';
-        };
-        ______Target_IOStream = {
-            isa = PBXNativeTarget;
-            buildConfigurationList = _______Confs_IOStream;
-            buildPhases = (CompilePhase_IOStream, ___LinkPhase_IOStream);
-            buildRules = ();
-            dependencies = (__Dependency_Reflex, __Dependency_CPOSIX, __Dependency_POSIX, __Dependency_CHTTPParser, __Dependency_POSIXExtensions);
-            name = 'IOStream';
-            productName = IOStream;
-            productReference = _____Product_IOStream;
-            productType = 'com.apple.product-type.framework';
-        };
-        _____Product_IOStream = {
-            isa = PBXFileReference;
-            explicitFileType = 'wrapper.framework';
-            path = 'IOStream.framework';
-            sourceTree = BUILT_PRODUCTS_DIR;
-        };
-        CompilePhase_IOStream = {
-            isa = PBXSourcesBuildPhase;
-            files = ('__src_cc_ref_Sources/IOStream/IOStream.swift', '__src_cc_ref_Sources/IOStream/Pipe.swift');
-            runOnlyForDeploymentPostprocessing = 0;
-        };
-        '__src_cc_ref_Sources/IOStream/IOStream.swift' = {
-            isa = PBXBuildFile;
-            fileRef = '__PBXFileRef_Sources/IOStream/IOStream.swift';
-        };
-        '__src_cc_ref_Sources/IOStream/Pipe.swift' = {
-            isa = PBXBuildFile;
-            fileRef = '__PBXFileRef_Sources/IOStream/Pipe.swift';
-        };
-        ___LinkPhase_IOStream = {
-            isa = PBXFrameworksBuildPhase;
-            files = (_LinkFileRef_Reflex_via_IOStream, _LinkFileRef_CPOSIX_via_IOStream, _LinkFileRef_POSIX_via_IOStream, _LinkFileRef_CHTTPParser_via_IOStream, _LinkFileRef_POSIXExtensions_via_IOStream);
-            runOnlyForDeploymentPostprocessing = 0;
-        };
-        _LinkFileRef_Reflex_via_IOStream = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_Reflex;
-        };
-        _LinkFileRef_CPOSIX_via_IOStream = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_CPOSIX;
-        };
-        _LinkFileRef_POSIX_via_IOStream = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_POSIX;
-        };
-        _LinkFileRef_CHTTPParser_via_IOStream = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_CHTTPParser;
-        };
-        _LinkFileRef_POSIXExtensions_via_IOStream = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_POSIXExtensions;
-        };
-        _______Confs_IOStream = {
-            isa = XCConfigurationList;
-            buildConfigurations = (___DebugConf_IOStream, _ReleaseConf_IOStream);
-            defaultConfigurationIsVisible = 0;
-            defaultConfigurationName = Debug;
-        };
-        ___DebugConf_IOStream = {
-            isa = XCBuildConfiguration;
-            buildSettings = { SWIFT_VERSION = '3.0'; LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_SWIFT_FLAGS = '$(inherited)'; INFOPLIST_FILE = 'Edge.xcodeproj/IOStream_Info.plist'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; SWIFT_OPTIMIZATION_LEVEL = '-Onone'; HEADER_SEARCH_PATHS = '/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include /Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CHTTPParser-0.14.0/Sources/include'; PRODUCT_BUNDLE_IDENTIFIER = 'IOStream'; PRODUCT_NAME = '$(TARGET_NAME:c99extidentifier)'; OTHER_LDFLAGS = '$(inherited)'; };
-            name = Debug;
-        };
-        _ReleaseConf_IOStream = {
-            isa = XCBuildConfiguration;
-            buildSettings = { SWIFT_VERSION = '3.0'; LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_SWIFT_FLAGS = '$(inherited)'; INFOPLIST_FILE = 'Edge.xcodeproj/IOStream_Info.plist'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; HEADER_SEARCH_PATHS = '/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include /Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CHTTPParser-0.14.0/Sources/include'; PRODUCT_BUNDLE_IDENTIFIER = 'IOStream'; PRODUCT_NAME = '$(TARGET_NAME:c99extidentifier)'; OTHER_LDFLAGS = '$(inherited)'; };
-            name = Release;
-        };
-        __Dependency_IOStream = {
-            isa = PBXTargetDependency;
-            target = ______Target_IOStream;
-        };
-        _______Group_POSIXExtensions = {
-            isa = PBXGroup;
-            name = 'POSIXExtensions';
-            path = 'Sources/POSIXExtensions';
-            sourceTree = '<group>';
-            children = ('__PBXFileRef_Sources/POSIXExtensions/FileDescriptor.swift', '__PBXFileRef_Sources/POSIXExtensions/Socket.swift');
-        };
-        '__PBXFileRef_Sources/POSIXExtensions/FileDescriptor.swift' = {
-            isa = PBXFileReference;
-            lastKnownFileType = sourcecode.swift;
-            path = 'FileDescriptor.swift';
-            sourceTree = '<group>';
-        };
-        '__PBXFileRef_Sources/POSIXExtensions/Socket.swift' = {
-            isa = PBXFileReference;
-            lastKnownFileType = sourcecode.swift;
-            path = 'Socket.swift';
-            sourceTree = '<group>';
-        };
-        ______Target_POSIXExtensions = {
-            isa = PBXNativeTarget;
-            buildConfigurationList = _______Confs_POSIXExtensions;
-            buildPhases = (CompilePhase_POSIXExtensions, ___LinkPhase_POSIXExtensions);
-            buildRules = ();
-            dependencies = (__Dependency_Reflex, __Dependency_CPOSIX, __Dependency_POSIX, __Dependency_CHTTPParser);
-            name = 'POSIXExtensions';
-            productName = POSIXExtensions;
-            productReference = _____Product_POSIXExtensions;
-            productType = 'com.apple.product-type.framework';
-        };
-        _____Product_POSIXExtensions = {
-            isa = PBXFileReference;
-            explicitFileType = 'wrapper.framework';
-            path = 'POSIXExtensions.framework';
-            sourceTree = BUILT_PRODUCTS_DIR;
-        };
-        CompilePhase_POSIXExtensions = {
-            isa = PBXSourcesBuildPhase;
-            files = ('__src_cc_ref_Sources/POSIXExtensions/FileDescriptor.swift', '__src_cc_ref_Sources/POSIXExtensions/Socket.swift');
-            runOnlyForDeploymentPostprocessing = 0;
-        };
-        '__src_cc_ref_Sources/POSIXExtensions/FileDescriptor.swift' = {
-            isa = PBXBuildFile;
-            fileRef = '__PBXFileRef_Sources/POSIXExtensions/FileDescriptor.swift';
-        };
-        '__src_cc_ref_Sources/POSIXExtensions/Socket.swift' = {
-            isa = PBXBuildFile;
-            fileRef = '__PBXFileRef_Sources/POSIXExtensions/Socket.swift';
-        };
-        ___LinkPhase_POSIXExtensions = {
-            isa = PBXFrameworksBuildPhase;
-            files = (_LinkFileRef_Reflex_via_POSIXExtensions, _LinkFileRef_CPOSIX_via_POSIXExtensions, _LinkFileRef_POSIX_via_POSIXExtensions, _LinkFileRef_CHTTPParser_via_POSIXExtensions);
-            runOnlyForDeploymentPostprocessing = 0;
-        };
-        _LinkFileRef_Reflex_via_POSIXExtensions = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_Reflex;
-        };
-        _LinkFileRef_CPOSIX_via_POSIXExtensions = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_CPOSIX;
-        };
-        _LinkFileRef_POSIX_via_POSIXExtensions = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_POSIX;
-        };
-        _LinkFileRef_CHTTPParser_via_POSIXExtensions = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_CHTTPParser;
-        };
-        _______Confs_POSIXExtensions = {
-            isa = XCConfigurationList;
-            buildConfigurations = (___DebugConf_POSIXExtensions, _ReleaseConf_POSIXExtensions);
-            defaultConfigurationIsVisible = 0;
-            defaultConfigurationName = Debug;
-        };
-        ___DebugConf_POSIXExtensions = {
-            isa = XCBuildConfiguration;
-            buildSettings = { SWIFT_VERSION = '3.0'; LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_SWIFT_FLAGS = '$(inherited)'; INFOPLIST_FILE = 'Edge.xcodeproj/POSIXExtensions_Info.plist'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; SWIFT_OPTIMIZATION_LEVEL = '-Onone'; HEADER_SEARCH_PATHS = '/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include /Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CHTTPParser-0.14.0/Sources/include'; PRODUCT_BUNDLE_IDENTIFIER = 'POSIXExtensions'; PRODUCT_NAME = '$(TARGET_NAME:c99extidentifier)'; OTHER_LDFLAGS = '$(inherited)'; };
-            name = Debug;
-        };
-        _ReleaseConf_POSIXExtensions = {
-            isa = XCBuildConfiguration;
-            buildSettings = { SWIFT_VERSION = '3.0'; LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_SWIFT_FLAGS = '$(inherited)'; INFOPLIST_FILE = 'Edge.xcodeproj/POSIXExtensions_Info.plist'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; HEADER_SEARCH_PATHS = '/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include /Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CHTTPParser-0.14.0/Sources/include'; PRODUCT_BUNDLE_IDENTIFIER = 'POSIXExtensions'; PRODUCT_NAME = '$(TARGET_NAME:c99extidentifier)'; OTHER_LDFLAGS = '$(inherited)'; };
-            name = Release;
-        };
-        __Dependency_POSIXExtensions = {
-            isa = PBXTargetDependency;
-            target = ______Target_POSIXExtensions;
-        };
-        _______Group_RunLoop = {
-            isa = PBXGroup;
-            name = 'RunLoop';
-            path = 'Sources/RunLoop';
-            sourceTree = '<group>';
-            children = ('__PBXFileRef_Sources/RunLoop/RunLoop.swift');
-        };
-        '__PBXFileRef_Sources/RunLoop/RunLoop.swift' = {
-            isa = PBXFileReference;
-            lastKnownFileType = sourcecode.swift;
-            path = 'RunLoop.swift';
-            sourceTree = '<group>';
-        };
-        ______Target_RunLoop = {
-            isa = PBXNativeTarget;
-            buildConfigurationList = _______Confs_RunLoop;
-            buildPhases = (CompilePhase_RunLoop, ___LinkPhase_RunLoop);
-            buildRules = ();
-            dependencies = (__Dependency_Reflex, __Dependency_CPOSIX, __Dependency_POSIX, __Dependency_CHTTPParser);
-            name = 'RunLoop';
-            productName = RunLoop;
-            productReference = _____Product_RunLoop;
-            productType = 'com.apple.product-type.framework';
-        };
-        _____Product_RunLoop = {
-            isa = PBXFileReference;
-            explicitFileType = 'wrapper.framework';
-            path = 'RunLoop.framework';
-            sourceTree = BUILT_PRODUCTS_DIR;
-        };
-        CompilePhase_RunLoop = {
-            isa = PBXSourcesBuildPhase;
-            files = ('__src_cc_ref_Sources/RunLoop/RunLoop.swift');
-            runOnlyForDeploymentPostprocessing = 0;
-        };
-        '__src_cc_ref_Sources/RunLoop/RunLoop.swift' = {
-            isa = PBXBuildFile;
-            fileRef = '__PBXFileRef_Sources/RunLoop/RunLoop.swift';
-        };
-        ___LinkPhase_RunLoop = {
-            isa = PBXFrameworksBuildPhase;
-            files = (_LinkFileRef_Reflex_via_RunLoop, _LinkFileRef_CPOSIX_via_RunLoop, _LinkFileRef_POSIX_via_RunLoop, _LinkFileRef_CHTTPParser_via_RunLoop);
-            runOnlyForDeploymentPostprocessing = 0;
-        };
-        _LinkFileRef_Reflex_via_RunLoop = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_Reflex;
-        };
-        _LinkFileRef_CPOSIX_via_RunLoop = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_CPOSIX;
-        };
-        _LinkFileRef_POSIX_via_RunLoop = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_POSIX;
-        };
-        _LinkFileRef_CHTTPParser_via_RunLoop = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_CHTTPParser;
-        };
-        _______Confs_RunLoop = {
-            isa = XCConfigurationList;
-            buildConfigurations = (___DebugConf_RunLoop, _ReleaseConf_RunLoop);
-            defaultConfigurationIsVisible = 0;
-            defaultConfigurationName = Debug;
-        };
-        ___DebugConf_RunLoop = {
-            isa = XCBuildConfiguration;
-            buildSettings = { SWIFT_VERSION = '3.0'; LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_SWIFT_FLAGS = '$(inherited)'; INFOPLIST_FILE = 'Edge.xcodeproj/RunLoop_Info.plist'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; SWIFT_OPTIMIZATION_LEVEL = '-Onone'; HEADER_SEARCH_PATHS = '/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include /Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CHTTPParser-0.14.0/Sources/include'; PRODUCT_BUNDLE_IDENTIFIER = 'RunLoop'; PRODUCT_NAME = '$(TARGET_NAME:c99extidentifier)'; OTHER_LDFLAGS = '$(inherited)'; };
-            name = Debug;
-        };
-        _ReleaseConf_RunLoop = {
-            isa = XCBuildConfiguration;
-            buildSettings = { SWIFT_VERSION = '3.0'; LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_SWIFT_FLAGS = '$(inherited)'; INFOPLIST_FILE = 'Edge.xcodeproj/RunLoop_Info.plist'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; HEADER_SEARCH_PATHS = '/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include /Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CHTTPParser-0.14.0/Sources/include'; PRODUCT_BUNDLE_IDENTIFIER = 'RunLoop'; PRODUCT_NAME = '$(TARGET_NAME:c99extidentifier)'; OTHER_LDFLAGS = '$(inherited)'; };
-            name = Release;
-        };
-        __Dependency_RunLoop = {
-            isa = PBXTargetDependency;
-            target = ______Target_RunLoop;
-        };
-        _______Group_TCP = {
-            isa = PBXGroup;
-            name = 'TCP';
-            path = 'Sources/TCP';
-            sourceTree = '<group>';
-            children = ('__PBXFileRef_Sources/TCP/Server.swift', '__PBXFileRef_Sources/TCP/Socket.swift');
-        };
-        '__PBXFileRef_Sources/TCP/Server.swift' = {
-            isa = PBXFileReference;
-            lastKnownFileType = sourcecode.swift;
-            path = 'Server.swift';
-            sourceTree = '<group>';
-        };
-        '__PBXFileRef_Sources/TCP/Socket.swift' = {
-            isa = PBXFileReference;
-            lastKnownFileType = sourcecode.swift;
-            path = 'Socket.swift';
-            sourceTree = '<group>';
-        };
-        ______Target_TCP = {
-            isa = PBXNativeTarget;
-            buildConfigurationList = _______Confs_TCP;
-            buildPhases = (CompilePhase_TCP, ___LinkPhase_TCP);
-            buildRules = ();
-            dependencies = (__Dependency_Reflex, __Dependency_CPOSIX, __Dependency_POSIX, __Dependency_CHTTPParser, __Dependency_POSIXExtensions, __Dependency_IOStream);
-            name = 'TCP';
-            productName = TCP;
-            productReference = _____Product_TCP;
-            productType = 'com.apple.product-type.framework';
-        };
-        _____Product_TCP = {
-            isa = PBXFileReference;
-            explicitFileType = 'wrapper.framework';
-            path = 'TCP.framework';
-            sourceTree = BUILT_PRODUCTS_DIR;
-        };
-        CompilePhase_TCP = {
-            isa = PBXSourcesBuildPhase;
-            files = ('__src_cc_ref_Sources/TCP/Server.swift', '__src_cc_ref_Sources/TCP/Socket.swift');
-            runOnlyForDeploymentPostprocessing = 0;
-        };
-        '__src_cc_ref_Sources/TCP/Server.swift' = {
-            isa = PBXBuildFile;
-            fileRef = '__PBXFileRef_Sources/TCP/Server.swift';
-        };
-        '__src_cc_ref_Sources/TCP/Socket.swift' = {
-            isa = PBXBuildFile;
-            fileRef = '__PBXFileRef_Sources/TCP/Socket.swift';
-        };
-        ___LinkPhase_TCP = {
-            isa = PBXFrameworksBuildPhase;
-            files = (_LinkFileRef_Reflex_via_TCP, _LinkFileRef_CPOSIX_via_TCP, _LinkFileRef_POSIX_via_TCP, _LinkFileRef_CHTTPParser_via_TCP, _LinkFileRef_POSIXExtensions_via_TCP, _LinkFileRef_IOStream_via_TCP);
-            runOnlyForDeploymentPostprocessing = 0;
-        };
-        _LinkFileRef_Reflex_via_TCP = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_Reflex;
-        };
-        _LinkFileRef_CPOSIX_via_TCP = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_CPOSIX;
-        };
-        _LinkFileRef_POSIX_via_TCP = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_POSIX;
-        };
-        _LinkFileRef_CHTTPParser_via_TCP = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_CHTTPParser;
-        };
-        _LinkFileRef_POSIXExtensions_via_TCP = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_POSIXExtensions;
-        };
-        _LinkFileRef_IOStream_via_TCP = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_IOStream;
-        };
-        _______Confs_TCP = {
-            isa = XCConfigurationList;
-            buildConfigurations = (___DebugConf_TCP, _ReleaseConf_TCP);
-            defaultConfigurationIsVisible = 0;
-            defaultConfigurationName = Debug;
-        };
-        ___DebugConf_TCP = {
-            isa = XCBuildConfiguration;
-            buildSettings = { SWIFT_VERSION = '3.0'; LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_SWIFT_FLAGS = '$(inherited)'; INFOPLIST_FILE = 'Edge.xcodeproj/TCP_Info.plist'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; SWIFT_OPTIMIZATION_LEVEL = '-Onone'; HEADER_SEARCH_PATHS = '/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include /Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CHTTPParser-0.14.0/Sources/include'; PRODUCT_BUNDLE_IDENTIFIER = 'TCP'; PRODUCT_NAME = '$(TARGET_NAME:c99extidentifier)'; OTHER_LDFLAGS = '$(inherited)'; };
-            name = Debug;
-        };
-        _ReleaseConf_TCP = {
-            isa = XCBuildConfiguration;
-            buildSettings = { SWIFT_VERSION = '3.0'; LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_SWIFT_FLAGS = '$(inherited)'; INFOPLIST_FILE = 'Edge.xcodeproj/TCP_Info.plist'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; HEADER_SEARCH_PATHS = '/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include /Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CHTTPParser-0.14.0/Sources/include'; PRODUCT_BUNDLE_IDENTIFIER = 'TCP'; PRODUCT_NAME = '$(TARGET_NAME:c99extidentifier)'; OTHER_LDFLAGS = '$(inherited)'; };
-            name = Release;
-        };
-        __Dependency_TCP = {
-            isa = PBXTargetDependency;
-            target = ______Target_TCP;
-        };
-        _______Group_HTTPTests = {
-            isa = PBXGroup;
-            name = 'HTTPTests';
-            path = 'Tests/HTTPTests';
-            sourceTree = '<group>';
-            children = ('__PBXFileRef_Tests/HTTPTests/RequestParserTests.swift', '__PBXFileRef_Tests/HTTPTests/ResponseParserTests.swift');
-        };
-        '__PBXFileRef_Tests/HTTPTests/RequestParserTests.swift' = {
-            isa = PBXFileReference;
-            lastKnownFileType = sourcecode.swift;
-            path = 'RequestParserTests.swift';
-            sourceTree = '<group>';
-        };
-        '__PBXFileRef_Tests/HTTPTests/ResponseParserTests.swift' = {
-            isa = PBXFileReference;
-            lastKnownFileType = sourcecode.swift;
-            path = 'ResponseParserTests.swift';
-            sourceTree = '<group>';
-        };
-        ______Target_HTTPTests = {
-            isa = PBXNativeTarget;
-            buildConfigurationList = _______Confs_HTTPTests;
-            buildPhases = (CompilePhase_HTTPTests, ___LinkPhase_HTTPTests);
-            buildRules = ();
-            dependencies = (__Dependency_Reflex, __Dependency_CPOSIX, __Dependency_POSIX, __Dependency_CHTTPParser, __Dependency_HTTP);
-            name = 'HTTPTests';
-            productName = HTTPTests;
-            productReference = _____Product_HTTPTests;
-            productType = 'com.apple.product-type.bundle.unit-test';
-        };
-        _____Product_HTTPTests = {
-            isa = PBXFileReference;
-            explicitFileType = 'compiled.mach-o.wrapper.cfbundle';
-            path = 'HTTPTests.xctest';
-            sourceTree = BUILT_PRODUCTS_DIR;
-        };
-        CompilePhase_HTTPTests = {
-            isa = PBXSourcesBuildPhase;
-            files = ('__src_cc_ref_Tests/HTTPTests/RequestParserTests.swift', '__src_cc_ref_Tests/HTTPTests/ResponseParserTests.swift');
-            runOnlyForDeploymentPostprocessing = 0;
-        };
-        '__src_cc_ref_Tests/HTTPTests/RequestParserTests.swift' = {
-            isa = PBXBuildFile;
-            fileRef = '__PBXFileRef_Tests/HTTPTests/RequestParserTests.swift';
-        };
-        '__src_cc_ref_Tests/HTTPTests/ResponseParserTests.swift' = {
-            isa = PBXBuildFile;
-            fileRef = '__PBXFileRef_Tests/HTTPTests/ResponseParserTests.swift';
-        };
-        ___LinkPhase_HTTPTests = {
-            isa = PBXFrameworksBuildPhase;
-            files = (_LinkFileRef_Reflex_via_HTTPTests, _LinkFileRef_CPOSIX_via_HTTPTests, _LinkFileRef_POSIX_via_HTTPTests, _LinkFileRef_CHTTPParser_via_HTTPTests, _LinkFileRef_POSIXExtensions_via_HTTPTests, _LinkFileRef_IOStream_via_HTTPTests, _LinkFileRef_TCP_via_HTTPTests, _LinkFileRef_HTTP_via_HTTPTests);
-            runOnlyForDeploymentPostprocessing = 0;
-        };
-        _LinkFileRef_Reflex_via_HTTPTests = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_Reflex;
-        };
-        _LinkFileRef_CPOSIX_via_HTTPTests = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_CPOSIX;
-        };
-        _LinkFileRef_POSIX_via_HTTPTests = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_POSIX;
-        };
-        _LinkFileRef_CHTTPParser_via_HTTPTests = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_CHTTPParser;
-        };
-        _LinkFileRef_POSIXExtensions_via_HTTPTests = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_POSIXExtensions;
-        };
-        _LinkFileRef_IOStream_via_HTTPTests = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_IOStream;
-        };
-        _LinkFileRef_TCP_via_HTTPTests = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_TCP;
-        };
-        _LinkFileRef_HTTP_via_HTTPTests = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_HTTP;
-        };
-        _______Confs_HTTPTests = {
-            isa = XCConfigurationList;
-            buildConfigurations = (___DebugConf_HTTPTests, _ReleaseConf_HTTPTests);
-            defaultConfigurationIsVisible = 0;
-            defaultConfigurationName = Debug;
-        };
-        ___DebugConf_HTTPTests = {
-            isa = XCBuildConfiguration;
-            buildSettings = { LD_RUNPATH_SEARCH_PATHS = '@loader_path/../Frameworks'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; HEADER_SEARCH_PATHS = '/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include /Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CHTTPParser-0.14.0/Sources/include'; OTHER_SWIFT_FLAGS = '$(inherited)'; INFOPLIST_FILE = 'Edge.xcodeproj/HTTPTests_Info.plist'; SWIFT_OPTIMIZATION_LEVEL = '-Onone'; EMBEDDED_CONTENT_CONTAINS_SWIFT = 'YES'; OTHER_LDFLAGS = '$(inherited)'; SWIFT_VERSION = '3.0'; };
-            name = Debug;
-        };
-        _ReleaseConf_HTTPTests = {
-            isa = XCBuildConfiguration;
-            buildSettings = { LD_RUNPATH_SEARCH_PATHS = '@loader_path/../Frameworks'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; HEADER_SEARCH_PATHS = '/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include /Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CHTTPParser-0.14.0/Sources/include'; OTHER_SWIFT_FLAGS = '$(inherited)'; INFOPLIST_FILE = 'Edge.xcodeproj/HTTPTests_Info.plist'; EMBEDDED_CONTENT_CONTAINS_SWIFT = 'YES'; OTHER_LDFLAGS = '$(inherited)'; SWIFT_VERSION = '3.0'; };
-            name = Release;
-        };
-        __Dependency_HTTPTests = {
-            isa = PBXTargetDependency;
-            target = ______Target_HTTPTests;
-        };
-        _______Group_TCPTests = {
-            isa = PBXGroup;
-            name = 'TCPTests';
-            path = 'Tests/TCPTests';
-            sourceTree = '<group>';
-            children = ('__PBXFileRef_Tests/TCPTests/Tests.swift');
-        };
-        '__PBXFileRef_Tests/TCPTests/Tests.swift' = {
-            isa = PBXFileReference;
-            lastKnownFileType = sourcecode.swift;
-            path = 'Tests.swift';
-            sourceTree = '<group>';
-        };
-        ______Target_TCPTests = {
-            isa = PBXNativeTarget;
-            buildConfigurationList = _______Confs_TCPTests;
-            buildPhases = (CompilePhase_TCPTests, ___LinkPhase_TCPTests);
-            buildRules = ();
-            dependencies = (__Dependency_Reflex, __Dependency_CPOSIX, __Dependency_POSIX, __Dependency_CHTTPParser, __Dependency_TCP);
-            name = 'TCPTests';
-            productName = TCPTests;
-            productReference = _____Product_TCPTests;
-            productType = 'com.apple.product-type.bundle.unit-test';
-        };
-        _____Product_TCPTests = {
-            isa = PBXFileReference;
-            explicitFileType = 'compiled.mach-o.wrapper.cfbundle';
-            path = 'TCPTests.xctest';
-            sourceTree = BUILT_PRODUCTS_DIR;
-        };
-        CompilePhase_TCPTests = {
-            isa = PBXSourcesBuildPhase;
-            files = ('__src_cc_ref_Tests/TCPTests/Tests.swift');
-            runOnlyForDeploymentPostprocessing = 0;
-        };
-        '__src_cc_ref_Tests/TCPTests/Tests.swift' = {
-            isa = PBXBuildFile;
-            fileRef = '__PBXFileRef_Tests/TCPTests/Tests.swift';
-        };
-        ___LinkPhase_TCPTests = {
-            isa = PBXFrameworksBuildPhase;
-            files = (_LinkFileRef_Reflex_via_TCPTests, _LinkFileRef_CPOSIX_via_TCPTests, _LinkFileRef_POSIX_via_TCPTests, _LinkFileRef_CHTTPParser_via_TCPTests, _LinkFileRef_POSIXExtensions_via_TCPTests, _LinkFileRef_IOStream_via_TCPTests, _LinkFileRef_TCP_via_TCPTests);
-            runOnlyForDeploymentPostprocessing = 0;
-        };
-        _LinkFileRef_Reflex_via_TCPTests = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_Reflex;
-        };
-        _LinkFileRef_CPOSIX_via_TCPTests = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_CPOSIX;
-        };
-        _LinkFileRef_POSIX_via_TCPTests = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_POSIX;
-        };
-        _LinkFileRef_CHTTPParser_via_TCPTests = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_CHTTPParser;
-        };
-        _LinkFileRef_POSIXExtensions_via_TCPTests = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_POSIXExtensions;
-        };
-        _LinkFileRef_IOStream_via_TCPTests = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_IOStream;
-        };
-        _LinkFileRef_TCP_via_TCPTests = {
-            isa = PBXBuildFile;
-            fileRef = _____Product_TCP;
-        };
-        _______Confs_TCPTests = {
-            isa = XCConfigurationList;
-            buildConfigurations = (___DebugConf_TCPTests, _ReleaseConf_TCPTests);
-            defaultConfigurationIsVisible = 0;
-            defaultConfigurationName = Debug;
-        };
-        ___DebugConf_TCPTests = {
-            isa = XCBuildConfiguration;
-            buildSettings = { LD_RUNPATH_SEARCH_PATHS = '@loader_path/../Frameworks'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; HEADER_SEARCH_PATHS = '/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include /Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CHTTPParser-0.14.0/Sources/include'; OTHER_SWIFT_FLAGS = '$(inherited)'; INFOPLIST_FILE = 'Edge.xcodeproj/TCPTests_Info.plist'; SWIFT_OPTIMIZATION_LEVEL = '-Onone'; EMBEDDED_CONTENT_CONTAINS_SWIFT = 'YES'; OTHER_LDFLAGS = '$(inherited)'; SWIFT_VERSION = '3.0'; };
-            name = Debug;
-        };
-        _ReleaseConf_TCPTests = {
-            isa = XCBuildConfiguration;
-            buildSettings = { LD_RUNPATH_SEARCH_PATHS = '@loader_path/../Frameworks'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; HEADER_SEARCH_PATHS = '/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include /Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CHTTPParser-0.14.0/Sources/include'; OTHER_SWIFT_FLAGS = '$(inherited)'; INFOPLIST_FILE = 'Edge.xcodeproj/TCPTests_Info.plist'; EMBEDDED_CONTENT_CONTAINS_SWIFT = 'YES'; OTHER_LDFLAGS = '$(inherited)'; SWIFT_VERSION = '3.0'; };
-            name = Release;
-        };
-        __Dependency_TCPTests = {
-            isa = PBXTargetDependency;
-            target = ______Target_TCPTests;
-        };
-        '__PBXFileRef_Edge.xcodeproj/Configs/Project.xcconfig' = {
-            isa = PBXFileReference;
-            lastKnownFileType = text.xcconfig;
-            path = 'Edge.xcodeproj/Configs/Project.xcconfig';
-            sourceTree = '<group>';
-        };
-        _____Configs_ = {
-            isa = PBXGroup;
-            children = ('__PBXFileRef_Edge.xcodeproj/Configs/Project.xcconfig');
-            name = Configs;
-            sourceTree = '<group>';
-        };
-        _____Sources_ = {
-            isa = PBXGroup;
-            children = (_______Group_Reflex, _______Group_CPOSIX, _______Group_POSIX, _______Group_CHTTPParser, _______Group_Edge, _______Group_HTTP, _______Group_IOStream, _______Group_POSIXExtensions, _______Group_RunLoop, _______Group_TCP);
-            name = Sources;
-            sourceTree = '<group>';
-        };
-        Dependencies_ = {
-            isa = PBXGroup;
-            children = (_______Group_CPOSIX, _______Group_POSIX, _______Group_Reflex, _______Group_CHTTPParser);
-            name = Dependencies;
-            sourceTree = '<group>';
-        };
-        _______Tests_ = {
-            isa = PBXGroup;
-            children = (_______Group_HTTPTests, _______Group_TCPTests);
-            name = Tests;
-            sourceTree = '<group>';
-        };
-       TestProducts_ = {
-            isa = PBXGroup;
-            children = (_____Product_HTTPTests, _____Product_TCPTests);
-            name = Tests;
-            sourceTree = '<group>';
-        };
-        ____Products_ = {
-            isa = PBXGroup;
-            children = (TestProducts_, _____Product_Reflex, _____Product_CPOSIX, _____Product_POSIX, _____Product_CHTTPParser, _____Product_Edge, _____Product_HTTP, _____Product_IOStream, _____Product_POSIXExtensions, _____Product_RunLoop, _____Product_TCP);
-            name = Products;
-            sourceTree = '<group>';
-        };
-        _______Debug_ = {
-            isa = XCBuildConfiguration;
-            baseConfigurationReference = '__PBXFileRef_Edge.xcodeproj/Configs/Project.xcconfig';
-            buildSettings = {};
-            name = Debug;
-        };
-        _____Release_ = {
-            isa = XCBuildConfiguration;
-            baseConfigurationReference = '__PBXFileRef_Edge.xcodeproj/Configs/Project.xcconfig';
-            buildSettings = {};
-            name = Release;
-        };
-        ___RootConfs_ = {
-            isa = XCConfigurationList;
-            buildConfigurations = (_______Debug_, _____Release_);
-            defaultConfigurationIsVisible = 0;
-            defaultConfigurationName = Debug;
-        };
-    };
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		_LinkFileRef_CHTTPParser_via_Edge /* CHTTPParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CHTTPParser" /* CHTTPParser.framework */; };
+		_LinkFileRef_CHTTPParser_via_HTTP /* CHTTPParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CHTTPParser" /* CHTTPParser.framework */; };
+		_LinkFileRef_CHTTPParser_via_HTTPTests /* CHTTPParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CHTTPParser" /* CHTTPParser.framework */; };
+		_LinkFileRef_CHTTPParser_via_IOStream /* CHTTPParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CHTTPParser" /* CHTTPParser.framework */; };
+		_LinkFileRef_CHTTPParser_via_POSIXExtensions /* CHTTPParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CHTTPParser" /* CHTTPParser.framework */; };
+		_LinkFileRef_CHTTPParser_via_RunLoop /* CHTTPParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CHTTPParser" /* CHTTPParser.framework */; };
+		_LinkFileRef_CHTTPParser_via_TCP /* CHTTPParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CHTTPParser" /* CHTTPParser.framework */; };
+		_LinkFileRef_CHTTPParser_via_TCPTests /* CHTTPParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CHTTPParser" /* CHTTPParser.framework */; };
+		_LinkFileRef_CPOSIX_via_Edge /* CPOSIX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CPOSIX" /* CPOSIX.framework */; };
+		_LinkFileRef_CPOSIX_via_HTTP /* CPOSIX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CPOSIX" /* CPOSIX.framework */; };
+		_LinkFileRef_CPOSIX_via_HTTPTests /* CPOSIX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CPOSIX" /* CPOSIX.framework */; };
+		_LinkFileRef_CPOSIX_via_IOStream /* CPOSIX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CPOSIX" /* CPOSIX.framework */; };
+		_LinkFileRef_CPOSIX_via_POSIX /* CPOSIX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CPOSIX" /* CPOSIX.framework */; };
+		_LinkFileRef_CPOSIX_via_POSIXExtensions /* CPOSIX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CPOSIX" /* CPOSIX.framework */; };
+		_LinkFileRef_CPOSIX_via_RunLoop /* CPOSIX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CPOSIX" /* CPOSIX.framework */; };
+		_LinkFileRef_CPOSIX_via_TCP /* CPOSIX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CPOSIX" /* CPOSIX.framework */; };
+		_LinkFileRef_CPOSIX_via_TCPTests /* CPOSIX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CPOSIX" /* CPOSIX.framework */; };
+		_LinkFileRef_HTTP_via_Edge /* HTTP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_HTTP" /* HTTP.framework */; };
+		_LinkFileRef_HTTP_via_HTTPTests /* HTTP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_HTTP" /* HTTP.framework */; };
+		_LinkFileRef_IOStream_via_Edge /* IOStream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_IOStream" /* IOStream.framework */; };
+		_LinkFileRef_IOStream_via_HTTP /* IOStream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_IOStream" /* IOStream.framework */; };
+		_LinkFileRef_IOStream_via_HTTPTests /* IOStream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_IOStream" /* IOStream.framework */; };
+		_LinkFileRef_IOStream_via_TCP /* IOStream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_IOStream" /* IOStream.framework */; };
+		_LinkFileRef_IOStream_via_TCPTests /* IOStream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_IOStream" /* IOStream.framework */; };
+		_LinkFileRef_POSIXExtensions_via_Edge /* POSIXExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_POSIXExtensions" /* POSIXExtensions.framework */; };
+		_LinkFileRef_POSIXExtensions_via_HTTP /* POSIXExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_POSIXExtensions" /* POSIXExtensions.framework */; };
+		_LinkFileRef_POSIXExtensions_via_HTTPTests /* POSIXExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_POSIXExtensions" /* POSIXExtensions.framework */; };
+		_LinkFileRef_POSIXExtensions_via_IOStream /* POSIXExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_POSIXExtensions" /* POSIXExtensions.framework */; };
+		_LinkFileRef_POSIXExtensions_via_TCP /* POSIXExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_POSIXExtensions" /* POSIXExtensions.framework */; };
+		_LinkFileRef_POSIXExtensions_via_TCPTests /* POSIXExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_POSIXExtensions" /* POSIXExtensions.framework */; };
+		_LinkFileRef_POSIX_via_Edge /* POSIX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_POSIX" /* POSIX.framework */; };
+		_LinkFileRef_POSIX_via_HTTP /* POSIX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_POSIX" /* POSIX.framework */; };
+		_LinkFileRef_POSIX_via_HTTPTests /* POSIX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_POSIX" /* POSIX.framework */; };
+		_LinkFileRef_POSIX_via_IOStream /* POSIX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_POSIX" /* POSIX.framework */; };
+		_LinkFileRef_POSIX_via_POSIXExtensions /* POSIX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_POSIX" /* POSIX.framework */; };
+		_LinkFileRef_POSIX_via_RunLoop /* POSIX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_POSIX" /* POSIX.framework */; };
+		_LinkFileRef_POSIX_via_TCP /* POSIX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_POSIX" /* POSIX.framework */; };
+		_LinkFileRef_POSIX_via_TCPTests /* POSIX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_POSIX" /* POSIX.framework */; };
+		_LinkFileRef_Reflex_via_Edge /* Reflex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_Reflex" /* Reflex.framework */; };
+		_LinkFileRef_Reflex_via_HTTP /* Reflex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_Reflex" /* Reflex.framework */; };
+		_LinkFileRef_Reflex_via_HTTPTests /* Reflex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_Reflex" /* Reflex.framework */; };
+		_LinkFileRef_Reflex_via_IOStream /* Reflex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_Reflex" /* Reflex.framework */; };
+		_LinkFileRef_Reflex_via_POSIXExtensions /* Reflex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_Reflex" /* Reflex.framework */; };
+		_LinkFileRef_Reflex_via_RunLoop /* Reflex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_Reflex" /* Reflex.framework */; };
+		_LinkFileRef_Reflex_via_TCP /* Reflex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_Reflex" /* Reflex.framework */; };
+		_LinkFileRef_Reflex_via_TCPTests /* Reflex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_Reflex" /* Reflex.framework */; };
+		_LinkFileRef_RunLoop_via_Edge /* RunLoop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_RunLoop" /* RunLoop.framework */; };
+		_LinkFileRef_TCP_via_Edge /* TCP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_TCP" /* TCP.framework */; };
+		_LinkFileRef_TCP_via_HTTP /* TCP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_TCP" /* TCP.framework */; };
+		_LinkFileRef_TCP_via_HTTPTests /* TCP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_TCP" /* TCP.framework */; };
+		_LinkFileRef_TCP_via_TCPTests /* TCP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_TCP" /* TCP.framework */; };
+		"__src_cc_ref_Packages/CHTTPParser-0.14.0/Sources/http_parser.c" /* http_parser.c in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/CHTTPParser-0.14.0/Sources/http_parser.c" /* http_parser.c */; };
+		"__src_cc_ref_Packages/CPOSIX-0.14.0/Sources/CPOSIX/posix.c" /* posix.c in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/CPOSIX-0.14.0/Sources/CPOSIX/posix.c" /* posix.c */; };
+		"__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/Condition.swift" /* Condition.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Condition.swift" /* Condition.swift */; };
+		"__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/Environment.swift" /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Environment.swift" /* Environment.swift */; };
+		"__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/FileDescriptor.swift" /* FileDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/FileDescriptor.swift" /* FileDescriptor.swift */; };
+		"__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/Lock.swift" /* Lock.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Lock.swift" /* Lock.swift */; };
+		"__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/PID.swift" /* PID.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/PID.swift" /* PID.swift */; };
+		"__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/Regex.swift" /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Regex.swift" /* Regex.swift */; };
+		"__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/Spawn.swift" /* Spawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Spawn.swift" /* Spawn.swift */; };
+		"__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/System.swift" /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/System.swift" /* System.swift */; };
+		"__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/SystemError.swift" /* SystemError.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/SystemError.swift" /* SystemError.swift */; };
+		"__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/Thread.swift" /* Thread.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Thread.swift" /* Thread.swift */; };
+		"__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/Wait.swift" /* Wait.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Wait.swift" /* Wait.swift */; };
+		"__src_cc_ref_Packages/Reflex-0.2.1/Sources/Bag.swift" /* Bag.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/Reflex-0.2.1/Sources/Bag.swift" /* Bag.swift */; };
+		"__src_cc_ref_Packages/Reflex-0.2.1/Sources/ColdSignal.swift" /* ColdSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/Reflex-0.2.1/Sources/ColdSignal.swift" /* ColdSignal.swift */; };
+		"__src_cc_ref_Packages/Reflex-0.2.1/Sources/Disposable.swift" /* Disposable.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/Reflex-0.2.1/Sources/Disposable.swift" /* Disposable.swift */; };
+		"__src_cc_ref_Packages/Reflex-0.2.1/Sources/Event.swift" /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/Reflex-0.2.1/Sources/Event.swift" /* Event.swift */; };
+		"__src_cc_ref_Packages/Reflex-0.2.1/Sources/Observer.swift" /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/Reflex-0.2.1/Sources/Observer.swift" /* Observer.swift */; };
+		"__src_cc_ref_Packages/Reflex-0.2.1/Sources/Signal.swift" /* Signal.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/Reflex-0.2.1/Sources/Signal.swift" /* Signal.swift */; };
+		__src_cc_ref_Sources/Edge/Application.swift /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Edge/Application.swift /* Application.swift */; };
+		__src_cc_ref_Sources/Edge/Edge.swift /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Edge/Edge.swift /* Edge.swift */; };
+		__src_cc_ref_Sources/HTTP/ClientConnection.swift /* ClientConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/HTTP/ClientConnection.swift /* ClientConnection.swift */; };
+		__src_cc_ref_Sources/HTTP/Error.swift /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/HTTP/Error.swift /* Error.swift */; };
+		__src_cc_ref_Sources/HTTP/Method.swift /* Method.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/HTTP/Method.swift /* Method.swift */; };
+		__src_cc_ref_Sources/HTTP/Parser.swift /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/HTTP/Parser.swift /* Parser.swift */; };
+		__src_cc_ref_Sources/HTTP/Request.swift /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/HTTP/Request.swift /* Request.swift */; };
+		__src_cc_ref_Sources/HTTP/Response.swift /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/HTTP/Response.swift /* Response.swift */; };
+		__src_cc_ref_Sources/HTTP/Serializable.swift /* Serializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/HTTP/Serializable.swift /* Serializable.swift */; };
+		__src_cc_ref_Sources/HTTP/Server.swift /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/HTTP/Server.swift /* Server.swift */; };
+		__src_cc_ref_Sources/HTTP/Status.swift /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/HTTP/Status.swift /* Status.swift */; };
+		__src_cc_ref_Sources/HTTP/Version.swift /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/HTTP/Version.swift /* Version.swift */; };
+		__src_cc_ref_Sources/IOStream/IOStream.swift /* IOStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/IOStream/IOStream.swift /* IOStream.swift */; };
+		__src_cc_ref_Sources/IOStream/Pipe.swift /* Pipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/IOStream/Pipe.swift /* Pipe.swift */; };
+		__src_cc_ref_Sources/POSIXExtensions/FileDescriptor.swift /* FileDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/POSIXExtensions/FileDescriptor.swift /* FileDescriptor.swift */; };
+		__src_cc_ref_Sources/POSIXExtensions/Socket.swift /* Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/POSIXExtensions/Socket.swift /* Socket.swift */; };
+		__src_cc_ref_Sources/RunLoop/RunLoop.swift /* RunLoop.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/RunLoop/RunLoop.swift /* RunLoop.swift */; };
+		__src_cc_ref_Sources/TCP/Server.swift /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/TCP/Server.swift /* Server.swift */; };
+		__src_cc_ref_Sources/TCP/Socket.swift /* Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/TCP/Socket.swift /* Socket.swift */; };
+		__src_cc_ref_Tests/HTTPTests/RequestParserTests.swift /* RequestParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/HTTPTests/RequestParserTests.swift /* RequestParserTests.swift */; };
+		__src_cc_ref_Tests/HTTPTests/ResponseParserTests.swift /* ResponseParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/HTTPTests/ResponseParserTests.swift /* ResponseParserTests.swift */; };
+		__src_cc_ref_Tests/TCPTests/Tests.swift /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/TCPTests/Tests.swift /* Tests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DCC649E51DB413F600AA3DAC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = __RootObject_ /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "______Target_CPOSIX";
+			remoteInfo = CPOSIX;
+		};
+		DCC649E61DB413F600AA3DAC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = __RootObject_ /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "______Target_Reflex";
+			remoteInfo = Reflex;
+		};
+		DCC649E71DB413F600AA3DAC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = __RootObject_ /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "______Target_POSIX";
+			remoteInfo = POSIX;
+		};
+		DCC649E81DB413F600AA3DAC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = __RootObject_ /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "______Target_CHTTPParser";
+			remoteInfo = CHTTPParser;
+		};
+		DCC649E91DB413F600AA3DAC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = __RootObject_ /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "______Target_TCP";
+			remoteInfo = TCP;
+		};
+		DCC649EA1DB413F600AA3DAC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = __RootObject_ /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "______Target_POSIXExtensions";
+			remoteInfo = POSIXExtensions;
+		};
+		DCC649EB1DB413F600AA3DAC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = __RootObject_ /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "______Target_IOStream";
+			remoteInfo = IOStream;
+		};
+		DCC649EC1DB413F600AA3DAC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = __RootObject_ /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "______Target_RunLoop";
+			remoteInfo = RunLoop;
+		};
+		DCC649ED1DB413F600AA3DAC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = __RootObject_ /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "______Target_HTTP";
+			remoteInfo = HTTP;
+		};
+		DCC649F51DB416F500AA3DAC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = __RootObject_ /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DCC649F11DB416CD00AA3DAC;
+			remoteInfo = SwiftPackageManager;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		__PBXFileRef_Carthage /* Carthage */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Carthage; sourceTree = "<group>"; };
+		__PBXFileRef_Edge.xcodeproj/Configs/Project.xcconfig /* Edge.xcodeproj/Configs/Project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Edge.xcodeproj/Configs/Project.xcconfig; sourceTree = "<group>"; };
+		__PBXFileRef_Package.swift /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/CHTTPParser-0.14.0/Sources/http_parser.c" /* http_parser.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = http_parser.c; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/CPOSIX-0.14.0/Sources/CPOSIX/posix.c" /* posix.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = posix.c; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Condition.swift" /* Condition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Condition.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Environment.swift" /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/FileDescriptor.swift" /* FileDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDescriptor.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Lock.swift" /* Lock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lock.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/PID.swift" /* PID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PID.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Regex.swift" /* Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Spawn.swift" /* Spawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spawn.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/System.swift" /* System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/SystemError.swift" /* SystemError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemError.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Thread.swift" /* Thread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thread.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Wait.swift" /* Wait.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wait.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/Reflex-0.2.1/Sources/Bag.swift" /* Bag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bag.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/Reflex-0.2.1/Sources/ColdSignal.swift" /* ColdSignal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColdSignal.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/Reflex-0.2.1/Sources/Disposable.swift" /* Disposable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Disposable.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/Reflex-0.2.1/Sources/Event.swift" /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/Reflex-0.2.1/Sources/Observer.swift" /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/Reflex-0.2.1/Sources/Signal.swift" /* Signal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signal.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/Edge/Application.swift /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/Edge/Edge.swift /* Edge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Edge.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/HTTP/ClientConnection.swift /* ClientConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientConnection.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/HTTP/Error.swift /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/HTTP/Method.swift /* Method.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Method.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/HTTP/Parser.swift /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/HTTP/Request.swift /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/HTTP/Response.swift /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/HTTP/Serializable.swift /* Serializable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serializable.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/HTTP/Server.swift /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/HTTP/Status.swift /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/HTTP/Version.swift /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/IOStream/IOStream.swift /* IOStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOStream.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/IOStream/Pipe.swift /* Pipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pipe.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/POSIXExtensions/FileDescriptor.swift /* FileDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDescriptor.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/POSIXExtensions/Socket.swift /* Socket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Socket.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/RunLoop/RunLoop.swift /* RunLoop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunLoop.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/TCP/Server.swift /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/TCP/Socket.swift /* Socket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Socket.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Tests/HTTPTests/RequestParserTests.swift /* RequestParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestParserTests.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Tests/HTTPTests/ResponseParserTests.swift /* ResponseParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseParserTests.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Tests/TCPTests/Tests.swift /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		"_____Product_CHTTPParser" /* CHTTPParser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CHTTPParser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"_____Product_CPOSIX" /* CPOSIX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CPOSIX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"_____Product_Edge" /* Edge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Edge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"_____Product_HTTP" /* HTTP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = HTTP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"_____Product_HTTPTests" /* HTTPTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = HTTPTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		"_____Product_IOStream" /* IOStream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = IOStream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"_____Product_POSIX" /* POSIX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = POSIX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"_____Product_POSIXExtensions" /* POSIXExtensions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = POSIXExtensions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"_____Product_Reflex" /* Reflex.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Reflex.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"_____Product_RunLoop" /* RunLoop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RunLoop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"_____Product_TCP" /* TCP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TCP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"_____Product_TCPTests" /* TCPTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = TCPTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		"___LinkPhase_CHTTPParser" /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		"___LinkPhase_CPOSIX" /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		"___LinkPhase_Edge" /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				_LinkFileRef_Reflex_via_Edge /* Reflex.framework in Frameworks */,
+				_LinkFileRef_CPOSIX_via_Edge /* CPOSIX.framework in Frameworks */,
+				_LinkFileRef_POSIX_via_Edge /* POSIX.framework in Frameworks */,
+				_LinkFileRef_CHTTPParser_via_Edge /* CHTTPParser.framework in Frameworks */,
+				_LinkFileRef_POSIXExtensions_via_Edge /* POSIXExtensions.framework in Frameworks */,
+				_LinkFileRef_IOStream_via_Edge /* IOStream.framework in Frameworks */,
+				_LinkFileRef_TCP_via_Edge /* TCP.framework in Frameworks */,
+				_LinkFileRef_RunLoop_via_Edge /* RunLoop.framework in Frameworks */,
+				_LinkFileRef_HTTP_via_Edge /* HTTP.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		"___LinkPhase_HTTP" /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				_LinkFileRef_Reflex_via_HTTP /* Reflex.framework in Frameworks */,
+				_LinkFileRef_CPOSIX_via_HTTP /* CPOSIX.framework in Frameworks */,
+				_LinkFileRef_POSIX_via_HTTP /* POSIX.framework in Frameworks */,
+				_LinkFileRef_CHTTPParser_via_HTTP /* CHTTPParser.framework in Frameworks */,
+				_LinkFileRef_POSIXExtensions_via_HTTP /* POSIXExtensions.framework in Frameworks */,
+				_LinkFileRef_IOStream_via_HTTP /* IOStream.framework in Frameworks */,
+				_LinkFileRef_TCP_via_HTTP /* TCP.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		"___LinkPhase_HTTPTests" /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				_LinkFileRef_Reflex_via_HTTPTests /* Reflex.framework in Frameworks */,
+				_LinkFileRef_CPOSIX_via_HTTPTests /* CPOSIX.framework in Frameworks */,
+				_LinkFileRef_POSIX_via_HTTPTests /* POSIX.framework in Frameworks */,
+				_LinkFileRef_CHTTPParser_via_HTTPTests /* CHTTPParser.framework in Frameworks */,
+				_LinkFileRef_POSIXExtensions_via_HTTPTests /* POSIXExtensions.framework in Frameworks */,
+				_LinkFileRef_IOStream_via_HTTPTests /* IOStream.framework in Frameworks */,
+				_LinkFileRef_TCP_via_HTTPTests /* TCP.framework in Frameworks */,
+				_LinkFileRef_HTTP_via_HTTPTests /* HTTP.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		"___LinkPhase_IOStream" /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				_LinkFileRef_Reflex_via_IOStream /* Reflex.framework in Frameworks */,
+				_LinkFileRef_CPOSIX_via_IOStream /* CPOSIX.framework in Frameworks */,
+				_LinkFileRef_POSIX_via_IOStream /* POSIX.framework in Frameworks */,
+				_LinkFileRef_CHTTPParser_via_IOStream /* CHTTPParser.framework in Frameworks */,
+				_LinkFileRef_POSIXExtensions_via_IOStream /* POSIXExtensions.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		"___LinkPhase_POSIX" /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				_LinkFileRef_CPOSIX_via_POSIX /* CPOSIX.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		"___LinkPhase_POSIXExtensions" /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				_LinkFileRef_Reflex_via_POSIXExtensions /* Reflex.framework in Frameworks */,
+				_LinkFileRef_CPOSIX_via_POSIXExtensions /* CPOSIX.framework in Frameworks */,
+				_LinkFileRef_POSIX_via_POSIXExtensions /* POSIX.framework in Frameworks */,
+				_LinkFileRef_CHTTPParser_via_POSIXExtensions /* CHTTPParser.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		"___LinkPhase_Reflex" /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		"___LinkPhase_RunLoop" /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				_LinkFileRef_Reflex_via_RunLoop /* Reflex.framework in Frameworks */,
+				_LinkFileRef_CPOSIX_via_RunLoop /* CPOSIX.framework in Frameworks */,
+				_LinkFileRef_POSIX_via_RunLoop /* POSIX.framework in Frameworks */,
+				_LinkFileRef_CHTTPParser_via_RunLoop /* CHTTPParser.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		"___LinkPhase_TCP" /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				_LinkFileRef_Reflex_via_TCP /* Reflex.framework in Frameworks */,
+				_LinkFileRef_CPOSIX_via_TCP /* CPOSIX.framework in Frameworks */,
+				_LinkFileRef_POSIX_via_TCP /* POSIX.framework in Frameworks */,
+				_LinkFileRef_CHTTPParser_via_TCP /* CHTTPParser.framework in Frameworks */,
+				_LinkFileRef_POSIXExtensions_via_TCP /* POSIXExtensions.framework in Frameworks */,
+				_LinkFileRef_IOStream_via_TCP /* IOStream.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		"___LinkPhase_TCPTests" /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				_LinkFileRef_Reflex_via_TCPTests /* Reflex.framework in Frameworks */,
+				_LinkFileRef_CPOSIX_via_TCPTests /* CPOSIX.framework in Frameworks */,
+				_LinkFileRef_POSIX_via_TCPTests /* POSIX.framework in Frameworks */,
+				_LinkFileRef_CHTTPParser_via_TCPTests /* CHTTPParser.framework in Frameworks */,
+				_LinkFileRef_POSIXExtensions_via_TCPTests /* POSIXExtensions.framework in Frameworks */,
+				_LinkFileRef_IOStream_via_TCPTests /* IOStream.framework in Frameworks */,
+				_LinkFileRef_TCP_via_TCPTests /* TCP.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		Dependencies_ /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				"_______Group_CPOSIX" /* CPOSIX */,
+				"_______Group_POSIX" /* POSIX */,
+				"_______Group_Reflex" /* Reflex */,
+				"_______Group_CHTTPParser" /* CHTTPParser */,
+			);
+			name = Dependencies;
+			sourceTree = "<group>";
+		};
+		TestProducts_ /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				"_____Product_HTTPTests" /* HTTPTests.xctest */,
+				"_____Product_TCPTests" /* TCPTests.xctest */,
+			);
+			name = Tests;
+			sourceTree = "<group>";
+		};
+		"___RootGroup_" = {
+			isa = PBXGroup;
+			children = (
+				__PBXFileRef_Package.swift /* Package.swift */,
+				"_____Configs_" /* Configs */,
+				"_____Sources_" /* Sources */,
+				__PBXFileRef_Carthage /* Carthage */,
+				Dependencies_ /* Dependencies */,
+				"_______Tests_" /* Tests */,
+				"____Products_" /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		"____Products_" /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				TestProducts_ /* Tests */,
+				"_____Product_Reflex" /* Reflex.framework */,
+				"_____Product_CPOSIX" /* CPOSIX.framework */,
+				"_____Product_POSIX" /* POSIX.framework */,
+				"_____Product_CHTTPParser" /* CHTTPParser.framework */,
+				"_____Product_Edge" /* Edge.framework */,
+				"_____Product_HTTP" /* HTTP.framework */,
+				"_____Product_IOStream" /* IOStream.framework */,
+				"_____Product_POSIXExtensions" /* POSIXExtensions.framework */,
+				"_____Product_RunLoop" /* RunLoop.framework */,
+				"_____Product_TCP" /* TCP.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		"_____Configs_" /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				__PBXFileRef_Edge.xcodeproj/Configs/Project.xcconfig /* Edge.xcodeproj/Configs/Project.xcconfig */,
+			);
+			name = Configs;
+			sourceTree = "<group>";
+		};
+		"_____Sources_" /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				"_______Group_Edge" /* Edge */,
+				"_______Group_HTTP" /* HTTP */,
+				"_______Group_IOStream" /* IOStream */,
+				"_______Group_POSIXExtensions" /* POSIXExtensions */,
+				"_______Group_RunLoop" /* RunLoop */,
+				"_______Group_TCP" /* TCP */,
+			);
+			name = Sources;
+			sourceTree = "<group>";
+		};
+		"_______Group_CHTTPParser" /* CHTTPParser */ = {
+			isa = PBXGroup;
+			children = (
+				"__PBXFileRef_Packages/CHTTPParser-0.14.0/Sources/http_parser.c" /* http_parser.c */,
+			);
+			name = CHTTPParser;
+			path = "Packages/CHTTPParser-0.14.0/Sources";
+			sourceTree = "<group>";
+		};
+		"_______Group_CPOSIX" /* CPOSIX */ = {
+			isa = PBXGroup;
+			children = (
+				"__PBXFileRef_Packages/CPOSIX-0.14.0/Sources/CPOSIX/posix.c" /* posix.c */,
+			);
+			name = CPOSIX;
+			path = "Packages/CPOSIX-0.14.0/Sources/CPOSIX";
+			sourceTree = "<group>";
+		};
+		"_______Group_Edge" /* Edge */ = {
+			isa = PBXGroup;
+			children = (
+				__PBXFileRef_Sources/Edge/Application.swift /* Application.swift */,
+				__PBXFileRef_Sources/Edge/Edge.swift /* Edge.swift */,
+			);
+			name = Edge;
+			path = Sources/Edge;
+			sourceTree = "<group>";
+		};
+		"_______Group_HTTP" /* HTTP */ = {
+			isa = PBXGroup;
+			children = (
+				__PBXFileRef_Sources/HTTP/ClientConnection.swift /* ClientConnection.swift */,
+				__PBXFileRef_Sources/HTTP/Error.swift /* Error.swift */,
+				__PBXFileRef_Sources/HTTP/Method.swift /* Method.swift */,
+				__PBXFileRef_Sources/HTTP/Parser.swift /* Parser.swift */,
+				__PBXFileRef_Sources/HTTP/Request.swift /* Request.swift */,
+				__PBXFileRef_Sources/HTTP/Response.swift /* Response.swift */,
+				__PBXFileRef_Sources/HTTP/Serializable.swift /* Serializable.swift */,
+				__PBXFileRef_Sources/HTTP/Server.swift /* Server.swift */,
+				__PBXFileRef_Sources/HTTP/Status.swift /* Status.swift */,
+				__PBXFileRef_Sources/HTTP/Version.swift /* Version.swift */,
+			);
+			name = HTTP;
+			path = Sources/HTTP;
+			sourceTree = "<group>";
+		};
+		"_______Group_HTTPTests" /* HTTPTests */ = {
+			isa = PBXGroup;
+			children = (
+				__PBXFileRef_Tests/HTTPTests/RequestParserTests.swift /* RequestParserTests.swift */,
+				__PBXFileRef_Tests/HTTPTests/ResponseParserTests.swift /* ResponseParserTests.swift */,
+			);
+			name = HTTPTests;
+			path = Tests/HTTPTests;
+			sourceTree = "<group>";
+		};
+		"_______Group_IOStream" /* IOStream */ = {
+			isa = PBXGroup;
+			children = (
+				__PBXFileRef_Sources/IOStream/IOStream.swift /* IOStream.swift */,
+				__PBXFileRef_Sources/IOStream/Pipe.swift /* Pipe.swift */,
+			);
+			name = IOStream;
+			path = Sources/IOStream;
+			sourceTree = "<group>";
+		};
+		"_______Group_POSIX" /* POSIX */ = {
+			isa = PBXGroup;
+			children = (
+				"__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Condition.swift" /* Condition.swift */,
+				"__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Environment.swift" /* Environment.swift */,
+				"__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/FileDescriptor.swift" /* FileDescriptor.swift */,
+				"__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Lock.swift" /* Lock.swift */,
+				"__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/PID.swift" /* PID.swift */,
+				"__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Regex.swift" /* Regex.swift */,
+				"__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Spawn.swift" /* Spawn.swift */,
+				"__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/System.swift" /* System.swift */,
+				"__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/SystemError.swift" /* SystemError.swift */,
+				"__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Thread.swift" /* Thread.swift */,
+				"__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Wait.swift" /* Wait.swift */,
+			);
+			name = POSIX;
+			path = "Packages/POSIX-0.14.1/Sources/POSIX";
+			sourceTree = "<group>";
+		};
+		"_______Group_POSIXExtensions" /* POSIXExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				__PBXFileRef_Sources/POSIXExtensions/FileDescriptor.swift /* FileDescriptor.swift */,
+				__PBXFileRef_Sources/POSIXExtensions/Socket.swift /* Socket.swift */,
+			);
+			name = POSIXExtensions;
+			path = Sources/POSIXExtensions;
+			sourceTree = "<group>";
+		};
+		"_______Group_Reflex" /* Reflex */ = {
+			isa = PBXGroup;
+			children = (
+				"__PBXFileRef_Packages/Reflex-0.2.1/Sources/Bag.swift" /* Bag.swift */,
+				"__PBXFileRef_Packages/Reflex-0.2.1/Sources/ColdSignal.swift" /* ColdSignal.swift */,
+				"__PBXFileRef_Packages/Reflex-0.2.1/Sources/Disposable.swift" /* Disposable.swift */,
+				"__PBXFileRef_Packages/Reflex-0.2.1/Sources/Event.swift" /* Event.swift */,
+				"__PBXFileRef_Packages/Reflex-0.2.1/Sources/Observer.swift" /* Observer.swift */,
+				"__PBXFileRef_Packages/Reflex-0.2.1/Sources/Signal.swift" /* Signal.swift */,
+			);
+			name = Reflex;
+			path = "Packages/Reflex-0.2.1/Sources";
+			sourceTree = "<group>";
+		};
+		"_______Group_RunLoop" /* RunLoop */ = {
+			isa = PBXGroup;
+			children = (
+				__PBXFileRef_Sources/RunLoop/RunLoop.swift /* RunLoop.swift */,
+			);
+			name = RunLoop;
+			path = Sources/RunLoop;
+			sourceTree = "<group>";
+		};
+		"_______Group_TCP" /* TCP */ = {
+			isa = PBXGroup;
+			children = (
+				__PBXFileRef_Sources/TCP/Server.swift /* Server.swift */,
+				__PBXFileRef_Sources/TCP/Socket.swift /* Socket.swift */,
+			);
+			name = TCP;
+			path = Sources/TCP;
+			sourceTree = "<group>";
+		};
+		"_______Group_TCPTests" /* TCPTests */ = {
+			isa = PBXGroup;
+			children = (
+				__PBXFileRef_Tests/TCPTests/Tests.swift /* Tests.swift */,
+			);
+			name = TCPTests;
+			path = Tests/TCPTests;
+			sourceTree = "<group>";
+		};
+		"_______Tests_" /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				"_______Group_HTTPTests" /* HTTPTests */,
+				"_______Group_TCPTests" /* TCPTests */,
+			);
+			name = Tests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXLegacyTarget section */
+		DCC649F11DB416CD00AA3DAC /* SwiftPackageManager */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = build;
+			buildConfigurationList = DCC649F21DB416CD00AA3DAC /* Build configuration list for PBXLegacyTarget "SwiftPackageManager" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/bin/swift;
+			buildWorkingDirectory = "";
+			dependencies = (
+			);
+			name = SwiftPackageManager;
+			passBuildSettingsInEnvironment = 1;
+			productName = SwiftPackageManager;
+		};
+/* End PBXLegacyTarget section */
+
+/* Begin PBXNativeTarget section */
+		"______Target_CHTTPParser" /* CHTTPParser */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = "_______Confs_CHTTPParser" /* Build configuration list for PBXNativeTarget "CHTTPParser" */;
+			buildPhases = (
+				CompilePhase_CHTTPParser /* Sources */,
+				"___LinkPhase_CHTTPParser" /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CHTTPParser;
+			productName = CHTTPParser;
+			productReference = "_____Product_CHTTPParser" /* CHTTPParser.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		"______Target_CPOSIX" /* CPOSIX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = "_______Confs_CPOSIX" /* Build configuration list for PBXNativeTarget "CPOSIX" */;
+			buildPhases = (
+				CompilePhase_CPOSIX /* Sources */,
+				"___LinkPhase_CPOSIX" /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CPOSIX;
+			productName = CPOSIX;
+			productReference = "_____Product_CPOSIX" /* CPOSIX.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		"______Target_Edge" /* Edge */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = "_______Confs_Edge" /* Build configuration list for PBXNativeTarget "Edge" */;
+			buildPhases = (
+				CompilePhase_Edge /* Sources */,
+				"___LinkPhase_Edge" /* Frameworks */,
+				DCC649F01DB4164E00AA3DAC /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DCC649F61DB416F500AA3DAC /* PBXTargetDependency */,
+				__Dependency_Reflex /* PBXTargetDependency */,
+				__Dependency_CPOSIX /* PBXTargetDependency */,
+				__Dependency_POSIX /* PBXTargetDependency */,
+				__Dependency_CHTTPParser /* PBXTargetDependency */,
+				__Dependency_TCP /* PBXTargetDependency */,
+				__Dependency_IOStream /* PBXTargetDependency */,
+				__Dependency_RunLoop /* PBXTargetDependency */,
+				__Dependency_HTTP /* PBXTargetDependency */,
+			);
+			name = Edge;
+			productName = Edge;
+			productReference = "_____Product_Edge" /* Edge.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		"______Target_HTTP" /* HTTP */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = "_______Confs_HTTP" /* Build configuration list for PBXNativeTarget "HTTP" */;
+			buildPhases = (
+				CompilePhase_HTTP /* Sources */,
+				"___LinkPhase_HTTP" /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				__Dependency_Reflex /* PBXTargetDependency */,
+				__Dependency_CPOSIX /* PBXTargetDependency */,
+				__Dependency_POSIX /* PBXTargetDependency */,
+				__Dependency_CHTTPParser /* PBXTargetDependency */,
+				__Dependency_POSIXExtensions /* PBXTargetDependency */,
+				__Dependency_IOStream /* PBXTargetDependency */,
+				__Dependency_TCP /* PBXTargetDependency */,
+			);
+			name = HTTP;
+			productName = HTTP;
+			productReference = "_____Product_HTTP" /* HTTP.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		"______Target_HTTPTests" /* HTTPTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = "_______Confs_HTTPTests" /* Build configuration list for PBXNativeTarget "HTTPTests" */;
+			buildPhases = (
+				CompilePhase_HTTPTests /* Sources */,
+				"___LinkPhase_HTTPTests" /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				__Dependency_Reflex /* PBXTargetDependency */,
+				__Dependency_CPOSIX /* PBXTargetDependency */,
+				__Dependency_POSIX /* PBXTargetDependency */,
+				__Dependency_CHTTPParser /* PBXTargetDependency */,
+				__Dependency_HTTP /* PBXTargetDependency */,
+			);
+			name = HTTPTests;
+			productName = HTTPTests;
+			productReference = "_____Product_HTTPTests" /* HTTPTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		"______Target_IOStream" /* IOStream */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = "_______Confs_IOStream" /* Build configuration list for PBXNativeTarget "IOStream" */;
+			buildPhases = (
+				CompilePhase_IOStream /* Sources */,
+				"___LinkPhase_IOStream" /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				__Dependency_Reflex /* PBXTargetDependency */,
+				__Dependency_CPOSIX /* PBXTargetDependency */,
+				__Dependency_POSIX /* PBXTargetDependency */,
+				__Dependency_CHTTPParser /* PBXTargetDependency */,
+				__Dependency_POSIXExtensions /* PBXTargetDependency */,
+			);
+			name = IOStream;
+			productName = IOStream;
+			productReference = "_____Product_IOStream" /* IOStream.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		"______Target_POSIX" /* POSIX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = "_______Confs_POSIX" /* Build configuration list for PBXNativeTarget "POSIX" */;
+			buildPhases = (
+				CompilePhase_POSIX /* Sources */,
+				"___LinkPhase_POSIX" /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				__Dependency_CPOSIX /* PBXTargetDependency */,
+			);
+			name = POSIX;
+			productName = POSIX;
+			productReference = "_____Product_POSIX" /* POSIX.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		"______Target_POSIXExtensions" /* POSIXExtensions */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = "_______Confs_POSIXExtensions" /* Build configuration list for PBXNativeTarget "POSIXExtensions" */;
+			buildPhases = (
+				CompilePhase_POSIXExtensions /* Sources */,
+				"___LinkPhase_POSIXExtensions" /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				__Dependency_Reflex /* PBXTargetDependency */,
+				__Dependency_CPOSIX /* PBXTargetDependency */,
+				__Dependency_POSIX /* PBXTargetDependency */,
+				__Dependency_CHTTPParser /* PBXTargetDependency */,
+			);
+			name = POSIXExtensions;
+			productName = POSIXExtensions;
+			productReference = "_____Product_POSIXExtensions" /* POSIXExtensions.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		"______Target_Reflex" /* Reflex */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = "_______Confs_Reflex" /* Build configuration list for PBXNativeTarget "Reflex" */;
+			buildPhases = (
+				CompilePhase_Reflex /* Sources */,
+				"___LinkPhase_Reflex" /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Reflex;
+			productName = Reflex;
+			productReference = "_____Product_Reflex" /* Reflex.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		"______Target_RunLoop" /* RunLoop */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = "_______Confs_RunLoop" /* Build configuration list for PBXNativeTarget "RunLoop" */;
+			buildPhases = (
+				CompilePhase_RunLoop /* Sources */,
+				"___LinkPhase_RunLoop" /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				__Dependency_Reflex /* PBXTargetDependency */,
+				__Dependency_CPOSIX /* PBXTargetDependency */,
+				__Dependency_POSIX /* PBXTargetDependency */,
+				__Dependency_CHTTPParser /* PBXTargetDependency */,
+			);
+			name = RunLoop;
+			productName = RunLoop;
+			productReference = "_____Product_RunLoop" /* RunLoop.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		"______Target_TCP" /* TCP */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = "_______Confs_TCP" /* Build configuration list for PBXNativeTarget "TCP" */;
+			buildPhases = (
+				CompilePhase_TCP /* Sources */,
+				"___LinkPhase_TCP" /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				__Dependency_Reflex /* PBXTargetDependency */,
+				__Dependency_CPOSIX /* PBXTargetDependency */,
+				__Dependency_POSIX /* PBXTargetDependency */,
+				__Dependency_CHTTPParser /* PBXTargetDependency */,
+				__Dependency_POSIXExtensions /* PBXTargetDependency */,
+				__Dependency_IOStream /* PBXTargetDependency */,
+			);
+			name = TCP;
+			productName = TCP;
+			productReference = "_____Product_TCP" /* TCP.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		"______Target_TCPTests" /* TCPTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = "_______Confs_TCPTests" /* Build configuration list for PBXNativeTarget "TCPTests" */;
+			buildPhases = (
+				CompilePhase_TCPTests /* Sources */,
+				"___LinkPhase_TCPTests" /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				__Dependency_Reflex /* PBXTargetDependency */,
+				__Dependency_CPOSIX /* PBXTargetDependency */,
+				__Dependency_POSIX /* PBXTargetDependency */,
+				__Dependency_CHTTPParser /* PBXTargetDependency */,
+				__Dependency_TCP /* PBXTargetDependency */,
+			);
+			name = TCPTests;
+			productName = TCPTests;
+			productReference = "_____Product_TCPTests" /* TCPTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		__RootObject_ /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 9999;
+				TargetAttributes = {
+					DCC649F11DB416CD00AA3DAC = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = SP7Q57942K;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = "___RootConfs_" /* Build configuration list for PBXProject "Edge" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = "___RootGroup_";
+			productRefGroup = "____Products_" /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				"______Target_Reflex" /* Reflex */,
+				"______Target_CPOSIX" /* CPOSIX */,
+				"______Target_POSIX" /* POSIX */,
+				"______Target_CHTTPParser" /* CHTTPParser */,
+				"______Target_Edge" /* Edge */,
+				"______Target_HTTP" /* HTTP */,
+				"______Target_IOStream" /* IOStream */,
+				"______Target_POSIXExtensions" /* POSIXExtensions */,
+				"______Target_RunLoop" /* RunLoop */,
+				"______Target_TCP" /* TCP */,
+				"______Target_HTTPTests" /* HTTPTests */,
+				"______Target_TCPTests" /* TCPTests */,
+				DCC649F11DB416CD00AA3DAC /* SwiftPackageManager */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		DCC649F01DB4164E00AA3DAC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CompilePhase_CHTTPParser /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				"__src_cc_ref_Packages/CHTTPParser-0.14.0/Sources/http_parser.c" /* http_parser.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CompilePhase_CPOSIX /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				"__src_cc_ref_Packages/CPOSIX-0.14.0/Sources/CPOSIX/posix.c" /* posix.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CompilePhase_Edge /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				__src_cc_ref_Sources/Edge/Application.swift /* Application.swift in Sources */,
+				__src_cc_ref_Sources/Edge/Edge.swift /* Edge.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CompilePhase_HTTP /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				__src_cc_ref_Sources/HTTP/ClientConnection.swift /* ClientConnection.swift in Sources */,
+				__src_cc_ref_Sources/HTTP/Error.swift /* Error.swift in Sources */,
+				__src_cc_ref_Sources/HTTP/Method.swift /* Method.swift in Sources */,
+				__src_cc_ref_Sources/HTTP/Parser.swift /* Parser.swift in Sources */,
+				__src_cc_ref_Sources/HTTP/Request.swift /* Request.swift in Sources */,
+				__src_cc_ref_Sources/HTTP/Response.swift /* Response.swift in Sources */,
+				__src_cc_ref_Sources/HTTP/Serializable.swift /* Serializable.swift in Sources */,
+				__src_cc_ref_Sources/HTTP/Server.swift /* Server.swift in Sources */,
+				__src_cc_ref_Sources/HTTP/Status.swift /* Status.swift in Sources */,
+				__src_cc_ref_Sources/HTTP/Version.swift /* Version.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CompilePhase_HTTPTests /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				__src_cc_ref_Tests/HTTPTests/RequestParserTests.swift /* RequestParserTests.swift in Sources */,
+				__src_cc_ref_Tests/HTTPTests/ResponseParserTests.swift /* ResponseParserTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CompilePhase_IOStream /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				__src_cc_ref_Sources/IOStream/IOStream.swift /* IOStream.swift in Sources */,
+				__src_cc_ref_Sources/IOStream/Pipe.swift /* Pipe.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CompilePhase_POSIX /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				"__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/Condition.swift" /* Condition.swift in Sources */,
+				"__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/Environment.swift" /* Environment.swift in Sources */,
+				"__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/FileDescriptor.swift" /* FileDescriptor.swift in Sources */,
+				"__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/Lock.swift" /* Lock.swift in Sources */,
+				"__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/PID.swift" /* PID.swift in Sources */,
+				"__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/Regex.swift" /* Regex.swift in Sources */,
+				"__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/Spawn.swift" /* Spawn.swift in Sources */,
+				"__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/System.swift" /* System.swift in Sources */,
+				"__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/SystemError.swift" /* SystemError.swift in Sources */,
+				"__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/Thread.swift" /* Thread.swift in Sources */,
+				"__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/Wait.swift" /* Wait.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CompilePhase_POSIXExtensions /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				__src_cc_ref_Sources/POSIXExtensions/FileDescriptor.swift /* FileDescriptor.swift in Sources */,
+				__src_cc_ref_Sources/POSIXExtensions/Socket.swift /* Socket.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CompilePhase_Reflex /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				"__src_cc_ref_Packages/Reflex-0.2.1/Sources/Bag.swift" /* Bag.swift in Sources */,
+				"__src_cc_ref_Packages/Reflex-0.2.1/Sources/ColdSignal.swift" /* ColdSignal.swift in Sources */,
+				"__src_cc_ref_Packages/Reflex-0.2.1/Sources/Disposable.swift" /* Disposable.swift in Sources */,
+				"__src_cc_ref_Packages/Reflex-0.2.1/Sources/Event.swift" /* Event.swift in Sources */,
+				"__src_cc_ref_Packages/Reflex-0.2.1/Sources/Observer.swift" /* Observer.swift in Sources */,
+				"__src_cc_ref_Packages/Reflex-0.2.1/Sources/Signal.swift" /* Signal.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CompilePhase_RunLoop /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				__src_cc_ref_Sources/RunLoop/RunLoop.swift /* RunLoop.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CompilePhase_TCP /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				__src_cc_ref_Sources/TCP/Server.swift /* Server.swift in Sources */,
+				__src_cc_ref_Sources/TCP/Socket.swift /* Socket.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CompilePhase_TCPTests /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				__src_cc_ref_Tests/TCPTests/Tests.swift /* Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DCC649F61DB416F500AA3DAC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DCC649F11DB416CD00AA3DAC /* SwiftPackageManager */;
+			targetProxy = DCC649F51DB416F500AA3DAC /* PBXContainerItemProxy */;
+		};
+		__Dependency_CHTTPParser /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "______Target_CHTTPParser" /* CHTTPParser */;
+			targetProxy = DCC649E81DB413F600AA3DAC /* PBXContainerItemProxy */;
+		};
+		__Dependency_CPOSIX /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "______Target_CPOSIX" /* CPOSIX */;
+			targetProxy = DCC649E51DB413F600AA3DAC /* PBXContainerItemProxy */;
+		};
+		__Dependency_HTTP /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "______Target_HTTP" /* HTTP */;
+			targetProxy = DCC649ED1DB413F600AA3DAC /* PBXContainerItemProxy */;
+		};
+		__Dependency_IOStream /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "______Target_IOStream" /* IOStream */;
+			targetProxy = DCC649EB1DB413F600AA3DAC /* PBXContainerItemProxy */;
+		};
+		__Dependency_POSIX /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "______Target_POSIX" /* POSIX */;
+			targetProxy = DCC649E71DB413F600AA3DAC /* PBXContainerItemProxy */;
+		};
+		__Dependency_POSIXExtensions /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "______Target_POSIXExtensions" /* POSIXExtensions */;
+			targetProxy = DCC649EA1DB413F600AA3DAC /* PBXContainerItemProxy */;
+		};
+		__Dependency_Reflex /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "______Target_Reflex" /* Reflex */;
+			targetProxy = DCC649E61DB413F600AA3DAC /* PBXContainerItemProxy */;
+		};
+		__Dependency_RunLoop /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "______Target_RunLoop" /* RunLoop */;
+			targetProxy = DCC649EC1DB413F600AA3DAC /* PBXContainerItemProxy */;
+		};
+		__Dependency_TCP /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "______Target_TCP" /* TCP */;
+			targetProxy = DCC649E91DB413F600AA3DAC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		DCC649F31DB416CD00AA3DAC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUGGING_SYMBOLS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = SP7Q57942K;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		DCC649F41DB416CD00AA3DAC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = SP7Q57942K;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		_ReleaseConf_CHTTPParser /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
+				INFOPLIST_FILE = Edge.xcodeproj/CHTTPParser_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				MODULEMAP_FILE = Edge.xcodeproj/GeneratedModuleMap/CHTTPParser/module.modulemap;
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = CHTTPParser;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		_ReleaseConf_CPOSIX /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
+				INFOPLIST_FILE = Edge.xcodeproj/CPOSIX_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				MODULEMAP_FILE = Edge.xcodeproj/GeneratedModuleMap/CPOSIX/module.modulemap;
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = CPOSIX;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		_ReleaseConf_Edge /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
+				HEADER_SEARCH_PATHS = (
+					"/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include",
+					"/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CHTTPParser-0.14.0/Sources/include",
+				);
+				INFOPLIST_FILE = Edge.xcodeproj/Edge_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = Edge;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		_ReleaseConf_HTTP /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
+				HEADER_SEARCH_PATHS = (
+					"/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include",
+					"/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CHTTPParser-0.14.0/Sources/include",
+				);
+				INFOPLIST_FILE = Edge.xcodeproj/HTTP_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = HTTP;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		_ReleaseConf_HTTPTests /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
+				HEADER_SEARCH_PATHS = (
+					"/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include",
+					"/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CHTTPParser-0.14.0/Sources/include",
+				);
+				INFOPLIST_FILE = Edge.xcodeproj/HTTPTests_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		_ReleaseConf_IOStream /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
+				HEADER_SEARCH_PATHS = (
+					"/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include",
+					"/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CHTTPParser-0.14.0/Sources/include",
+				);
+				INFOPLIST_FILE = Edge.xcodeproj/IOStream_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = IOStream;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		_ReleaseConf_POSIX /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
+				HEADER_SEARCH_PATHS = "/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include";
+				INFOPLIST_FILE = Edge.xcodeproj/POSIX_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = POSIX;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		_ReleaseConf_POSIXExtensions /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
+				HEADER_SEARCH_PATHS = (
+					"/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include",
+					"/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CHTTPParser-0.14.0/Sources/include",
+				);
+				INFOPLIST_FILE = Edge.xcodeproj/POSIXExtensions_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = POSIXExtensions;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		_ReleaseConf_Reflex /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
+				INFOPLIST_FILE = Edge.xcodeproj/Reflex_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = Reflex;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		_ReleaseConf_RunLoop /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
+				HEADER_SEARCH_PATHS = (
+					"/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include",
+					"/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CHTTPParser-0.14.0/Sources/include",
+				);
+				INFOPLIST_FILE = Edge.xcodeproj/RunLoop_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = RunLoop;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		_ReleaseConf_TCP /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
+				HEADER_SEARCH_PATHS = (
+					"/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include",
+					"/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CHTTPParser-0.14.0/Sources/include",
+				);
+				INFOPLIST_FILE = Edge.xcodeproj/TCP_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = TCP;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		_ReleaseConf_TCPTests /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
+				HEADER_SEARCH_PATHS = (
+					"/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include",
+					"/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CHTTPParser-0.14.0/Sources/include",
+				);
+				INFOPLIST_FILE = Edge.xcodeproj/TCPTests_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		"___DebugConf_CHTTPParser" /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
+				INFOPLIST_FILE = Edge.xcodeproj/CHTTPParser_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				MODULEMAP_FILE = Edge.xcodeproj/GeneratedModuleMap/CHTTPParser/module.modulemap;
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = CHTTPParser;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		"___DebugConf_CPOSIX" /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
+				INFOPLIST_FILE = Edge.xcodeproj/CPOSIX_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				MODULEMAP_FILE = Edge.xcodeproj/GeneratedModuleMap/CPOSIX/module.modulemap;
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = CPOSIX;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		"___DebugConf_Edge" /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
+				HEADER_SEARCH_PATHS = (
+					"/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include",
+					"/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CHTTPParser-0.14.0/Sources/include",
+				);
+				INFOPLIST_FILE = Edge.xcodeproj/Edge_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = Edge;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		"___DebugConf_HTTP" /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
+				HEADER_SEARCH_PATHS = (
+					"/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include",
+					"/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CHTTPParser-0.14.0/Sources/include",
+				);
+				INFOPLIST_FILE = Edge.xcodeproj/HTTP_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = HTTP;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		"___DebugConf_HTTPTests" /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
+				HEADER_SEARCH_PATHS = (
+					"/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include",
+					"/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CHTTPParser-0.14.0/Sources/include",
+				);
+				INFOPLIST_FILE = Edge.xcodeproj/HTTPTests_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		"___DebugConf_IOStream" /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
+				HEADER_SEARCH_PATHS = (
+					"/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include",
+					"/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CHTTPParser-0.14.0/Sources/include",
+				);
+				INFOPLIST_FILE = Edge.xcodeproj/IOStream_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = IOStream;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		"___DebugConf_POSIX" /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
+				HEADER_SEARCH_PATHS = "/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include";
+				INFOPLIST_FILE = Edge.xcodeproj/POSIX_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = POSIX;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		"___DebugConf_POSIXExtensions" /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
+				HEADER_SEARCH_PATHS = (
+					"/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include",
+					"/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CHTTPParser-0.14.0/Sources/include",
+				);
+				INFOPLIST_FILE = Edge.xcodeproj/POSIXExtensions_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = POSIXExtensions;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		"___DebugConf_Reflex" /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
+				INFOPLIST_FILE = Edge.xcodeproj/Reflex_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = Reflex;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		"___DebugConf_RunLoop" /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
+				HEADER_SEARCH_PATHS = (
+					"/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include",
+					"/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CHTTPParser-0.14.0/Sources/include",
+				);
+				INFOPLIST_FILE = Edge.xcodeproj/RunLoop_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = RunLoop;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		"___DebugConf_TCP" /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
+				HEADER_SEARCH_PATHS = (
+					"/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include",
+					"/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CHTTPParser-0.14.0/Sources/include",
+				);
+				INFOPLIST_FILE = Edge.xcodeproj/TCP_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = TCP;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		"___DebugConf_TCPTests" /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
+				HEADER_SEARCH_PATHS = (
+					"/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include",
+					"/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CHTTPParser-0.14.0/Sources/include",
+				);
+				INFOPLIST_FILE = Edge.xcodeproj/TCPTests_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		"_____Release_" /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = __PBXFileRef_Edge.xcodeproj/Configs/Project.xcconfig /* Edge.xcodeproj/Configs/Project.xcconfig */;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		"_______Debug_" /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = __PBXFileRef_Edge.xcodeproj/Configs/Project.xcconfig /* Edge.xcodeproj/Configs/Project.xcconfig */;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DCC649F21DB416CD00AA3DAC /* Build configuration list for PBXLegacyTarget "SwiftPackageManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DCC649F31DB416CD00AA3DAC /* Debug */,
+				DCC649F41DB416CD00AA3DAC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		"___RootConfs_" /* Build configuration list for PBXProject "Edge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				"_______Debug_" /* Debug */,
+				"_____Release_" /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		"_______Confs_CHTTPParser" /* Build configuration list for PBXNativeTarget "CHTTPParser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				"___DebugConf_CHTTPParser" /* Debug */,
+				_ReleaseConf_CHTTPParser /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		"_______Confs_CPOSIX" /* Build configuration list for PBXNativeTarget "CPOSIX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				"___DebugConf_CPOSIX" /* Debug */,
+				_ReleaseConf_CPOSIX /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		"_______Confs_Edge" /* Build configuration list for PBXNativeTarget "Edge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				"___DebugConf_Edge" /* Debug */,
+				_ReleaseConf_Edge /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		"_______Confs_HTTP" /* Build configuration list for PBXNativeTarget "HTTP" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				"___DebugConf_HTTP" /* Debug */,
+				_ReleaseConf_HTTP /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		"_______Confs_HTTPTests" /* Build configuration list for PBXNativeTarget "HTTPTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				"___DebugConf_HTTPTests" /* Debug */,
+				_ReleaseConf_HTTPTests /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		"_______Confs_IOStream" /* Build configuration list for PBXNativeTarget "IOStream" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				"___DebugConf_IOStream" /* Debug */,
+				_ReleaseConf_IOStream /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		"_______Confs_POSIX" /* Build configuration list for PBXNativeTarget "POSIX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				"___DebugConf_POSIX" /* Debug */,
+				_ReleaseConf_POSIX /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		"_______Confs_POSIXExtensions" /* Build configuration list for PBXNativeTarget "POSIXExtensions" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				"___DebugConf_POSIXExtensions" /* Debug */,
+				_ReleaseConf_POSIXExtensions /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		"_______Confs_Reflex" /* Build configuration list for PBXNativeTarget "Reflex" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				"___DebugConf_Reflex" /* Debug */,
+				_ReleaseConf_Reflex /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		"_______Confs_RunLoop" /* Build configuration list for PBXNativeTarget "RunLoop" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				"___DebugConf_RunLoop" /* Debug */,
+				_ReleaseConf_RunLoop /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		"_______Confs_TCP" /* Build configuration list for PBXNativeTarget "TCP" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				"___DebugConf_TCP" /* Debug */,
+				_ReleaseConf_TCP /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		"_______Confs_TCPTests" /* Build configuration list for PBXNativeTarget "TCPTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				"___DebugConf_TCPTests" /* Debug */,
+				_ReleaseConf_TCPTests /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = __RootObject_ /* Project object */;
 }
