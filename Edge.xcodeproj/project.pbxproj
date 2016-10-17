@@ -597,7 +597,7 @@
 /* Begin PBXLegacyTarget section */
 		DCC0C34C1DB4C560008788D8 /* SwiftPM */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = "$(ACTION)";
+			buildArgumentsString = build;
 			buildConfigurationList = DCC0C34F1DB4C560008788D8 /* Build configuration list for PBXLegacyTarget "SwiftPM" */;
 			buildPhases = (
 			);
