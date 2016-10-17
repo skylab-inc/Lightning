@@ -102,75 +102,75 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		DCC649E51DB413F600AA3DAC /* PBXContainerItemProxy */ = {
+		DCC0C3431DB4C1EF008788D8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = __RootObject_ /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "______Target_CPOSIX";
 			remoteInfo = CPOSIX;
 		};
-		DCC649E61DB413F600AA3DAC /* PBXContainerItemProxy */ = {
+		DCC0C3441DB4C1EF008788D8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = __RootObject_ /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "______Target_Reflex";
 			remoteInfo = Reflex;
 		};
-		DCC649E71DB413F600AA3DAC /* PBXContainerItemProxy */ = {
+		DCC0C3451DB4C1EF008788D8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = __RootObject_ /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "______Target_POSIX";
 			remoteInfo = POSIX;
 		};
-		DCC649E81DB413F600AA3DAC /* PBXContainerItemProxy */ = {
+		DCC0C3461DB4C1EF008788D8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = __RootObject_ /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "______Target_CHTTPParser";
 			remoteInfo = CHTTPParser;
 		};
-		DCC649E91DB413F600AA3DAC /* PBXContainerItemProxy */ = {
+		DCC0C3471DB4C1EF008788D8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = __RootObject_ /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "______Target_TCP";
 			remoteInfo = TCP;
 		};
-		DCC649EA1DB413F600AA3DAC /* PBXContainerItemProxy */ = {
+		DCC0C3481DB4C1EF008788D8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = __RootObject_ /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "______Target_POSIXExtensions";
 			remoteInfo = POSIXExtensions;
 		};
-		DCC649EB1DB413F600AA3DAC /* PBXContainerItemProxy */ = {
+		DCC0C3491DB4C1EF008788D8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = __RootObject_ /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "______Target_IOStream";
 			remoteInfo = IOStream;
 		};
-		DCC649EC1DB413F600AA3DAC /* PBXContainerItemProxy */ = {
+		DCC0C34A1DB4C1EF008788D8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = __RootObject_ /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "______Target_RunLoop";
 			remoteInfo = RunLoop;
 		};
-		DCC649ED1DB413F600AA3DAC /* PBXContainerItemProxy */ = {
+		DCC0C34B1DB4C1EF008788D8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = __RootObject_ /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "______Target_HTTP";
 			remoteInfo = HTTP;
 		};
-		DCC649F51DB416F500AA3DAC /* PBXContainerItemProxy */ = {
+		DCC0C3501DB4C56A008788D8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = __RootObject_ /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = DCC649F11DB416CD00AA3DAC;
-			remoteInfo = SwiftPackageManager;
+			remoteGlobalIDString = DCC0C34C1DB4C560008788D8;
+			remoteInfo = SwiftPM;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -219,6 +219,7 @@
 		__PBXFileRef_Tests/HTTPTests/RequestParserTests.swift /* RequestParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestParserTests.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Tests/HTTPTests/ResponseParserTests.swift /* ResponseParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseParserTests.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Tests/TCPTests/Tests.swift /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		__PBXFileRef_build /* build */ = {isa = PBXFileReference; lastKnownFileType = folder; path = build; sourceTree = "<group>"; };
 		"_____Product_CHTTPParser" /* CHTTPParser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CHTTPParser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"_____Product_CPOSIX" /* CPOSIX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CPOSIX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"_____Product_Edge" /* Edge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Edge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -398,6 +399,7 @@
 				__PBXFileRef_Package.swift /* Package.swift */,
 				"_____Configs_" /* Configs */,
 				"_____Sources_" /* Sources */,
+				__PBXFileRef_build /* build */,
 				__PBXFileRef_Carthage /* Carthage */,
 				Dependencies_ /* Dependencies */,
 				"_______Tests_" /* Tests */,
@@ -593,19 +595,19 @@
 /* End PBXGroup section */
 
 /* Begin PBXLegacyTarget section */
-		DCC649F11DB416CD00AA3DAC /* SwiftPackageManager */ = {
+		DCC0C34C1DB4C560008788D8 /* SwiftPM */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = build;
-			buildConfigurationList = DCC649F21DB416CD00AA3DAC /* Build configuration list for PBXLegacyTarget "SwiftPackageManager" */;
+			buildArgumentsString = "$(ACTION)";
+			buildConfigurationList = DCC0C34F1DB4C560008788D8 /* Build configuration list for PBXLegacyTarget "SwiftPM" */;
 			buildPhases = (
 			);
 			buildToolPath = /usr/bin/swift;
 			buildWorkingDirectory = "";
 			dependencies = (
 			);
-			name = SwiftPackageManager;
+			name = SwiftPM;
 			passBuildSettingsInEnvironment = 0;
-			productName = SwiftPackageManager;
+			productName = SwiftPM;
 		};
 /* End PBXLegacyTarget section */
 
@@ -652,7 +654,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				DCC649F61DB416F500AA3DAC /* PBXTargetDependency */,
+				DCC0C3511DB4C56A008788D8 /* PBXTargetDependency */,
 				__Dependency_Reflex /* PBXTargetDependency */,
 				__Dependency_CPOSIX /* PBXTargetDependency */,
 				__Dependency_POSIX /* PBXTargetDependency */,
@@ -856,9 +858,8 @@
 			attributes = {
 				LastUpgradeCheck = 9999;
 				TargetAttributes = {
-					DCC649F11DB416CD00AA3DAC = {
+					DCC0C34C1DB4C560008788D8 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = SP7Q57942K;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -887,7 +888,7 @@
 				"______Target_TCP" /* TCP */,
 				"______Target_HTTPTests" /* HTTPTests */,
 				"______Target_TCPTests" /* TCPTests */,
-				DCC649F11DB416CD00AA3DAC /* SwiftPackageManager */,
+				DCC0C34C1DB4C560008788D8 /* SwiftPM */,
 			);
 		};
 /* End PBXProject section */
@@ -1021,60 +1022,60 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		DCC649F61DB416F500AA3DAC /* PBXTargetDependency */ = {
+		DCC0C3511DB4C56A008788D8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = DCC649F11DB416CD00AA3DAC /* SwiftPackageManager */;
-			targetProxy = DCC649F51DB416F500AA3DAC /* PBXContainerItemProxy */;
+			target = DCC0C34C1DB4C560008788D8 /* SwiftPM */;
+			targetProxy = DCC0C3501DB4C56A008788D8 /* PBXContainerItemProxy */;
 		};
 		__Dependency_CHTTPParser /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "______Target_CHTTPParser" /* CHTTPParser */;
-			targetProxy = DCC649E81DB413F600AA3DAC /* PBXContainerItemProxy */;
+			targetProxy = DCC0C3461DB4C1EF008788D8 /* PBXContainerItemProxy */;
 		};
 		__Dependency_CPOSIX /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "______Target_CPOSIX" /* CPOSIX */;
-			targetProxy = DCC649E51DB413F600AA3DAC /* PBXContainerItemProxy */;
+			targetProxy = DCC0C3431DB4C1EF008788D8 /* PBXContainerItemProxy */;
 		};
 		__Dependency_HTTP /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "______Target_HTTP" /* HTTP */;
-			targetProxy = DCC649ED1DB413F600AA3DAC /* PBXContainerItemProxy */;
+			targetProxy = DCC0C34B1DB4C1EF008788D8 /* PBXContainerItemProxy */;
 		};
 		__Dependency_IOStream /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "______Target_IOStream" /* IOStream */;
-			targetProxy = DCC649EB1DB413F600AA3DAC /* PBXContainerItemProxy */;
+			targetProxy = DCC0C3491DB4C1EF008788D8 /* PBXContainerItemProxy */;
 		};
 		__Dependency_POSIX /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "______Target_POSIX" /* POSIX */;
-			targetProxy = DCC649E71DB413F600AA3DAC /* PBXContainerItemProxy */;
+			targetProxy = DCC0C3451DB4C1EF008788D8 /* PBXContainerItemProxy */;
 		};
 		__Dependency_POSIXExtensions /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "______Target_POSIXExtensions" /* POSIXExtensions */;
-			targetProxy = DCC649EA1DB413F600AA3DAC /* PBXContainerItemProxy */;
+			targetProxy = DCC0C3481DB4C1EF008788D8 /* PBXContainerItemProxy */;
 		};
 		__Dependency_Reflex /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "______Target_Reflex" /* Reflex */;
-			targetProxy = DCC649E61DB413F600AA3DAC /* PBXContainerItemProxy */;
+			targetProxy = DCC0C3441DB4C1EF008788D8 /* PBXContainerItemProxy */;
 		};
 		__Dependency_RunLoop /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "______Target_RunLoop" /* RunLoop */;
-			targetProxy = DCC649EC1DB413F600AA3DAC /* PBXContainerItemProxy */;
+			targetProxy = DCC0C34A1DB4C1EF008788D8 /* PBXContainerItemProxy */;
 		};
 		__Dependency_TCP /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "______Target_TCP" /* TCP */;
-			targetProxy = DCC649E91DB413F600AA3DAC /* PBXContainerItemProxy */;
+			targetProxy = DCC0C3471DB4C1EF008788D8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		DCC649F31DB416CD00AA3DAC /* Debug */ = {
+		DCC0C34D1DB4C560008788D8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1123,7 +1124,7 @@
 			};
 			name = Debug;
 		};
-		DCC649F41DB416CD00AA3DAC /* Release */ = {
+		DCC0C34E1DB4C560008788D8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1638,14 +1639,13 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		DCC649F21DB416CD00AA3DAC /* Build configuration list for PBXLegacyTarget "SwiftPackageManager" */ = {
+		DCC0C34F1DB4C560008788D8 /* Build configuration list for PBXLegacyTarget "SwiftPM" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				DCC649F31DB416CD00AA3DAC /* Debug */,
-				DCC649F41DB416CD00AA3DAC /* Release */,
+				DCC0C34D1DB4C560008788D8 /* Debug */,
+				DCC0C34E1DB4C560008788D8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
 		};
 		"___RootConfs_" /* Build configuration list for PBXProject "Edge" */ = {
 			isa = XCConfigurationList;
