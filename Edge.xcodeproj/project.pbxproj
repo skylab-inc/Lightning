@@ -71,12 +71,12 @@
 		"__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/SystemError.swift" /* SystemError.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/SystemError.swift" /* SystemError.swift */; };
 		"__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/Thread.swift" /* Thread.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Thread.swift" /* Thread.swift */; };
 		"__src_cc_ref_Packages/POSIX-0.14.1/Sources/POSIX/Wait.swift" /* Wait.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Wait.swift" /* Wait.swift */; };
-		"__src_cc_ref_Packages/Reflex-0.2.1/Sources/Bag.swift" /* Bag.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/Reflex-0.2.1/Sources/Bag.swift" /* Bag.swift */; };
-		"__src_cc_ref_Packages/Reflex-0.2.1/Sources/ColdSignal.swift" /* ColdSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/Reflex-0.2.1/Sources/ColdSignal.swift" /* ColdSignal.swift */; };
-		"__src_cc_ref_Packages/Reflex-0.2.1/Sources/Disposable.swift" /* Disposable.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/Reflex-0.2.1/Sources/Disposable.swift" /* Disposable.swift */; };
-		"__src_cc_ref_Packages/Reflex-0.2.1/Sources/Event.swift" /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/Reflex-0.2.1/Sources/Event.swift" /* Event.swift */; };
-		"__src_cc_ref_Packages/Reflex-0.2.1/Sources/Observer.swift" /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/Reflex-0.2.1/Sources/Observer.swift" /* Observer.swift */; };
-		"__src_cc_ref_Packages/Reflex-0.2.1/Sources/Signal.swift" /* Signal.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/Reflex-0.2.1/Sources/Signal.swift" /* Signal.swift */; };
+		"__src_cc_ref_Packages/Reflex-0.2.2/Sources/Bag.swift" /* Bag.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/Reflex-0.2.2/Sources/Bag.swift" /* Bag.swift */; };
+		"__src_cc_ref_Packages/Reflex-0.2.2/Sources/ColdSignal.swift" /* ColdSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/Reflex-0.2.2/Sources/ColdSignal.swift" /* ColdSignal.swift */; };
+		"__src_cc_ref_Packages/Reflex-0.2.2/Sources/Disposable.swift" /* Disposable.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/Reflex-0.2.2/Sources/Disposable.swift" /* Disposable.swift */; };
+		"__src_cc_ref_Packages/Reflex-0.2.2/Sources/Event.swift" /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/Reflex-0.2.2/Sources/Event.swift" /* Event.swift */; };
+		"__src_cc_ref_Packages/Reflex-0.2.2/Sources/Observer.swift" /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/Reflex-0.2.2/Sources/Observer.swift" /* Observer.swift */; };
+		"__src_cc_ref_Packages/Reflex-0.2.2/Sources/Signal.swift" /* Signal.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/Reflex-0.2.2/Sources/Signal.swift" /* Signal.swift */; };
 		__src_cc_ref_Sources/Edge/Application.swift /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Edge/Application.swift /* Application.swift */; };
 		__src_cc_ref_Sources/Edge/Edge.swift /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Edge/Edge.swift /* Edge.swift */; };
 		__src_cc_ref_Sources/HTTP/ClientConnection.swift /* ClientConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/HTTP/ClientConnection.swift /* ClientConnection.swift */; };
@@ -191,12 +191,12 @@
 		"__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/SystemError.swift" /* SystemError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemError.swift; sourceTree = "<group>"; };
 		"__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Thread.swift" /* Thread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thread.swift; sourceTree = "<group>"; };
 		"__PBXFileRef_Packages/POSIX-0.14.1/Sources/POSIX/Wait.swift" /* Wait.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wait.swift; sourceTree = "<group>"; };
-		"__PBXFileRef_Packages/Reflex-0.2.1/Sources/Bag.swift" /* Bag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bag.swift; sourceTree = "<group>"; };
-		"__PBXFileRef_Packages/Reflex-0.2.1/Sources/ColdSignal.swift" /* ColdSignal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColdSignal.swift; sourceTree = "<group>"; };
-		"__PBXFileRef_Packages/Reflex-0.2.1/Sources/Disposable.swift" /* Disposable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Disposable.swift; sourceTree = "<group>"; };
-		"__PBXFileRef_Packages/Reflex-0.2.1/Sources/Event.swift" /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-		"__PBXFileRef_Packages/Reflex-0.2.1/Sources/Observer.swift" /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
-		"__PBXFileRef_Packages/Reflex-0.2.1/Sources/Signal.swift" /* Signal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signal.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/Reflex-0.2.2/Sources/Bag.swift" /* Bag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bag.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/Reflex-0.2.2/Sources/ColdSignal.swift" /* ColdSignal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColdSignal.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/Reflex-0.2.2/Sources/Disposable.swift" /* Disposable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Disposable.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/Reflex-0.2.2/Sources/Event.swift" /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/Reflex-0.2.2/Sources/Observer.swift" /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/Reflex-0.2.2/Sources/Signal.swift" /* Signal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signal.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/Edge/Application.swift /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/Edge/Edge.swift /* Edge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Edge.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/HTTP/ClientConnection.swift /* ClientConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientConnection.swift; sourceTree = "<group>"; };
@@ -544,15 +544,15 @@
 		"_______Group_Reflex" /* Reflex */ = {
 			isa = PBXGroup;
 			children = (
-				"__PBXFileRef_Packages/Reflex-0.2.1/Sources/Bag.swift" /* Bag.swift */,
-				"__PBXFileRef_Packages/Reflex-0.2.1/Sources/ColdSignal.swift" /* ColdSignal.swift */,
-				"__PBXFileRef_Packages/Reflex-0.2.1/Sources/Disposable.swift" /* Disposable.swift */,
-				"__PBXFileRef_Packages/Reflex-0.2.1/Sources/Event.swift" /* Event.swift */,
-				"__PBXFileRef_Packages/Reflex-0.2.1/Sources/Observer.swift" /* Observer.swift */,
-				"__PBXFileRef_Packages/Reflex-0.2.1/Sources/Signal.swift" /* Signal.swift */,
+				"__PBXFileRef_Packages/Reflex-0.2.2/Sources/Bag.swift" /* Bag.swift */,
+				"__PBXFileRef_Packages/Reflex-0.2.2/Sources/ColdSignal.swift" /* ColdSignal.swift */,
+				"__PBXFileRef_Packages/Reflex-0.2.2/Sources/Disposable.swift" /* Disposable.swift */,
+				"__PBXFileRef_Packages/Reflex-0.2.2/Sources/Event.swift" /* Event.swift */,
+				"__PBXFileRef_Packages/Reflex-0.2.2/Sources/Observer.swift" /* Observer.swift */,
+				"__PBXFileRef_Packages/Reflex-0.2.2/Sources/Signal.swift" /* Signal.swift */,
 			);
 			name = Reflex;
-			path = "Packages/Reflex-0.2.1/Sources";
+			path = "Packages/Reflex-0.2.2/Sources";
 			sourceTree = "<group>";
 		};
 		"_______Group_RunLoop" /* RunLoop */ = {
@@ -985,12 +985,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				"__src_cc_ref_Packages/Reflex-0.2.1/Sources/Bag.swift" /* Bag.swift in Sources */,
-				"__src_cc_ref_Packages/Reflex-0.2.1/Sources/ColdSignal.swift" /* ColdSignal.swift in Sources */,
-				"__src_cc_ref_Packages/Reflex-0.2.1/Sources/Disposable.swift" /* Disposable.swift in Sources */,
-				"__src_cc_ref_Packages/Reflex-0.2.1/Sources/Event.swift" /* Event.swift in Sources */,
-				"__src_cc_ref_Packages/Reflex-0.2.1/Sources/Observer.swift" /* Observer.swift in Sources */,
-				"__src_cc_ref_Packages/Reflex-0.2.1/Sources/Signal.swift" /* Signal.swift in Sources */,
+				"__src_cc_ref_Packages/Reflex-0.2.2/Sources/Bag.swift" /* Bag.swift in Sources */,
+				"__src_cc_ref_Packages/Reflex-0.2.2/Sources/ColdSignal.swift" /* ColdSignal.swift in Sources */,
+				"__src_cc_ref_Packages/Reflex-0.2.2/Sources/Disposable.swift" /* Disposable.swift in Sources */,
+				"__src_cc_ref_Packages/Reflex-0.2.2/Sources/Event.swift" /* Event.swift in Sources */,
+				"__src_cc_ref_Packages/Reflex-0.2.2/Sources/Observer.swift" /* Observer.swift in Sources */,
+				"__src_cc_ref_Packages/Reflex-0.2.2/Sources/Signal.swift" /* Signal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
