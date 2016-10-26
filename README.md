@@ -34,7 +34,7 @@ Edge is available as a Swift 3 package (No current 2.2 support). Simply add Edge
 import PackageDescription
 
 let package = Package(
-    name: "MyProject",
+    name: "Edge",
     dependencies: [
         .Package(url: "https://github.com/TheArtOfEngineering/Edge.git", majorVersion: 0, minor: 0)
     ]
