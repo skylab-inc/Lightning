@@ -36,7 +36,7 @@ import PackageDescription
 let package = Package(
     name: "MyProject",
     dependencies: [
-        .Package(url: "https://github.com/TheArtOfEngineering/Edge.git", majorVersion: 0, minor: 1)
+        .Package(url: "https://github.com/SwiftOnEdge/Edge.git", majorVersion: 0, minor: 1)
     ]
 )
 ```
