@@ -36,7 +36,7 @@ import PackageDescription
 let package = Package(
     name: "MyProject",
     dependencies: [
-        .Package(url: "https://github.com/TheArtOfEngineering/Edge.git", majorVersion: 0, minor: 0)
+        .Package(url: "https://github.com/TheArtOfEngineering/Edge.git", majorVersion: 0, minor: 1)
     ]
 )
 ```
@@ -54,7 +54,7 @@ try server.bind(host: "0.0.0.0", port: 50000)
     
 server.listen().startWithNext { connection in
     let read = connection.read()
-    let strings = read.map { String(bytes: $0, encoding: NSUTF8StringEncoding)! }
+    let strings = read.map { String(bytes: $0, encoding: .utf8)! }
     
     strings.onNext { message in
         print("Client \(connection) says \"\(message)\"!")
