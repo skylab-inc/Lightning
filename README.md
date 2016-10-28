@@ -77,4 +77,4 @@ RunLoop.runAll()
 
 ### Edge is not Node.js
 
-Edge is not meant to fulfill all of the roles of Node.js. Node.js is a JavaScript runtime, while Edge is a TCP/Web server framework. The Swift compiler and package manager, combined with third-party Swift packages, make it uncessary to build that functionality into Edge.
+Edge is not meant to fulfill all of the roles of Node.js. Node.js is a JavaScript runtime, while Edge is a TCP/Web server framework. The Swift compiler and package manager, combined with third-party Swift packages, make it unnecessary to build that functionality into Edge.
