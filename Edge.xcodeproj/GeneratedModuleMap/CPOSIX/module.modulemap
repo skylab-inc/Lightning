@@ -1,5 +1,0 @@
-framework module CPOSIX {
-    umbrella "/Users/tylercloutier/Developer/SwiftOnEdge/Edge/Packages/CPOSIX-0.14.0/Sources/CPOSIX/include"
-    link framework "CPOSIX"
-    export *
-}
