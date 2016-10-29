@@ -23,13 +23,14 @@ then
         exit 1;
     fi
 
-    OS=`echo "ubuntu$UBUNTU_VERSION" | tr -d .`;
+    OS="ubuntu$UBUNTU_VERSION";
+    OS_STRIPPED=`echo $OS | tr -d .`;
     RELEASE_NAME_UPPER="swift-$SWIFT_VERSION-RELEASE";
     RELEASE_NAME_LOWER="swift-$SWIFT_VERSION-release";
     SWIFT_FILENAME="$RELEASE_NAME_UPPER-$OS.tar.gz";
 
     # Geez, Chris, what're you guys doin' here?
-    URL="https://swift.org/builds/$RELEASE_NAME_LOWER/$OS/$RELEASE_NAME_UPPER/$SWIFT_FILENAME";
+    URL="https://swift.org/builds/$RELEASE_NAME_LOWER/$OS_STRIPPED/$RELEASE_NAME_UPPER/$SWIFT_FILENAME";
     wget $URL
     tar -zxf $SWIFT_FILENAME;
     export PATH=$PWD/$SWIFT_FILENAME/usr/bin:"${PATH}";
