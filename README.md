@@ -7,7 +7,7 @@ Ask questions in our <a href="https://swift-on-slackin.herokuapp.com">Slack</a> 
 
 # Edge
 
-[![Slack Status](https://swift-on-slackin.herokuapp.com/badge.svg)](https://swift-on-edge.slack.com)
+[![Slack Status](https://swift-on-slackin.herokuapp.com/badge.svg)](https://swift-on-slackin.herokuapp.com)
 
 #### Node
 Edge is an HTTP Server and TCP Client/Server framework written in Swift and inspired by [Node.js](https://nodejs.org). It runs on both OS X and Linux. Like Node.js, Edge uses an **event-driven, non-blocking I/O model**. In the same way that Node.js uses [libuv](http://libuv.org) to implement this model, Edge uses [libdispatch](https://github.com/apple/swift-corelibs-libdispatch). 
