@@ -10,6 +10,15 @@ import Dispatch
 import Reflex
 import POSIX
 import POSIXExtensions
+#if os(Linux)
+    import Glibc
+    let empty_off_t = Glibc.off_t()
+    let INT32_MAX = Glibc.INT32_MAX
+#else
+    import Darwin
+    let empty_off_t = Darwin.off_t()
+    let INT32_MAX = Darwin.INT32_MAX
+#endif
 
 public protocol WritableIOStream: class {
     
@@ -46,7 +55,7 @@ public extension WritableIOStream {
                 )
                 
                 // Schedule write operation
-                writeChannel.write(offset: off_t(), data: dispatchData, queue: .main) { done, data, error in
+                writeChannel.write(offset: empty_off_t, data: dispatchData, queue: .main) { done, data, error in
                     
                     if let systemError = SystemError(errorNumber: error) {
                         // If there was an error emit the error.
@@ -106,7 +115,7 @@ public extension ReadableIOStream {
             }
             
             readChannel.setLimit(lowWater: minBytes)
-            readChannel.read(offset: off_t(), length: size_t(INT_MAX), queue: .main) { done, data, error in
+            readChannel.read(offset: empty_off_t, length: size_t(INT32_MAX), queue: .main) { done, data, error in
                 
                 if let systemError = SystemError(errorNumber: error) {
                     // If there was an error emit the error.

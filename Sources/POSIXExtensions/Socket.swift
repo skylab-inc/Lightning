@@ -1,21 +1,79 @@
 #if os(Linux)
-
-import Glibc
-public let systemBind = Glibc.bind
-public let systemAccept = Glibc.accept
-public let systemListen = Glibc.listen
-public let systemConnect = Glibc.connect
-public let systemClose = Glibc.close
-
+    import Glibc
+    public let systemBind = Glibc.bind
+    public let systemAccept = Glibc.accept
+    public let systemListen = Glibc.listen
+    public let systemConnect = Glibc.connect
+    public let systemClose = Glibc.close
+    
+    public let SOCK_STREAM = Int32(Glibc.SOCK_STREAM.rawValue)
+    public let SOCK_DGRAM = Int32(Glibc.SOCK_DGRAM.rawValue)
+    public let SOCK_SEQPACKET = Int32(Glibc.SOCK_SEQPACKET.rawValue)
+    public let SOCK_RAW = Int32(Glibc.SOCK_RAW.rawValue)
+    public let SOCK_RDM = Int32(Glibc.SOCK_RDM.rawValue)
+    
+    public let SOCK_MAXADDRLEN: Int32 = 255
+    public let IPPROTO_TCP = Int32(Glibc.IPPROTO_TCP)
+    
+    public func systemCreateAddressInfo(
+        ai_flags: Int32,
+        ai_family: Int32,
+        ai_socktype: Int32,
+        ai_protocol: Int32,
+        ai_addrlen: socklen_t,
+        ai_canonname: UnsafeMutablePointer<Int8>!,
+        ai_addr: UnsafeMutablePointer<sockaddr>!,
+        ai_next: UnsafeMutablePointer<addrinfo>!
+        ) -> addrinfo {
+        return addrinfo(
+            ai_flags: ai_flags,
+            ai_family: ai_family,
+            ai_socktype: ai_socktype,
+            ai_protocol: ai_protocol,
+            ai_addrlen: ai_addrlen,
+            ai_addr: ai_addr,
+            ai_canonname: ai_canonname,
+            ai_next: ai_next
+        )
+    }
 #else
-
-import Darwin
-public let systemBind = Darwin.bind
-public let systemAccept = Darwin.accept
-public let systemListen = Darwin.listen
-public let systemConnect = Darwin.connect
-public let systemClose = Darwin.close
-
+    import Darwin
+    public let systemBind = Darwin.bind
+    public let systemAccept = Darwin.accept
+    public let systemListen = Darwin.listen
+    public let systemConnect = Darwin.connect
+    public let systemClose = Darwin.close
+    
+    public let SOCK_STREAM = Darwin.SOCK_STREAM
+    public let SOCK_DGRAM = Darwin.SOCK_DGRAM
+    public let SOCK_SEQPACKET = Darwin.SOCK_SEQPACKET
+    public let SOCK_RAW = Darwin.SOCK_RAW
+    public let SOCK_RDM = Darwin.SOCK_RDM
+    
+    public let IPPROTO_TCP = Darwin.IPPROTO_TCP
+    public let SOCK_MAXADDRLEN = Darwin.SOCK_MAXADDRLEN
+    
+    public func systemCreateAddressInfo(
+        ai_flags: Int32,
+        ai_family: Int32,
+        ai_socktype: Int32,
+        ai_protocol: Int32,
+        ai_addrlen: socklen_t,
+        ai_canonname: UnsafeMutablePointer<Int8>!,
+        ai_addr: UnsafeMutablePointer<sockaddr>!,
+        ai_next: UnsafeMutablePointer<addrinfo>!
+        ) -> addrinfo {
+        return addrinfo(
+            ai_flags: ai_flags,
+            ai_family: ai_family,
+            ai_socktype: ai_socktype,
+            ai_protocol: ai_protocol,
+            ai_addrlen: ai_addrlen,
+            ai_canonname: ai_canonname,
+            ai_addr: ai_addr,
+            ai_next: ai_next
+        )
+    }
 #endif
 
 
