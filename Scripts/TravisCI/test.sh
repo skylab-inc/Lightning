@@ -27,12 +27,12 @@ then
     OS_STRIPPED=`echo $OS | tr -d .`;
     RELEASE_NAME_UPPER="swift-$SWIFT_VERSION-RELEASE";
     RELEASE_NAME_LOWER="swift-$SWIFT_VERSION-release";
-    SWIFT_FILENAME="$RELEASE_NAME_UPPER-$OS.tar.gz";
+    SWIFT_FILENAME="$RELEASE_NAME_UPPER-$OS";
 
     # Geez, Chris, what're you guys doin' here?
-    URL="https://swift.org/builds/$RELEASE_NAME_LOWER/$OS_STRIPPED/$RELEASE_NAME_UPPER/$SWIFT_FILENAME";
+    URL="https://swift.org/builds/$RELEASE_NAME_LOWER/$OS_STRIPPED/$RELEASE_NAME_UPPER/$SWIFT_FILENAME.tar.gz";
     wget $URL
-    tar -zxf $SWIFT_FILENAME;
+    tar -zxf "$SWIFT_FILENAME.tar.gz";
     export PATH=$PWD/$SWIFT_FILENAME/usr/bin:"${PATH}";
 fi
 
