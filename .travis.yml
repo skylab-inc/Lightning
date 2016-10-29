@@ -1,0 +1,19 @@
+# Where's mah Swift at Travis!?
+language: generic
+
+os:
+  - osx
+  - linux
+
+sudo: required
+
+dist: trusty
+
+osx_image: xcode8
+
+script:
+  - ./Scripts/TravisCI/test.sh
+
+after_success:
+  - ./Scripts/TravisCI/code-coverage.sh
+
