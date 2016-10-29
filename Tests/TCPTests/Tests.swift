@@ -58,3 +58,11 @@ class TestBasic: XCTestCase {
     }
 
 }
+
+extension TestBasic {
+    static var allTests: [(String, (TestBasic) -> () throws -> Void)] {
+        return [
+            ("testClientServer", testClientServer),
+        ]
+    }
+}

@@ -558,6 +558,7 @@ extension RequestParserTests {
             ("testCompleteRequest", testCompleteRequest),
             ("testDiscontinuousCompleteRequest", testDiscontinuousCompleteRequest),
             ("testMultipleShortRequestsInTheSameStream", testMultipleShortRequestsInTheSameStream),
+            ("testMultipleShortRequestsInSingleMessage", testMultipleShortRequestsInSingleMessage),
             ("testManyRequests", testManyRequests),
         ]
     }
