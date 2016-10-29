@@ -10,3 +10,4 @@
 @_exported import IOStream
 @_exported import TCP
 @_exported import RunLoop
+@_exported import HTTP

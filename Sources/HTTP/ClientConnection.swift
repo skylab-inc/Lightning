@@ -42,7 +42,7 @@ public final class ClientConnection {
         }
     }
     
-    func write(_ response: Response) {
+    public func write(_ response: Response) {
         socket.write(buffer: response.serialized).start()
     }
 
