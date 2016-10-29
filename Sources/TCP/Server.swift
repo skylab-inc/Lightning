@@ -11,7 +11,11 @@ import Reflex
 import POSIX
 import POSIXExtensions
 import IOStream
-
+#if os(Linux)
+    import Glibc
+#else
+    import Darwin
+#endif
 
 public final class Server {
     
@@ -51,11 +55,11 @@ public final class Server {
     public func bind(host: String, port: Port) throws {
         var addrInfoPointer: UnsafeMutablePointer<addrinfo>? = nil
         
-        var hints = addrinfo(
+        var hints = systemCreateAddressInfo(
             ai_flags: 0,
             ai_family: fd.addressFamily.rawValue,
-            ai_socktype: SOCK_STREAM,
-            ai_protocol: IPPROTO_TCP,
+            ai_socktype: POSIXExtensions.SOCK_STREAM,
+            ai_protocol: POSIXExtensions.IPPROTO_TCP,
             ai_addrlen: 0,
             ai_canonname: nil,
             ai_addr: nil,
@@ -87,7 +91,7 @@ public final class Server {
             self.listeningSource.setEventHandler {
                                 
                 var socketAddress = sockaddr()
-                var sockLen = socklen_t(SOCK_MAXADDRLEN)
+                var sockLen = socklen_t(POSIXExtensions.SOCK_MAXADDRLEN)
                 
                 // Accept connections
                 let numPendingConnections: UInt = self.listeningSource.data
