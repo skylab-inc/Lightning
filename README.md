@@ -7,6 +7,7 @@ Ask questions in our <a href="https://slackin-on-edge.herokuapp.com">Slack</a> c
 
 # Edge
 
+[![Build Status](https://travis-ci.org/SwiftOnEdge/Edge.svg?branch=master)](https://travis-ci.org/SwiftOnEdge/Edge)
 [![Slack Status](https://slackin-on-edge.herokuapp.com/badge.svg)](https://slackin-on-edge.herokuapp.com)
 
 #### Node
