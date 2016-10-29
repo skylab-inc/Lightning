@@ -13,7 +13,7 @@ fi
 
 if [[ $UNAME == "Linux" ]];
 then
-    UBUNTU_VERSION=`lsb_release -a -s`;
+    UBUNTU_VERSION=`lsb_release -r -s`;
 
     echo "Installing Swift on Ubuntu $UBUNTU_VERSION."
 
