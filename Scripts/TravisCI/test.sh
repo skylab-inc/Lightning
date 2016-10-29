@@ -5,7 +5,7 @@ set -euf -o pipefail
 UNAME=`uname`;
 echo "Unix Platform: $UNAME";
 
-if [[ $UNAME != "Linux" ]] || [[ $UNAME != "Darwin" ]];
+if [[ $UNAME != "Linux" ]] && [[ $UNAME != "Darwin" ]];
 then
     echo "$UNAME is not yet supported.";
     exit 1;
@@ -17,7 +17,7 @@ then
 
     echo "Installing Swift on Ubuntu $UBUNTU_VERSION."
 
-    if [[ $UBUNTU_VERSION != "15.10" ]] || [[ $UBUNTU_VERSION != "14.04" ]];
+    if [[ $UBUNTU_VERSION != "15.10" ]] && [[ $UBUNTU_VERSION != "14.04" ]];
     then
         echo "Ubuntu version $UBUNTU_VERSION is not yet supported.";
         exit 1;
