@@ -53,11 +53,11 @@ import Edge
 import Foundation
 
 let server = try! TCP.Server()
-try server.bind(host: "0.0.0.0", port: 50000)
+try! server.bind(host: "0.0.0.0", port: 50000)
     
 server.listen().startWithNext { connection in
-    let read = connection.read()
-    let strings = read.map { String(bytes: $0, encoding: .utf8)! }
+    let byteStream = connection.read()
+    let strings = byteStream.map { String(bytes: $0, encoding: .utf8)! }
     
     strings.onNext { message in
         print("Client \(connection) says \"\(message)\"!")
@@ -71,7 +71,7 @@ server.listen().startWithNext { connection in
         print("Goodbye \(connection)!")
     }
     
-    read.start()
+    byteStream.start()
 }
 
 RunLoop.runAll()
