@@ -60,7 +60,7 @@ let server = HTTP.Server()
 server.listen(host: "0.0.0.0", port: 3000).startWithNext { client in
 
     let requestStream = client.read()
-    requestStream.map(transform: handleRequest).onNext{ response in
+    requestStream.map(handleRequest).onNext{ response in
         client.write(response).start()
     }
 
