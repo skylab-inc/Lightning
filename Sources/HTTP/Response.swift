@@ -6,6 +6,8 @@
 //
 //
 
+import Foundation
+
 public struct Response: Serializable, HTTPMessage {
     
     public var version: Version
@@ -45,6 +47,17 @@ public struct Response: Serializable, HTTPMessage {
         self.status = status
         self.rawHeaders = rawHeaders
         self.body = body
+    }
+    
+    public init(
+        version: Version = Version(major: 1, minor: 1),
+        status: Status = .ok,
+        rawHeaders: [String] = [],
+        json: Any
+    ) throws {
+        let rawHeaders = Array([rawHeaders, ["Content-Type", "application/json"]].joined())
+        let body = try JSONSerialization.data(withJSONObject: json)
+        self.init(version: version, status: status, rawHeaders: rawHeaders, body: Array(body))
     }
     
 }

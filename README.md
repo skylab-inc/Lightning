@@ -53,14 +53,7 @@ import Foundation
 
 func handleRequest(request: Request) -> Response {
     print(String(bytes: request.body, encoding: .utf8)!)
-    let responseBodyObject = ["message": "Message received!"]
-    let responseBody = Array(try! JSONSerialization.data(withJSONObject: responseBodyObject))
-
-    return Response(
-        status: .ok,
-        rawHeaders: ["Content-Type", "application/json"],
-        body: responseBody
-    )
+    return try! Response(json: ["message": "Message received!"])
 }
 
 let server = HTTP.Server()

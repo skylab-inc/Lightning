@@ -50,6 +50,13 @@ class ResponseSerializationTests: XCTestCase {
         XCTAssert(expected == actual, "Actual response, \(actual), did not match expected.")
     }
     
+    func testJSONSerialization() {
+        let expected = "HTTP/1.1 200 OK\r\nContent-Type: application/json\r\n\r\n{\"message\":\"Message received!\"}"
+        let response = try! Response(json: ["message": "Message received!"])
+        let actual = String(bytes: response.serialized, encoding: .utf8)!
+        XCTAssert(expected == actual, "Actual response, \(actual), did not match expected.")
+    }
+    
 }
 
 extension ResponseSerializationTests {
@@ -57,5 +64,6 @@ extension ResponseSerializationTests {
         ("testBasicSerialization", testBasicSerialization),
         ("testHeaderSerialization", testHeaderSerialization),
         ("testDefaultParameters", testDefaultParameters),
+        ("testJSONSerialization", testJSONSerialization),
     ]
 }
