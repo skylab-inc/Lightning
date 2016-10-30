@@ -20,7 +20,7 @@ class ResponseSerializationTests: XCTestCase {
             rawHeaders: [],
             body: []
         )
-        let actual = String(bytes: response.serialized, encoding: .utf8)
+        let actual = String(bytes: response.serialized, encoding: .utf8)!
         XCTAssert(expected == actual, "Actual response, \(actual), did not match expected.")
     }
     
@@ -39,14 +39,14 @@ class ResponseSerializationTests: XCTestCase {
             ],
             body: []
         )
-        let actual = String(bytes: response.serialized, encoding: .utf8)
+        let actual = String(bytes: response.serialized, encoding: .utf8)!
         XCTAssert(expected == actual, "Actual request, \(actual), did not match expected.")
     }
     
     func testDefaultParameters() {
         let expected = "HTTP/1.1 200 OK\r\n\r\n"
         let response = Response(status: .ok)
-        let actual = String(bytes: response.serialized, encoding: .utf8)
+        let actual = String(bytes: response.serialized, encoding: .utf8)!
         XCTAssert(expected == actual, "Actual response, \(actual), did not match expected.")
     }
     
@@ -57,5 +57,5 @@ extension ResponseSerializationTests {
         ("testBasicSerialization", testBasicSerialization),
         ("testHeaderSerialization", testHeaderSerialization),
         ("testDefaultParameters", testDefaultParameters),
-        ]
+    ]
 }

@@ -18,7 +18,7 @@ public struct Request: Serializable, HTTPMessage {
     
     public var serialized: [UInt8] {
         var headerString = ""
-        headerString += "\(method) \(uri) HTTP/\(version.major).\(version.minor)"
+        headerString += "\(method) \(uri.absoluteString) HTTP/\(version.major).\(version.minor)"
         headerString += "\r\n"
         
         for (name, value) in rawHeaderPairs {
