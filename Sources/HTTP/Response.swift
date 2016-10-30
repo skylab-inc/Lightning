@@ -6,7 +6,7 @@
 //
 //
 
-public struct Response: Serializable {
+public struct Response: Serializable, HTTPMessage {
     
     public var version: Version
     public var status: Status
@@ -18,20 +18,21 @@ public struct Response: Serializable {
         var headerString = ""
         headerString += "HTTP/\(version.major).\(version.minor)"
         headerString += " \(status.statusCode) \(status.reasonPhrase)"
-        headerString += "\n"
+        headerString += "\r\n"
         
-        let headerPairs: [(String, String)] = stride(from: 0, to: rawHeaders.count, by: 2).map {
-            let chunk = rawHeaders[$0..<min($0 + 2, rawHeaders.count)]
-            return (chunk.first!, chunk.last!)
-        }
-        
-        for (name, value) in headerPairs {
+        for (name, value) in rawHeaderPairs {
             headerString += "\(name): \(value)"
-            headerString += "\n"
+            headerString += "\r\n"
         }
         
-        headerString += "\n"
+        headerString += "\r\n"
         return headerString.utf8 + body
+    }
+    
+    public var cookies: [String] {
+        return lowercasedRawHeaderPairs.filter { (key, value) in
+            key == "set-cookie"
+        }.map { $0.1 }
     }
     
     public init(

@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Request: Serializable {
+public struct Request: Serializable, HTTPMessage {
     public var method: Method
     public var uri: URL
     public var version: Version
@@ -19,20 +19,21 @@ public struct Request: Serializable {
     public var serialized: [UInt8] {
         var headerString = ""
         headerString += "\(method) \(uri) HTTP/\(version.major).\(version.minor)"
-        headerString += "\n"
+        headerString += "\r\n"
         
-        let headerPairs: [(String, String)] = stride(from: 0, to: rawHeaders.count, by: 2).map {
-            let chunk = rawHeaders[$0..<min($0 + 2, rawHeaders.count)]
-            return (chunk.first!, chunk.last!)
-        }
-        
-        for (name, value) in headerPairs {
+        for (name, value) in rawHeaderPairs {
             headerString += "\(name): \(value)"
-            headerString += "\n"
+            headerString += "\r\n"
         }
         
-        headerString += "\n"
+        headerString += "\r\n"
         return headerString.utf8 + body
+    }
+    
+    public var cookies: [String] {
+        return lowercasedRawHeaderPairs.filter { (key, value) in
+            key == "cookie"
+            }.map { $0.1 }
     }
 
     public init(
