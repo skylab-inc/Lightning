@@ -6,7 +6,9 @@
 //
 //
 
-public struct Response: Serializable {
+import Foundation
+
+public struct Response: Serializable, HTTPMessage {
     
     public var version: Version
     public var status: Status
@@ -18,27 +20,44 @@ public struct Response: Serializable {
         var headerString = ""
         headerString += "HTTP/\(version.major).\(version.minor)"
         headerString += " \(status.statusCode) \(status.reasonPhrase)"
-        headerString += "\n"
+        headerString += "\r\n"
         
-        let headerPairs: [(String, String)] = stride(from: 0, to: rawHeaders.count, by: 2).map {
-            let chunk = rawHeaders[$0..<min($0 + 2, rawHeaders.count)]
-            return (chunk.first!, chunk.last!)
-        }
-        
-        for (name, value) in headerPairs {
+        for (name, value) in rawHeaderPairs {
             headerString += "\(name): \(value)"
-            headerString += "\n"
+            headerString += "\r\n"
         }
         
-        headerString += "\n"
+        headerString += "\r\n"
         return headerString.utf8 + body
     }
     
-    public init(version: Version, status: Status, rawHeaders: [String], body: [UInt8]) {
+    public var cookies: [String] {
+        return lowercasedRawHeaderPairs.filter { (key, value) in
+            key == "set-cookie"
+        }.map { $0.1 }
+    }
+    
+    public init(
+        version: Version = Version(major: 1, minor: 1),
+        status: Status,
+        rawHeaders: [String] = [],
+        body: [UInt8] = []
+    ) {
         self.version = version
         self.status = status
         self.rawHeaders = rawHeaders
         self.body = body
+    }
+    
+    public init(
+        version: Version = Version(major: 1, minor: 1),
+        status: Status = .ok,
+        rawHeaders: [String] = [],
+        json: Any
+    ) throws {
+        let rawHeaders = Array([rawHeaders, ["Content-Type", "application/json"]].joined())
+        let body = try JSONSerialization.data(withJSONObject: json)
+        self.init(version: version, status: status, rawHeaders: rawHeaders, body: Array(body))
     }
     
 }

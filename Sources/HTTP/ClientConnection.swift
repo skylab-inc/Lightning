@@ -9,6 +9,7 @@
 import Foundation
 import TCP
 import Reflex
+import POSIX
 
 public final class ClientConnection {
     
@@ -42,8 +43,8 @@ public final class ClientConnection {
         }
     }
     
-    public func write(_ response: Response) {
-        socket.write(buffer: response.serialized).start()
+    public func write(_ response: Response) -> ColdSignal<[UInt8], SystemError>  {
+        return socket.write(buffer: response.serialized)
     }
 
 }

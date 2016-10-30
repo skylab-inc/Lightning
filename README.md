@@ -53,15 +53,7 @@ import Foundation
 
 func handleRequest(request: Request) -> Response {
     print(String(bytes: request.body, encoding: .utf8)!)
-    let responseBodyObject = ["message": "Message received!"]
-    let responseBody = Array(try! JSONSerialization.data(withJSONObject: responseBodyObject))
-
-    return Response(
-        version: Version(major: 1, minor: 1),
-        status: .ok,
-        rawHeaders: ["Content-Type", "application/json"],
-        body: responseBody
-    )
+    return try! Response(json: ["message": "Message received!"])
 }
 
 let server = HTTP.Server()
@@ -69,7 +61,7 @@ server.listen(host: "0.0.0.0", port: 3000).startWithNext { client in
 
     let requestStream = client.read()
     requestStream.map(transform: handleRequest).onNext{ response in
-        client.write(response)
+        client.write(response).start()
     }
 
     requestStream.onFailed { clientError in
