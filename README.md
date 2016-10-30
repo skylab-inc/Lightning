@@ -59,7 +59,7 @@ func handleRequest(request: Request) -> Response {
     return Response(
         version: Version(major: 1, minor: 1),
         status: .ok,
-        rawHeaders: ["Content-Type: application/json"],
+        rawHeaders: ["Content-Type", "application/json"],
         body: responseBody
     )
 }
