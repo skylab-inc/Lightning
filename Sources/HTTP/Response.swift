@@ -34,7 +34,12 @@ public struct Response: Serializable {
         return headerString.utf8 + body
     }
     
-    public init(version: Version, status: Status, rawHeaders: [String], body: [UInt8]) {
+    public init(
+        version: Version = Version(major: 1, minor: 1),
+        status: Status,
+        rawHeaders: [String] = [],
+        body: [UInt8] = []
+    ) {
         self.version = version
         self.status = status
         self.rawHeaders = rawHeaders

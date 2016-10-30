@@ -35,7 +35,13 @@ public struct Request: Serializable {
         return headerString.utf8 + body
     }
 
-    public init(method: Method, uri: URL, version: Version, rawHeaders: [String], body: [UInt8]) {
+    public init(
+        method: Method,
+        uri: URL,
+        version: Version = Version(major: 1, minor: 1),
+        rawHeaders: [String] = [],
+        body: [UInt8] = []
+    ) {
         self.method = method
         self.uri = uri
         self.version = version
