@@ -28,7 +28,6 @@ public struct Response: Serializable, HTTPMessage {
         }
         
         headerString += "\r\n"
-        print("NODDDDDYYY", String(data: Data(body), encoding: .utf8)!)
         return headerString.utf8 + body
     }
     
