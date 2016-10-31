@@ -48,8 +48,7 @@ class ServerTests: XCTestCase {
             requestStream.start()
         }
         
-        let session = URLSession.shared
-
+        let session = URLSession(configuration: .default)
         let urlString = "http://localhost:3000"
         let url = URL(string: urlString)!
         let responseExpectation = expectation(description: "Did not receive a response from server.")
