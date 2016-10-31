@@ -2,6 +2,7 @@ import XCTest
 
 import HTTPTests
 import TCPTests
+import IOStreamTests
 
 var tests = [XCTestCaseEntry]()
 tests += HTTPTests.allTests()
