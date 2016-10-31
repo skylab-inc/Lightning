@@ -315,33 +315,31 @@ class RequestParserTests: XCTestCase {
     }
 
     func testManyRequests() {
-        #if os(OSX)
-            let data = ("POST / HTTP/1.1\r\n" +
-                        "Content-Length: 5\r\n" +
-                        "\r\n" +
-                        "Swift")
-            self.measure {
-                var numberParsed = 0
-                let messageNumber = 10000
-                let parser = RequestParser { request in
-                    numberParsed += 1
-                    XCTAssert(request.method == .post)
-                    XCTAssert(request.uri.path == "/")
-                    XCTAssert(request.version.major == 1)
-                    XCTAssert(request.version.minor == 1)
-                    XCTAssert(request.rawHeaders[0] == "Content-Length")
-                    XCTAssert(request.rawHeaders[1] == "5")
-                }
-                for _ in 0 ..< messageNumber {
-                    do {
-                        try parser.parse(Array(data.utf8))
-                    } catch {
-                        XCTFail("Parsing error \(error).")
-                    }
-                }
-                XCTAssert(numberParsed == messageNumber, "Parse produced incorrect number of requests: \(numberParsed)")
+        let data = ("POST / HTTP/1.1\r\n" +
+                    "Content-Length: 5\r\n" +
+                    "\r\n" +
+                    "Swift")
+        self.measure {
+            var numberParsed = 0
+            let messageNumber = 10000
+            let parser = RequestParser { request in
+                numberParsed += 1
+                XCTAssert(request.method == .post)
+                XCTAssert(request.uri.path == "/")
+                XCTAssert(request.version.major == 1)
+                XCTAssert(request.version.minor == 1)
+                XCTAssert(request.rawHeaders[0] == "Content-Length")
+                XCTAssert(request.rawHeaders[1] == "5")
             }
-        #endif
+            for _ in 0 ..< messageNumber {
+                do {
+                    try parser.parse(Array(data.utf8))
+                } catch {
+                    XCTFail("Parsing error \(error).")
+                }
+            }
+            XCTAssert(numberParsed == messageNumber, "Parse produced incorrect number of requests: \(numberParsed)")
+        }
     }
 //
 //    func testUpgradeRequests() {

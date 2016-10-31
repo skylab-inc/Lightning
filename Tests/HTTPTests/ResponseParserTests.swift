@@ -103,7 +103,7 @@ class ResponseParserTests: XCTestCase {
             do {
                 try parser.parse(Array(data.utf8))
             } catch {
-                XCTFail("Parsing error \(error) for method \(method)")
+                XCTFail("Parsing error \(error) for \(data)")
             }
             XCTAssert(
                 numberParsed == 1,
