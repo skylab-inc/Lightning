@@ -41,6 +41,7 @@ public extension WritableIOStream {
             ) { error in
                 if let systemError = SystemError(errorNumber: error) {
                     observer.sendFailed(systemError)
+                    print("HUCKING ERE")
                 }
             }
             
@@ -59,6 +60,7 @@ public extension WritableIOStream {
                     
                     if let systemError = SystemError(errorNumber: error) {
                         // If there was an error emit the error.
+                        print("HUCKING ERE")
                         observer.sendFailed(systemError)
                     }
                     
