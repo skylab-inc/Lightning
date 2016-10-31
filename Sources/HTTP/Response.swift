@@ -19,7 +19,7 @@ public struct Response: Serializable, HTTPMessage {
     public var serialized: [UInt8] {
         var headerString = ""
         headerString += "HTTP/\(version.major).\(version.minor)"
-        headerString += " \(status.statusCode) \(status.reasonPhrase)"
+        headerString += " \(status.code) \(status.reasonPhrase)"
         headerString += "\r\n"
         
         for (name, value) in rawHeaderPairs {

@@ -79,7 +79,7 @@ public class ResponseParser {
         self.parser.onComplete = { [weak self] parseState in
             let response = Response(
                 version: Version(major: parseState.version.major, minor: parseState.version.minor),
-                status: Status(statusCode: parseState.statusCode),
+                status: Status(code: parseState.statusCode),
                 rawHeaders: parseState.rawHeaders,
                 body: parseState.body
             )
