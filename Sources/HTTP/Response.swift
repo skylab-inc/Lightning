@@ -28,6 +28,7 @@ public struct Response: Serializable, HTTPMessage {
         }
         
         headerString += "\r\n"
+        print("NODDDDDYYY", String(data: Data(body), encoding: .utf8)!)
         return headerString.utf8 + body
     }
     
@@ -55,9 +56,17 @@ public struct Response: Serializable, HTTPMessage {
         rawHeaders: [String] = [],
         json: Any
     ) throws {
-        let rawHeaders = Array([rawHeaders, ["Content-Type", "application/json"]].joined())
-        let body = try JSONSerialization.data(withJSONObject: json)
-        self.init(version: version, status: status, rawHeaders: rawHeaders, body: Array(body))
+        let body = Array(try JSONSerialization.data(withJSONObject: json))
+        let rawHeaders = Array([
+            rawHeaders,
+            [
+                "Content-Type",
+                "application/json",
+                "Content-Length",
+                "\(body.count)",
+            ]
+        ].joined())
+        self.init(version: version, status: status, rawHeaders: rawHeaders, body: body)
     }
     
 }

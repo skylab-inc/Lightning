@@ -1,7 +1,7 @@
 @testable import TCP
 import XCTest
 
-class TestBasic: XCTestCase {
+class ConnectionTests: XCTestCase {
 
     func testClientServer() {
 
@@ -64,10 +64,8 @@ class TestBasic: XCTestCase {
 
 }
 
-extension TestBasic {
-    static var allTests: [(String, (TestBasic) -> () throws -> Void)] {
-        return [
-            ("testClientServer", testClientServer),
-        ]
-    }
+extension ConnectionTests {
+    static var allTests = [
+        ("testClientServer", testClientServer),
+    ]
 }
