@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+  test:
+    image: swiftdocker/swift
+    volumes:
+     - .:/test
+    working_dir: /test
+    privileged: true
+    command: bash -c "swift build --clean && swift build && swift build -c release && swift test"
