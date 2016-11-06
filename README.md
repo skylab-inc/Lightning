@@ -7,6 +7,7 @@ Ask questions in our <a href="https://slackin-on-edge.herokuapp.com">Slack</a> c
 
 # Edge
 
+![Swift](http://img.shields.io/badge/swift-3.0-brightgreen.svg)
 [![Build Status](https://travis-ci.org/SwiftOnEdge/Edge.svg?branch=master)](https://travis-ci.org/SwiftOnEdge/Edge)
 [![codecov](https://codecov.io/gh/SwiftOnEdge/Edge/branch/master/graph/badge.svg)](https://codecov.io/gh/SwiftOnEdge/Edge)
 [![Slack Status](https://slackin-on-edge.herokuapp.com/badge.svg)](https://slackin-on-edge.herokuapp.com)
