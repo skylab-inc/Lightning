@@ -16,13 +16,14 @@ class ConnectionTests: XCTestCase {
             try! server.bind(host: "localhost", port: 50000)
 
             server.listen().startWithNext { connection in
-                let read = connection.read()
-                let strings = read.map { String(bytes: $0, encoding: .utf8)! }
+                let strings = connection
+                    .read()
+                    .map { String(bytes: $0, encoding: .utf8)! }
 
                 strings.onNext { message in
                     receiveMessageExpectation.fulfill()
                     XCTAssert(message == "This is a test", "Incorrect message.")
-                    read.stop()
+                    strings.stop()
                 }
 
                 strings.onInterrupted {
@@ -36,7 +37,8 @@ class ConnectionTests: XCTestCase {
                 strings.onCompleted {
                     XCTFail("Completed instead of interrupt.")
                 }
-                read.start()
+                
+                strings.start()
             }
 
             let socket = try! Socket()

@@ -33,7 +33,7 @@ public struct Request: Serializable, HTTPMessage {
     public var cookies: [String] {
         return lowercasedRawHeaderPairs.filter { (key, value) in
             key == "cookie"
-            }.map { $0.1 }
+        }.map { $0.1 }
     }
 
     public init(

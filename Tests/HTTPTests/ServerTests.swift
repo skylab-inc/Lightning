@@ -29,8 +29,11 @@ class ServerTests: XCTestCase {
             let server = HTTP.Server()
             server.listen(host: "0.0.0.0", port: 3000).startWithNext { client in
                 
-                let requestStream = client.read()
-                requestStream.map(handleRequest).onNext{ response in
+                let requestStream = client
+                    .read()
+                    .map(handleRequest)
+                
+                requestStream.onNext{ response in
                     let writeStream = client.write(response)
                     writeStream.onFailed { err in
                         XCTFail(String(describing: err))
