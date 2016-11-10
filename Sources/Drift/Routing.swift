@@ -24,14 +24,20 @@ class App: RouterType {
         
         let server = HTTP.Server()
         stream = server.listen(host: host, port: port)
-        stream.onNext { connection in
-            connection.read().startWithNext { request in
+        stream.onNext { client in
+            
+            let requestStream = client.read()
+            requestStream.signal.onNext { request in
                 self.requestsInput.sendNext(request)
             }
             
-            self.responses.onNext { response in
-                connection.write(response).start()
+            self.responses.onNext{ response in
+                print("asdfadflkajsdlfkjasldkfj", response)
+                let writeStream = client.write(response)
+                writeStream.start()
             }
+            
+            requestStream.start()
         }
     }
     

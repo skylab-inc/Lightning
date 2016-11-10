@@ -69,6 +69,7 @@ class RouterTests: XCTestCase {
             
             let notFound = Router()
             notFound.any { request in
+                requestExpectation.fulfill()
                 return Response(status: .notFound)
             }
             
