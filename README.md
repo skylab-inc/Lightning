@@ -63,6 +63,7 @@ api.get("/users") { request in
 
 // Filter requests under api that match "/auth". If it's a POST
 // request at "/auth/login" return a 200 OK response.
+// NOTE: Equivalent to `api.post("/auth/login")`
 let auth = api.filter("/auth").post("/login") { request in
     return Response(status: .ok)
 }
