@@ -48,7 +48,41 @@ let package = Package(
 
 # Usage
 
-### HTTP
+### Routing
+```swift
+import Edge
+import Foundation
+
+// Create an API router.
+let api = Router()
+
+// Add a GET "/users" endpoint.
+api.get("/users") { request in
+    return Response(status: .ok)
+}
+
+// Filter requests under api that match "/auth". If it's a POST
+// request at "/auth/login" return a 200 OK response.
+let auth = api.filter("/auth").post("/login") { request in
+    return Response(status: .ok)
+}
+api.add(auth)
+
+// Create the top level router and add simple middleware
+// which logs all requests.
+let app = Router().map { request in
+    print(request)
+    return request
+}
+
+// Mount the API router under "/v1.0".
+app.add("/v1.0", api)
+
+// Start the application.
+app.start(host: "0.0.0.0", port: 3000)
+```
+
+### Raw HTTP
 ```swift
 import Edge
 import Foundation
