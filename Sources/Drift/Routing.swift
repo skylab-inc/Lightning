@@ -1,6 +1,6 @@
 import Foundation
-import Edge
 import Reflex
+import HTTP
 import POSIX
 import POSIXExtensions
 

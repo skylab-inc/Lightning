@@ -27,11 +27,11 @@ let package = Package(
         ),
         Target(
             name: "Edge",
-            dependencies: ["TCP", "IOStream", "RunLoop", "HTTP"]
+            dependencies: ["TCP", "IOStream", "RunLoop", "HTTP", "Drift"]
         ),
         Target(
             name: "Drift",
-            dependencies: ["Edge"]
+            dependencies: ["POSIXExtensions", "HTTP"]
         ),
     ],
     dependencies: [
