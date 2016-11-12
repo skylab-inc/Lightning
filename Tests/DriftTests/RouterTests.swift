@@ -19,9 +19,14 @@ class RouterTests: XCTestCase {
             let userExpectation = expectation(description: "Did not receive a user request.")
             let loginExpectation = expectation(description: "Did not receive a login request.")
             
-            let app = App(host: "0.0.0.0", port: 3000)
-            let root = Router().map { request in
-                requestExpectation.fulfill()
+            var someRequest = false
+            let jsonResponse = ["message": "Message received!"]
+            
+            let app = Router().map { request in
+                if !someRequest {
+                    requestExpectation.fulfill()
+                    someRequest = true
+                }
                 return request
             }
             
@@ -44,7 +49,7 @@ class RouterTests: XCTestCase {
             
             authentication.post("/login") { request in
                 loginExpectation.fulfill()
-                return Response(status: .ok)
+                return try! Response(json: jsonResponse)
             }
             
             authentication.post("/register") { request in
@@ -56,53 +61,62 @@ class RouterTests: XCTestCase {
             
             users.get { request in
                 userExpectation.fulfill()
-                return try! Response(json: [
-                    "Tyler",
-                    "Kyle",
-                    "Thomas"
-                ])
+                return try! Response(json: jsonResponse)
             }
 
-            api.filter("/").add(authentication)
+            api.add(authentication)
             api.add("/users", users)
             api.add("/comics", comics)
             
+            authentication.post("/login2") { _ in
+                return try! Response(json: jsonResponse)
+            }
+            
             let notFound = Router()
             notFound.any { request in
-                requestExpectation.fulfill()
                 return Response(status: .notFound)
             }
             
             app.add("/v1.0", api)
-            app.add("/", root)
             app.add(notFound)
             
-            app.start()
-            
-            let json = ["message": "Message to server!"]
-            let jsonResponse = ["message": "Message received!"]
+            app.start(host: "0.0.0.0", port: 3000)
             
             let session = URLSession(configuration: .default)
-            let urlString = "http://localhost:3000"
-            let url = URL(string: urlString)!
-            let responseExpectation = expectation(description: "Did not receive a response from server.")
-            var req = URLRequest(url: url)
-            req.httpMethod = "POST"
-            req.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            req.httpBody = try! JSONSerialization.data(withJSONObject: json)
-            session.dataTask(with: req) { (data, urlResp, err) in
-                responseExpectation.fulfill()
-                if let err = err {
-                    XCTFail("Error on response: \(err)")
+            let rootUrl = "http://localhost:3000"
+            let jsonRequest = ["message": "Message to server!"]
+
+            func sendRequest(path: String, method: String) {
+                let responseExpectation = expectation(description: "Did not receive a response for path: \(path)")
+                let urlString = rootUrl + path
+                let url = URL(string: urlString)!
+                var req = URLRequest(url: url)
+                req.httpMethod = method
+                req.addValue("application/json", forHTTPHeaderField: "Content-Type")
+                if method == "POST" {
+                    req.httpBody = try! JSONSerialization.data(withJSONObject: jsonRequest)
                 }
-                guard let data = data else {
-                    XCTFail("No data returned")
-                    return
-                }
-                let body = try! JSONSerialization.jsonObject(with: data) as! [String:String]
-                XCTAssert(body == jsonResponse, "Received body \(body) != json \(jsonResponse)")
-            }.resume()
+                session.dataTask(with: req) { (data, urlResp, err) in
+                    responseExpectation.fulfill()
+                    if let err = err {
+                        XCTFail("Error on response: \(err)")
+                    }
+                    guard let data = data else {
+                        XCTFail("No data returned")
+                        return
+                    }
+                    if method == "POST" {
+                        let body = try! JSONSerialization.jsonObject(with: data) as! [String:String]
+                        XCTAssert(body == jsonResponse, "Received body \(body) != json \(jsonResponse)")
+                    }
+                }.resume()
+            }
             
+            sendRequest(path: "/v1.0/users", method: "GET")
+            sendRequest(path: "/v1.0/login", method: "POST")
+            sendRequest(path: "/v1.0/login2", method: "POST")
+            sendRequest(path: "/v1.0/login3", method: "GET")
+
             waitForExpectations(timeout: 1)
         #endif
     }

@@ -4,174 +4,214 @@ import Reflex
 import POSIX
 import POSIXExtensions
 
-class App: RouterType {
+final class Router: RouterType, EndpointType {
     
-    let requests: Signal<Request, SystemError>
-    let requestsInput: Observer<Request, SystemError>
-    
-    let responses: Signal<Response, SystemError>
-    let responsesOutput: Observer<Response, SystemError>
-    
-    let path: String
+    var endpoints: [EndpointType] = []
+    var subpath: String = ""
     weak var parent: RouterType? = nil
     
-    private let stream: ColdSignal<ClientConnection, SystemError>
-    
-    init(host: String, port: POSIXExtensions.Port) {
-        path = ""
-        (requests, requestsInput) = Signal<Request, SystemError>.pipe()
-        (responses, responsesOutput) = Signal<Response, SystemError>.pipe()
+    func start(host: String, port: POSIXExtensions.Port) {
         
         let server = HTTP.Server()
-        stream = server.listen(host: host, port: port)
+        let stream = server.listen(host: host, port: port)
         stream.onNext { client in
             
             let requestStream = client.read()
-            requestStream.signal.onNext { request in
-                self.requestsInput.sendNext(request)
+            let (responses, unhandledRequests) = self.process(requests: requestStream.signal)
+            responses.onNext { response in
+                client.write(response).start()
             }
-            
-            self.responses.onNext{ response in
-                print("asdfadflkajsdlfkjasldkfj", response)
-                let writeStream = client.write(response)
-                writeStream.start()
+            unhandledRequests.onNext { request in
+                fatalError("Unhandled request: \(request)")
             }
-            
             requestStream.start()
         }
-    }
-    
-    func start() {
-        print("STAAARRT")
         stream.start()
     }
     
-    func stop() {
-        stream.stop()
-    }
-    
-    deinit {
-        stop()
-    }
-
 }
 
-class Router: RouterType {
+extension Router: CustomStringConvertible  {
     
-    let requests: Signal<Request, SystemError>
-    let requestsInput: Observer<Request, SystemError>
-
-    let responses: Signal<Response, SystemError>
-    let responsesOutput: Observer<Response, SystemError>
-    
-    let path: String
-    weak var parent: RouterType? = nil
-
-    init(path: String = "/", requests: Signal<Request, SystemError>? = nil) {
-        let (signal, observer) = Signal<Request, SystemError>.pipe()
-        self.requests = signal
-        self.requestsInput = observer
-        
-        let (outputSignal, outputObserver) = Signal<Response, SystemError>.pipe()
-        self.responses = outputSignal
-        self.responsesOutput = outputObserver
-        
-        self.path = path
+    var description: String {
+        return endpoints.map{ $0.description }.joined(separator: "\n")
     }
     
 }
 
-protocol RouterType: class {
+protocol RouterType: class, EndpointType {
     
-    var requests: Signal<Request, SystemError> { get }
-    var requestsInput: Observer<Request, SystemError> { get }
-    
-    var responses: Signal<Response, SystemError> { get }
-    var responsesOutput: Observer<Response, SystemError> { get }
-    
+    var endpoints: [EndpointType] { get set }
     var path: String { get }
+    var subpath: String { get set }
     weak var parent: RouterType? { get set }
+    
+    init()
     
 }
 
 extension RouterType {
-    
-    var fullPath: String {
-        return parent?.fullPath ?? "" + path
-    }
-    
-    private func endpoint(_ transform: @escaping (Request) -> Response) {
-        requests
-            .filter(matchesPath)
-            .map(transform)
-            .add(observer: responsesOutput)
-    }
-    
-    private func endpoint(method: HTTP.Method, _ transform: @escaping (Request) -> Response) {
-        requests
-            .filter(matchesPath)
-            .filter { $0.method == method }
-            .map(transform)
-            .add(observer: responsesOutput)
-        
-    }
-    
-    private func endpoint(_ subpath: String, method: HTTP.Method, _ transform: @escaping (Request) -> Response) {
-        filter(subpath).endpoint(method: method, transform)
+
+    var path: String {
+        return ((parent?.path ?? "") + subpath).characters.reduce("") { (result, character) in
+            if let last = result.characters.last, character == last, last == "/" {
+                return result
+            } else {
+                return result + String(character)
+            }
+        }
     }
     
     func add(_ subrouter: RouterType) {
+        add("", subrouter)
+    }
+    
+    func add(_ subpath: String = "", _ subrouter: RouterType) {
         subrouter.parent = self
-        requests.filter(matchesPath).add(observer: subrouter.requestsInput)
-        subrouter.responses.add(observer: responsesOutput)
+        subrouter.subpath = subpath
+        endpoints.append(subrouter)
     }
     
-    func add(_ subpath: String, _ subrouter: RouterType) {
-        add(subrouter.filter(subpath))
+    func filter(_ subpath: String) -> Self {
+        let router = Self()
+        add(subpath, router)
+        return router
     }
     
-    func matchesPath(request: Request) -> Bool {
-        return request.uri.path.hasPrefix(fullPath)
+    func matches(path: String) -> Bool {
+        return zip(
+            self.path.components(separatedBy: "/"),
+            path.components(separatedBy: "/")
+        ).reduce(true) { (result, components) in
+            return components.0 == components.1 && result
+        }
     }
     
-    func filter(_ subpath: String) -> RouterType {
-        let subrouter = Router(path: subpath)
-        self.add(subrouter)
-        return subrouter
+    private func endpoint(_ transform: @escaping (Request) -> Response) {
+        let endpoint = Endpoint(parent: self) { requests in
+            let (matches, leftover) = requests.partition { request in
+                return self.matches(path: request.uri.path)
+            }
+            return (matches.map(transform), leftover)
+        }
+        endpoints.append(endpoint)
+    }
+    
+    private func endpoint(method: HTTP.Method, _ transform: @escaping (Request) -> Response) {
+        let endpoint = Endpoint(parent: self, method: method) { requests in
+            let (matches, leftover) = requests.partition { request in
+                return self.matches(path: request.uri.path) && request.method == method
+            }
+            return (matches.map(transform), leftover)
+        }
+        endpoints.append(endpoint)
     }
     
     func get(_ subpath: String? = nil, _ transform: @escaping (Request) -> Response) {
-        endpoint(method: .get, transform)
+        if let subpath = subpath {
+            filter(subpath).endpoint(method: .get, transform)
+        } else {
+            endpoint(method: .get, transform)
+        }
     }
     
     func post(_ subpath: String? = nil, _ transform: @escaping (Request) -> Response) {
-        endpoint(method: .post, transform)
+        if let subpath = subpath {
+            filter(subpath).endpoint(method: .post, transform)
+        } else {
+            endpoint(method: .post, transform)
+        }
     }
     
     func put(_ subpath: String? = nil, _ transform: @escaping (Request) -> Response) {
-        endpoint(method: .put, transform)
+        if let subpath = subpath {
+            filter(subpath).endpoint(method: .put, transform)
+        } else {
+            endpoint(method: .put, transform)
+        }
     }
     
     func delete(_ subpath: String? = nil, _ transform: @escaping (Request) -> Response) {
-        endpoint(method: .delete, transform)
+        if let subpath = subpath {
+            filter(subpath).endpoint(method: .delete, transform)
+        } else {
+            endpoint(method: .delete, transform)
+        }
     }
     
     func any(_ subpath: String? = nil, _ transform: @escaping (Request) -> Response) {
-        endpoint(transform)
+        if let subpath = subpath {
+            filter(subpath).endpoint(transform)
+        } else {
+            endpoint(transform)
+        }
     }
     
-    func map(_ transform: @escaping (Request) -> Request) -> RouterType {
-        let mapped = Router()
-        requests.map(transform).add(observer: mapped.requestsInput)
-        mapped.responses.add(observer: responsesOutput)
-        return mapped
+    func map(_ transform: @escaping (Request) -> Request) -> Self {
+        endpoints.append(Endpoint(parent: self) { requests in
+            (Signal<Response, ClientError>.empty, requests.map(transform))
+        })
+        return self
     }
     
-    func filter(_ predicate: @escaping (Request) -> Bool) -> RouterType {
-        let filtered = Router()
-        requests.filter(predicate).add(observer: filtered.requestsInput)
-        filtered.responses.add(observer: responsesOutput)
-        return filtered
+    func filter(_ predicate: @escaping (Request) -> Bool) -> Self {
+        endpoints.append(Endpoint(parent: self) { requests in
+            (Signal<Response, ClientError>.empty, requests.filter(predicate))
+        })
+        return self
+    }
+    
+    func process(requests: Signal<Request, ClientError>) -> (Signal<Response, ClientError>, Signal<Request, ClientError>) {
+        var currentUnhandledRequests = requests
+        let (allResponses, allResponsesInput) = Signal<Response, ClientError>.pipe()
+        for endpoint in endpoints {
+            let (responses, unhandledRequests) = endpoint.process(requests: currentUnhandledRequests)
+            responses.add(observer: allResponsesInput)
+            currentUnhandledRequests = unhandledRequests
+        }
+        return (allResponses, currentUnhandledRequests)
     }
     
 }
+
+struct Endpoint: EndpointType {
+    
+    let method: HTTP.Method?
+    let parent: RouterType?
+    
+    let transform: (Signal<Request, ClientError>)
+        -> (Signal<Response, ClientError>, Signal<Request, ClientError>)
+    
+    init(parent: RouterType, method: HTTP.Method? = nil, _ transform: @escaping (Signal<Request, ClientError>)
+        -> (Signal<Response, ClientError>, Signal<Request, ClientError>)) {
+        self.transform = transform
+        self.parent = parent
+        self.method = method
+    }
+
+    func process(requests: Signal<Request, ClientError>)
+        -> (Signal<Response, ClientError>, Signal<Request, ClientError>) {
+        return transform(requests)
+    }
+    
+    var description: String {
+        if let method = method {
+            return "\(method) \(path)"
+        }
+        return "ANY \(path)"
+    }
+
+    var path: String {
+        return (parent?.path ?? "")
+    }
+    
+}
+
+
+protocol EndpointType: CustomStringConvertible {
+    
+    var path: String { get }
+    func process(requests: Signal<Request, ClientError>) -> (Signal<Response, ClientError>, Signal<Request, ClientError>)
+    
+}
+

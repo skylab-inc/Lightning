@@ -40,13 +40,23 @@ public struct Response: Serializable, HTTPMessage {
     public init(
         version: Version = Version(major: 1, minor: 1),
         status: Status,
-        rawHeaders: [String] = [],
+        rawHeaders: [String],
         body: [UInt8] = []
     ) {
         self.version = version
         self.status = status
         self.rawHeaders = rawHeaders
         self.body = body
+    }
+    
+    public init(
+        version: Version = Version(major: 1, minor: 1),
+        status: Status
+    ) {
+        self.init(
+            status: status,
+            rawHeaders: ["Content-Length", "0"]
+        )
     }
     
     public init(
