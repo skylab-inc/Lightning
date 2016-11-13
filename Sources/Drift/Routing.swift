@@ -4,54 +4,43 @@ import HTTP
 import POSIX
 import POSIXExtensions
 
-final class Router: RouterType, EndpointType {
+final class Router: EndpointType {
     
     var endpoints: [EndpointType] = []
     var subpath: String = ""
-    weak var parent: RouterType? = nil
+    weak var parent: Router? = nil
+    private var disposable: ActionDisposable? = nil
+    
+    deinit {
+        disposable?.dispose()
+    }
+    
+    var filter: (Signal<Request, ClientError>)
+        -> (Signal<Request, ClientError>, Signal<Request, ClientError>) = { requests in
+            return (requests, Signal.empty)
+    }
     
     func start(host: String, port: POSIXExtensions.Port) {
-        
         let server = HTTP.Server()
         let stream = server.listen(host: host, port: port)
-        stream.onNext { client in
-            
+        stream.onNext { [weak self] client in
             let requestStream = client.read()
-            let (responses, unhandledRequests) = self.process(requests: requestStream.signal)
-            responses.onNext { response in
-                client.write(response).start()
+            if let (responses, unhandledRequests) = self?.process(requests: requestStream.signal) {
+                responses.onNext { response in
+                    client.write(response).start()
+                }
+                unhandledRequests.onNext { request in
+                    fatalError("Unhandled request: \(request)")
+                }
+                requestStream.start()
             }
-            unhandledRequests.onNext { request in
-                fatalError("Unhandled request: \(request)")
-            }
-            requestStream.start()
+        }
+        disposable = ActionDisposable {
+            stream.stop()
         }
         stream.start()
     }
     
-}
-
-extension Router: CustomStringConvertible  {
-    
-    var description: String {
-        return endpoints.map{ $0.description }.joined(separator: "\n")
-    }
-    
-}
-
-protocol RouterType: class, EndpointType {
-    
-    var endpoints: [EndpointType] { get set }
-    var path: String { get }
-    var subpath: String { get set }
-    weak var parent: RouterType? { get set }
-    
-    init()
-    
-}
-
-extension RouterType {
-
     var path: String {
         return ((parent?.path ?? "") + subpath).characters.reduce("") { (result, character) in
             if let last = result.characters.last, character == last, last == "/" {
@@ -62,18 +51,18 @@ extension RouterType {
         }
     }
     
-    func add(_ subrouter: RouterType) {
+    func add(_ subrouter: Router) {
         add("", subrouter)
     }
     
-    func add(_ subpath: String = "", _ subrouter: RouterType) {
+    func add(_ subpath: String = "", _ subrouter: Router) {
         subrouter.parent = self
         subrouter.subpath = subpath
         endpoints.append(subrouter)
     }
     
-    func filter(_ subpath: String) -> Self {
-        let router = Self()
+    func filter(_ subpath: String) -> Router {
+        let router = Router()
         add(subpath, router)
         return router
     }
@@ -82,8 +71,8 @@ extension RouterType {
         return zip(
             self.path.components(separatedBy: "/"),
             path.components(separatedBy: "/")
-        ).reduce(true) { (result, components) in
-            return components.0 == components.1 && result
+            ).reduce(true) { (result, components) in
+                return components.0 == components.1 && result
         }
     }
     
@@ -155,21 +144,32 @@ extension RouterType {
     }
     
     func filter(_ predicate: @escaping (Request) -> Bool) -> Self {
-        endpoints.append(Endpoint(parent: self) { requests in
-            (Signal<Response, ClientError>.empty, requests.filter(predicate))
-        })
+        filter = { requests in
+            requests.partition(predicate)
+        }
         return self
     }
     
     func process(requests: Signal<Request, ClientError>) -> (Signal<Response, ClientError>, Signal<Request, ClientError>) {
-        var currentUnhandledRequests = requests
+        var (currentUnhandledRequests, skippedRequests) = filter(requests)
         let (allResponses, allResponsesInput) = Signal<Response, ClientError>.pipe()
+        let (allRequests, allRequestsInput) = Signal<Request, ClientError>.pipe()
         for endpoint in endpoints {
             let (responses, unhandledRequests) = endpoint.process(requests: currentUnhandledRequests)
             responses.add(observer: allResponsesInput)
             currentUnhandledRequests = unhandledRequests
         }
-        return (allResponses, currentUnhandledRequests)
+        currentUnhandledRequests.add(observer: allRequestsInput)
+        skippedRequests.add(observer: allRequestsInput)
+        return (allResponses, allRequests)
+    }
+    
+}
+
+extension Router: CustomStringConvertible  {
+    
+    var description: String {
+        return endpoints.map{ $0.description }.joined(separator: "\n")
     }
     
 }
@@ -177,12 +177,12 @@ extension RouterType {
 struct Endpoint: EndpointType {
     
     let method: HTTP.Method?
-    let parent: RouterType?
+    weak var parent: Router?
     
     let transform: (Signal<Request, ClientError>)
         -> (Signal<Response, ClientError>, Signal<Request, ClientError>)
     
-    init(parent: RouterType, method: HTTP.Method? = nil, _ transform: @escaping (Signal<Request, ClientError>)
+    init(parent: Router, method: HTTP.Method? = nil, _ transform: @escaping (Signal<Request, ClientError>)
         -> (Signal<Response, ClientError>, Signal<Request, ClientError>)) {
         self.transform = transform
         self.parent = parent
