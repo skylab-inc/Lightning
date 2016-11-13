@@ -99,44 +99,40 @@ public final class Router {
         endpoints.append(.endpoint(endpoint))
     }
     
-    func get(_ subpath: String? = nil, _ transform: @escaping (Request) -> Response) {
+    private func endpoint(subpath: String?, method: HTTP.Method, _ transform: @escaping (Request) -> Response) {
         if let subpath = subpath {
-            filter(subpath).endpoint(method: .get, transform)
+            filter(subpath).endpoint(method: method, transform)
         } else {
-            endpoint(method: .get, transform)
+            endpoint(method: method, transform)
         }
     }
     
-    func post(_ subpath: String? = nil, _ transform: @escaping (Request) -> Response) {
-        if let subpath = subpath {
-            filter(subpath).endpoint(method: .post, transform)
-        } else {
-            endpoint(method: .post, transform)
-        }
-    }
-    
-    func put(_ subpath: String? = nil, _ transform: @escaping (Request) -> Response) {
-        if let subpath = subpath {
-            filter(subpath).endpoint(method: .put, transform)
-        } else {
-            endpoint(method: .put, transform)
-        }
-    }
-    
-    func delete(_ subpath: String? = nil, _ transform: @escaping (Request) -> Response) {
-        if let subpath = subpath {
-            filter(subpath).endpoint(method: .delete, transform)
-        } else {
-            endpoint(method: .delete, transform)
-        }
-    }
-    
-    func any(_ subpath: String? = nil, _ transform: @escaping (Request) -> Response) {
+    private func endpoint(subpath: String?, _ transform: @escaping (Request) -> Response) {
         if let subpath = subpath {
             filter(subpath).endpoint(transform)
         } else {
             endpoint(transform)
         }
+    }
+    
+    func get(_ subpath: String? = nil, _ transform: @escaping (Request) -> Response) {
+        endpoint(subpath: subpath, method: .get, transform)
+    }
+    
+    func post(_ subpath: String? = nil, _ transform: @escaping (Request) -> Response) {
+        endpoint(subpath: subpath, method: .post, transform)
+    }
+    
+    func put(_ subpath: String? = nil, _ transform: @escaping (Request) -> Response) {
+        endpoint(subpath: subpath, method: .put, transform)
+    }
+    
+    func delete(_ subpath: String? = nil, _ transform: @escaping (Request) -> Response) {
+        endpoint(subpath: subpath, method: .delete, transform)
+    }
+    
+    func any(_ subpath: String? = nil, _ transform: @escaping (Request) -> Response) {
+        endpoint(subpath: subpath, transform)
     }
     
     func map(_ transform: @escaping (Request) -> Request) -> Router {
