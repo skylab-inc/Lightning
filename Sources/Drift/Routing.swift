@@ -54,22 +54,6 @@ public final class Router {
         }
     }
     
-    func add(_ subrouter: Router) {
-        add("", subrouter)
-    }
-    
-    func add(_ subpath: String = "", _ subrouter: Router) {
-        subrouter.parent = self
-        subrouter.subpath = subpath
-        endpoints.append(.router(subrouter))
-    }
-    
-    func filter(_ subpath: String) -> Router {
-        let router = Router()
-        add(subpath, router)
-        return router
-    }
-    
     func matches(path: String) -> Bool {
         return zip(
             self.path.components(separatedBy: "/"),
@@ -115,6 +99,26 @@ public final class Router {
         }
     }
     
+    func add(_ subrouter: Router) {
+        add("", subrouter)
+    }
+    
+    func add(_ subpath: String = "", _ subrouter: Router) {
+        subrouter.parent = self
+        subrouter.subpath = subpath
+        endpoints.append(.router(subrouter))
+    }
+    
+    func filter(_ subpath: String) -> Router {
+        let router = Router()
+        add(subpath, router)
+        return router
+    }
+    
+    func any(_ subpath: String? = nil, _ transform: @escaping (Request) -> Response) {
+        endpoint(subpath: subpath, transform)
+    }
+    
     func get(_ subpath: String? = nil, _ transform: @escaping (Request) -> Response) {
         endpoint(subpath: subpath, method: .get, transform)
     }
@@ -130,11 +134,7 @@ public final class Router {
     func delete(_ subpath: String? = nil, _ transform: @escaping (Request) -> Response) {
         endpoint(subpath: subpath, method: .delete, transform)
     }
-    
-    func any(_ subpath: String? = nil, _ transform: @escaping (Request) -> Response) {
-        endpoint(subpath: subpath, transform)
-    }
-    
+
     func map(_ transform: @escaping (Request) -> Request) -> Router {
         let newEndpoint = Endpoint(parent: self) { requests in
             (Signal<Response, ClientError>.empty, requests.map(transform))

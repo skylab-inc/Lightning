@@ -121,9 +121,6 @@ public final class Server {
             }
             return ActionDisposable {
                 listeningSource.cancel()
-                // TODO: This is a terrible terrible work around for
-                // the fact that cancel is not executing the cancel handler.
-                fd.close()
             }
         }
     }
