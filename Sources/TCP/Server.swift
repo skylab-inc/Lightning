@@ -40,16 +40,12 @@ public final class Server {
             }
         }
         
-        
         self.listeningSource = DispatchSource.makeReadSource(fileDescriptor: self.fd.rawValue, queue: .main)
         
         // Close the socket when the source is canceled.
-        listeningSource.setCancelHandler {
-            // Close the socket
-            self.fd.close()
-        }        
-        
-
+        listeningSource.setCancelHandler { [fd = self.fd] in
+            fd.close()
+        }
     }
     
     public func bind(host: String, port: Port) throws {
@@ -82,31 +78,31 @@ public final class Server {
     }
     
     public func listen(backlog: Int = 32) -> ColdSignal<Socket, SystemError> {
-        return ColdSignal { observer in
-            let ret = systemListen(self.fd.rawValue, Int32(backlog))
+        return ColdSignal { [listeningSource = self.listeningSource, fd = self.fd] observer in
+            let ret = systemListen(fd.rawValue, Int32(backlog))
             if ret != 0 {
                 observer.sendFailed(SystemError(errorNumber: errno)!)
                 return nil
             }
-            self.listeningSource.setEventHandler {
+            listeningSource.setEventHandler {
                                 
                 var socketAddress = sockaddr()
                 var sockLen = socklen_t(POSIXExtensions.SOCK_MAXADDRLEN)
                 
                 // Accept connections
-                let numPendingConnections: UInt = self.listeningSource.data
+                let numPendingConnections: UInt = listeningSource.data
                 for _ in 0..<numPendingConnections {
-                    let ret = systemAccept(self.fd.rawValue, &socketAddress, &sockLen)
+                    let ret = systemAccept(fd.rawValue, &socketAddress, &sockLen)
                     if ret == StandardFileDescriptor.invalid.rawValue {
                         observer.sendFailed(SystemError(errorNumber: errno)!)
                     }
                     let clientFileDescriptor = SocketFileDescriptor(
                         rawValue: ret,
                         socketType: SocketType.stream,
-                        addressFamily: self.fd.addressFamily,
+                        addressFamily: fd.addressFamily,
                         blocking: false
                     )
-                   
+                    
                     do {
                         // Create the client connection socket
                         let clientConnection = try Socket(fd: clientFileDescriptor)
@@ -119,12 +115,15 @@ public final class Server {
                 }
             }
             if #available(OSX 10.12, *) {
-                self.listeningSource.activate()
+                listeningSource.activate()
             } else {
-                self.listeningSource.resume()
+                listeningSource.resume()
             }
             return ActionDisposable {
-                self.listeningSource.cancel()
+                // TODO: This is a terrible terrible work around for
+                // the fact that cancel is not executing the cancel handler.
+                fd.close()
+                listeningSource.cancel()
             }
         }
     }

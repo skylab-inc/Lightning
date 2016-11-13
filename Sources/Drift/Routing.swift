@@ -4,20 +4,23 @@ import HTTP
 import POSIX
 import POSIXExtensions
 
-final class Router: EndpointType {
+public final class Router {
     
-    var endpoints: [EndpointType] = []
+    var endpoints: [RequestTransformer] = []
     var subpath: String = ""
     weak var parent: Router? = nil
     private var disposable: ActionDisposable? = nil
     
-    deinit {
-        disposable?.dispose()
+    public init() {
+        
     }
     
-    var filter: (Signal<Request, ClientError>)
-        -> (Signal<Request, ClientError>, Signal<Request, ClientError>) = { requests in
-            return (requests, Signal.empty)
+    private init(transformers: [RequestTransformer]) {
+        self.endpoints = transformers
+    }
+    
+    deinit {
+        disposable?.dispose()
     }
     
     func start(host: String, port: POSIXExtensions.Port) {
@@ -25,7 +28,7 @@ final class Router: EndpointType {
         let stream = server.listen(host: host, port: port)
         stream.onNext { [weak self] client in
             let requestStream = client.read()
-            if let (responses, unhandledRequests) = self?.process(requests: requestStream.signal) {
+            if let (responses, unhandledRequests) = self?.transform(requests: requestStream.signal) {
                 responses.onNext { response in
                     client.write(response).start()
                 }
@@ -58,7 +61,7 @@ final class Router: EndpointType {
     func add(_ subpath: String = "", _ subrouter: Router) {
         subrouter.parent = self
         subrouter.subpath = subpath
-        endpoints.append(subrouter)
+        endpoints.append(.router(subrouter))
     }
     
     func filter(_ subpath: String) -> Router {
@@ -77,23 +80,23 @@ final class Router: EndpointType {
     }
     
     private func endpoint(_ transform: @escaping (Request) -> Response) {
-        let endpoint = Endpoint(parent: self) { requests in
-            let (matches, leftover) = requests.partition { request in
-                return self.matches(path: request.uri.path)
+        let endpoint = Endpoint { [weak self] requests in
+            let (matches, leftover) = requests.partition { [weak self] request in
+                return self?.matches(path: request.uri.path) ?? false
             }
             return (matches.map(transform), leftover)
         }
-        endpoints.append(endpoint)
+        endpoints.append(.endpoint(endpoint))
     }
     
     private func endpoint(method: HTTP.Method, _ transform: @escaping (Request) -> Response) {
-        let endpoint = Endpoint(parent: self, method: method) { requests in
-            let (matches, leftover) = requests.partition { request in
-                return self.matches(path: request.uri.path) && request.method == method
+        let endpoint = Endpoint(parent: self, method: method) { [weak self] requests in
+            let (matches, leftover) = requests.partition { [weak self] request in
+                return self?.matches(path: request.uri.path) ?? false && request.method == method
             }
             return (matches.map(transform), leftover)
         }
-        endpoints.append(endpoint)
+        endpoints.append(.endpoint(endpoint))
     }
     
     func get(_ subpath: String? = nil, _ transform: @escaping (Request) -> Response) {
@@ -136,31 +139,49 @@ final class Router: EndpointType {
         }
     }
     
-    func map(_ transform: @escaping (Request) -> Request) -> Self {
-        endpoints.append(Endpoint(parent: self) { requests in
+    func map(_ transform: @escaping (Request) -> Request) -> Router {
+        let newEndpoint = Endpoint(parent: self) { requests in
             (Signal<Response, ClientError>.empty, requests.map(transform))
-        })
-        return self
+        }
+        let newTransformers = endpoints + [.endpoint(newEndpoint)]
+        return Router(transformers: newTransformers)
     }
     
-    func filter(_ predicate: @escaping (Request) -> Bool) -> Self {
-        filter = { requests in
+    func filter(_ predicate: @escaping (Request) -> Bool) -> Router {
+        let middleware = RequestMiddleware(parent: self) { requests in
             requests.partition(predicate)
         }
-        return self
+        let newTransformers = endpoints + [.requestMiddleware(middleware)]
+        return Router(transformers: newTransformers)
     }
     
-    func process(requests: Signal<Request, ClientError>) -> (Signal<Response, ClientError>, Signal<Request, ClientError>) {
-        var (currentUnhandledRequests, skippedRequests) = filter(requests)
+    func transform(requests: Signal<Request, ClientError>)
+        -> (Signal<Response, ClientError>, Signal<Request, ClientError>) {
+        var forwardedRequests = requests
         let (allResponses, allResponsesInput) = Signal<Response, ClientError>.pipe()
         let (allRequests, allRequestsInput) = Signal<Request, ClientError>.pipe()
         for endpoint in endpoints {
-            let (responses, unhandledRequests) = endpoint.process(requests: currentUnhandledRequests)
-            responses.add(observer: allResponsesInput)
-            currentUnhandledRequests = unhandledRequests
+            
+            switch endpoint {
+            case .router(let router):
+                let (responses, unhandledRequests) = router.transform(requests: forwardedRequests)
+                forwardedRequests = unhandledRequests
+                responses.add(observer: allResponsesInput)
+                
+            case .endpoint(let endpoint):
+                let (responses, unhandledRequests) = endpoint.transform(requests: forwardedRequests)
+                forwardedRequests = unhandledRequests
+                responses.add(observer: allResponsesInput)
+                
+            case .requestMiddleware(let requestMiddleware):
+                let (transformedRequests, skippedRequests) = requestMiddleware.transform(requests: forwardedRequests)
+                forwardedRequests = transformedRequests
+                skippedRequests.add(observer: allRequestsInput)
+                
+            }
+   
         }
-        currentUnhandledRequests.add(observer: allRequestsInput)
-        skippedRequests.add(observer: allRequestsInput)
+        forwardedRequests.add(observer: allRequestsInput)
         return (allResponses, allRequests)
     }
     
@@ -168,30 +189,91 @@ final class Router: EndpointType {
 
 extension Router: CustomStringConvertible  {
     
-    var description: String {
+    public var description: String {
         return endpoints.map{ $0.description }.joined(separator: "\n")
     }
     
 }
 
-struct Endpoint: EndpointType {
+enum RequestTransformer {
+    case router(Router)
+    case endpoint(Endpoint)
+    case requestMiddleware(RequestMiddleware)
+}
+
+extension RequestTransformer: CustomStringConvertible {
+    
+    var description: String {
+        switch self {
+        case .router(let router):
+            return router.description
+        case .endpoint(let endpoint):
+            return endpoint.description
+        case .requestMiddleware(let requestMiddleware):
+            return requestMiddleware.description
+        }
+        
+    }
+    
+}
+
+struct RequestMiddleware {
+    
+    typealias SourceType = Request
+    typealias TransformedType = Request
+    typealias ErrorType = ClientError
+    
+    weak var parent: Router?
+    
+    let transform: TransformType
+    
+    typealias TransformType = (Signal<Request, ClientError>)
+        -> (Signal<Request, ClientError>, Signal<Request, ClientError>)
+    
+    func transform(requests: Signal<Request, ClientError>)
+        -> (Signal<Request, ClientError>, Signal<Request, ClientError>) {
+            return transform(requests)
+    }
+    
+    init(parent: Router, _ transform: @escaping (Signal<Request, ClientError>)
+        -> (Signal<Request, ClientError>, Signal<Request, ClientError>)) {
+        self.transform = transform
+        self.parent = parent
+    }
+    
+    var path: String {
+        return (parent?.path ?? "")
+    }
+    
+}
+
+extension RequestMiddleware: CustomStringConvertible {
+    
+    var description: String {
+        return ""
+    }
+    
+}
+
+
+struct Endpoint {
     
     let method: HTTP.Method?
     weak var parent: Router?
+    let transform: TransformType
     
-    let transform: (Signal<Request, ClientError>)
+    typealias TransformType = (Signal<Request, ClientError>)
         -> (Signal<Response, ClientError>, Signal<Request, ClientError>)
     
-    init(parent: Router, method: HTTP.Method? = nil, _ transform: @escaping (Signal<Request, ClientError>)
-        -> (Signal<Response, ClientError>, Signal<Request, ClientError>)) {
+    func transform(requests: Signal<Request, ClientError>)
+        -> (Signal<Response, ClientError>, Signal<Request, ClientError>) {
+        return transform(requests)
+    }
+    
+    init(parent: Router? = nil, method: HTTP.Method? = nil, _ transform: @escaping TransformType) {
         self.transform = transform
         self.parent = parent
         self.method = method
-    }
-
-    func process(requests: Signal<Request, ClientError>)
-        -> (Signal<Response, ClientError>, Signal<Request, ClientError>) {
-        return transform(requests)
     }
     
     var description: String {
@@ -204,14 +286,6 @@ struct Endpoint: EndpointType {
     var path: String {
         return (parent?.path ?? "")
     }
-    
-}
-
-
-protocol EndpointType: CustomStringConvertible {
-    
-    var path: String { get }
-    func process(requests: Signal<Request, ClientError>) -> (Signal<Response, ClientError>, Signal<Request, ClientError>)
     
 }
 
