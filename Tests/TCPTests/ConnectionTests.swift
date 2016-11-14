@@ -15,14 +15,16 @@ class ConnectionTests: XCTestCase {
             let server = try! Server()
             try! server.bind(host: "localhost", port: 50000)
 
-            server.listen().startWithNext { connection in
-                let read = connection.read()
-                let strings = read.map { String(bytes: $0, encoding: .utf8)! }
+            let connections = server.listen()
+            connections.startWithNext { connection in
+                let strings = connection
+                    .read()
+                    .map { String(bytes: $0, encoding: .utf8)! }
 
                 strings.onNext { message in
                     receiveMessageExpectation.fulfill()
                     XCTAssert(message == "This is a test", "Incorrect message.")
-                    read.stop()
+                    strings.stop()
                 }
 
                 strings.onInterrupted {
@@ -36,7 +38,8 @@ class ConnectionTests: XCTestCase {
                 strings.onCompleted {
                     XCTFail("Completed instead of interrupt.")
                 }
-                read.start()
+                
+                strings.start()
             }
 
             let socket = try! Socket()
@@ -59,7 +62,15 @@ class ConnectionTests: XCTestCase {
             connect.start()
 
             waitForExpectations(timeout: 1)
+            connect.stop()
+            connections.stop()
         #endif
+    }
+    
+    func testResourceCleanUp() {
+        // Create two servers consecutively
+//        testClientServer()
+//        testClientServer()
     }
 
 }
@@ -67,5 +78,6 @@ class ConnectionTests: XCTestCase {
 extension ConnectionTests {
     static var allTests = [
         ("testClientServer", testClientServer),
+        ("testResourceCleanUp", testResourceCleanUp),
     ]
 }

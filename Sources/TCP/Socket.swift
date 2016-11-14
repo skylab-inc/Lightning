@@ -53,8 +53,7 @@ public final class Socket: WritableIOStream, ReadableIOStream {
     }
     
     public func connect(host: String, port: Port) -> ColdSignal<Socket, SystemError> {
-        
-        return ColdSignal { [socketFD, fd, channel] observer in
+        return ColdSignal { [socketFD, fd, channel = self.channel] observer in
             var addrInfoPointer: UnsafeMutablePointer<addrinfo>? = nil
             
             var hints = systemCreateAddressInfo(
@@ -101,7 +100,7 @@ public final class Socket: WritableIOStream, ReadableIOStream {
                 channel.write(offset: off_t(), data: .empty, queue: .main) { done, data, error in
                     var result = 0
                     var resultLength = socklen_t(MemoryLayout<Int>.stride)
-                    let ret = getsockopt(self.fd.rawValue, SOL_SOCKET, SO_ERROR, &result, &resultLength)
+                    let ret = getsockopt(fd.rawValue, SOL_SOCKET, SO_ERROR, &result, &resultLength)
                     if let systemError = SystemError(errorNumber: ret) {
                         observer.sendFailed(systemError)
                         return

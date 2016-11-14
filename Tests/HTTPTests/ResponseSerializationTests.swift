@@ -44,7 +44,7 @@ class ResponseSerializationTests: XCTestCase {
     }
     
     func testDefaultParameters() {
-        let expected = "HTTP/1.1 200 OK\r\n\r\n"
+        let expected = "HTTP/1.1 200 OK\r\nContent-Length: 0\r\n\r\n"
         let response = Response(status: .ok)
         let actual = String(bytes: response.serialized, encoding: .utf8)!
         XCTAssert(expected == actual, "Actual response, \(actual), did not match expected.")
