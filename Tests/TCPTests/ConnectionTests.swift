@@ -69,7 +69,7 @@ class ConnectionTests: XCTestCase {
     
     func testResourceCleanUp() {
         // Create two servers consecutively
-        testClientServer()
+//        testClientServer()
 //        testClientServer()
     }
 
@@ -78,6 +78,6 @@ class ConnectionTests: XCTestCase {
 extension ConnectionTests {
     static var allTests = [
         ("testClientServer", testClientServer),
-//        ("testResourceCleanUp", testResourceCleanUp),
+        ("testResourceCleanUp", testResourceCleanUp),
     ]
 }

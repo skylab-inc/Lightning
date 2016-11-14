@@ -123,7 +123,7 @@ class RouterTests: XCTestCase {
     }
     
     func testMiddleware() {
-        #if !os(Linux)
+        #if false
             let a = Router()
             let b = a.filter { request in
                 return request.uri.path == "/test"
