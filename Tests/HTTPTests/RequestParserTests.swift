@@ -67,7 +67,10 @@ class RequestParserTests: XCTestCase {
             } catch {
                 XCTFail("Parsing error \(error) for method \(method)")
             }
-            XCTAssert(numberParsed == 1, "Parse produced incorrect number of requests: \(numberParsed)")
+            XCTAssert(
+                numberParsed == 1,
+                "Parse produced incorrect number of requests: \(numberParsed)"
+            )
         }
     }
 
@@ -286,7 +289,7 @@ class RequestParserTests: XCTestCase {
         }
         XCTAssert(numberParsed == 2, "Parse produced incorrect number of requests: \(numberParsed)")
     }
-    
+
     func testMultipleShortRequestsInSingleMessage() {
         var numberParsed = 0
         let parser = RequestParser { request in
@@ -338,211 +341,13 @@ class RequestParserTests: XCTestCase {
                     XCTFail("Parsing error \(error).")
                 }
             }
-            XCTAssert(numberParsed == messageNumber, "Parse produced incorrect number of requests: \(numberParsed)")
+            XCTAssert(
+                numberParsed == messageNumber,
+                "Parse produced incorrect number of requests: \(numberParsed)"
+            )
         }
     }
-//
-//    func testUpgradeRequests() {
-//        let parser = HTTPRequestParser { _ in
-//            XCTAssert(true)
-//        }
-//
-//        do {
-//            let data = ("GET / HTTP/1.1\r\n" +
-//                "Upgrade: WebSocket\r\n" +
-//                "Connection: Upgrade\r\n" +
-//                "\r\n")
-//            try parser.parse(data)
-//        } catch {
-//            XCTAssert(true)
-//        }
-//    }
-//
-//    func testChunkedEncoding() {
-//        let parser = HTTPRequestParser { request in
-//            XCTAssert(request.method == .GET)
-//            XCTAssert(request.uri.path == "/")
-//            XCTAssert(request.majorVersion == 1)
-//            XCTAssert(request.minorVersion == 1)
-//            XCTAssert(request.headers["Transfer-Encoding"] == "chunked")
-//            XCTAssert(request.body == "Zewo".bytes)
-//        }
-//
-//        do {
-//            let data = ("GET / HTTP/1.1\r\n" +
-//                "Transfer-Encoding: chunked\r\n" +
-//                "\r\n" +
-//                "4\r\n" +
-//                "Zewo\r\n")
-//            try parser.parse(data)
-//        } catch {
-//            XCTAssert(false)
-//        }
-//    }
-//
-//    func testIncorrectContentLength() {
-//        let parser = HTTPRequestParser { _ in
-//            XCTAssert(false)
-//        }
-//
-//        do {
-//            let data = ("POST / HTTP/1.1\r\n" +
-//                "Content-Length: 5\r\n" +
-//                "\r\n" +
-//                "Zewo")
-//            try parser.parse(data)
-//        } catch {
-//            XCTAssert(true)
-//        }
-//    }
-//
-//    func testIncorrectChunkSize() {
-//        let parser = HTTPRequestParser { _ in
-//            XCTAssert(false)
-//        }
-//
-//        do {
-//            let data = ("GET / HTTP/1.1\r\n" +
-//                "Transfer-Encoding: chunked\r\n" +
-//                "\r\n" +
-//                "5\r\n" +
-//                "Zewo\r\n")
-//            try parser.parse(data)
-//        } catch {
-//            XCTAssert(true)
-//        }
-//    }
-//
-//    func testInvalidChunkSize() {
-//        let parser = HTTPRequestParser { _ in
-//            XCTAssert(false)
-//        }
-//
-//        do {
-//            let data = ("GET / HTTP/1.1\r\n" +
-//                "Transfer-Encoding: chunked\r\n" +
-//                "\r\n" +
-//                "x\r\n" +
-//                "Zewo\r\n")
-//            try parser.parse(data)
-//        } catch {
-//            XCTAssert(true)
-//        }
-//    }
-//
-//    func testConnectionKeepAlive() {
-//        let parser = HTTPRequestParser { request in
-//            XCTAssert(request.method == .GET)
-//            XCTAssert(request.uri.path == "/")
-//            XCTAssert(request.majorVersion == 1)
-//            XCTAssert(request.minorVersion == 1)
-//            XCTAssert(request.headers["Connection"] == "keep-alive")
-//        }
-//
-//        do {
-//            let data = ("GET / HTTP/1.1\r\n" +
-//                "Connection: keep-alive\r\n" +
-//                "\r\n")
-//            try parser.parse(data)
-//        } catch {
-//            XCTAssert(false)
-//        }
-//    }
-//
-//    func testConnectionClose() {
-//        let parser = HTTPRequestParser { request in
-//            XCTAssert(request.method == .GET)
-//            XCTAssert(request.uri.path == "/")
-//            XCTAssert(request.majorVersion == 1)
-//            XCTAssert(request.minorVersion == 1)
-//            XCTAssert(request.headers["Connection"] == "close")
-//        }
-//
-//        do {
-//            let data = ("GET / HTTP/1.1\r\n" +
-//                "Connection: close\r\n" +
-//                "\r\n")
-//            try parser.parse(data)
-//        } catch {
-//            XCTAssert(false)
-//        }
-//    }
-//
-//    func testRequestHTTP1_0() {
-//        let parser = HTTPRequestParser { request in
-//            XCTAssert(request.method == .GET)
-//            XCTAssert(request.uri.path == "/")
-//            XCTAssert(request.majorVersion == 1)
-//            XCTAssert(request.minorVersion == 0)
-//        }
-//
-//        do {
-//            let data = ("GET / HTTP/1.0\r\n" +
-//                "\r\n")
-//            try parser.parse(data)
-//        } catch {
-//            XCTAssert(false)
-//        }
-//    }
-//
-//    func testURI() {
-//        let URIString = "http://username:password@www.google.com:777/foo/bar?foo=bar&for=baz#yeah"
-//        let uri = URI(string: URIString)
-//        XCTAssert(uri.scheme == "http")
-//        XCTAssert(uri.userInfo?.username == "username")
-//        XCTAssert(uri.userInfo?.password == "password")
-//        XCTAssert(uri.host == "www.google.com")
-//        XCTAssert(uri.port == 777)
-//        XCTAssert(uri.path == "/foo/bar")
-//        XCTAssert(uri.query["foo"] == "bar")
-//        XCTAssert(uri.query["for"] == "baz")
-//        XCTAssert(uri.fragment == "yeah")
-//    }
-//
-//    func testURIIPv6() {
-//        let URIString = "http://username:password@[2001:db8:1f70::999:de8:7648:6e8]:100/foo/bar?foo=bar&for=baz#yeah"
-//        let uri = URI(string: URIString)
-//        XCTAssert(uri.scheme == "http")
-//        XCTAssert(uri.userInfo?.username == "username")
-//        XCTAssert(uri.userInfo?.password == "password")
-//        XCTAssert(uri.host == "2001:db8:1f70::999:de8:7648:6e8")
-//        XCTAssert(uri.port == 100)
-//        XCTAssert(uri.path == "/foo/bar")
-//        XCTAssert(uri.query["foo"] == "bar")
-//        XCTAssert(uri.query["for"] == "baz")
-//        XCTAssert(uri.fragment == "yeah")
-//    }
-//
-//    func testURIIPv6WithZone() {
-//        let URIString = "http://username:password@[2001:db8:a0b:12f0::1%eth0]:100/foo/bar?foo=bar&for=baz#yeah"
-//        let uri = URI(string: URIString)
-//        XCTAssert(uri.scheme == "http")
-//        XCTAssert(uri.userInfo?.username == "username")
-//        XCTAssert(uri.userInfo?.password == "password")
-//        XCTAssert(uri.host == "2001:db8:a0b:12f0::1%eth0")
-//        XCTAssert(uri.port == 100)
-//        XCTAssert(uri.path == "/foo/bar")
-//        XCTAssert(uri.query["foo"] == "bar")
-//        XCTAssert(uri.query["for"] == "baz")
-//        XCTAssert(uri.fragment == "yeah")
-//    }
-//
-//    func testQueryElementWitoutValue() {
-//        let URIString = "http://username:password@[2001:db8:a0b:12f0::1%eth0]:100/foo/bar?foo=&for#yeah"
-//        let uri = URI(string: URIString)
-//        XCTAssert(uri.scheme == "http")
-//        XCTAssert(uri.userInfo?.username == "username")
-//        XCTAssert(uri.userInfo?.password == "password")
-//        XCTAssert(uri.host == "2001:db8:a0b:12f0::1%eth0")
-//        XCTAssert(uri.port == 100)
-//        XCTAssert(uri.path == "/foo/bar")
-//        XCTAssert(uri.query["foo"] == "")
-//        XCTAssert(uri.query["for"] == "")
-//        XCTAssert(uri.fragment == "yeah")
-//    }
 }
-
-
 
 extension RequestParserTests {
     static var allTests: [(String, (RequestParserTests) -> () throws -> Void)] {
@@ -552,7 +357,8 @@ extension RequestParserTests {
             ("testDiscontinuousShortRequest", testDiscontinuousShortRequest),
             ("testMediumRequest", testMediumRequest),
             ("testDiscontinuousMediumRequest", testDiscontinuousMediumRequest),
-            ("testDiscontinuousMediumRequestMultipleCookie", testDiscontinuousMediumRequestMultipleCookie),
+            ("testDiscontinuousMediumRequestMultipleCookie",
+              testDiscontinuousMediumRequestMultipleCookie),
             ("testCompleteRequest", testCompleteRequest),
             ("testDiscontinuousCompleteRequest", testDiscontinuousCompleteRequest),
             ("testMultipleShortRequestsInTheSameStream", testMultipleShortRequestsInTheSameStream),

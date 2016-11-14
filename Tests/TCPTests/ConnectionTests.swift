@@ -3,17 +3,20 @@ import XCTest
 
 class ConnectionTests: XCTestCase {
 
-    func testClientServer() {
+    func testClientServer() throws {
 
         // TODO: YEA! This is terrible! But there appears to be a bug with
         // XCTest. On Linux `swift test` exits with error code 1 and no further
         // output. None of the failure conditions are met however.
         #if !os(Linux)
-            let interruptExpectation = expectation(description: "Did not receive an interrupted read.")
+            let interruptExpectation = expectation(
+                description: "Did not receive an interrupted read."
+            )
             let receiveMessageExpectation = expectation(description: "Did not receive any message.")
             let completeWriteExpectation = expectation(description: "Did not complete write.")
-            let server = try! Server()
-            try! server.bind(host: "localhost", port: 50000)
+
+            let server = try Server()
+            try server.bind(host: "localhost", port: 50000)
 
             let connections = server.listen()
             connections.startWithNext { connection in
@@ -38,11 +41,11 @@ class ConnectionTests: XCTestCase {
                 strings.onCompleted {
                     XCTFail("Completed instead of interrupt.")
                 }
-                
+
                 strings.start()
             }
 
-            let socket = try! Socket()
+            let socket = try Socket()
             let connect = socket.connect(host: "localhost", port: 50000)
             connect.onCompleted {
                 let buffer = Array("This is a test".utf8)
@@ -66,7 +69,7 @@ class ConnectionTests: XCTestCase {
             connections.stop()
         #endif
     }
-    
+
     func testResourceCleanUp() {
         // Create two servers consecutively
 //        testClientServer()

@@ -1,0 +1,11 @@
+included:
+  - Tests
+function_body_length:
+  - 60 # warning
+  - 100 # error
+type_body_length:
+  - 300 # warning
+  - 400 # error
+disabled_rules:
+  - todo
+  - force_try

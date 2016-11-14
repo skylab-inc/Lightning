@@ -11,7 +11,7 @@ import XCTest
 @testable import HTTP
 
 class ResponseSerializationTests: XCTestCase {
-    
+
     func testBasicSerialization() {
         let expected = "HTTP/1.1 200 OK\r\n\r\n"
         let response = Response(
@@ -23,7 +23,7 @@ class ResponseSerializationTests: XCTestCase {
         let actual = String(bytes: response.serialized, encoding: .utf8)!
         XCTAssert(expected == actual, "Actual response, \(actual), did not match expected.")
     }
-    
+
     func testHeaderSerialization() {
         let expected =
             "HTTP/1.1 200 OK\r\n" +
@@ -42,14 +42,14 @@ class ResponseSerializationTests: XCTestCase {
         let actual = String(bytes: response.serialized, encoding: .utf8)!
         XCTAssert(expected == actual, "Actual request, \(actual), did not match expected.")
     }
-    
+
     func testDefaultParameters() {
         let expected = "HTTP/1.1 200 OK\r\nContent-Length: 0\r\n\r\n"
         let response = Response(status: .ok)
         let actual = String(bytes: response.serialized, encoding: .utf8)!
         XCTAssert(expected == actual, "Actual response, \(actual), did not match expected.")
     }
-    
+
     func testJSONSerialization() {
         let expected = "HTTP/1.1 200 OK\r\n" +
         "Content-Type: application/json\r\n" +
@@ -59,7 +59,7 @@ class ResponseSerializationTests: XCTestCase {
         let actual = String(bytes: response.serialized, encoding: .utf8)!
         XCTAssert(expected == actual, "Actual response, \(actual), did not match expected.")
     }
-    
+
 }
 
 extension ResponseSerializationTests {
