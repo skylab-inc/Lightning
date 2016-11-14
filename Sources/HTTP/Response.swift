@@ -9,34 +9,34 @@
 import Foundation
 
 public struct Response: Serializable, HTTPMessage {
-    
+
     public var version: Version
     public var status: Status
     public var rawHeaders: [String]
     public var body: [UInt8]
     public var storage: [String: Any] = [:]
-    
+
     public var serialized: [UInt8] {
         var headerString = ""
         headerString += "HTTP/\(version.major).\(version.minor)"
         headerString += " \(status.code) \(status.reasonPhrase)"
         headerString += "\r\n"
-        
+
         for (name, value) in rawHeaderPairs {
             headerString += "\(name): \(value)"
             headerString += "\r\n"
         }
-        
+
         headerString += "\r\n"
         return headerString.utf8 + body
     }
-    
+
     public var cookies: [String] {
         return lowercasedRawHeaderPairs.filter { (key, value) in
             key == "set-cookie"
         }.map { $0.1 }
     }
-    
+
     public init(
         version: Version = Version(major: 1, minor: 1),
         status: Status,
@@ -48,7 +48,7 @@ public struct Response: Serializable, HTTPMessage {
         self.rawHeaders = rawHeaders
         self.body = body
     }
-    
+
     public init(
         version: Version = Version(major: 1, minor: 1),
         status: Status
@@ -58,7 +58,7 @@ public struct Response: Serializable, HTTPMessage {
             rawHeaders: ["Content-Length", "0"]
         )
     }
-    
+
     public init(
         version: Version = Version(major: 1, minor: 1),
         status: Status = .ok,
@@ -77,5 +77,5 @@ public struct Response: Serializable, HTTPMessage {
         ].joined())
         self.init(version: version, status: status, rawHeaders: rawHeaders, body: body)
     }
-    
+
 }

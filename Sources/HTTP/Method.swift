@@ -124,7 +124,6 @@ extension Method {
     }
 }
 
-
-public func ==(lhs: Method, rhs: Method) -> Bool {
+public func == (lhs: Method, rhs: Method) -> Bool {
     return lhs.description == rhs.description
 }

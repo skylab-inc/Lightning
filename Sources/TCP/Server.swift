@@ -18,34 +18,46 @@ import IOStream
 #endif
 
 public final class Server {
-    
+
     private static let defaultReuseAddress = true
-    
+
     private let fd: SocketFileDescriptor
     private let listeningSource: DispatchSourceRead
-    
+
     public convenience init(reuseAddress: Bool = defaultReuseAddress) throws {
-        let fd = try SocketFileDescriptor(socketType: SocketType.stream, addressFamily: AddressFamily.inet)
+        let fd = try SocketFileDescriptor(
+            socketType: SocketType.stream,
+            addressFamily: AddressFamily.inet
+        )
         try self.init(fd: fd, reuseAddress: reuseAddress)
     }
-    
+
     public init(fd: SocketFileDescriptor, reuseAddress: Bool = defaultReuseAddress) throws {
         self.fd = fd
         if reuseAddress {
             // Set SO_REUSEADDR
             var reuseAddr = 1
-            let error = setsockopt(self.fd.rawValue, SOL_SOCKET, SO_REUSEADDR, &reuseAddr, socklen_t(MemoryLayout<Int>.stride))
+            let error = setsockopt(
+                self.fd.rawValue,
+                SOL_SOCKET,
+                SO_REUSEADDR,
+                &reuseAddr,
+                socklen_t(MemoryLayout<Int>.stride)
+            )
             if error != 0 {
                 throw SystemError(errorNumber: errno)!
             }
         }
-        
-        self.listeningSource = DispatchSource.makeReadSource(fileDescriptor: self.fd.rawValue, queue: .main)
+
+        self.listeningSource = DispatchSource.makeReadSource(
+            fileDescriptor: self.fd.rawValue,
+            queue: .main
+        )
     }
-    
+
     public func bind(host: String, port: Port) throws {
         var addrInfoPointer: UnsafeMutablePointer<addrinfo>? = nil
-        
+
         var hints = systemCreateAddressInfo(
             ai_flags: 0,
             ai_family: fd.addressFamily.rawValue,
@@ -56,22 +68,26 @@ public final class Server {
             ai_addr: nil,
             ai_next: nil
         )
-        
+
         let ret = getaddrinfo(host, String(port), &hints, &addrInfoPointer)
         if let systemError = SystemError(errorNumber: ret) {
             throw systemError
         }
-        
+
         let addressInfo = addrInfoPointer!.pointee
-        
-        let bindRet = systemBind(fd.rawValue, addressInfo.ai_addr, socklen_t(MemoryLayout<sockaddr>.stride))
+
+        let bindRet = systemBind(
+            fd.rawValue,
+            addressInfo.ai_addr,
+            socklen_t(MemoryLayout<sockaddr>.stride)
+        )
         freeaddrinfo(addrInfoPointer)
-        
+
         if bindRet != 0 {
             throw SystemError(errorNumber: errno)!
         }
     }
-    
+
     public func listen(backlog: Int = 32) -> ColdSignal<Socket, SystemError> {
         return ColdSignal { [listeningSource = self.listeningSource, fd = self.fd] observer in
             let ret = systemListen(fd.rawValue, Int32(backlog))
@@ -80,10 +96,10 @@ public final class Server {
                 return nil
             }
             listeningSource.setEventHandler {
-                                
+
                 var socketAddress = sockaddr()
                 var sockLen = socklen_t(POSIXExtensions.SOCK_MAXADDRLEN)
-                
+
                 // Accept connections
                 let numPendingConnections: UInt = listeningSource.data
                 for _ in 0..<numPendingConnections {
@@ -97,15 +113,16 @@ public final class Server {
                         addressFamily: fd.addressFamily,
                         blocking: false
                     )
-                    
+
                     do {
                         // Create the client connection socket
                         let clientConnection = try Socket(fd: clientFileDescriptor)
                         observer.sendNext(clientConnection)
-                    } catch {
-                        let systemError = error as! SystemError
+                    } catch let systemError as SystemError {
                         observer.sendFailed(systemError)
                         return
+                    } catch {
+                        fatalError("Unexpected error ")
                     }
                 }
             }

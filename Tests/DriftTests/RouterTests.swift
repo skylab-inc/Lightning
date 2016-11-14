@@ -39,10 +39,13 @@ class RouterTests: XCTestCase {
                 return
             }
             if method == "POST" {
-                guard let body = try? JSONSerialization.jsonObject(with: data)
-                    as? [String:String] else {
-                        XCTFail("Problem with body")
-                        return
+                guard let stringBody = try? JSONSerialization.jsonObject(with: data) else {
+                    XCTFail("Problem deserializing body")
+                    fatalError()
+                }
+                guard let body = stringBody as? [String:String] else {
+                    XCTFail("Body not well formed json")
+                    fatalError()
                 }
                 XCTAssert(body == jsonResponse, "Received body \(body) != json \(jsonResponse)")
             }

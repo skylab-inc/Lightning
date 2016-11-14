@@ -1,3 +1,5 @@
+// swiftlint:disable variable_name
+// swiftlint:disable function_parameter_count
 #if os(Linux)
     import Glibc
     public let systemBind = Glibc.bind
@@ -5,16 +7,16 @@
     public let systemListen = Glibc.listen
     public let systemConnect = Glibc.connect
     public let systemClose = Glibc.close
-    
+
     public let SOCK_STREAM = Int32(Glibc.SOCK_STREAM.rawValue)
     public let SOCK_DGRAM = Int32(Glibc.SOCK_DGRAM.rawValue)
     public let SOCK_SEQPACKET = Int32(Glibc.SOCK_SEQPACKET.rawValue)
     public let SOCK_RAW = Int32(Glibc.SOCK_RAW.rawValue)
     public let SOCK_RDM = Int32(Glibc.SOCK_RDM.rawValue)
-    
+
     public let SOCK_MAXADDRLEN: Int32 = 255
     public let IPPROTO_TCP = Int32(Glibc.IPPROTO_TCP)
-    
+
     public func systemCreateAddressInfo(
         ai_flags: Int32,
         ai_family: Int32,
@@ -43,16 +45,16 @@
     public let systemListen = Darwin.listen
     public let systemConnect = Darwin.connect
     public let systemClose = Darwin.close
-    
+
     public let SOCK_STREAM = Darwin.SOCK_STREAM
     public let SOCK_DGRAM = Darwin.SOCK_DGRAM
     public let SOCK_SEQPACKET = Darwin.SOCK_SEQPACKET
     public let SOCK_RAW = Darwin.SOCK_RAW
     public let SOCK_RDM = Darwin.SOCK_RDM
-    
+
     public let IPPROTO_TCP = Darwin.IPPROTO_TCP
     public let SOCK_MAXADDRLEN = Darwin.SOCK_MAXADDRLEN
-    
+
     public func systemCreateAddressInfo(
         ai_flags: Int32,
         ai_family: Int32,
@@ -75,7 +77,8 @@
         )
     }
 #endif
-
+// swiftlint:enable function_parameter_count
+// swiftlint:enable variable_name
 
 public struct SocketType {
 
@@ -84,9 +87,9 @@ public struct SocketType {
     public static let seqPacket = SocketType(rawValue: SOCK_SEQPACKET)
     public static let raw = SocketType(rawValue: SOCK_RAW)
     public static let reliableDatagram = SocketType(rawValue: SOCK_RDM)
-    
+
     public let rawValue: Int32
-    
+
     public init(rawValue: Int32) {
         self.rawValue = rawValue
     }
@@ -98,9 +101,9 @@ public struct AddressFamily {
     public static let inet6 = AddressFamily(rawValue: AF_INET6)
     public static let ipx = AddressFamily(rawValue: AF_IPX)
     public static let netlink = AddressFamily(rawValue: AF_APPLETALK)
-    
+
     public let rawValue: Int32
-    
+
     public init(rawValue: Int32) {
         self.rawValue = rawValue
     }

@@ -17,45 +17,57 @@ import IOStream
     import Darwin
 #endif
 
-
 public final class Socket: WritableIOStream, ReadableIOStream {
     private static let defaultReuseAddress = true
-    
+
     private let socketFD: SocketFileDescriptor
     public var fd: POSIXExtensions.FileDescriptor {
         return socketFD
     }
     public let channel: DispatchIO
-    
+
     public convenience init() throws {
-        let fd = try SocketFileDescriptor(socketType: SocketType.stream, addressFamily: AddressFamily.inet)
+        let fd = try SocketFileDescriptor(
+            socketType: SocketType.stream,
+            addressFamily: AddressFamily.inet
+        )
         try self.init(fd: fd)
     }
-    
+
     public init(fd: SocketFileDescriptor, reuseAddress: Bool = defaultReuseAddress) throws {
         self.socketFD = fd
-        
+
         if reuseAddress {
             // Set SO_REUSEADDR
             var reuseAddr = 1
-            let error = setsockopt(self.socketFD.rawValue, SOL_SOCKET, SO_REUSEADDR, &reuseAddr, socklen_t(MemoryLayout<Int>.stride))
+            let error = setsockopt(
+                self.socketFD.rawValue,
+                SOL_SOCKET,
+                SO_REUSEADDR,
+                &reuseAddr,
+                socklen_t(MemoryLayout<Int>.stride)
+            )
             if let systemError = SystemError(errorNumber: error) {
                 throw systemError
             }
         }
-        
+
         // Create the dispatch source for listening
-        self.channel = DispatchIO(type: .stream, fileDescriptor: fd.rawValue, queue: .main) { error in
+        self.channel = DispatchIO(
+            type: .stream,
+            fileDescriptor: fd.rawValue,
+            queue: .main
+        ) { error in
             if let systemError = SystemError(errorNumber: error) {
                 try! { throw systemError }()
             }
         }
     }
-    
+
     public func connect(host: String, port: Port) -> ColdSignal<Socket, SystemError> {
         return ColdSignal { [socketFD, fd, channel = self.channel] observer in
             var addrInfoPointer: UnsafeMutablePointer<addrinfo>? = nil
-            
+
             var hints = systemCreateAddressInfo(
                 ai_flags: 0,
                 ai_family: socketFD.addressFamily.rawValue,
@@ -66,17 +78,21 @@ public final class Socket: WritableIOStream, ReadableIOStream {
                 ai_addr: nil,
                 ai_next: nil
             )
-            
+
             let ret = getaddrinfo(host, String(port), &hints, &addrInfoPointer)
             if let systemError = SystemError(errorNumber: ret) {
                 observer.sendFailed(systemError)
                 return nil
             }
-            
+
             let addressInfo = addrInfoPointer!.pointee
-            let connectRet = systemConnect(fd.rawValue, addressInfo.ai_addr, socklen_t(MemoryLayout<sockaddr>.stride))
+            let connectRet = systemConnect(
+                fd.rawValue,
+                addressInfo.ai_addr,
+                socklen_t(MemoryLayout<sockaddr>.stride)
+            )
             freeaddrinfo(addrInfoPointer)
-            
+
             // Blocking, connect immediately or throw error
             if socketFD.blocking {
                 if connectRet != 0 {
@@ -86,13 +102,13 @@ public final class Socket: WritableIOStream, ReadableIOStream {
                 }
                 return nil
             }
-            
+
             // Non-blocking, check for immediate connection
             if connectRet == 0 {
                 observer.sendCompleted()
                 return nil
             }
-            
+
             // Non-blocking, dispatch connection, check errno for connection error.
             let error = SystemError(errorNumber: errno)
             if case SystemError.operationNowInProgress? = error {

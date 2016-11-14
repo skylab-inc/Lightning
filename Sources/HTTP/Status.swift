@@ -12,7 +12,7 @@ public enum Status {
     case `continue`
     case switchingProtocols
     case processing
-    
+
     case ok
     case created
     case accepted
@@ -23,7 +23,7 @@ public enum Status {
     case multiStatus
     case alreadyReported
     case imUsed
-    
+
     case multipleChoices
     case movedPermanently
     case found
@@ -33,7 +33,7 @@ public enum Status {
     case switchProxy
     case temporaryRedirect
     case permanentRedirect
-    
+
     case badRequest
     case unauthorized
     case paymentRequired
@@ -65,7 +65,7 @@ public enum Status {
     case tooManyRequests
     case requestHeaderFieldsTooLarge
     case unavailableForLegalReasons
-    
+
     case internalServerError
     case notImplemented
     case badGateway
@@ -78,7 +78,7 @@ public enum Status {
     case bandwidthLimitExceeded
     case notExtended
     case networkAuthenticationRequired
-    
+
     case other(code: Int, reasonPhrase: String)
 }
 
@@ -91,7 +91,7 @@ extension Status {
             case Status.`continue`.code:                    self = .`continue`
             case Status.switchingProtocols.code:            self = .switchingProtocols
             case Status.processing.code:                    self = .processing
-                
+
             case Status.ok.code:                            self = .ok
             case Status.created.code:                       self = .created
             case Status.accepted.code:                      self = .accepted
@@ -112,7 +112,7 @@ extension Status {
             case Status.switchProxy.code:                   self = .switchProxy
             case Status.temporaryRedirect.code:             self = .temporaryRedirect
             case Status.permanentRedirect.code:             self = .permanentRedirect
-                
+
             case Status.badRequest.code:                    self = .badRequest
             case Status.unauthorized.code:                  self = .unauthorized
             case Status.paymentRequired.code:               self = .paymentRequired
@@ -144,7 +144,7 @@ extension Status {
             case Status.tooManyRequests.code:               self = .tooManyRequests
             case Status.requestHeaderFieldsTooLarge.code:   self = .requestHeaderFieldsTooLarge
             case Status.unavailableForLegalReasons.code:    self = .unavailableForLegalReasons
-                
+
             case Status.internalServerError.code:           self = .internalServerError
             case Status.notImplemented.code:                self = .notImplemented
             case Status.badGateway.code:                    self = .badGateway
@@ -157,7 +157,7 @@ extension Status {
             case Status.bandwidthLimitExceeded.code:        self = .bandwidthLimitExceeded
             case Status.notExtended.code:                   self = .notExtended
             case Status.networkAuthenticationRequired.code: self = .networkAuthenticationRequired
-                
+
             default: self = .other(code: code, reasonPhrase: "¯\\_(ツ)_/¯")
             }
         }
@@ -170,7 +170,7 @@ extension Status {
         case .`continue`:                    return 100
         case .switchingProtocols:            return 101
         case .processing:                    return 102
-            
+
         case .ok:                            return 200
         case .created:                       return 201
         case .accepted:                      return 202
@@ -181,7 +181,7 @@ extension Status {
         case .multiStatus:                   return 207
         case .alreadyReported:               return 208
         case .imUsed:                        return 226
-            
+
         case .multipleChoices:               return 300
         case .movedPermanently:              return 301
         case .found:                         return 302
@@ -191,7 +191,7 @@ extension Status {
         case .switchProxy:                   return 306
         case .temporaryRedirect:             return 307
         case .permanentRedirect:             return 308
-            
+
         case .badRequest:                    return 400
         case .unauthorized:                  return 401
         case .paymentRequired:               return 402
@@ -223,7 +223,7 @@ extension Status {
         case .tooManyRequests:               return 429
         case .requestHeaderFieldsTooLarge:   return 431
         case .unavailableForLegalReasons:    return 451
-            
+
         case .internalServerError:           return 500
         case .notImplemented:                return 501
         case .badGateway:                    return 502
@@ -236,7 +236,7 @@ extension Status {
         case .bandwidthLimitExceeded:        return 509
         case .notExtended:                   return 510
         case .networkAuthenticationRequired: return 511
-            
+
         case .other(let code, _):        return code
         }
     }
@@ -248,7 +248,7 @@ extension Status {
         case .`continue`:                    return "Continue"
         case .switchingProtocols:            return "Switching Protocols"
         case .processing:                    return "Processing"
-            
+
         case .ok:                            return "OK"
         case .created:                       return "Created"
         case .accepted:                      return "Accepted"
@@ -269,7 +269,7 @@ extension Status {
         case .switchProxy:                   return "Switch Proxy"
         case .temporaryRedirect:             return "Temporary Redirect"
         case .permanentRedirect:             return "Permanent Redirect"
-            
+
         case .badRequest:                    return "Bad Request"
         case .unauthorized:                  return "Unauthorized"
         case .paymentRequired:               return "Payment Required"
@@ -314,7 +314,7 @@ extension Status {
         case .bandwidthLimitExceeded:        return "Bandwidth Limit Exceeded"
         case .notExtended:                   return "Not Extended"
         case .networkAuthenticationRequired: return "Network Authentication Required"
-            
+
         case .other(_, let reasonPhrase):      return reasonPhrase
         }
     }
@@ -326,6 +326,6 @@ extension Status: Hashable {
     }
 }
 
-public func ==(lhs: Status, rhs: Status) -> Bool {
+public func == (lhs: Status, rhs: Status) -> Bool {
     return lhs.hashValue == rhs.hashValue
 }

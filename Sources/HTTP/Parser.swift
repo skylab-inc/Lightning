@@ -28,11 +28,11 @@ import Foundation
 typealias CParserPointer = UnsafeMutablePointer<http_parser>
 typealias RawParserPointer = UnsafeMutablePointer<RawParser>
 
-private func bridge<T : AnyObject>(_ obj : T) -> UnsafeMutableRawPointer {
+private func bridge<T: AnyObject>(_ obj: T) -> UnsafeMutableRawPointer {
     return Unmanaged.passUnretained(obj).toOpaque()
 }
 
-private func bridge<T : AnyObject>(_ ptr : UnsafeMutableRawPointer) -> T {
+private func bridge<T: AnyObject>(_ ptr: UnsafeMutableRawPointer) -> T {
     return Unmanaged<T>.fromOpaque(ptr).takeUnretainedValue()
 }
 
@@ -42,8 +42,8 @@ struct ParseError: Error {
 
 public class RequestParser {
     private let parser: FullMessageParser!
-    var onRequest:  ((Request) -> Void)?
-    
+    var onRequest: ((Request) -> Void)?
+
     init(onRequest: ((Request) -> Void)? = nil) {
         self.onRequest = onRequest
         self.parser = FullMessageParser(type: HTTP_REQUEST)
@@ -51,7 +51,7 @@ public class RequestParser {
             guard let uri = URL(string: parseState.uri) else {
                 throw ParseError(description: "URL not valid.")
             }
-            
+
             let request = Request(
                 method: Method(code: parseState.method),
                 uri: uri,
@@ -62,17 +62,17 @@ public class RequestParser {
             self?.onRequest?(request)
         }
     }
-    
+
     public func parse(_ data: [UInt8]) throws {
         try parser.parse(data)
     }
-    
+
 }
 
 public class ResponseParser {
     private let parser: FullMessageParser
-    var onResponse:  ((Response) -> Void)?
-    
+    var onResponse: ((Response) -> Void)?
+
     init(onResponse: ((Response) -> Void)? = nil) {
         self.onResponse = onResponse
         self.parser = FullMessageParser(type: HTTP_RESPONSE)
@@ -86,67 +86,67 @@ public class ResponseParser {
             self?.onResponse?(response)
         }
     }
-    
+
     public func parse(_ data: [UInt8]) throws {
         try parser.parse(data)
     }
-    
+
 }
 
 private final class FullMessageParser {
-    
+
     struct ParseState {
-        
+
         var version: (major: Int, minor: Int) = (0, 0)
         var rawHeaders: [String] = []
         var body: [UInt8] = []
-        
+
         // Response
         var statusCode: Int! = nil
         var statusPhrase = ""
-        
+
         // Request
         var method: Int! = nil
         var uri = ""
-        
+
     }
-    
+
     var state = ParseState()
     var onComplete: ((ParseState) throws -> ())?
     let rawParser: RawParser
-    
+
     init(type: http_parser_type, onComplete: ((ParseState) throws -> ())? = nil) {
         self.onComplete = onComplete
         self.rawParser = RawParser(type: type)
         self.rawParser.delegate = self
     }
-    
+
     func parse(_ data: [UInt8]) throws {
         try rawParser.parse(data)
     }
-    
+
 }
 
 extension FullMessageParser: RawParserDelegate {
-    
+
     func onMessageBegin() throws {
         // No state change
     }
-    
+
     func onURL(data: UnsafeBufferPointer<UInt8>) throws {
         guard let uri = String(bytes: data, encoding: .utf8) else {
             throw ParseError(description: "URI could not be encoded as UTF8.")
         }
         state.uri += uri
     }
-    
+
     func onStatus(data: UnsafeBufferPointer<UInt8>) throws {
         guard let partialStatusPhrase = String(bytes: data, encoding: .utf8) else {
             throw ParseError(description: "Status phrase could not be encoded as UTF8.")
         }
         state.statusPhrase += partialStatusPhrase
     }
-    
+
     func onHeaderField(data: UnsafeBufferPointer<UInt8>) throws {
         guard let partialHeaderField = String(bytes: data, encoding: .utf8) else {
             throw ParseError(description: "Header field could not be encoded as UTF8.")
@@ -156,7 +156,7 @@ extension FullMessageParser: RawParserDelegate {
         }
         state.rawHeaders[state.rawHeaders.count - 1] += partialHeaderField
     }
-    
+
     func onHeaderValue(data: UnsafeBufferPointer<UInt8>) throws {
         guard let partialHeaderValue = String(bytes: data, encoding: .utf8) else {
             throw ParseError(description: "Header value could not be encoded as UTF8.")
@@ -166,7 +166,7 @@ extension FullMessageParser: RawParserDelegate {
         }
         state.rawHeaders[state.rawHeaders.count - 1] += partialHeaderValue
     }
-    
+
     func onHeadersComplete(
         method: Int,
         statusCode: Int,
@@ -178,25 +178,25 @@ extension FullMessageParser: RawParserDelegate {
         state.method = method
         return .none
     }
-    
+
     func onBody(data: UnsafeBufferPointer<UInt8>) throws {
         state.body += Array(data)
     }
-    
+
     func onMessageComplete() throws {
         try onComplete?(state)
         // Reset state
         state = ParseState()
     }
-    
+
     func onChunkHeader() throws {
         // No state change
     }
-    
+
     func onChunkComplete() throws {
         // No state change
     }
-    
+
 }
 
 public enum HeadersCompleteDirective {
@@ -209,52 +209,61 @@ public protocol RawParserDelegate: class {
 
     func onMessageBegin() throws
     func onMessageComplete() throws
-    
+
     func onURL(data: UnsafeBufferPointer<UInt8>) throws
     func onStatus(data: UnsafeBufferPointer<UInt8>) throws
     func onHeaderField(data: UnsafeBufferPointer<UInt8>) throws
     func onHeaderValue(data: UnsafeBufferPointer<UInt8>) throws
-    
+
     func onHeadersComplete(
         method: Int,
         statusCode: Int,
         majorVersion: Int,
         minorVersion: Int
     ) throws -> HeadersCompleteDirective
-    
+
     func onBody(data: UnsafeBufferPointer<UInt8>) throws
-    
+
     func onChunkHeader() throws
     func onChunkComplete() throws
-    
+
 }
 
 public final class RawParser {
     var parser = http_parser()
     var type: http_parser_type
     fileprivate weak var delegate: RawParserDelegate?
-    
+
     public init(type: http_parser_type, delegate: RawParserDelegate? = nil) {
         self.type = type
         self.delegate = delegate
         reset()
     }
-    
+
     func reset() {
         http_parser_init(&parser, self.type)
-        
+
         // Set self as the context. self must be a reference type.
         parser.data = bridge(self)
     }
-    
+
     public func parse(_ data: [UInt8]) throws {
-        try UnsafePointer(data).withMemoryRebound(to: Int8.self, capacity: data.count) { convertedPointer in
-            let bytesParsed = http_parser_execute(&parser, &requestSettings, convertedPointer, data.count)
+        try UnsafePointer(data).withMemoryRebound(to: Int8.self,
+                                                  capacity: data.count) { convertedPointer in
+            let bytesParsed = http_parser_execute(
+                &parser,
+                &requestSettings,
+                convertedPointer,
+                data.count
+            )
             guard bytesParsed == data.count else {
                 reset()
                 let errorName = http_errno_name(http_errno(parser.http_errno))!
                 let errorDescription = http_errno_description(http_errno(parser.http_errno))!
-                let error = ParseError(description: "\(String(validatingUTF8: errorName)!): \(String(validatingUTF8: errorDescription)!)")
+                let error = ParseError(
+                    description: "\(String(validatingUTF8: errorName)!):" +
+                    " \(String(validatingUTF8: errorDescription)!)"
+                )
                 throw error
             }
         }
@@ -265,7 +274,7 @@ public final class RawParser {
 var requestSettings: http_parser_settings = {
     var settings = http_parser_settings()
     http_parser_settings_init(&settings)
-    
+
     settings.on_message_begin    = onMessageBegin
     settings.on_url              = onURL
     settings.on_status           = onStatus
@@ -279,7 +288,6 @@ var requestSettings: http_parser_settings = {
 
     return settings
 }()
-
 
 // MARK: C function pointer spring boards
 private func onMessageBegin(_ parser: CParserPointer?) -> Int32 {
@@ -296,7 +304,9 @@ private func onURL(_ parser: CParserPointer?, data: UnsafePointer<Int8>?, length
     let rawParser: RawParser = bridge(parser!.pointee.data)
     do {
         try data?.withMemoryRebound(to: UInt8.self, capacity: length) { convertedPointer in
-            try rawParser.delegate?.onURL(data: UnsafeBufferPointer(start: convertedPointer, count: length))
+            try rawParser
+                .delegate?
+                .onURL(data: UnsafeBufferPointer(start: convertedPointer, count: length))
         }
     } catch {
         return 1
@@ -308,7 +318,9 @@ private func onStatus(_ parser: CParserPointer?, data: UnsafePointer<Int8>?, len
     let rawParser: RawParser = bridge(parser!.pointee.data)
     do {
         try data?.withMemoryRebound(to: UInt8.self, capacity: length) { convertedPointer in
-            try rawParser.delegate?.onStatus(data: UnsafeBufferPointer(start: convertedPointer, count: length))
+            try rawParser
+                .delegate?
+                .onStatus(data: UnsafeBufferPointer(start: convertedPointer, count: length))
         }
     } catch {
         return 1
@@ -316,11 +328,17 @@ private func onStatus(_ parser: CParserPointer?, data: UnsafePointer<Int8>?, len
     return 0
 }
 
-private func onHeaderField(_ parser: CParserPointer?, data: UnsafePointer<Int8>?, length: Int) -> Int32 {
+private func onHeaderField(
+        _ parser: CParserPointer?,
+        data: UnsafePointer<Int8>?,
+        length: Int
+    ) -> Int32 {
     let rawParser: RawParser = bridge(parser!.pointee.data)
     do {
         try data?.withMemoryRebound(to: UInt8.self, capacity: length) { convertedPointer in
-            try rawParser.delegate?.onHeaderField(data: UnsafeBufferPointer(start: convertedPointer, count: length))
+            try rawParser
+                .delegate?
+                .onHeaderField(data: UnsafeBufferPointer(start: convertedPointer, count: length))
         }
     } catch {
         return 1
@@ -328,11 +346,17 @@ private func onHeaderField(_ parser: CParserPointer?, data: UnsafePointer<Int8>?
     return 0
 }
 
-private func onHeaderValue(_ parser: CParserPointer?, data: UnsafePointer<Int8>?, length: Int) -> Int32 {
+private func onHeaderValue(
+        _ parser: CParserPointer?,
+        data: UnsafePointer<Int8>?,
+        length: Int
+    ) -> Int32 {
     let rawParser: RawParser = bridge(parser!.pointee.data)
     do {
         try data?.withMemoryRebound(to: UInt8.self, capacity: length) { convertedPointer in
-            try rawParser.delegate?.onHeaderValue(data: UnsafeBufferPointer(start: convertedPointer, count: length))
+            try rawParser
+                .delegate?
+                .onHeaderValue(data: UnsafeBufferPointer(start: convertedPointer, count: length))
         }
     } catch {
         return 1
@@ -368,7 +392,9 @@ private func onBody(_ parser: CParserPointer?, data: UnsafePointer<Int8>?, lengt
     let rawParser: RawParser = bridge(parser!.pointee.data)
     do {
         try data?.withMemoryRebound(to: UInt8.self, capacity: length) { convertedPointer in
-            try rawParser.delegate?.onBody(data:UnsafeBufferPointer(start: convertedPointer, count: length))
+            try rawParser
+                .delegate?
+                .onBody(data:UnsafeBufferPointer(start: convertedPointer, count: length))
         }
     } catch {
         return 1
@@ -405,4 +431,3 @@ private func onChunkComplete(_ parser: CParserPointer?) -> Int32 {
     }
     return 0
 }
-

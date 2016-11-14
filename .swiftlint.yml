@@ -1,11 +1,17 @@
 included:
+  - Sources
   - Tests
 function_body_length:
-  - 60 # warning
+  - 75 # warning
   - 100 # error
 type_body_length:
   - 300 # warning
   - 400 # error
+file_length:
+  - 500
+variable_name:
+  min_length: 0
 disabled_rules:
   - todo
   - force_try
+  - cyclomatic_complexity

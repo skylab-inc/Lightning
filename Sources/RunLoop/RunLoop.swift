@@ -7,6 +7,7 @@
 //
 
 import Dispatch
+// swiftlint:disable variable_name
 #if os(Linux)
     import Glibc
     public let systemSignal = Glibc.signal
@@ -18,18 +19,19 @@ import Dispatch
     public let SIGPIPE = Darwin.SIGPIPE
     public let SIG_IGN = Darwin.SIG_IGN
 #endif
+// swiftlint:enable variable_name
 
 public struct RunLoop {
-    
+
     public init() {
-        
+
     }
-    
+
     public static func runAll(ignoreSigPipe: Bool = true) {
         if ignoreSigPipe {
             signal(SIGPIPE, SIG_IGN)
         }
         dispatchMain()
     }
-    
+
 }

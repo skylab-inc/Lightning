@@ -12,21 +12,21 @@ import Reflex
 import POSIX
 
 public final class ClientConnection {
-    
+
     let socket: TCP.Socket
     var parser = RequestParser()
-    
+
     init(socket: TCP.Socket) {
         self.socket = socket
     }
-    
+
     public func read() -> ColdSignal<Request, ClientError> {
         return ColdSignal { observer in
             let read = self.socket.read()
             self.parser.onRequest = { request in
                 observer.sendNext(request)
             }
-            
+
             read.onNext { data in
                 do {
                     try self.parser.parse(data)
@@ -36,14 +36,14 @@ public final class ClientConnection {
                 }
             }
             read.start()
-            
+
             return ActionDisposable {
                 read.stop()
             }
         }
     }
-    
-    public func write(_ response: Response) -> ColdSignal<[UInt8], SystemError>  {
+
+    public func write(_ response: Response) -> ColdSignal<[UInt8], SystemError> {
         return socket.write(buffer: response.serialized)
     }
 

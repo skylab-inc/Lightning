@@ -17,7 +17,7 @@ public protocol HTTPMessage {
 }
 
 public extension HTTPMessage {
-    
+
     /// Groups the `rawHeaders` into key-value pairs. If there is an odd number
     /// of `rawHeaders`, the last value will be discarded.
     var rawHeaderPairs: [(String, String)] {
@@ -29,12 +29,12 @@ public extension HTTPMessage {
             return nil
         }
     }
-    
+
     /// The same as `rawHeaderPairs` with the key lowercased.
     var lowercasedRawHeaderPairs: [(String, String)] {
         return rawHeaderPairs.map { ($0.0.lowercased(), $0.1) }
     }
-    
+
     /// Duplicates are handled in a way very similar to the way they are handled
     /// by Node.js. Which is to say that duplicates in the raw headers are handled as follows.
     ///
@@ -90,5 +90,5 @@ public extension HTTPMessage {
             return headers
         }
     }
-    
+
 }
