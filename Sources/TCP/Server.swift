@@ -41,11 +41,6 @@ public final class Server {
         }
         
         self.listeningSource = DispatchSource.makeReadSource(fileDescriptor: self.fd.rawValue, queue: .main)
-        
-        // Close the socket when the source is canceled.
-        listeningSource.setCancelHandler { [fd = self.fd] in
-            fd.close()
-        }
     }
     
     public func bind(host: String, port: Port) throws {
@@ -114,6 +109,10 @@ public final class Server {
                     }
                 }
             }
+            // Close the socket when the source is canceled.
+            listeningSource.setCancelHandler {
+                fd.close()
+            }
             if #available(OSX 10.12, *) {
                 listeningSource.activate()
             } else {
@@ -121,6 +120,7 @@ public final class Server {
             }
             return ActionDisposable {
                 listeningSource.cancel()
+                fd.close()
             }
         }
     }
