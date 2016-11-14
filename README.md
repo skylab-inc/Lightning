@@ -84,11 +84,9 @@ app.add("/v1.0", api)
 // NOTE: Any unhandled responses with throw an error.
 // This means clear error messages and no more accidentally
 // timing out clients!
-let notFound = Router()
-notFound.any { _ in
+app.any { _ in
     return Response(status: .notFound)
 }
-app.add(notFound)
 
 // Start the application.
 app.start(host: "0.0.0.0", port: 3000)
