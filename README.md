@@ -141,7 +141,7 @@ server.listen().startWithNext { connection in
         print("Goodbye \(connection)!")
     }
     
-    byteStream.start()
+    strings.start()
 }
 
 RunLoop.runAll()
