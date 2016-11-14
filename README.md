@@ -33,7 +33,7 @@ Edge's event API embraces the concepts of Functional Reactive Programming while 
 
 # Installation
 
-Edge is available as a Swift 3 package (No current 2.2 support). Simply add Edge as a dependency to your Swift Package.
+Edge is available as a Swift 3 package. Simply add Edge as a dependency to your Swift Package.
 
 ```Swift
 import PackageDescription
