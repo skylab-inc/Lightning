@@ -16,8 +16,8 @@ public final class Server {
 
     public init() {}
 
-    public func listen(host: String, port: Port) -> ColdSignal<ClientConnection, SystemError> {
-        return ColdSignal { observer in
+    public func listen(host: String, port: Port) -> Source<ClientConnection, SystemError> {
+        return Source { observer in
 
             let tcpServer = try! TCP.Server()
             try! tcpServer.bind(host: host, port: port)

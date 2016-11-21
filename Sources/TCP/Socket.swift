@@ -64,8 +64,8 @@ public final class Socket: WritableIOStream, ReadableIOStream {
         }
     }
 
-    public func connect(host: String, port: Port) -> ColdSignal<Socket, SystemError> {
-        return ColdSignal { [socketFD, fd, channel = self.channel] observer in
+    public func connect(host: String, port: Port) -> Source<Socket, SystemError> {
+        return Source { [socketFD, fd, channel = self.channel] observer in
             var addrInfoPointer: UnsafeMutablePointer<addrinfo>? = nil
 
             var hints = systemCreateAddressInfo(

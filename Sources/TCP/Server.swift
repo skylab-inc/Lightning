@@ -88,8 +88,8 @@ public final class Server {
         }
     }
 
-    public func listen(backlog: Int = 32) -> ColdSignal<Socket, SystemError> {
-        return ColdSignal { [listeningSource = self.listeningSource, fd = self.fd] observer in
+    public func listen(backlog: Int = 32) -> Source<Socket, SystemError> {
+        return Source { [listeningSource = self.listeningSource, fd = self.fd] observer in
             let ret = systemListen(fd.rawValue, Int32(backlog))
             if ret != 0 {
                 observer.sendFailed(SystemError(errorNumber: errno)!)

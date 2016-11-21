@@ -20,8 +20,8 @@ public final class ClientConnection {
         self.socket = socket
     }
 
-    public func read() -> ColdSignal<Request, ClientError> {
-        return ColdSignal { observer in
+    public func read() -> Source<Request, ClientError> {
+        return Source { observer in
             let read = self.socket.read()
             self.parser.onRequest = { request in
                 observer.sendNext(request)
@@ -43,7 +43,7 @@ public final class ClientConnection {
         }
     }
 
-    public func write(_ response: Response) -> ColdSignal<[UInt8], SystemError> {
+    public func write(_ response: Response) -> Source<[UInt8], SystemError> {
         return socket.write(buffer: response.serialized)
     }
 

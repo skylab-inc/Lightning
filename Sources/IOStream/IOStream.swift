@@ -28,14 +28,14 @@ public protocol WritableIOStream: class {
 
     var channel: DispatchIO { get }
 
-    func write(buffer: [UInt8]) -> ColdSignal<[UInt8], SystemError>
+    func write(buffer: [UInt8]) -> Source<[UInt8], SystemError>
 
 }
 
 public extension WritableIOStream {
 
-    func write(buffer: [UInt8]) -> ColdSignal<[UInt8], SystemError> {
-        return ColdSignal { observer in
+    func write(buffer: [UInt8]) -> Source<[UInt8], SystemError> {
+        return Source { observer in
             let writeChannel = DispatchIO(
                 type: .stream,
                 io: self.channel,
@@ -103,15 +103,15 @@ public protocol ReadableIOStream: class {
 
     var channel: DispatchIO { get }
 
-    func read(minBytes: Int) -> ColdSignal<[UInt8], SystemError>
+    func read(minBytes: Int) -> Source<[UInt8], SystemError>
 
 }
 
 public extension ReadableIOStream {
 
-    func read(minBytes: Int = 1) -> ColdSignal<[UInt8], SystemError> {
+    func read(minBytes: Int = 1) -> Source<[UInt8], SystemError> {
 
-        return ColdSignal { observer in
+        return Source { observer in
 
             let readChannel = DispatchIO(type: .stream, io: self.channel, queue: .main) { error in
                 if let systemError = SystemError(errorNumber: error) {
