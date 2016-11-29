@@ -114,6 +114,8 @@ server.listen(host: "0.0.0.0", port: 3000).startWithNext { client in
 
     requestStream.start()
 }
+
+RunLoop.runAll()
 ```
 
 ### TCP
