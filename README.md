@@ -39,7 +39,7 @@ Edge is available as a Swift 3 package. Simply add Edge as a dependency to your 
 import PackageDescription
 
 let package = Package(
-    name: "MyProject",
+    name: "Edge",
     dependencies: [
         .Package(url: "https://github.com/SwiftOnEdge/Edge.git", majorVersion: 0, minor: 3)
     ]
