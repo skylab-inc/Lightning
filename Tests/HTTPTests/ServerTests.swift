@@ -16,7 +16,7 @@ class ServerTests: XCTestCase {
         let json = ["message": "Message to server!"]
         let jsonResponse = ["message": "Message received!"]
         let session = URLSession(configuration: .default)
-        let rootUrl = "http://localhost:3000"
+        let rootUrl = "http://localhost:3001"
         let responseExpectation = expectation(
             description: "Did not receive a response for path: \(path)"
         )
@@ -80,7 +80,7 @@ class ServerTests: XCTestCase {
             }
 
             let server = HTTP.Server()
-            server.listen(host: "0.0.0.0", port: 3000).startWithNext { client in
+            server.listen(host: "0.0.0.0", port: 3001).startWithNext { client in
 
                 let requestStream = client
                     .read()
