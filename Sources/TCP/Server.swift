@@ -10,7 +10,7 @@ import Dispatch
 import Reflex
 import POSIX
 import IOStream
-import Libc
+import libc
 
 public final class Server {
 
@@ -53,7 +53,7 @@ public final class Server {
     public func bind(host: String, port: Port) throws {
         var addrInfoPointer: UnsafeMutablePointer<addrinfo>? = nil
 
-        var hints = Libc.addrinfo(
+        var hints = libc.addrinfo(
             ai_flags: 0,
             ai_family: fd.addressFamily.rawValue,
             ai_socktype: SOCK_STREAM,
@@ -71,7 +71,7 @@ public final class Server {
 
         let addressInfo = addrInfoPointer!.pointee
 
-        let bindRet = Libc.bind(
+        let bindRet = libc.bind(
             fd.rawValue,
             addressInfo.ai_addr,
             socklen_t(MemoryLayout<sockaddr>.stride)
@@ -85,7 +85,7 @@ public final class Server {
 
     public func listen(backlog: Int = 32) -> Source<Socket, SystemError> {
         return Source { [listeningSource = self.listeningSource, fd = self.fd] observer in
-            let ret = Libc.listen(fd.rawValue, Int32(backlog))
+            let ret = libc.listen(fd.rawValue, Int32(backlog))
             if ret != 0 {
                 observer.sendFailed(SystemError(errorNumber: errno)!)
                 return nil
@@ -98,7 +98,7 @@ public final class Server {
                 // Accept connections
                 let numPendingConnections: UInt = listeningSource.data
                 for _ in 0..<numPendingConnections {
-                    let ret = Libc.accept(fd.rawValue, &socketAddress, &sockLen)
+                    let ret = libc.accept(fd.rawValue, &socketAddress, &sockLen)
                     if ret == StandardFileDescriptor.invalid.rawValue {
                         observer.sendFailed(SystemError(errorNumber: errno)!)
                     }

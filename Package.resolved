@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "Reflex",
+        "repositoryURL": "https://github.com/SwiftOnEdge/Reflex.git",
+        "state": {
+          "branch": null,
+          "revision": "40feea4ab113c601ef9b7a9fef89830626070806",
+          "version": "0.6.0"
+        }
+      },
+      {
         "package": "SwiftServerHttp",
         "repositoryURL": "https://github.com/swift-server/http.git",
         "state": {

@@ -1,14 +1,29 @@
-import Libc
+import libc
+#if os(Linux)
+    @_exported import Glibc
+    let sockStream = Int32(SOCK_STREAM.rawValue)
+    let sockDgram = Int32(SOCK_DGRAM.rawValue)
+    let sockSeqPacket = Int32(SOCK_SEQPACKET.rawValue)
+    let sockRaw = Int32(SOCK_RAW.rawValue)
+    let sockRDM = Int32(SOCK_RDM.rawValue)
+#else
+    @_exported import Darwin.C
+    let sockStream = SOCK_STREAM
+    let sockDgram = SOCK_DGRAM
+    let sockSeqPacket = SOCK_SEQPACKET
+    let sockRaw = SOCK_RAW
+    let sockRDM = SOCK_RDM
+#endif
 
 public typealias Port = UInt16
 
 public struct SocketType {
 
-    public static let stream = SocketType(rawValue: SOCK_STREAM)
-    public static let datagram = SocketType(rawValue: SOCK_DGRAM)
-    public static let seqPacket = SocketType(rawValue: SOCK_SEQPACKET)
-    public static let raw = SocketType(rawValue: SOCK_RAW)
-    public static let reliableDatagram = SocketType(rawValue: SOCK_RDM)
+    public static let stream = SocketType(rawValue: sockStream)
+    public static let datagram = SocketType(rawValue: sockDgram)
+    public static let seqPacket = SocketType(rawValue: sockSeqPacket)
+    public static let raw = SocketType(rawValue: sockRaw)
+    public static let reliableDatagram = SocketType(rawValue: sockRDM)
 
     public let rawValue: Int32
 
