@@ -14,7 +14,7 @@ import Libc
 
 public final class Server {
 
-    private static let defaultReuseAddress = true
+    public static let defaultReuseAddress = true
 
     private let fd: SocketFileDescriptor
     private let listeningSource: DispatchSourceRead

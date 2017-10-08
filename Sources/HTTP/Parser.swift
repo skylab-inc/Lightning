@@ -230,28 +230,35 @@ public protocol RawParserDelegate: class {
 }
 
 public final class RawParser {
-    var parser = http_parser()
+
+    // Sneaky sneaky, I'm a meanie.
+    // Here I create a constant private pointer to our "constant" http_parser
+    // The can be therefore mutated through the pointer, but only within the RawParser.
+    let parser = http_parser()
+    private let parserPointer: UnsafeMutablePointer<http_parser>
+
     var type: http_parser_type
     fileprivate weak var delegate: RawParserDelegate?
 
     public init(type: http_parser_type, delegate: RawParserDelegate? = nil) {
         self.type = type
         self.delegate = delegate
+        parserPointer = withUnsafeMutablePointer(to: &parser) { $0 }
         reset()
     }
 
     func reset() {
-        http_parser_init(&parser, self.type)
+        http_parser_init(parserPointer, self.type)
 
         // Set self as the context. self must be a reference type.
-        parser.data = bridge(self)
+        parserPointer.pointee.data = bridge(self)
     }
 
     public func parse(_ data: [UInt8]) throws {
         try UnsafePointer(data).withMemoryRebound(to: Int8.self,
                                                   capacity: data.count) { convertedPointer in
             let bytesParsed = http_parser_execute(
-                &parser,
+                parserPointer,
                 &requestSettings,
                 convertedPointer,
                 data.count
@@ -364,12 +371,14 @@ private func onHeaderValue(
     return 0
 }
 
-private func onHeadersComplete(_ parser: CParserPointer?) -> Int32 {
-    let rawParser: RawParser = bridge(parser!.pointee.data)
+private func onHeadersComplete(_ cParserPointer: CParserPointer?) -> Int32 {
+    let rawParser: RawParser = bridge(cParserPointer!.pointee.data)
+
     let method = Int(rawParser.parser.method)
     let statusCode = Int(rawParser.parser.status_code)
     let majorVersion = Int(rawParser.parser.http_major)
     let minorVersion = Int(rawParser.parser.http_minor)
+
     do {
         let directive = try rawParser.delegate?.onHeadersComplete(
             method: method,
@@ -388,8 +397,8 @@ private func onHeadersComplete(_ parser: CParserPointer?) -> Int32 {
     }
 }
 
-private func onBody(_ parser: CParserPointer?, data: UnsafePointer<Int8>?, length: Int) -> Int32 {
-    let rawParser: RawParser = bridge(parser!.pointee.data)
+private func onBody(_ cParserPointer: CParserPointer?, data: UnsafePointer<Int8>?, length: Int) -> Int32 {
+    let rawParser: RawParser = bridge(cParserPointer!.pointee.data)
     do {
         try data?.withMemoryRebound(to: UInt8.self, capacity: length) { convertedPointer in
             try rawParser
@@ -402,8 +411,8 @@ private func onBody(_ parser: CParserPointer?, data: UnsafePointer<Int8>?, lengt
     return 0
 }
 
-private func onMessageComplete(_ parser: CParserPointer?) -> Int32 {
-    let rawParser: RawParser = bridge(parser!.pointee.data)
+private func onMessageComplete(_ cParserPointer: CParserPointer?) -> Int32 {
+    let rawParser: RawParser = bridge(cParserPointer!.pointee.data)
     do {
         try rawParser.delegate?.onMessageComplete()
     } catch {
@@ -412,8 +421,8 @@ private func onMessageComplete(_ parser: CParserPointer?) -> Int32 {
     return 0
 }
 
-private func onChunkHeader(_ parser: CParserPointer?) -> Int32 {
-    let rawParser: RawParser = bridge(parser!.pointee.data)
+private func onChunkHeader(_ cParserPointer: CParserPointer?) -> Int32 {
+    let rawParser: RawParser = bridge(cParserPointer!.pointee.data)
     do {
         try rawParser.delegate?.onChunkHeader()
     } catch {
@@ -422,8 +431,8 @@ private func onChunkHeader(_ parser: CParserPointer?) -> Int32 {
     return 0
 }
 
-private func onChunkComplete(_ parser: CParserPointer?) -> Int32 {
-    let rawParser: RawParser = bridge(parser!.pointee.data)
+private func onChunkComplete(_ cParserPointer: CParserPointer?) -> Int32 {
+    let rawParser: RawParser = bridge(cParserPointer!.pointee.data)
     do {
         try rawParser.delegate?.onChunkComplete()
     } catch {

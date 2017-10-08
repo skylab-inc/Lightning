@@ -13,7 +13,7 @@ import IOStream
 import Libc
 
 public final class Socket: WritableIOStream, ReadableIOStream {
-    private static let defaultReuseAddress = true
+    public static let defaultReuseAddress = true
 
     private let socketFD: SocketFileDescriptor
     public var fd: FileDescriptor {

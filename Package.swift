@@ -15,5 +15,6 @@ let package = Package(
     ],
     dependencies: [
         .Package(url: "https://github.com/SwiftOnEdge/Reflex.git", majorVersion: 0, minor: 5),
-    ]
+    ],
+    swiftLanguageVersions: [3, 4]
 )

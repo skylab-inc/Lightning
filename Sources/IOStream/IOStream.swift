@@ -51,7 +51,7 @@ public extension WritableIOStream {
                 // TODO: This does not seem right.
                 // Work around crash for now.
                 let dispatchData = DispatchData(
-                    bytesNoCopy: buffer,
+                    bytesNoCopy: UnsafeRawBufferPointer(buffer),
                     deallocator: .custom(nil, { })
                 )
 
