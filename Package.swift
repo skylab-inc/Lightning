@@ -2,6 +2,7 @@ import PackageDescription
 
 let package = Package(
     name: "Edge",
+    swiftLanguageVersions: [3, 4],
     targets: [
         Target(name: "Libc"),
         Target(name: "CHTTPParser"),
@@ -16,5 +17,4 @@ let package = Package(
     dependencies: [
         .Package(url: "https://github.com/SwiftOnEdge/Reflex.git", majorVersion: 0, minor: 6),
     ],
-    swiftLanguageVersions: [3, 4]
 )
