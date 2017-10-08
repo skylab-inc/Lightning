@@ -14,7 +14,7 @@ let package = Package(
         Target(name: "Routing", dependencies: ["POSIX", "HTTP"]),
     ],
     dependencies: [
-        .Package(url: "https://github.com/SwiftOnEdge/Reflex.git", majorVersion: 0, minor: 5),
+        .Package(url: "https://github.com/SwiftOnEdge/Reflex.git", majorVersion: 0, minor: 6),
     ],
     swiftLanguageVersions: [3, 4]
 )
