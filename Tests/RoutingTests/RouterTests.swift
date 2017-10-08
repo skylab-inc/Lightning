@@ -9,7 +9,7 @@
 import Foundation
 import XCTest
 import HTTP
-@testable import Drift
+@testable import Routing
 
 class RouterTests: XCTestCase {
 
