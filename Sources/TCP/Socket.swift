@@ -10,7 +10,7 @@ import Dispatch
 import Reflex
 import POSIX
 import IOStream
-import libc
+import Libc
 
 public final class Socket: WritableIOStream, ReadableIOStream {
     public static let defaultReuseAddress = true
@@ -63,7 +63,7 @@ public final class Socket: WritableIOStream, ReadableIOStream {
         return Source { [socketFD, fd, channel = self.channel] observer in
             var addrInfoPointer: UnsafeMutablePointer<addrinfo>? = nil
 
-            var hints = libc.addrinfo(
+            var hints = Libc.addrinfo(
                 ai_flags: 0,
                 ai_family: socketFD.addressFamily.rawValue,
                 ai_socktype: SOCK_STREAM,
@@ -81,7 +81,7 @@ public final class Socket: WritableIOStream, ReadableIOStream {
             }
 
             let addressInfo = addrInfoPointer!.pointee
-            let connectRet = libc.connect(
+            let connectRet = Libc.connect(
                 fd.rawValue,
                 addressInfo.ai_addr,
                 socklen_t(MemoryLayout<sockaddr>.stride)

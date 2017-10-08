@@ -1,4 +1,4 @@
-import libc
+import Libc
 #if os(Linux)
     @_exported import Glibc
     let sockStream = Int32(SOCK_STREAM.rawValue)

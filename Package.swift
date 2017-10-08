@@ -3,10 +3,10 @@ import PackageDescription
 let package = Package(
     name: "Edge",
     targets: [
-        Target(name: "libc"),
+        Target(name: "Libc"),
         Target(name: "CHTTPParser"),
-        Target(name: "POSIX", dependencies: ["libc"]),
-        Target(name: "TCP", dependencies: ["POSIX", "IOStream", "libc"]),
+        Target(name: "POSIX", dependencies: ["Libc"]),
+        Target(name: "TCP", dependencies: ["POSIX", "IOStream", "Libc"]),
         Target(name: "HTTP", dependencies: [ "POSIX", "IOStream", "TCP", "CHTTPParser"]),
         Target(name: "IOStream", dependencies: ["POSIX"]),
         Target(name: "RunLoop"),

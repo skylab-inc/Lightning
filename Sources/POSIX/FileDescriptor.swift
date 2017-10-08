@@ -1,4 +1,4 @@
-import libc
+import Libc
 
 public protocol FileDescriptor {
 
@@ -11,7 +11,7 @@ public protocol FileDescriptor {
 extension FileDescriptor {
 
     public func close() {
-        _ = libc.close(rawValue)
+        _ = Libc.close(rawValue)
     }
 }
 
