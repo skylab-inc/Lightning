@@ -1,10 +1,4 @@
-#if os(Linux)
-import Glibc
-#else
-import Darwin
-#endif
-
-import POSIX
+import Libc
 
 public protocol FileDescriptor {
 
@@ -17,7 +11,7 @@ public protocol FileDescriptor {
 extension FileDescriptor {
 
     public func close() {
-        _ = systemClose(rawValue)
+        _ = Libc.close(rawValue)
     }
 }
 

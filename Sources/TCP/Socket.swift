@@ -9,19 +9,14 @@
 import Dispatch
 import Reflex
 import POSIX
-import POSIXExtensions
 import IOStream
-#if os(Linux)
-    import Glibc
-#else
-    import Darwin
-#endif
+import Libc
 
 public final class Socket: WritableIOStream, ReadableIOStream {
     private static let defaultReuseAddress = true
 
     private let socketFD: SocketFileDescriptor
-    public var fd: POSIXExtensions.FileDescriptor {
+    public var fd: FileDescriptor {
         return socketFD
     }
     public let channel: DispatchIO
@@ -68,11 +63,11 @@ public final class Socket: WritableIOStream, ReadableIOStream {
         return Source { [socketFD, fd, channel = self.channel] observer in
             var addrInfoPointer: UnsafeMutablePointer<addrinfo>? = nil
 
-            var hints = systemCreateAddressInfo(
+            var hints = Libc.addrinfo(
                 ai_flags: 0,
                 ai_family: socketFD.addressFamily.rawValue,
-                ai_socktype: POSIXExtensions.SOCK_STREAM,
-                ai_protocol: POSIXExtensions.IPPROTO_TCP,
+                ai_socktype: SOCK_STREAM,
+                ai_protocol: IPPROTO_TCP,
                 ai_addrlen: 0,
                 ai_canonname: nil,
                 ai_addr: nil,
@@ -86,7 +81,7 @@ public final class Socket: WritableIOStream, ReadableIOStream {
             }
 
             let addressInfo = addrInfoPointer!.pointee
-            let connectRet = systemConnect(
+            let connectRet = Libc.connect(
                 fd.rawValue,
                 addressInfo.ai_addr,
                 socklen_t(MemoryLayout<sockaddr>.stride)

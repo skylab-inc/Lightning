@@ -8,12 +8,11 @@
 
 import Dispatch
 import POSIX
-import POSIXExtensions
 import Reflex
 
 public final class Pipe: WritableIOStream, ReadableIOStream {
 
-    public let fd: POSIXExtensions.FileDescriptor
+    public let fd: FileDescriptor
     public let channel: DispatchIO
     public let channelErrorSignal: Signal<(), SystemError>
 

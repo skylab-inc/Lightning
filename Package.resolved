@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "SwiftServerHttp",
+        "repositoryURL": "https://github.com/swift-server/http.git",
+        "state": {
+          "branch": null,
+          "revision": "f8516cc7252cc1e4a9f31ac5fa35175acdd2f47d",
+          "version": "0.1.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

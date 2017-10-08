@@ -9,13 +9,8 @@
 import Dispatch
 import Reflex
 import POSIX
-import POSIXExtensions
 import IOStream
-#if os(Linux)
-    import Glibc
-#else
-    import Darwin
-#endif
+import Libc
 
 public final class Server {
 
@@ -58,11 +53,11 @@ public final class Server {
     public func bind(host: String, port: Port) throws {
         var addrInfoPointer: UnsafeMutablePointer<addrinfo>? = nil
 
-        var hints = systemCreateAddressInfo(
+        var hints = Libc.addrinfo(
             ai_flags: 0,
             ai_family: fd.addressFamily.rawValue,
-            ai_socktype: POSIXExtensions.SOCK_STREAM,
-            ai_protocol: POSIXExtensions.IPPROTO_TCP,
+            ai_socktype: SOCK_STREAM,
+            ai_protocol: IPPROTO_TCP,
             ai_addrlen: 0,
             ai_canonname: nil,
             ai_addr: nil,
@@ -76,7 +71,7 @@ public final class Server {
 
         let addressInfo = addrInfoPointer!.pointee
 
-        let bindRet = systemBind(
+        let bindRet = Libc.bind(
             fd.rawValue,
             addressInfo.ai_addr,
             socklen_t(MemoryLayout<sockaddr>.stride)
@@ -90,7 +85,7 @@ public final class Server {
 
     public func listen(backlog: Int = 32) -> Source<Socket, SystemError> {
         return Source { [listeningSource = self.listeningSource, fd = self.fd] observer in
-            let ret = systemListen(fd.rawValue, Int32(backlog))
+            let ret = Libc.listen(fd.rawValue, Int32(backlog))
             if ret != 0 {
                 observer.sendFailed(SystemError(errorNumber: errno)!)
                 return nil
@@ -98,12 +93,12 @@ public final class Server {
             listeningSource.setEventHandler {
 
                 var socketAddress = sockaddr()
-                var sockLen = socklen_t(POSIXExtensions.SOCK_MAXADDRLEN)
+                var sockLen = socklen_t(SOCK_MAXADDRLEN)
 
                 // Accept connections
                 let numPendingConnections: UInt = listeningSource.data
                 for _ in 0..<numPendingConnections {
-                    let ret = systemAccept(fd.rawValue, &socketAddress, &sockLen)
+                    let ret = Libc.accept(fd.rawValue, &socketAddress, &sockLen)
                     if ret == StandardFileDescriptor.invalid.rawValue {
                         observer.sendFailed(SystemError(errorNumber: errno)!)
                     }

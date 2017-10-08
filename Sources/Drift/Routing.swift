@@ -2,7 +2,6 @@ import Foundation
 import Reflex
 import HTTP
 import POSIX
-import POSIXExtensions
 
 public final class Router {
 
@@ -23,7 +22,7 @@ public final class Router {
         disposable?.dispose()
     }
 
-    func start(host: String, port: POSIXExtensions.Port) {
+    func start(host: String, port: POSIX.Port) {
         let server = HTTP.Server()
         let stream = server.listen(host: host, port: port)
         stream.onNext { [weak self] client in

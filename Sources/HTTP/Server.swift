@@ -9,14 +9,13 @@
 import Dispatch
 import Reflex
 import POSIX
-import POSIXExtensions
 import TCP
 
 public final class Server {
 
     public init() {}
 
-    public func listen(host: String, port: Port) -> Source<ClientConnection, SystemError> {
+    public func listen(host: String, port: POSIX.Port) -> Source<ClientConnection, SystemError> {
         return Source { observer in
 
             let tcpServer = try! TCP.Server()

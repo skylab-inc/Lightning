@@ -9,7 +9,6 @@
 import Dispatch
 import Reflex
 import POSIX
-import POSIXExtensions
 // swiftlint:disable variable_name
 #if os(Linux)
     import Glibc
@@ -24,7 +23,7 @@ import POSIXExtensions
 
 public protocol WritableIOStream: class {
 
-    var fd: POSIXExtensions.FileDescriptor { get }
+    var fd: FileDescriptor { get }
 
     var channel: DispatchIO { get }
 
@@ -99,7 +98,7 @@ public extension WritableIOStream {
 
 public protocol ReadableIOStream: class {
 
-    var fd: POSIXExtensions.FileDescriptor { get }
+    var fd: FileDescriptor { get }
 
     var channel: DispatchIO { get }
 
