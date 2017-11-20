@@ -37,3 +37,4 @@ then
 fi
 
 echo `swift --version`;
+swift build
