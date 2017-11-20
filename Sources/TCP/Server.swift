@@ -53,16 +53,29 @@ public final class Server {
     public func bind(host: String, port: Port) throws {
         var addrInfoPointer: UnsafeMutablePointer<addrinfo>? = nil
 
-        var hints = Libc.addrinfo(
-            ai_flags: 0,
-            ai_family: fd.addressFamily.rawValue,
-            ai_socktype: SOCK_STREAM,
-            ai_protocol: IPPROTO_TCP,
-            ai_addrlen: 0,
-            ai_canonname: nil,
-            ai_addr: nil,
-            ai_next: nil
-        )
+        #if os(Linux)
+            var hints = addrinfo(
+                ai_flags: 0,
+                ai_family: fd.addressFamily.rawValue,
+                ai_socktype: Int32(SOCK_STREAM.rawValue),
+                ai_protocol: Int32(IPPROTO_TCP),
+                ai_addrlen: 0,
+                ai_addr: nil,
+                ai_canonname: nil,
+                ai_next: nil
+            )
+        #else
+            var hints = addrinfo(
+                ai_flags: 0,
+                ai_family: fd.addressFamily.rawValue,
+                ai_socktype: SOCK_STREAM,
+                ai_protocol: IPPROTO_TCP,
+                ai_addrlen: 0,
+                ai_canonname: nil,
+                ai_addr: nil,
+                ai_next: nil
+            )
+        #endif
 
         let ret = getaddrinfo(host, String(port), &hints, &addrInfoPointer)
         if let systemError = SystemError(errorNumber: ret) {
@@ -93,7 +106,7 @@ public final class Server {
             listeningSource.setEventHandler {
 
                 var socketAddress = sockaddr()
-                var sockLen = socklen_t(SOCK_MAXADDRLEN)
+                var sockLen = socklen_t(MemoryLayout<sockaddr>.size)
 
                 // Accept connections
                 let numPendingConnections: UInt = listeningSource.data

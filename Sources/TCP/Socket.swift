@@ -63,16 +63,29 @@ public final class Socket: WritableIOStream, ReadableIOStream {
         return Source { [socketFD, fd, channel = self.channel] observer in
             var addrInfoPointer: UnsafeMutablePointer<addrinfo>? = nil
 
-            var hints = Libc.addrinfo(
-                ai_flags: 0,
-                ai_family: socketFD.addressFamily.rawValue,
-                ai_socktype: SOCK_STREAM,
-                ai_protocol: IPPROTO_TCP,
-                ai_addrlen: 0,
-                ai_canonname: nil,
-                ai_addr: nil,
-                ai_next: nil
-            )
+            #if os(Linux)
+                var hints = addrinfo(
+                    ai_flags: 0,
+                    ai_family: socketFD.addressFamily.rawValue,
+                    ai_socktype: Int32(SOCK_STREAM.rawValue),
+                    ai_protocol: 0,
+                    ai_addrlen: 0,
+                    ai_addr: nil,
+                    ai_canonname: nil,
+                    ai_next: nil
+                )
+            #else
+                var hints = addrinfo(
+                    ai_flags: 0,
+                    ai_family: socketFD.addressFamily.rawValue,
+                    ai_socktype: SOCK_STREAM,
+                    ai_protocol: 0,
+                    ai_addrlen: 0,
+                    ai_canonname: nil,
+                    ai_addr: nil,
+                    ai_next: nil
+                )
+            #endif
 
             let ret = getaddrinfo(host, String(port), &hints, &addrInfoPointer)
             if let systemError = SystemError(errorNumber: ret) {
