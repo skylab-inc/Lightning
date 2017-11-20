@@ -11,7 +11,8 @@ matrix:
       sudo: required
 
 before_install:
-    - if [ $TRAVIS_OS_NAME == "linux" ]; then
+    - >
+      if [ $TRAVIS_OS_NAME == "linux" ]; then
           ./Scripts/TravisCI/install-swift.sh
       fi
 
