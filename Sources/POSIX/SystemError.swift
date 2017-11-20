@@ -1,4 +1,8 @@
-import Libc
+#if os(Linux)
+    import Glibc
+#else
+    import Darwin.C
+#endif
 
 public enum SystemError : Error {
     case operationNotPermitted

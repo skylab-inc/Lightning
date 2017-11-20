@@ -5,12 +5,16 @@
 //  Created by Tyler Fleming Cloutier on 4/30/16.
 //
 //
+#if os(Linux)
+    import Glibc
+#else
+    import Darwin
+#endif
 
 import Dispatch
 import StreamKit
 import POSIX
 import IOStream
-import Libc
 
 public final class Server {
 
@@ -54,7 +58,7 @@ public final class Server {
         var addrInfoPointer: UnsafeMutablePointer<addrinfo>? = nil
 
         #if os(Linux)
-            var hints = addrinfo(
+            var hints = Glibc.addrinfo(
                 ai_flags: 0,
                 ai_family: fd.addressFamily.rawValue,
                 ai_socktype: Int32(SOCK_STREAM.rawValue),
@@ -65,7 +69,7 @@ public final class Server {
                 ai_next: nil
             )
         #else
-            var hints = addrinfo(
+            var hints = Darwin.addrinfo(
                 ai_flags: 0,
                 ai_family: fd.addressFamily.rawValue,
                 ai_socktype: SOCK_STREAM,
@@ -84,11 +88,19 @@ public final class Server {
 
         let addressInfo = addrInfoPointer!.pointee
 
-        let bindRet = Libc.bind(
-            fd.rawValue,
-            addressInfo.ai_addr,
-            socklen_t(MemoryLayout<sockaddr>.stride)
-        )
+        #if os(Linux)
+            let bindRet = Glibc.bind(
+                fd.rawValue,
+                addressInfo.ai_addr,
+                socklen_t(MemoryLayout<sockaddr>.stride)
+            )
+        #else
+             let bindRet = Darwin.bind(
+                fd.rawValue,
+                addressInfo.ai_addr,
+                socklen_t(MemoryLayout<sockaddr>.stride)
+            )
+        #endif
         freeaddrinfo(addrInfoPointer)
 
         if bindRet != 0 {
@@ -98,7 +110,11 @@ public final class Server {
 
     public func listen(backlog: Int = 32) -> Source<Socket, SystemError> {
         return Source { [listeningSource = self.listeningSource, fd = self.fd] observer in
-            let ret = Libc.listen(fd.rawValue, Int32(backlog))
+            #if os(Linux)
+                let ret = Glibc.listen(fd.rawValue, Int32(backlog))
+            #else
+                let ret = Darwin.listen(fd.rawValue, Int32(backlog))
+            #endif
             if ret != 0 {
                 observer.sendFailed(SystemError(errorNumber: errno)!)
                 return nil
@@ -111,7 +127,11 @@ public final class Server {
                 // Accept connections
                 let numPendingConnections: UInt = listeningSource.data
                 for _ in 0..<numPendingConnections {
-                    let ret = Libc.accept(fd.rawValue, &socketAddress, &sockLen)
+                    #if os(Linux)
+                        let ret = Glibc.accept(fd.rawValue, &socketAddress, &sockLen)
+                    #else
+                        let ret = Darwin.accept(fd.rawValue, &socketAddress, &sockLen)
+                    #endif
                     if ret == StandardFileDescriptor.invalid.rawValue {
                         observer.sendFailed(SystemError(errorNumber: errno)!)
                     }

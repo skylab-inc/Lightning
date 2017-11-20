@@ -1,4 +1,8 @@
-import Libc
+#if os(Linux)
+    import Glibc
+#else
+    import Darwin
+#endif
 
 public protocol FileDescriptor {
 
@@ -11,7 +15,12 @@ public protocol FileDescriptor {
 extension FileDescriptor {
 
     public func close() {
-        _ = Libc.close(rawValue)
+        #if os(Linux)
+            _ = Glibc.close(rawValue)
+        #else
+            _ = Darwin.close(rawValue)
+        #endif
+
     }
 }
 

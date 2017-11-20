@@ -9,10 +9,9 @@ let package = Package(
         .package(url: "https://github.com/skylab-inc/StreamKit.git", from: "0.7.0"),
     ],
     targets: [
-        .target(name: "Libc"),
         .target(name: "CHTTPParser"),
-        .target(name: "POSIX", dependencies: ["Libc"]),
-        .target(name: "TCP", dependencies: ["POSIX", "IOStream", "Libc"]),
+        .target(name: "POSIX"),
+        .target(name: "TCP", dependencies: ["POSIX", "IOStream"]),
         .target(name: "HTTP", dependencies: [ "POSIX", "IOStream", "TCP", "CHTTPParser"]),
         .target(name: "IOStream", dependencies: ["POSIX", "StreamKit"]),
         .target(name: "RunLoop"),

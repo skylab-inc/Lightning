@@ -1,13 +1,12 @@
-import Libc
 #if os(Linux)
-    @_exported import Glibc
+    import Glibc
     let sockStream = Int32(SOCK_STREAM.rawValue)
     let sockDgram = Int32(SOCK_DGRAM.rawValue)
     let sockSeqPacket = Int32(SOCK_SEQPACKET.rawValue)
     let sockRaw = Int32(SOCK_RAW.rawValue)
     let sockRDM = Int32(SOCK_RDM.rawValue)
 #else
-    @_exported import Darwin.C
+    import Darwin.C
     let sockStream = SOCK_STREAM
     let sockDgram = SOCK_DGRAM
     let sockSeqPacket = SOCK_SEQPACKET

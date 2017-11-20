@@ -5,12 +5,16 @@
 //  Created by Tyler Fleming Cloutier on 5/8/16.
 //
 //
+#if os(Linux)
+    import Glibc
+#else
+    import Darwin
+#endif
 
 import Dispatch
 import StreamKit
 import POSIX
 import IOStream
-import Libc
 
 public final class Socket: WritableIOStream, ReadableIOStream {
     public static let defaultReuseAddress = true
@@ -94,11 +98,19 @@ public final class Socket: WritableIOStream, ReadableIOStream {
             }
 
             let addressInfo = addrInfoPointer!.pointee
-            let connectRet = Libc.connect(
-                fd.rawValue,
-                addressInfo.ai_addr,
-                socklen_t(MemoryLayout<sockaddr>.stride)
-            )
+            #if os(Linux)
+                let connectRet = Glibc.connect(
+                    fd.rawValue,
+                    addressInfo.ai_addr,
+                    socklen_t(MemoryLayout<sockaddr>.stride)
+                )
+            #else
+                let connectRet = Darwin.connect(
+                    fd.rawValue,
+                    addressInfo.ai_addr,
+                    socklen_t(MemoryLayout<sockaddr>.stride)
+                )
+            #endif
             freeaddrinfo(addrInfoPointer)
 
             // Blocking, connect immediately or throw error

@@ -107,7 +107,7 @@ class ServerTests: XCTestCase {
         sendRequest(path: "", method: "POST")
         sendRequest(path: "", method: "GET")
 
-        waitForExpectations(timeout: 1)
+        waitForExpectations(timeout: 2)
     }
 
 }
