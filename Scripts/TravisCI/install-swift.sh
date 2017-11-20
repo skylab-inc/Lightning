@@ -33,8 +33,7 @@ then
     URL="https://swift.org/builds/$RELEASE_NAME_LOWER/$OS_STRIPPED/$RELEASE_NAME_UPPER/$SWIFT_FILENAME.tar.gz";
     wget $URL
     tar -zxf "$SWIFT_FILENAME.tar.gz";
-    export PATH=$PWD/$SWIFT_FILENAME/usr/bin:"${PATH}";
+    mv $PWD/$SWIFT_FILENAME/usr/bin/* /usr/local/bin
 fi
 
 echo `swift --version`;
-swift build
