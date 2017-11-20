@@ -18,5 +18,9 @@ let package = Package(
         .target(name: "RunLoop"),
         .target(name: "Edge", dependencies: ["TCP", "IOStream", "RunLoop", "HTTP", "Routing"]),
         .target(name: "Routing", dependencies: ["POSIX", "HTTP"]),
+        .testTarget(name: "HTTPTests", dependencies: ["HTTP"]),
+        .testTarget(name: "IOStreamTests", dependencies: ["IOStream"]),
+        .testTarget(name: "TCPTests", dependencies: ["TCP"]),
+        .testTarget(name: "RoutingTests", dependencies: ["Routing"]),
     ]
 )
