@@ -17,7 +17,7 @@ then
 
     echo "Installing Swift on Ubuntu $UBUNTU_VERSION."
 
-    if [[ $UBUNTU_VERSION != "15.10" ]] && [[ $UBUNTU_VERSION != "14.04" ]];
+    if [[ $UBUNTU_VERSION != "16.04" ]] && [[ $UBUNTU_VERSION != "14.04" ]];
     then
         echo "Ubuntu version $UBUNTU_VERSION is not yet supported.";
         exit 1;
@@ -37,7 +37,3 @@ then
 fi
 
 echo `swift --version`;
-
-swift build
-swift build -c release
-swift test
