@@ -6,9 +6,26 @@
 //
 //
 
-@_exported import StreamKit
-@_exported import IOStream
-@_exported import TCP
-@_exported import RunLoop
-@_exported import HTTP
-@_exported import Routing
+#if os(Linux)
+    import Glibc
+#else
+    import Darwin
+#endif
+import Dispatch
+
+public struct Edge {
+
+    private init() {}
+
+    public static func run(ignoreSigPipe: Bool = true) {
+        if ignoreSigPipe {
+            #if os(Linux)
+                Glibc.signal(SIGPIPE, SIG_IGN)
+            #else
+                Darwin.signal(SIGPIPE, SIG_IGN)
+            #endif
+        }
+        dispatchMain()
+    }
+
+}

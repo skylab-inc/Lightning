@@ -3,12 +3,11 @@ import StreamKit
 import HTTP
 import POSIX
 
-public final class Router {
+public final class Router: ServerDelegate {
 
     var endpoints: [RequestTransformer] = []
     var subpath: String = ""
     weak var parent: Router? = nil
-    private var disposable: ActionDisposable? = nil
 
     public init() {
 
@@ -16,33 +15,6 @@ public final class Router {
 
     private init(transformers: [RequestTransformer]) {
         self.endpoints = transformers
-    }
-
-    deinit {
-        disposable?.dispose()
-    }
-
-    func start(host: String, port: POSIX.Port) {
-        let server = HTTP.Server()
-        let stream = server.listen(host: host, port: port)
-        stream.onNext { [weak self] client in
-            let requestStream = client.read()
-            if let (responses, unhandledRequests) =
-                self?.transform(requests: requestStream.signal) {
-
-                responses.onNext { response in
-                    client.write(response).start()
-                }
-                unhandledRequests.onNext { request in
-                    fatalError("Unhandled request: \(request)")
-                }
-                requestStream.start()
-            }
-        }
-        disposable = ActionDisposable {
-            stream.stop()
-        }
-        stream.start()
     }
 
     var path: String {
@@ -156,7 +128,7 @@ public final class Router {
         return Router(transformers: newTransformers)
     }
 
-    func transform(requests: Signal<Request, ClientError>)
+    public func transform(requests: Signal<Request, ClientError>)
         -> (Signal<Response, ClientError>, Signal<Request, ClientError>) {
         var forwardedRequests = requests
         let (allResponses, allResponsesInput) = Signal<Response, ClientError>.pipe()

@@ -14,8 +14,6 @@ let package = Package(
                 "TCP",
                 "HTTP",
                 "IOStream",
-                "RunLoop",
-                "Routing",
             ]
         ),
     ],
@@ -26,14 +24,12 @@ let package = Package(
         .target(name: "CHTTPParser"),
         .target(name: "POSIX"),
         .target(name: "TCP", dependencies: ["POSIX", "IOStream"]),
-        .target(name: "HTTP", dependencies: [ "POSIX", "IOStream", "TCP", "CHTTPParser"]),
+        .target(name: "HTTP", dependencies: [ "POSIX", "IOStream", "TCP", "CHTTPParser", "POSIX"]),
         .target(name: "IOStream", dependencies: ["POSIX", "StreamKit"]),
-        .target(name: "RunLoop"),
-        .target(name: "Edge", dependencies: ["TCP", "IOStream", "RunLoop", "HTTP", "Routing"]),
-        .target(name: "Routing", dependencies: ["POSIX", "HTTP"]),
+        .target(name: "Edge", dependencies: ["TCP", "IOStream", "HTTP"]),
         .testTarget(name: "HTTPTests", dependencies: ["HTTP"]),
         .testTarget(name: "IOStreamTests", dependencies: ["IOStream"]),
         .testTarget(name: "TCPTests", dependencies: ["TCP"]),
-        .testTarget(name: "RoutingTests", dependencies: ["Routing"]),
+        .testTarget(name: "RoutingTests", dependencies: ["HTTP"]),
     ]
 )

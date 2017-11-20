@@ -118,14 +118,17 @@ class RouterTests: XCTestCase {
         app.add("/v1.0", api)
         app.add(notFound)
 
-        app.start(host: "0.0.0.0", port: 3000)
+        let server = HTTP.Server(delegate: app)
+        server.listen(host: "0.0.0.0", port: 3000)
 
         sendRequest(path: "/v1.0/users", method: "GET")
         sendRequest(path: "/v1.0/login", method: "POST")
         sendRequest(path: "/v1.0/login2", method: "POST")
         sendRequest(path: "/v1.0/login3", method: "GET")
 
-        waitForExpectations(timeout: 1)
+        waitForExpectations(timeout: 1) { error in
+            server.stop()
+        }
     }
 
     func testMiddleware() {
@@ -164,9 +167,11 @@ class RouterTests: XCTestCase {
 
         a.add(b)
 
-        a.start(host: "0.0.0.0", port: 3000)
-
-        waitForExpectations(timeout: 1)
+        let server = HTTP.Server(delegate: a)
+        server.listen(host: "0.0.0.0", port: 3000)
+        waitForExpectations(timeout: 1) { error in
+            server.stop()
+        }
     }
 
 }

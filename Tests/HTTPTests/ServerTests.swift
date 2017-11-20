@@ -79,7 +79,7 @@ class ServerTests: XCTestCase {
         }
 
         let server = HTTP.Server()
-        server.listen(host: "0.0.0.0", port: 3001).startWithNext { client in
+        server.clientSource(host: "0.0.0.0", port: 3001).startWithNext { client in
 
             let requestStream = client
                 .read()
@@ -107,7 +107,9 @@ class ServerTests: XCTestCase {
         sendRequest(path: "", method: "POST")
         sendRequest(path: "", method: "GET")
 
-        waitForExpectations(timeout: 2)
+        waitForExpectations(timeout: 1) { error in
+            server.stop()
+        }
     }
 
 }
