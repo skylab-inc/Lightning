@@ -11,7 +11,9 @@ matrix:
       sudo: required
 
 script:
-  - ./Scripts/TravisCI/test.sh
+    - swift build
+    - swift build -c release
+    - swift test
 
 after_success:
   - ./Scripts/TravisCI/code-coverage.sh
