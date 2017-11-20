@@ -16,4 +16,4 @@ ADD Package.swift .
 
 RUN chmod o+rw -R /usr/lib/swift/CoreFoundation/
 
-RUN swift build
+RUN swift test

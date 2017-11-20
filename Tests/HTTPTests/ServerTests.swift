@@ -54,62 +54,60 @@ class ServerTests: XCTestCase {
     }
 
     func testServer() {
-        #if !os(Linux)
-            let json = ["message": "Message to server!"]
-            let jsonResponse = ["message": "Message received!"]
+        let json = ["message": "Message to server!"]
+        let jsonResponse = ["message": "Message received!"]
 
-            let postRequestExpectation = expectation(description: "Did not receive a POST request.")
-            let getRequestExpectation = expectation(description: "Did not receive a GET request.")
-            func handleRequest(request: Request) -> Response {
-                if request.method == .post {
-                    let data = Data(request.body)
-                    guard let stringBody = try? JSONSerialization.jsonObject(with: data) else {
-                        XCTFail("Problem deserializing body")
-                        fatalError()
-                    }
-                    guard let body = stringBody as? [String:String] else {
-                        XCTFail("Body not well formed json")
-                        fatalError()
-                    }
-                    XCTAssert(body == json, "Received body \(body) != json \(json)")
-                    postRequestExpectation.fulfill()
-                } else if request.method == .get {
-                    getRequestExpectation.fulfill()
+        let postRequestExpectation = expectation(description: "Did not receive a POST request.")
+        let getRequestExpectation = expectation(description: "Did not receive a GET request.")
+        func handleRequest(request: Request) -> Response {
+            if request.method == .post {
+                let data = Data(request.body)
+                guard let stringBody = try? JSONSerialization.jsonObject(with: data) else {
+                    XCTFail("Problem deserializing body")
+                    fatalError()
                 }
-                return try! Response(json: jsonResponse)
+                guard let body = stringBody as? [String:String] else {
+                    XCTFail("Body not well formed json")
+                    fatalError()
+                }
+                XCTAssert(body == json, "Received body \(body) != json \(json)")
+                postRequestExpectation.fulfill()
+            } else if request.method == .get {
+                getRequestExpectation.fulfill()
+            }
+            return try! Response(json: jsonResponse)
+        }
+
+        let server = HTTP.Server()
+        server.listen(host: "0.0.0.0", port: 3001).startWithNext { client in
+
+            let requestStream = client
+                .read()
+                .map(handleRequest)
+
+            requestStream.onNext { response in
+                let writeStream = client.write(response)
+                writeStream.onFailed { err in
+                    XCTFail(String(describing: err))
+                }
+                writeStream.start()
             }
 
-            let server = HTTP.Server()
-            server.listen(host: "0.0.0.0", port: 3001).startWithNext { client in
-
-                let requestStream = client
-                    .read()
-                    .map(handleRequest)
-
-                requestStream.onNext { response in
-                    let writeStream = client.write(response)
-                    writeStream.onFailed { err in
-                        XCTFail(String(describing: err))
-                    }
-                    writeStream.start()
-                }
-
-                requestStream.onFailed { clientError in
-                    XCTFail("ClientError: \(clientError)")
-                }
-
-                requestStream.onCompleted {
-
-                }
-
-                requestStream.start()
+            requestStream.onFailed { clientError in
+                XCTFail("ClientError: \(clientError)")
             }
 
-            sendRequest(path: "", method: "POST")
-            sendRequest(path: "", method: "GET")
+            requestStream.onCompleted {
 
-            waitForExpectations(timeout: 1)
-        #endif
+            }
+
+            requestStream.start()
+        }
+
+        sendRequest(path: "", method: "POST")
+        sendRequest(path: "", method: "GET")
+
+        waitForExpectations(timeout: 1)
     }
 
 }
