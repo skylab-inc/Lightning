@@ -5,6 +5,20 @@ import PackageDescription
 
 let package = Package(
     name: "Edge",
+    products: [
+        .library(
+            name: "Edge",
+            targets: [
+                "Edge",
+                "POSIX",
+                "TCP",
+                "HTTP",
+                "IOStream",
+                "RunLoop",
+                "Routing",
+            ]
+        ),
+    ],
     dependencies: [
         .package(url: "https://github.com/skylab-inc/StreamKit.git", from: "0.7.0"),
     ],
