@@ -1,7 +1,5 @@
 import Foundation
 import StreamKit
-import HTTP
-import POSIX
 
 public final class Router: ServerDelegate {
 

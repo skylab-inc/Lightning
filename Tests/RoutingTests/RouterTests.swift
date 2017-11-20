@@ -8,8 +8,7 @@
 
 import Foundation
 import XCTest
-import HTTP
-@testable import Routing
+@testable import HTTP
 
 class RouterTests: XCTestCase {
 

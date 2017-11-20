@@ -24,7 +24,7 @@ let package = Package(
         .target(name: "CHTTPParser"),
         .target(name: "POSIX"),
         .target(name: "TCP", dependencies: ["POSIX", "IOStream"]),
-        .target(name: "HTTP", dependencies: [ "POSIX", "IOStream", "TCP", "CHTTPParser", "POSIX"]),
+        .target(name: "HTTP", dependencies: [ "POSIX", "IOStream", "TCP", "CHTTPParser"]),
         .target(name: "IOStream", dependencies: ["POSIX", "StreamKit"]),
         .target(name: "Edge", dependencies: ["TCP", "IOStream", "HTTP"]),
         .testTarget(name: "HTTPTests", dependencies: ["HTTP"]),
