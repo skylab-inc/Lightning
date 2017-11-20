@@ -13,7 +13,7 @@ public protocol HTTPMessage {
     var rawHeaders: [String] { get set }
     var headers: [String:String] { get }
     var cookies: [String] { get }
-    var body: [UInt8] { get set }
+    var body: Data { get set }
 }
 
 public extension HTTPMessage {

@@ -8,7 +8,7 @@ class RequestParserTests: XCTestCase {
         let parser = RequestParser()
         let data = ("INVALID / HTTP/1.1\r\n" + "\r\n")
         do {
-            try parser.parse(Array(data.utf8))
+            try parser.parse(Data(data.utf8))
         } catch {
             expectParseError.fulfill()
         }
@@ -63,7 +63,7 @@ class RequestParserTests: XCTestCase {
                 XCTAssert(request.rawHeaders.count == 0)
             }
             do {
-                try parser.parse(Array(data.utf8))
+                try parser.parse(Data(data.utf8))
             } catch {
                 XCTFail("Parsing error \(error) for method \(method)")
             }
@@ -92,7 +92,7 @@ class RequestParserTests: XCTestCase {
         ]
         do {
             for data in dataArray {
-                try parser.parse(Array(data.utf8))
+                try parser.parse(Data(data.utf8))
             }
         } catch {
             XCTFail("Parsing error \(error).")
@@ -115,7 +115,7 @@ class RequestParserTests: XCTestCase {
             XCTAssert(request.rawHeaders[1] == "swift.org")
         }
         do {
-            try parser.parse(Array(data.utf8))
+            try parser.parse(Data(data.utf8))
         } catch {
             XCTFail("Parsing error \(error).")
         }
@@ -147,7 +147,7 @@ class RequestParserTests: XCTestCase {
         ]
         do {
             for data in dataArray {
-                try parser.parse(Array(data.utf8))
+                try parser.parse(Data(data.utf8))
             }
         } catch {
             XCTFail("Parsing error \(error).")
@@ -187,7 +187,7 @@ class RequestParserTests: XCTestCase {
         ]
         do {
             for data in dataArray {
-                try parser.parse(Array(data.utf8))
+                try parser.parse(Data(data.utf8))
             }
         } catch {
             XCTFail("Parsing error \(error).")
@@ -211,7 +211,7 @@ class RequestParserTests: XCTestCase {
                 "\r\n" +
                 "Swift")
         do {
-            try parser.parse(Array(data.utf8))
+            try parser.parse(Data(data.utf8))
         } catch {
             XCTFail("Parsing error \(error).")
         }
@@ -244,7 +244,7 @@ class RequestParserTests: XCTestCase {
         ]
         do {
             for data in dataArray {
-                try parser.parse(Array(data.utf8))
+                try parser.parse(Data(data.utf8))
             }
         } catch {
             XCTFail("Parsing error \(error).")
@@ -282,7 +282,7 @@ class RequestParserTests: XCTestCase {
         ]
         do {
             for data in dataArray {
-                try parser.parse(Array(data.utf8))
+                try parser.parse(Data(data.utf8))
             }
         } catch {
             XCTFail("Parsing error \(error).")
@@ -310,7 +310,7 @@ class RequestParserTests: XCTestCase {
         }
         let data = "GET / HTTP/1.1\r\n\r\nHEAD /profile HTTP/1.1\r\n\r\n"
         do {
-            try parser.parse(Array(data.utf8))
+            try parser.parse(Data(data.utf8))
         } catch {
             XCTFail("Parsing error \(error).")
         }
@@ -336,7 +336,7 @@ class RequestParserTests: XCTestCase {
             }
             for _ in 0 ..< messageNumber {
                 do {
-                    try parser.parse(Array(data.utf8))
+                    try parser.parse(Data(data.utf8))
                 } catch {
                     XCTFail("Parsing error \(error).")
                 }

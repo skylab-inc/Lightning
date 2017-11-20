@@ -79,7 +79,7 @@ class ResponseParserTests: XCTestCase {
         let parser = ResponseParser()
         let data = ("FTP/1.1 200 OK\r\n\r\n")
         XCTAssertThrowsError(
-            try parser.parse(Array(data.utf8)),
+            try parser.parse(Data(data.utf8)),
             "Invalid request did not throw an error."
         )
     }
@@ -102,7 +102,7 @@ class ResponseParserTests: XCTestCase {
                 XCTAssert(response.headers.count == (contentLength == "" ? 0 : 1))
             }
             do {
-                try parser.parse(Array(data.utf8))
+                try parser.parse(Data(data.utf8))
             } catch {
                 XCTFail("Parsing error \(error) for \(data)")
             }

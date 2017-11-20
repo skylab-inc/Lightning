@@ -141,7 +141,7 @@ class RouterTests: XCTestCase {
                 uri: request.uri,
                 version: request.version,
                 rawHeaders: request.rawHeaders,
-                body: Array("Hehe, changin' the body.".utf8)
+                body: Data("Hehe, changin' the body.".utf8)
             )
         }
 

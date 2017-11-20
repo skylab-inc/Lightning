@@ -18,7 +18,7 @@ class ResponseSerializationTests: XCTestCase {
             version: Version(major: 1, minor: 1),
             status: .ok,
             rawHeaders: [],
-            body: []
+            body: Data()
         )
         let actual = String(bytes: response.serialized, encoding: .utf8)!
         XCTAssert(expected == actual, "Actual response, \(actual), did not match expected.")
@@ -37,7 +37,7 @@ class ResponseSerializationTests: XCTestCase {
                 "Date", "Sun, 30 Oct 2016 09:06:40 GMT",
                 "Content-Type", "text/html; charset=ISO-8859-1"
             ],
-            body: []
+            body: Data()
         )
         let actual = String(bytes: response.serialized, encoding: .utf8)!
         XCTAssert(expected == actual, "Actual request, \(actual), did not match expected.")

@@ -44,7 +44,7 @@ class ConnectionTests: XCTestCase {
         let socket = try Socket()
         let connect = socket.connect(host: "localhost", port: 50000)
         connect.onCompleted {
-            let buffer = Array("This is a test".utf8)
+            let buffer = Data("This is a test".utf8)
             let write = socket.write(buffer: buffer)
             write.onCompleted {
                 completeWriteExpectation.fulfill()

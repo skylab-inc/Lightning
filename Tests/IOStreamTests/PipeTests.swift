@@ -10,7 +10,7 @@ class PipeTests: XCTestCase {
         let stdout = Pipe(fd: .stdout)
 
         // Write to stdout
-        let outStream = stdout.write(buffer: Array("Send it in!\n".utf8))
+        let outStream = stdout.write(buffer: Data("Send it in!\n".utf8))
         outStream.onFailed { err in
             XCTFail(String(describing: err))
         }

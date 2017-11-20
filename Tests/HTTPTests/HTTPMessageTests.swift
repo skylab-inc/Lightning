@@ -20,7 +20,7 @@ class HTTPMessageTests: XCTestCase {
                 key == "set-cookie"
             }.map { $0.1 }
         }
-        var body: [UInt8] = []
+        var body: Data = Data()
     }
 
     func testHeaders() {

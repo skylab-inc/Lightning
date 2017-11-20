@@ -5,7 +5,7 @@
 //  Created by Tyler Fleming Cloutier on 5/1/16.
 //
 //
-
+import Foundation
 import Dispatch
 import StreamKit
 import POSIX
@@ -27,13 +27,13 @@ public protocol WritableIOStream: class {
 
     var channel: DispatchIO { get }
 
-    func write(buffer: [UInt8]) -> Source<[UInt8], SystemError>
+    func write(buffer: Data) -> Source<Data, SystemError>
 
 }
 
 public extension WritableIOStream {
 
-    func write(buffer: [UInt8]) -> Source<[UInt8], SystemError> {
+    func write(buffer: Data) -> Source<Data, SystemError> {
         return Source { observer in
             let writeChannel = DispatchIO(
                 type: .stream,
@@ -45,50 +45,50 @@ public extension WritableIOStream {
                 }
             }
 
-            buffer.withUnsafeBufferPointer { buffer in
-
-                // Allocate dispatch data
-                // TODO: This does not seem right.
-                // Work around crash for now.
-                let dispatchData = DispatchData(
-                    bytesNoCopy: UnsafeRawBufferPointer(buffer),
+            // Allocate dispatch data
+            // TODO: This does not seem right.
+            // Work around crash for now.
+            let dispatchData = buffer.withUnsafeBytes {
+                return DispatchData(
+                    bytesNoCopy: UnsafeRawBufferPointer(start: $0, count: buffer.count),
                     deallocator: .custom(nil, { })
                 )
+            }
 
-                // Schedule write operation
-                writeChannel.write(
-                    offset: empty_off_t,
-                    data: dispatchData,
-                    queue: .main
-                ) { done, data, error in
+            // Schedule write operation
+            writeChannel.write(
+                offset: empty_off_t,
+                data: dispatchData,
+                queue: .main
+            ) { done, data, error in
 
-                    if let systemError = SystemError(errorNumber: error) {
-                        // If there was an error emit the error.
-                        observer.sendFailed(systemError)
+                if let systemError = SystemError(errorNumber: error) {
+                    // If there was an error emit the error.
+                    observer.sendFailed(systemError)
+                }
+
+                if let data = data, !data.isEmpty {
+                    // Get unwritten data
+                    data.enumerateBytes { (buffer, byteIndex, stop) in
+                        observer.sendNext(Data(buffer))
                     }
+                }
 
-                    if let data = data, !data.isEmpty {
-                        // Get unwritten data
-                        data.enumerateBytes { (buffer, byteIndex, stop) in
-                            observer.sendNext(Array(buffer))
-                        }
-                    }
-
-                    if done {
-                        if error == 0 {
-                            // If the done param is set and there is no error,
-                            // all data has been written, emit writing end.
-                            // DO NOT emit end otherwise!
-                            observer.sendCompleted()
-                        } else {
-                            // Must be an unrecoverable error, close the channel.
-                            // TODO: Maybe don't close if you want half-open channel
-                            // NOTE: This will be done by onCompleted or onError
-                            // dispatch_io_close(self.channel, 0)
-                        }
+                if done {
+                    if error == 0 {
+                        // If the done param is set and there is no error,
+                        // all data has been written, emit writing end.
+                        // DO NOT emit end otherwise!
+                        observer.sendCompleted()
+                    } else {
+                        // Must be an unrecoverable error, close the channel.
+                        // TODO: Maybe don't close if you want half-open channel
+                        // NOTE: This will be done by onCompleted or onError
+                        // dispatch_io_close(self.channel, 0)
                     }
                 }
             }
+
             return ActionDisposable {
                 writeChannel.close()
             }
@@ -102,13 +102,13 @@ public protocol ReadableIOStream: class {
 
     var channel: DispatchIO { get }
 
-    func read(minBytes: Int) -> Source<[UInt8], SystemError>
+    func read(minBytes: Int) -> Source<Data, SystemError>
 
 }
 
 public extension ReadableIOStream {
 
-    func read(minBytes: Int = 1) -> Source<[UInt8], SystemError> {
+    func read(minBytes: Int = 1) -> Source<Data, SystemError> {
 
         return Source { observer in
 
@@ -133,7 +133,7 @@ public extension ReadableIOStream {
                 // Deliver data if it is non-empty
                 if let data = data, !data.isEmpty {
                     data.enumerateBytes { (buffer, byteIndex, stop) in
-                        observer.sendNext(Array(buffer))
+                        observer.sendNext(Data(buffer))
                     }
                 }
 

@@ -63,7 +63,7 @@ public class RequestParser {
         }
     }
 
-    public func parse(_ data: [UInt8]) throws {
+    public func parse(_ data: Data) throws {
         try parser.parse(data)
     }
 
@@ -87,7 +87,7 @@ public class ResponseParser {
         }
     }
 
-    public func parse(_ data: [UInt8]) throws {
+    public func parse(_ data: Data) throws {
         try parser.parse(data)
     }
 
@@ -99,7 +99,7 @@ private final class FullMessageParser {
 
         var version: (major: Int, minor: Int) = (0, 0)
         var rawHeaders: [String] = []
-        var body: [UInt8] = []
+        var body: Data = Data()
 
         // Response
         var statusCode: Int! = nil
@@ -121,7 +121,7 @@ private final class FullMessageParser {
         self.rawParser.delegate = self
     }
 
-    func parse(_ data: [UInt8]) throws {
+    func parse(_ data: Data) throws {
         try rawParser.parse(data)
     }
 
@@ -254,9 +254,8 @@ public final class RawParser {
         parserPointer.pointee.data = bridge(self)
     }
 
-    public func parse(_ data: [UInt8]) throws {
-        try UnsafePointer(data).withMemoryRebound(to: Int8.self,
-                                                  capacity: data.count) { convertedPointer in
+    public func parse(_ data: Data) throws {
+        try data.withUnsafeBytes { (convertedPointer: UnsafePointer<Int8>) in
             let bytesParsed = http_parser_execute(
                 parserPointer,
                 &requestSettings,

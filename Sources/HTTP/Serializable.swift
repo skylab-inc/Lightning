@@ -5,7 +5,8 @@
 //  Created by Tyler Fleming Cloutier on 7/1/16.
 //
 //
+import Foundation
 
 public protocol Serializable {
-    var serialized: [UInt8] { get }
+    var serialized: Data { get }
 }

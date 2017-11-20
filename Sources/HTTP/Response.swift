@@ -13,10 +13,10 @@ public struct Response: Serializable, HTTPMessage {
     public var version: Version
     public var status: Status
     public var rawHeaders: [String]
-    public var body: [UInt8]
+    public var body: Data
     public var storage: [String: Any] = [:]
 
-    public var serialized: [UInt8] {
+    public var serialized: Data {
         var headerString = ""
         headerString += "HTTP/\(version.major).\(version.minor)"
         headerString += " \(status.code) \(status.reasonPhrase)"
@@ -41,7 +41,7 @@ public struct Response: Serializable, HTTPMessage {
         version: Version = Version(major: 1, minor: 1),
         status: Status,
         rawHeaders: [String],
-        body: [UInt8] = []
+        body: Data = Data()
     ) {
         self.version = version
         self.status = status
@@ -65,7 +65,7 @@ public struct Response: Serializable, HTTPMessage {
         rawHeaders: [String] = [],
         json: Any
     ) throws {
-        let body = Array(try JSONSerialization.data(withJSONObject: json))
+        let body = try JSONSerialization.data(withJSONObject: json)
         let rawHeaders = Array([
             rawHeaders,
             [

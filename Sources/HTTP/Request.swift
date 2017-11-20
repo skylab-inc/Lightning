@@ -13,10 +13,10 @@ public struct Request: Serializable, HTTPMessage {
     public var uri: URL
     public var version: Version
     public var rawHeaders: [String]
-    public var body: [UInt8]
+    public var body: Data
     public var storage: [String: Any]
 
-    public var serialized: [UInt8] {
+    public var serialized: Data {
         var headerString = ""
         headerString += "\(method) \(uri.absoluteString) HTTP/\(version.major).\(version.minor)"
         headerString += "\r\n"
@@ -41,7 +41,7 @@ public struct Request: Serializable, HTTPMessage {
         uri: URL,
         version: Version = Version(major: 1, minor: 1),
         rawHeaders: [String] = [],
-        body: [UInt8] = []
+        body: Data = Data()
     ) {
         self.method = method
         self.uri = uri

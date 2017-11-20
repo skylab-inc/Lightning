@@ -19,7 +19,7 @@ class RequestSerializationTests: XCTestCase {
             uri: URL(string: "/")!,
             version: Version(major: 1, minor: 1),
             rawHeaders: [],
-            body: []
+            body: Data()
         )
         let actual = String(bytes: request.serialized, encoding: .utf8)!
         XCTAssert(expected == actual, "Actual request, \(actual), did not match expected.")
@@ -33,7 +33,7 @@ class RequestSerializationTests: XCTestCase {
             uri: URL(string: "/")!,
             version: Version(major: 1, minor: 1),
             rawHeaders: ["Accept", "*/*", "Host", "www.google.com", "Connection", "Keep-Alive"],
-            body: []
+            body: Data()
         )
         let actual = String(bytes: request.serialized, encoding: .utf8)!
         XCTAssert(expected == actual, "Actual request, \(actual), did not match expected.")

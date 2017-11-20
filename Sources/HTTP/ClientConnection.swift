@@ -43,7 +43,7 @@ public final class ClientConnection {
         }
     }
 
-    public func write(_ response: Response) -> Source<[UInt8], SystemError> {
+    public func write(_ response: Response) -> Source<Data, SystemError> {
         return socket.write(buffer: response.serialized)
     }
 
