@@ -39,8 +39,8 @@ public struct Response: Serializable, HTTPMessage {
 
     public init(
         version: Version = Version(major: 1, minor: 1),
-        status: Status,
-        rawHeaders: [String],
+        status: Status = .ok,
+        rawHeaders: [String] = [],
         body: Data = Data()
     ) {
         self.version = version
