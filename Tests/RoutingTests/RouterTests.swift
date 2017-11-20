@@ -53,81 +53,79 @@ class RouterTests: XCTestCase {
     }
 
     func testRouting() {
-        #if !os(Linux)
-            let requestExpectation = expectation(description: "Did not receive any request.")
-            let userExpectation = expectation(description: "Did not receive a user request.")
-            let loginExpectation = expectation(description: "Did not receive a login request.")
+        let requestExpectation = expectation(description: "Did not receive any request.")
+        let userExpectation = expectation(description: "Did not receive a user request.")
+        let loginExpectation = expectation(description: "Did not receive a login request.")
 
-            var someRequest = false
-            let jsonResponse = ["message": "Message received!"]
+        var someRequest = false
+        let jsonResponse = ["message": "Message received!"]
 
-            let app = Router().map { request in
-                if !someRequest {
-                    requestExpectation.fulfill()
-                    someRequest = true
-                }
-                return request
+        let app = Router().map { request in
+            if !someRequest {
+                requestExpectation.fulfill()
+                someRequest = true
             }
+            return request
+        }
 
-            let api = Router()
-            let comics = Router()
+        let api = Router()
+        let comics = Router()
 
-            func middleware1(request: Request) -> Request {
-                return request
-            }
+        func middleware1(request: Request) -> Request {
+            return request
+        }
 
-            func middleware2(request: Request) -> Request {
-                return request
-            }
+        func middleware2(request: Request) -> Request {
+            return request
+        }
 
-            // Authentication
-            let authentication = Router()
-                .map(middleware1)
-                .map(middleware2)
-                .filter { _ in true }
+        // Authentication
+        let authentication = Router()
+            .map(middleware1)
+            .map(middleware2)
+            .filter { _ in true }
 
-            authentication.post("/login") { request in
-                loginExpectation.fulfill()
-                return try! Response(json: jsonResponse)
-            }
+        authentication.post("/login") { request in
+            loginExpectation.fulfill()
+            return try! Response(json: jsonResponse)
+        }
 
-            authentication.post("/register") { request in
-                return Response(status: .ok)
-            }
+        authentication.post("/register") { request in
+            return Response(status: .ok)
+        }
 
-            // Users
-            let users = Router()
+        // Users
+        let users = Router()
 
-            users.get { request in
-                userExpectation.fulfill()
-                return try! Response(json: jsonResponse)
-            }
+        users.get { request in
+            userExpectation.fulfill()
+            return try! Response(json: jsonResponse)
+        }
 
-            api.add(authentication)
-            api.add("/users", users)
-            api.add("/comics", comics)
+        api.add(authentication)
+        api.add("/users", users)
+        api.add("/comics", comics)
 
-            authentication.post("/login2") { _ in
-                return try! Response(json: jsonResponse)
-            }
+        authentication.post("/login2") { _ in
+            return try! Response(json: jsonResponse)
+        }
 
-            let notFound = Router()
-            notFound.any { request in
-                return Response(status: .notFound)
-            }
+        let notFound = Router()
+        notFound.any { request in
+            return Response(status: .notFound)
+        }
 
-            app.add("/v1.0", api)
-            app.add(notFound)
+        app.add("/v1.0", api)
+        app.add(notFound)
 
-            app.start(host: "0.0.0.0", port: 3000)
+        app.start(host: "0.0.0.0", port: 3000)
 
-            sendRequest(path: "/v1.0/users", method: "GET")
-            sendRequest(path: "/v1.0/login", method: "POST")
-            sendRequest(path: "/v1.0/login2", method: "POST")
-            sendRequest(path: "/v1.0/login3", method: "GET")
+        sendRequest(path: "/v1.0/users", method: "GET")
+        sendRequest(path: "/v1.0/login", method: "POST")
+        sendRequest(path: "/v1.0/login2", method: "POST")
+        sendRequest(path: "/v1.0/login3", method: "GET")
 
-            waitForExpectations(timeout: 1)
-        #endif
+        waitForExpectations(timeout: 1)
     }
 
     func testMiddleware() {
