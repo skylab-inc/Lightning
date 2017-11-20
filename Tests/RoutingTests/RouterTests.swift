@@ -129,46 +129,44 @@ class RouterTests: XCTestCase {
     }
 
     func testMiddleware() {
-        #if false
-            let a = Router()
-            let b = a.filter { request in
-                return request.uri.path == "/test"
-            }.map { request in
-                XCTAssert(request.uri.path == "/test", "Filter did not work.")
-                return Request(
-                    method: request.method,
-                    uri: request.uri,
-                    version: request.version,
-                    rawHeaders: request.rawHeaders,
-                    body: Array("Hehe, changin' the body.".utf8)
-                )
-            }
+        let a = Router()
+        let b = a.filter { request in
+            return request.uri.path == "/test"
+        }.map { request in
+            XCTAssert(request.uri.path == "/test", "Filter did not work.")
+            return Request(
+                method: request.method,
+                uri: request.uri,
+                version: request.version,
+                rawHeaders: request.rawHeaders,
+                body: Array("Hehe, changin' the body.".utf8)
+            )
+        }
 
-            a.any { request in
-                XCTAssert(request.body.count == 0, "Body was transformed but should not have been.")
-                return Response(status: .notFound)
-            }
+        a.any { request in
+            XCTAssert(request.body.count == 0, "Body was transformed but should not have been.")
+            return Response(status: .notFound)
+        }
 
-            b.get { request in
-                XCTAssert(
-                    "Hehe, changin' the body." == String(
-                        data: Data(request.body),
-                        encoding: .utf8
-                    )!,
-                    "Body did not match expected transformed body."
-                )
-                return Response(status: .ok)
-            }
+        b.get { request in
+            XCTAssert(
+                "Hehe, changin' the body." == String(
+                    data: Data(request.body),
+                    encoding: .utf8
+                )!,
+                "Body did not match expected transformed body."
+            )
+            return Response(status: .ok)
+        }
 
-            sendRequest(path: "/test", method: "GET")
-            sendRequest(path: "/not_test", method: "GET", status: 404)
+        sendRequest(path: "/test", method: "GET")
+        sendRequest(path: "/not_test", method: "GET", status: 404)
 
-            a.add(b)
+        a.add(b)
 
-            a.start(host: "0.0.0.0", port: 3000)
+        a.start(host: "0.0.0.0", port: 3000)
 
-            waitForExpectations(timeout: 1)
-        #endif
+        waitForExpectations(timeout: 1)
     }
 
 }
