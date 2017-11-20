@@ -74,43 +74,43 @@ public final class Router: ServerDelegate {
         }
     }
 
-    func add(_ subrouter: Router) {
+    public func add(_ subrouter: Router) {
         add("", subrouter)
     }
 
-    func add(_ subpath: String = "", _ subrouter: Router) {
+    public func add(_ subpath: String = "", _ subrouter: Router) {
         subrouter.parent = self
         subrouter.subpath = subpath
         endpoints.append(.router(subrouter))
     }
 
-    func filter(_ subpath: String) -> Router {
+    public func filter(_ subpath: String) -> Router {
         let router = Router()
         add(subpath, router)
         return router
     }
 
-    func any(_ subpath: String? = nil, _ transform: @escaping (Request) -> Response) {
+    public func any(_ subpath: String? = nil, _ transform: @escaping (Request) -> Response) {
         endpoint(subpath: subpath, transform)
     }
 
-    func get(_ subpath: String? = nil, _ transform: @escaping (Request) -> Response) {
+    public func get(_ subpath: String? = nil, _ transform: @escaping (Request) -> Response) {
         endpoint(subpath: subpath, method: .get, transform)
     }
 
-    func post(_ subpath: String? = nil, _ transform: @escaping (Request) -> Response) {
+    public func post(_ subpath: String? = nil, _ transform: @escaping (Request) -> Response) {
         endpoint(subpath: subpath, method: .post, transform)
     }
 
-    func put(_ subpath: String? = nil, _ transform: @escaping (Request) -> Response) {
+    public func put(_ subpath: String? = nil, _ transform: @escaping (Request) -> Response) {
         endpoint(subpath: subpath, method: .put, transform)
     }
 
-    func delete(_ subpath: String? = nil, _ transform: @escaping (Request) -> Response) {
+    public func delete(_ subpath: String? = nil, _ transform: @escaping (Request) -> Response) {
         endpoint(subpath: subpath, method: .delete, transform)
     }
 
-    func map(_ transform: @escaping (Request) -> Request) -> Router {
+    public func map(_ transform: @escaping (Request) -> Request) -> Router {
         let newEndpoint = Endpoint(parent: self) { requests in
             (Signal<Response, ClientError>.empty, requests.map(transform))
         }
@@ -118,7 +118,7 @@ public final class Router: ServerDelegate {
         return Router(transformers: newTransformers)
     }
 
-    func filter(_ predicate: @escaping (Request) -> Bool) -> Router {
+    public func filter(_ predicate: @escaping (Request) -> Bool) -> Router {
         let middleware = RequestMiddleware(parent: self) { requests in
             requests.partition(predicate)
         }
