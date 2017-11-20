@@ -6,7 +6,7 @@
 //
 //
 
-@_exported import Reflex
+@_exported import StreamKit
 @_exported import IOStream
 @_exported import TCP
 @_exported import RunLoop

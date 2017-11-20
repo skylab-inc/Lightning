@@ -1,5 +1,5 @@
 import Foundation
-import Reflex
+import StreamKit
 import HTTP
 import POSIX
 
@@ -46,8 +46,8 @@ public final class Router {
     }
 
     var path: String {
-        return ((parent?.path ?? "") + subpath).characters.reduce("") { (result, character) in
-            if let last = result.characters.last, character == last, last == "/" {
+        return ((parent?.path ?? "") + subpath).reduce("") { (result, character) in
+            if let last = result.last, character == last, last == "/" {
                 return result
             } else {
                 return result + String(character)

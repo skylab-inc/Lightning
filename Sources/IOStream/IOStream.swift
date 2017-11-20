@@ -7,7 +7,7 @@
 //
 
 import Dispatch
-import Reflex
+import StreamKit
 import POSIX
 // swiftlint:disable variable_name
 #if os(Linux)

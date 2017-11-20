@@ -8,7 +8,7 @@
 
 import Foundation
 import TCP
-import Reflex
+import StreamKit
 import POSIX
 
 public final class ClientConnection {

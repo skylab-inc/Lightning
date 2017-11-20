@@ -7,7 +7,7 @@
 //
 
 import Dispatch
-import Reflex
+import StreamKit
 import POSIX
 import TCP
 

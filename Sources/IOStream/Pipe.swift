@@ -8,7 +8,7 @@
 
 import Dispatch
 import POSIX
-import Reflex
+import StreamKit
 
 public final class Pipe: WritableIOStream, ReadableIOStream {
 
