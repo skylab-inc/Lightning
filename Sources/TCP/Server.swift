@@ -108,7 +108,7 @@ public final class Server {
         }
     }
 
-    public func listen(backlog: Int = 32) -> Source<Socket, SystemError> {
+    public func listen(backlog: Int = 32) -> Source<Socket> {
         return Source { [listeningSource = self.listeningSource, fd = self.fd] observer in
             #if os(Linux)
                 let ret = Glibc.listen(fd.rawValue, Int32(backlog))

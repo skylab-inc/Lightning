@@ -2,12 +2,21 @@
   "object": {
     "pins": [
       {
+        "package": "PromiseKit",
+        "repositoryURL": "https://github.com/mxcl/PromiseKit.git",
+        "state": {
+          "branch": null,
+          "revision": "6bab5e0c7f93947d9c0a7df0937add7454657f2c",
+          "version": "4.5.0"
+        }
+      },
+      {
         "package": "StreamKit",
         "repositoryURL": "https://github.com/skylab-inc/StreamKit.git",
         "state": {
-          "branch": null,
-          "revision": "555837e694e11d06f9e4250f911335477e3b249b",
-          "version": "0.7.0"
+          "branch": "master",
+          "revision": "2b701eb423ebd7c48ebb728d70f540656c7637cf",
+          "version": null
         }
       }
     ]

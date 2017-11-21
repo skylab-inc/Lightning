@@ -20,7 +20,7 @@ public final class ClientConnection {
         self.socket = socket
     }
 
-    public func read() -> Source<Request, ClientError> {
+    public func read() -> Source<Request> {
         return Source { observer in
             let read = self.socket.read()
             self.parser.onRequest = { request in
@@ -32,7 +32,7 @@ public final class ClientConnection {
                     try self.parser.parse(data)
                 } catch {
                     // Respond with 400 error
-                    observer.sendFailed(.badRequest)
+                    observer.sendFailed(ClientError.badRequest)
                 }
             }
             read.start()
@@ -43,7 +43,7 @@ public final class ClientConnection {
         }
     }
 
-    public func write(_ response: Response) -> Source<Data, SystemError> {
+    public func write(_ response: Response) -> Source<Data> {
         return socket.write(buffer: response.serialized)
     }
 

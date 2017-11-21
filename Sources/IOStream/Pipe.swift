@@ -14,11 +14,11 @@ public final class Pipe: WritableIOStream, ReadableIOStream {
 
     public let fd: FileDescriptor
     public let channel: DispatchIO
-    public let channelErrorSignal: Signal<(), SystemError>
+    public let channelErrorSignal: Signal<()>
 
     public init(fd: StandardFileDescriptor) {
         self.fd = fd
-        let (channelErrorSignal, observer) = Signal<(), SystemError>.pipe()
+        let (channelErrorSignal, observer) = Signal<()>.pipe()
         self.channelErrorSignal = channelErrorSignal
         self.channel = DispatchIO(
             type: .stream,

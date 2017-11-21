@@ -27,13 +27,13 @@ public protocol WritableIOStream: class {
 
     var channel: DispatchIO { get }
 
-    func write(buffer: Data) -> Source<Data, SystemError>
+    func write(buffer: Data) -> Source<Data>
 
 }
 
 public extension WritableIOStream {
 
-    func write(buffer: Data) -> Source<Data, SystemError> {
+    func write(buffer: Data) -> Source<Data> {
         return Source { observer in
             let writeChannel = DispatchIO(
                 type: .stream,
@@ -102,13 +102,13 @@ public protocol ReadableIOStream: class {
 
     var channel: DispatchIO { get }
 
-    func read(minBytes: Int) -> Source<Data, SystemError>
+    func read(minBytes: Int) -> Source<Data>
 
 }
 
 public extension ReadableIOStream {
 
-    func read(minBytes: Int = 1) -> Source<Data, SystemError> {
+    func read(minBytes: Int = 1) -> Source<Data> {
 
         return Source { observer in
 

@@ -1,5 +1,6 @@
 import Foundation
 import StreamKit
+import PromiseKit
 
 public final class Router: ServerDelegate {
 
@@ -34,20 +35,10 @@ public final class Router: ServerDelegate {
         }
     }
 
-    private func endpoint(_ transform: @escaping (Request) -> Response) {
-        let endpoint = Endpoint { [weak self] requests in
-            let (matches, leftover) = requests.partition { [weak self] request in
-                return self?.matches(path: request.uri.path) ?? false
-            }
-            return (matches.map(transform), leftover)
-        }
-        endpoints.append(.endpoint(endpoint))
-    }
-
-    private func endpoint(method: HTTP.Method, _ transform: @escaping (Request) -> Response) {
+    private func endpoint(method: HTTP.Method? = nil, _ transform: @escaping (Request) -> Response) {
         let endpoint = Endpoint(parent: self, method: method) { [weak self] requests in
             let (matches, leftover) = requests.partition { [weak self] request in
-                return self?.matches(path: request.uri.path) ?? false && request.method == method
+                return self?.matches(path: request.uri.path) ?? false && request.method == method ?? request.method
             }
             return (matches.map(transform), leftover)
         }
@@ -112,7 +103,7 @@ public final class Router: ServerDelegate {
 
     public func map(_ transform: @escaping (Request) -> Request) -> Router {
         let newEndpoint = Endpoint(parent: self) { requests in
-            (Signal<Response, ClientError>.empty, requests.map(transform))
+            (Signal<Response>.empty, requests.map(transform))
         }
         let newTransformers = endpoints + [.endpoint(newEndpoint)]
         return Router(transformers: newTransformers)
@@ -126,11 +117,10 @@ public final class Router: ServerDelegate {
         return Router(transformers: newTransformers)
     }
 
-    public func transform(requests: Signal<Request, ClientError>)
-        -> (Signal<Response, ClientError>, Signal<Request, ClientError>) {
+    public func transform(requests: Signal<Request>) -> (Signal<Response>, Signal<Request>) {
         var forwardedRequests = requests
-        let (allResponses, allResponsesInput) = Signal<Response, ClientError>.pipe()
-        let (allRequests, allRequestsInput) = Signal<Request, ClientError>.pipe()
+        let (allResponses, allResponsesInput) = Signal<Response>.pipe()
+        let (allRequests, allRequestsInput) = Signal<Request>.pipe()
         for endpoint in endpoints {
 
             switch endpoint {
@@ -199,16 +189,13 @@ struct RequestMiddleware {
 
     let transform: TransformType
 
-    typealias TransformType = (Signal<Request, ClientError>)
-        -> (Signal<Request, ClientError>, Signal<Request, ClientError>)
+    typealias TransformType = (Signal<Request>) -> (Signal<Request>, Signal<Request>)
 
-    func transform(requests: Signal<Request, ClientError>)
-        -> (Signal<Request, ClientError>, Signal<Request, ClientError>) {
+    func transform(requests: Signal<Request>) -> (Signal<Request>, Signal<Request>) {
             return transform(requests)
     }
 
-    init(parent: Router, _ transform: @escaping (Signal<Request, ClientError>)
-        -> (Signal<Request, ClientError>, Signal<Request, ClientError>)) {
+    init(parent: Router, _ transform: @escaping TransformType) {
         self.transform = transform
         self.parent = parent
     }
@@ -233,11 +220,9 @@ struct Endpoint {
     weak var parent: Router?
     let transform: TransformType
 
-    typealias TransformType = (Signal<Request, ClientError>)
-        -> (Signal<Response, ClientError>, Signal<Request, ClientError>)
+    typealias TransformType = (Signal<Request>) -> (Signal<Response>, Signal<Request>)
 
-    func transform(requests: Signal<Request, ClientError>)
-        -> (Signal<Response, ClientError>, Signal<Request, ClientError>) {
+    func transform(requests: Signal<Request>) -> (Signal<Response>, Signal<Request>) {
         return transform(requests)
     }
 

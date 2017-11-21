@@ -13,16 +13,12 @@ import TCP
 
 public protocol ServerDelegate {
 
-    func transform(
-        requests: Signal<Request, ClientError>
-    ) -> (Signal<Response, ClientError>, Signal<Request, ClientError>)
+    func transform(requests: Signal<Request>) -> (Signal<Response>, Signal<Request>)
 
 }
 
 public final class PassthroughServerDelegate: ServerDelegate {
-    public func transform(
-        requests: Signal<Request, ClientError>
-    ) -> (Signal<Response, ClientError>, Signal<Request, ClientError>) {
+    public func transform( requests: Signal<Request>) -> (Signal<Response>, Signal<Request>) {
         return (Signal.empty, requests)
     }
 }
@@ -44,9 +40,7 @@ public final class Server {
         disposable?.dispose()
     }
 
-    func clientSource(
-        host: String, port: POSIX.Port
-    ) -> Source<ClientConnection, SystemError> {
+    func clientSource(host: String, port: POSIX.Port) -> Source<ClientConnection> {
         return Source { observer in
             let tcpServer = try! TCP.Server()
             try! tcpServer.bind(host: host, port: port)

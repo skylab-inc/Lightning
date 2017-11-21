@@ -63,7 +63,7 @@ public final class Socket: WritableIOStream, ReadableIOStream {
         }
     }
 
-    public func connect(host: String, port: Port) -> Source<Socket, SystemError> {
+    public func connect(host: String, port: Port) -> Source<Socket> {
         return Source { [socketFD, fd, channel = self.channel] observer in
             var addrInfoPointer: UnsafeMutablePointer<addrinfo>? = nil
 
