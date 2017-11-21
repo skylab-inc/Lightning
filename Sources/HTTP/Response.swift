@@ -45,8 +45,14 @@ public struct Response: Serializable, HTTPMessage {
     ) {
         self.version = version
         self.status = status
-        self.rawHeaders = rawHeaders
         self.body = body
+        self.rawHeaders = Array([
+            rawHeaders,
+            [
+                "Content-Length",
+                "\(body.count)",
+            ]
+        ].joined())
     }
 
     public init(
