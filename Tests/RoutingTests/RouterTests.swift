@@ -84,7 +84,7 @@ class RouterTests: XCTestCase {
             .map(middleware2)
             .filter { _ in true }
 
-        authentication.post("/login") { request in
+        authentication.post("/login") { request -> Response in
             loginExpectation.fulfill()
             return try! Response(json: jsonResponse)
         }
@@ -96,7 +96,7 @@ class RouterTests: XCTestCase {
         // Users
         let users = Router()
 
-        users.get { request in
+        users.get { request -> Response in
             userExpectation.fulfill()
             return try! Response(json: jsonResponse)
         }
@@ -145,12 +145,12 @@ class RouterTests: XCTestCase {
             )
         }
 
-        a.any { request in
+        a.any { request -> Response in
             XCTAssert(request.body.count == 0, "Body was transformed but should not have been.")
             return Response(status: .notFound)
         }
 
-        b.get { request in
+        b.get { request -> Response in
             XCTAssert(
                 "Hehe, changin' the body." == String(
                     data: Data(request.body),
