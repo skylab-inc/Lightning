@@ -2,6 +2,27 @@ import Foundation
 import StreamKit
 import PromiseKit
 
+/*
+/// Can't do this until
+/// https://github.com/apple/swift-evolution/blob/master/proposals/0143-conditional-conformances.md
+/// is implemented
+protocol EventualResponse {
+    func asPromise() -> Promise<Response>
+}
+
+extension Promise: EventualResponse where T == Response {
+    func asPromise() -> Promise<Response> {
+        return self
+    }
+}
+
+extension Response: EventualResponse {
+    func asPromise() -> Promise<Response> {
+        return Promise(value: self)
+    }
+}
+*/
+
 public final class Router: ServerDelegate {
 
     var endpoints: [RequestTransformer] = []
@@ -35,6 +56,19 @@ public final class Router: ServerDelegate {
         }
     }
 
+    private func endpoint(method: HTTP.Method? = nil, _ transform: @escaping (Request) -> Promise<Response>) {
+        let endpoint = Endpoint(parent: self, method: method) { [weak self] requests in
+            let (matches, leftover) = requests.partition { [weak self] request in
+                return self?.matches(path: request.uri.path) ?? false && request.method == method ?? request.method
+            }
+            let responses = matches.flatMap { request -> Signal<Response> in
+                return transform(request).asSignal()
+            }
+            return (responses, leftover)
+        }
+        endpoints.append(.endpoint(endpoint))
+    }
+
     private func endpoint(method: HTTP.Method? = nil, _ transform: @escaping (Request) -> Response) {
         let endpoint = Endpoint(parent: self, method: method) { [weak self] requests in
             let (matches, leftover) = requests.partition { [weak self] request in
@@ -47,8 +81,8 @@ public final class Router: ServerDelegate {
 
     private func endpoint(
         subpath: String?,
-        method: HTTP.Method,
-        _ transform: @escaping (Request) -> Response
+        method: HTTP.Method? = nil,
+        _ transform: @escaping (Request) -> Promise<Response>
     ) {
         if let subpath = subpath {
             filter(subpath).endpoint(method: method, transform)
@@ -57,11 +91,15 @@ public final class Router: ServerDelegate {
         }
     }
 
-    private func endpoint(subpath: String?, _ transform: @escaping (Request) -> Response) {
+    private func endpoint(
+        subpath: String?,
+        method: HTTP.Method? = nil,
+        _ transform: @escaping (Request) -> Response
+    ) {
         if let subpath = subpath {
-            filter(subpath).endpoint(transform)
+            filter(subpath).endpoint(method: method, transform)
         } else {
-            endpoint(transform)
+            endpoint(method: method, transform)
         }
     }
 
@@ -81,6 +119,28 @@ public final class Router: ServerDelegate {
         return router
     }
 
+    // Async transforms
+    public func any(_ subpath: String? = nil, _ transform: @escaping (Request) -> Promise<Response>) {
+        endpoint(subpath: subpath, transform)
+    }
+
+    public func get(_ subpath: String? = nil, _ transform: @escaping (Request) -> Promise<Response>) {
+        endpoint(subpath: subpath, method: .get, transform)
+    }
+
+    public func post(_ subpath: String? = nil, _ transform: @escaping (Request) -> Promise<Response>) {
+        endpoint(subpath: subpath, method: .post, transform)
+    }
+
+    public func put(_ subpath: String? = nil, _ transform: @escaping (Request) -> Promise<Response>) {
+        endpoint(subpath: subpath, method: .put, transform)
+    }
+
+    public func delete(_ subpath: String? = nil, _ transform: @escaping (Request) -> Promise<Response>) {
+        endpoint(subpath: subpath, method: .delete, transform)
+    }
+
+    // Sync transforms
     public func any(_ subpath: String? = nil, _ transform: @escaping (Request) -> Response) {
         endpoint(subpath: subpath, transform)
     }
