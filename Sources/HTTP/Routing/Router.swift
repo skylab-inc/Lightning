@@ -122,8 +122,13 @@ public final class Router: HandlerNode {
         self.path = "/"
     }
 
-    func setParameters(on request: Request, match: Match) {
-        request.parameters = [:]
+    func setParameters(on request: Request, match: Match, regex: Regex) {
+        let valsArray = regex.groupNames.map { name in
+            (name, match.group(named: name))
+        }.filter {$0.1 != nil} . map { tuple in
+            (tuple.0, tuple.1!)
+        }
+        request.parameters = Dictionary(uniqueKeysWithValues: valsArray)
     }
 
     func shouldHandle(_ request: Request) -> Bool {
@@ -131,16 +136,12 @@ public final class Router: HandlerNode {
             return true
         }
         let urlPath = request.uri.path
-        let regex = try! Regex(path: routePath, pathOptions: [])
+        let regexPath = routePath
+        let regex = try! Regex(path: regexPath, pathOptions: [])
         guard let match = regex.findFirst(in: urlPath) else {
             return false
         }
-        // Kludge due to https://github.com/crossroadlabs/PathToRegex/issues/13
-        let matched = match.matched
-        if matched.count != urlPath.count && urlPath[matched.endIndex] != "/" {
-            return false
-        }
-        setParameters(on: request, match: match)
+        setParameters(on: request, match: match, regex: regex)
         return true
     }
 

@@ -12,11 +12,11 @@
       },
       {
         "package": "PathToRegex",
-        "repositoryURL": "https://github.com/crossroadlabs/PathToRegex.git",
+        "repositoryURL": "https://github.com/skylab-inc/PathToRegex.git",
         "state": {
-          "branch": null,
-          "revision": "e7606a7fcb9e496c68c6e897385f1cd6f3daa472",
-          "version": "0.4.1"
+          "branch": "master",
+          "revision": "e66d0ee87f7674a2ce3927554e78130787bec507",
+          "version": null
         }
       },
       {

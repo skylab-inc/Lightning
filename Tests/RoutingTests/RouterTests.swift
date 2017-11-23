@@ -131,6 +131,29 @@ class RouterTests: XCTestCase {
         }
     }
 
+    func testParameters() {
+        let sub = Router()
+        let expectParams = self.expectation(description: "Expect to hit the API with params.")
+        sub.get("/far") { request -> Response in
+            expectParams.fulfill()
+            XCTAssertEqual(request.parameters["bar"], "users")
+            return Response()
+        }
+
+        let app = Router()
+        app.add("/foo/:bar", sub)
+
+        let server = HTTP.Server(delegate: app)
+        server.listen(host: "0.0.0.0", port: 3000)
+
+        sendRequest(path: "/foo/users/far", method: "GET")
+
+        waitForExpectations(timeout: 1) { error in
+            server.stop()
+        }
+
+    }
+
     func testMiddleware() {
         let a = Router()
         let b = Router()
