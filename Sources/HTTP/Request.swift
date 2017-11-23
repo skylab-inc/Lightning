@@ -8,13 +8,16 @@
 
 import Foundation
 
-public struct Request: Serializable, HTTPMessage {
+public class Request: Serializable, HTTPMessage {
     public var method: Method
     public var uri: URL
     public var version: Version
     public var rawHeaders: [String]
     public var body: Data
     public var storage: [String: Any]
+
+    // Router dependent (refactor?)
+    public var parameters: [String:String] = [:]
 
     public var serialized: Data {
         var headerString = ""

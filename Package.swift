@@ -18,6 +18,8 @@ let package = Package(
         ),
     ],
     dependencies: [
+        .package(url: "https://github.com/crossroadlabs/Regex.git", from: "1.0.0-alpha"),
+        .package(url: "https://github.com/crossroadlabs/PathToRegex.git", from: "0.4.1"),
         .package(url: "https://github.com/skylab-inc/StreamKit.git", .branch("master")),
         .package(url: "https://github.com/mxcl/PromiseKit.git", from: "4.5.0"),
     ],
@@ -25,7 +27,7 @@ let package = Package(
         .target(name: "CHTTPParser"),
         .target(name: "POSIX"),
         .target(name: "TCP", dependencies: ["POSIX", "IOStream"]),
-        .target(name: "HTTP", dependencies: [ "POSIX", "IOStream", "TCP", "CHTTPParser", "PromiseKit"]),
+        .target(name: "HTTP", dependencies: [ "POSIX", "IOStream", "TCP", "CHTTPParser", "PromiseKit", "PathToRegex", "Regex"]),
         .target(name: "IOStream", dependencies: ["POSIX", "StreamKit"]),
         .target(name: "Edge", dependencies: ["TCP", "IOStream", "HTTP"]),
         .testTarget(name: "HTTPTests", dependencies: ["HTTP"]),

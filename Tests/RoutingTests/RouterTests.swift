@@ -59,7 +59,8 @@ class RouterTests: XCTestCase {
         var someRequest = false
         let jsonResponse = ["message": "Message received!"]
 
-        let app = Router().map { request in
+        let app = Router()
+        app.map { request in
             if !someRequest {
                 requestExpectation.fulfill()
                 someRequest = true
@@ -80,9 +81,9 @@ class RouterTests: XCTestCase {
 
         // Authentication
         let authentication = Router()
-            .map(middleware1)
-            .map(middleware2)
-            .filter { _ in true }
+        authentication.map(middleware1)
+        authentication.map(middleware2)
+        authentication.filter { _ in true }
 
         authentication.post("/login") { request -> Response in
             loginExpectation.fulfill()
@@ -132,9 +133,11 @@ class RouterTests: XCTestCase {
 
     func testMiddleware() {
         let a = Router()
-        let b = a.filter { request in
+        let b = Router()
+        b.filter { request in
             return request.uri.path == "/test"
-        }.map { request in
+        }
+        b.map { request in
             XCTAssert(request.uri.path == "/test", "Filter did not work.")
             return Request(
                 method: request.method,

@@ -13,14 +13,8 @@ import TCP
 
 public protocol ServerDelegate {
 
-    func transform(requests: Signal<Request>) -> (Signal<Response>, Signal<Request>)
+    func handle(requests: Signal<Request>) -> Signal<Response>
 
-}
-
-public final class PassthroughServerDelegate: ServerDelegate {
-    public func transform( requests: Signal<Request>) -> (Signal<Response>, Signal<Request>) {
-        return (Signal.empty, requests)
-    }
 }
 
 public final class Server {
@@ -29,7 +23,7 @@ public final class Server {
     private var disposable: ActionDisposable? = nil
 
     public init(delegate: ServerDelegate? = nil) {
-        self.delegate = delegate ?? PassthroughServerDelegate()
+        self.delegate = delegate ?? Router()
     }
 
     deinit {
@@ -66,15 +60,9 @@ public final class Server {
         let source = clientSource(host: host, port: port)
         source.onNext { client in
             let requestStream = client.read()
-            let (
-                responses,
-                unhandledRequests
-            ) = self.delegate.transform(requests: requestStream.signal)
+            let responses = self.delegate.handle(requests: requestStream.signal)
             responses.onNext { response in
                 client.write(response).start()
-            }
-            unhandledRequests.onNext { request in
-                fatalError("Unhandled request: \(request)")
             }
             requestStream.start()
         }

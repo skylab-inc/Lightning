@@ -2,6 +2,24 @@
   "object": {
     "pins": [
       {
+        "package": "Boilerplate",
+        "repositoryURL": "https://github.com/crossroadlabs/Boilerplate.git",
+        "state": {
+          "branch": null,
+          "revision": "3411d6ade632d2a13613732b963f652a3eb13b2a",
+          "version": "1.1.5"
+        }
+      },
+      {
+        "package": "PathToRegex",
+        "repositoryURL": "https://github.com/crossroadlabs/PathToRegex.git",
+        "state": {
+          "branch": null,
+          "revision": "e7606a7fcb9e496c68c6e897385f1cd6f3daa472",
+          "version": "0.4.1"
+        }
+      },
+      {
         "package": "PromiseKit",
         "repositoryURL": "https://github.com/mxcl/PromiseKit.git",
         "state": {
@@ -11,11 +29,29 @@
         }
       },
       {
+        "package": "Regex",
+        "repositoryURL": "https://github.com/crossroadlabs/Regex.git",
+        "state": {
+          "branch": null,
+          "revision": "68cf0d23bcac203a9caa86cc2530971229760916",
+          "version": "1.0.0"
+        }
+      },
+      {
+        "package": "Result",
+        "repositoryURL": "https://github.com/antitypical/Result.git",
+        "state": {
+          "branch": null,
+          "revision": "7477584259bfce2560a19e06ad9f71db441fff11",
+          "version": "3.2.4"
+        }
+      },
+      {
         "package": "StreamKit",
         "repositoryURL": "https://github.com/skylab-inc/StreamKit.git",
         "state": {
           "branch": "master",
-          "revision": "760076df26e7770cca5d769affe48f824aa68f1f",
+          "revision": "43238cc23188c02a90f51ce9bf58718611030abe",
           "version": null
         }
       }

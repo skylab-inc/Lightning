@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Response: Serializable, HTTPMessage {
+public class Response: Serializable, HTTPMessage {
 
     public var version: Version
     public var status: Status
@@ -55,7 +55,7 @@ public struct Response: Serializable, HTTPMessage {
         ].joined())
     }
 
-    public init(
+    public convenience init(
         version: Version = Version(major: 1, minor: 1),
         status: Status
     ) {
@@ -65,7 +65,7 @@ public struct Response: Serializable, HTTPMessage {
         )
     }
 
-    public init(
+    public convenience init(
         version: Version = Version(major: 1, minor: 1),
         status: Status = .ok,
         rawHeaders: [String] = [],
