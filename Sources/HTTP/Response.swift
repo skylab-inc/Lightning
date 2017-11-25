@@ -10,6 +10,14 @@ import Foundation
 
 public class Response: Serializable, HTTPMessage {
 
+    static let noBodyStatuses = Set([
+        100,
+        101,
+        102,
+        204,
+        304,
+    ])
+
     public var version: Version
     public var status: Status
     public var rawHeaders: [String]
@@ -46,13 +54,18 @@ public class Response: Serializable, HTTPMessage {
         self.version = version
         self.status = status
         self.body = body
-        self.rawHeaders = Array([
-            rawHeaders,
-            [
-                "Content-Length",
-                "\(body.count)",
-            ]
-        ].joined())
+        if !Response.noBodyStatuses.contains(self.status.code) &&
+            !rawHeaders.contains("Content-Length") {
+            self.rawHeaders = Array([
+                rawHeaders,
+                [
+                    "Content-Length",
+                    "\(body.count)",
+                ]
+            ].joined())
+        } else {
+            self.rawHeaders = rawHeaders
+        }
     }
 
     public convenience init(

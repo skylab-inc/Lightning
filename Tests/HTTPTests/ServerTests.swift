@@ -78,7 +78,7 @@ class ServerTests: XCTestCase {
             return try! Response(json: jsonResponse)
         }
 
-        let server = HTTP.Server()
+        let server = HTTP.Server(reusePort: true)
         server.clientSource(host: "0.0.0.0", port: 3001).startWithNext { client in
 
             let requestStream = client

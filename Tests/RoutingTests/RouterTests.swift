@@ -118,7 +118,7 @@ class RouterTests: XCTestCase {
         app.add("/v1.0", api)
         app.add(notFound)
 
-        let server = HTTP.Server(delegate: app)
+        let server = HTTP.Server(delegate: app, reusePort: true)
         server.listen(host: "0.0.0.0", port: 3000)
 
         sendRequest(path: "/v1.0/users", method: "GET")
@@ -143,7 +143,7 @@ class RouterTests: XCTestCase {
         let app = Router()
         app.add("/foo/:bar", sub)
 
-        let server = HTTP.Server(delegate: app)
+        let server = HTTP.Server(delegate: app, reusePort: true)
         server.listen(host: "0.0.0.0", port: 3000)
 
         sendRequest(path: "/foo/users/far", method: "GET")
@@ -192,7 +192,7 @@ class RouterTests: XCTestCase {
 
         a.add(b)
 
-        let server = HTTP.Server(delegate: a)
+        let server = HTTP.Server(delegate: a, reusePort: true)
         server.listen(host: "0.0.0.0", port: 3000)
         waitForExpectations(timeout: 1) { error in
             server.stop()

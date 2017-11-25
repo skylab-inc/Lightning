@@ -17,7 +17,8 @@ import POSIX
 import IOStream
 
 public final class Socket: WritableIOStream, ReadableIOStream {
-    public static let defaultReuseAddress = true
+    public static let defaultReuseAddress = false
+    public static let defaultReusePort = false
 
     private let socketFD: SocketFileDescriptor
     public var fd: FileDescriptor {
@@ -25,15 +26,15 @@ public final class Socket: WritableIOStream, ReadableIOStream {
     }
     public let channel: DispatchIO
 
-    public convenience init() throws {
+    public convenience init(reuseAddress: Bool = defaultReuseAddress, reusePort: Bool = defaultReusePort) throws {
         let fd = try SocketFileDescriptor(
             socketType: SocketType.stream,
             addressFamily: AddressFamily.inet
         )
-        try self.init(fd: fd)
+        try self.init(fd: fd, reuseAddress: reuseAddress, reusePort: reusePort)
     }
 
-    public init(fd: SocketFileDescriptor, reuseAddress: Bool = defaultReuseAddress) throws {
+    public init(fd: SocketFileDescriptor, reuseAddress: Bool = defaultReuseAddress, reusePort: Bool = defaultReusePort) throws {
         self.socketFD = fd
 
         if reuseAddress {
@@ -44,6 +45,21 @@ public final class Socket: WritableIOStream, ReadableIOStream {
                 SOL_SOCKET,
                 SO_REUSEADDR,
                 &reuseAddr,
+                socklen_t(MemoryLayout<Int>.stride)
+            )
+            if let systemError = SystemError(errorNumber: error) {
+                throw systemError
+            }
+        }
+
+        if reusePort {
+            // Set SO_REUSEPORT
+            var reusePort = 1
+            let error = setsockopt(
+                self.socketFD.rawValue,
+                SOL_SOCKET,
+                SO_REUSEPORT,
+                &reusePort,
                 socklen_t(MemoryLayout<Int>.stride)
             )
             if let systemError = SystemError(errorNumber: error) {
@@ -156,7 +172,9 @@ public final class Socket: WritableIOStream, ReadableIOStream {
                 observer.sendFailed(error)
             }
             return ActionDisposable {
-                channel.close()
+                channel.close(flags: .stop)
+                //NOTE: Not super clear if the fd must be closed after closing the channel.
+                fd.close()
             }
         }
     }

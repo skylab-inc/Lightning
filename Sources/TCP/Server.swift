@@ -18,20 +18,21 @@ import IOStream
 
 public final class Server {
 
-    public static let defaultReuseAddress = true
+    public static let defaultReuseAddress = false
+    public static let defaultReusePort = false
 
     private let fd: SocketFileDescriptor
     private let listeningSource: DispatchSourceRead
 
-    public convenience init(reuseAddress: Bool = defaultReuseAddress) throws {
+    public convenience init(reuseAddress: Bool = defaultReuseAddress, reusePort: Bool = defaultReusePort) throws {
         let fd = try SocketFileDescriptor(
             socketType: SocketType.stream,
             addressFamily: AddressFamily.inet
         )
-        try self.init(fd: fd, reuseAddress: reuseAddress)
+        try self.init(fd: fd, reuseAddress: reuseAddress, reusePort: reusePort)
     }
 
-    public init(fd: SocketFileDescriptor, reuseAddress: Bool = defaultReuseAddress) throws {
+    public init(fd: SocketFileDescriptor, reuseAddress: Bool = defaultReuseAddress, reusePort: Bool = defaultReusePort) throws {
         self.fd = fd
         if reuseAddress {
             // Set SO_REUSEADDR
@@ -45,6 +46,21 @@ public final class Server {
             )
             if error != 0 {
                 throw SystemError(errorNumber: errno)!
+            }
+        }
+
+        if reusePort {
+            // Set SO_REUSEPORT
+            var reusePort = 1
+            let error = setsockopt(
+                self.fd.rawValue,
+                SOL_SOCKET,
+                SO_REUSEPORT,
+                &reusePort,
+                socklen_t(MemoryLayout<Int>.stride)
+            )
+            if let systemError = SystemError(errorNumber: error) {
+                throw systemError
             }
         }
 
@@ -165,7 +181,6 @@ public final class Server {
             }
             return ActionDisposable {
                 listeningSource.cancel()
-                fd.close()
             }
         }
     }

@@ -21,9 +21,13 @@ public final class Server {
 
     let delegate: ServerDelegate
     private var disposable: ActionDisposable? = nil
+    let reuseAddress: Bool
+    let reusePort: Bool
 
-    public init(delegate: ServerDelegate? = nil) {
+    public init(delegate: ServerDelegate? = nil, reuseAddress: Bool = false, reusePort: Bool = false) {
         self.delegate = delegate ?? Router()
+        self.reuseAddress = reuseAddress
+        self.reusePort = reusePort
     }
 
     deinit {
@@ -35,8 +39,8 @@ public final class Server {
     }
 
     func clientSource(host: String, port: POSIX.Port) -> Source<ClientConnection> {
-        return Source { observer in
-            let tcpServer = try! TCP.Server()
+        return Source { [reuseAddress, reusePort] observer in
+            let tcpServer = try! TCP.Server(reuseAddress: reuseAddress, reusePort: reusePort)
             try! tcpServer.bind(host: host, port: port)
 
             let listen = tcpServer.listen()

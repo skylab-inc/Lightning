@@ -11,8 +11,11 @@ class ConnectionTests: XCTestCase {
         let receiveMessageExpectation = expectation(description: "Did not receive any message.")
         let completeWriteExpectation = expectation(description: "Did not complete write.")
 
-        let server = try Server()
-        try server.bind(host: "localhost", port: 50000)
+        let server = try Server(reusePort: true)
+
+        while (try? server.bind(host: "localhost", port: 50000)) == nil {
+            RunLoop.current.run(until: Date(timeIntervalSinceNow: 1))
+        }
 
         let connections = server.listen()
         connections.startWithNext { connection in
@@ -41,7 +44,7 @@ class ConnectionTests: XCTestCase {
             strings.start()
         }
 
-        let socket = try Socket()
+        let socket = try Socket(reusePort: true)
         let connect = socket.connect(host: "localhost", port: 50000)
         connect.onCompleted {
             let buffer = Data("This is a test".utf8)
@@ -67,8 +70,8 @@ class ConnectionTests: XCTestCase {
 
     func testResourceCleanUp() {
         // Create two servers consecutively
-//        testClientServer()
-//        testClientServer()
+        try! testClientServer()
+        try! testClientServer()
     }
 
 }

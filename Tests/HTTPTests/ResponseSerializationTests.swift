@@ -13,7 +13,7 @@ import XCTest
 class ResponseSerializationTests: XCTestCase {
 
     func testBasicSerialization() {
-        let expected = "HTTP/1.1 200 OK\r\n\r\n"
+        let expected = "HTTP/1.1 200 OK\r\nContent-Length: 0\r\n\r\n"
         let response = Response(
             version: Version(major: 1, minor: 1),
             status: .ok,
@@ -29,6 +29,7 @@ class ResponseSerializationTests: XCTestCase {
             "HTTP/1.1 200 OK\r\n" +
             "Date: Sun, 30 Oct 2016 09:06:40 GMT\r\n" +
             "Content-Type: text/html; charset=ISO-8859-1\r\n" +
+            "Content-Length: 0\r\n" +
             "\r\n"
         let response = Response(
             version: Version(major: 1, minor: 1),
