@@ -18,7 +18,7 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(url: "https://github.com/crossroadlabs/Regex.git", from: "1.0.0-alpha"),
+        .package(url: "https://github.com/crossroadlabs/Regex.git", .branch("master")),
         .package(url: "https://github.com/skylab-inc/PathToRegex.git", .branch("master")),
         .package(url: "https://github.com/skylab-inc/StreamKit.git", .branch("master")),
         .package(url: "https://github.com/mxcl/PromiseKit.git", from: "4.5.0"),

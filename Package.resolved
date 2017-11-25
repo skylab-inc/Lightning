@@ -32,9 +32,9 @@
         "package": "Regex",
         "repositoryURL": "https://github.com/crossroadlabs/Regex.git",
         "state": {
-          "branch": null,
-          "revision": "68cf0d23bcac203a9caa86cc2530971229760916",
-          "version": "1.0.0"
+          "branch": "master",
+          "revision": "5d0db3b1c11d74d1d661f69c8e7dcf3bd4b94317",
+          "version": null
         }
       },
       {
