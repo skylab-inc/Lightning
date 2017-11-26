@@ -63,14 +63,15 @@ api.get("/users") { request in
 }
 
 // NOTE: Equivalent to `api.post("/auth/login")`
-let auth = api.filter("/auth").post("/login") { request in
+let auth = api.subrouter("/auth")
+auth.post("/login") { request in
     return Response(status: .ok)
 }
-api.add(auth)
 
 // Middleware to log all requests
 // NOTE: Middleware is a simple as a map function or closure!
-let app = Router().map { request in
+let app = Router()
+app.map { request in
     print(request)
     return request
 }
@@ -78,7 +79,7 @@ let app = Router().map { request in
 // Mount the API router under "/v1.0".
 app.add("/v1.0", api)
 
-// NOTE: Errors on all unhandled requests. No more hanging clients!
+// NOTE: Warnings on all unhandled requests. No more hanging clients!
 app.any { _ in
     return Response(status: .notFound)
 }
