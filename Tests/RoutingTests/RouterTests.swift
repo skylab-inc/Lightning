@@ -12,7 +12,7 @@ import XCTest
 
 class RouterTests: XCTestCase {
 
-    private func sendRequest(path: String, method: String, status: Int = 200) {
+    private func sendRequest(path: String, method: String, status: Int = 200, queryString: String = "") {
         let session = URLSession(configuration: .default)
         let jsonResponse = ["message": "Message received!"]
         let rootUrl = "http://localhost:3000"
@@ -20,7 +20,7 @@ class RouterTests: XCTestCase {
         let responseExpectation = expectation(
             description: "Did not receive a response for path: \(path)"
         )
-        let urlString = rootUrl + path
+        let urlString = rootUrl + path + (queryString != "" ? "?" + queryString : "")
         let url = URL(string: urlString)!
         var req = URLRequest(url: url)
         req.httpMethod = method
@@ -147,6 +147,29 @@ class RouterTests: XCTestCase {
         server.listen(host: "0.0.0.0", port: 3000)
 
         sendRequest(path: "/foo/users/far", method: "GET")
+
+        waitForExpectations(timeout: 1) { error in
+            server.stop()
+        }
+
+    }
+
+    func testQueryParameters() {
+        let sub = Router()
+        let expectQueryParams = self.expectation(description: "Expect to hit the API with query params.")
+        sub.get("/far") { request -> Response in
+            expectQueryParams.fulfill()
+            XCTAssertEqual(request.queryParameters["bar"], "true")
+            return Response()
+        }
+
+        let app = Router()
+        app.add("/foo/:bar", sub)
+
+        let server = HTTP.Server(delegate: app, reusePort: true)
+        server.listen(host: "0.0.0.0", port: 3000)
+
+        sendRequest(path: "/foo/users/far", method: "GET", queryString: "bar=true")
 
         waitForExpectations(timeout: 1) { error in
             server.stop()
