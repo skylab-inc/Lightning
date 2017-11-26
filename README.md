@@ -22,9 +22,9 @@ This makes Edge fast, efficient, and most crutially **single-threaded** by defau
 #### Reactive Programming
 Edge's event API embraces Functional Reactive Programming by generalizing the familiar concept of promises. This API is called [StreamKit](https://github.com/skylab-inc/StreamKit).
 
-*StreamKit's architecture is inspired by both [ReactiveCocoa](https://github.com/ReactiveCocoa/ReactiveCocoa) and [RxSwift](https://github.com/ReactiveX/RxSwift).* 
+> StreamKit's architecture is inspired by both [ReactiveCocoa](https://github.com/ReactiveCocoa/ReactiveCocoa) and [RxSwift](https://github.com/ReactiveX/RxSwift).
 
-> Why did we reimplement?
+##### Why did we reimplement?
 * Edge should be easy to use out of the box.
 * Edge is optimized for maximum performance, which requires careful tuning of the internals.
 * The modified API is meant to be more similar to the familiar concepts of Futures and Promises.
