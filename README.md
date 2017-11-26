@@ -15,13 +15,14 @@ Ask questions in our <a href="https://slackin-on-edge.herokuapp.com">Slack</a> c
 #### Node
 Edge is an HTTP Server and TCP Client/Server framework written in Swift and inspired by [Node.js](https://nodejs.org). It runs on both OS X and Linux. Like Node.js, Edge uses an **event-driven, non-blocking I/O model**. In the same way that Node.js uses [libuv](http://libuv.org) to implement this model, Edge uses [libdispatch](https://github.com/apple/swift-corelibs-libdispatch). 
 
-This makes Edge fast and efficient, but it also means that Edge applications can naturally make use of libdispatch to easily offload heavy processing to a background thread.
+This makes Edge fast, efficient, and most crutially **single-threaded** by default. You simply do not need to worry about locks/mutexes/semaphores/etc if you have server-side state. Of course, Edge applications can make use of libdispatch to easily offload heavy processing to a background thread if necessary.
 
 > The name Edge is a play on the name Node, as they are both components of [graphs](https://en.wikipedia.org/wiki/Graph_(abstract_data_type)).
 
 #### Reactive Programming
-Edge's event API embraces the concepts of Functional Reactive Programming while still not having any external dependencies. The API is called [Reflex](https://github.com/SwiftOnEdge/Reflex) and it is a modified version of [ReactiveCocoa](https://github.com/ReactiveCocoa/ReactiveCocoa), but also inspired by [RxSwift](https://github.com/ReactiveX/RxSwift). 
+Edge's event API embraces Functional Reactive Programming by generalizing the familiar concept of promises. This API is called [StreamKit](https://github.com/skylab-inc/StreamKit).
 
+*StreamKit's architecture is inspired by both [ReactiveCocoa](https://github.com/ReactiveCocoa/ReactiveCocoa) and [RxSwift](https://github.com/ReactiveX/RxSwift).* 
 
 > Why did we reimplement?
 * Edge should be easy to use out of the box.
