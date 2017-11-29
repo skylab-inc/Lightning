@@ -45,26 +45,21 @@ class ConnectionTests: XCTestCase {
         }
 
         let socket = try Socket(reusePort: true)
-        let connect = socket.connect(host: "localhost", port: 50000)
-        connect.onCompleted {
+        socket.connect(host: "localhost", port: 50000).then {
             let buffer = Data("This is a test".utf8)
             let write = socket.write(buffer: buffer)
             write.onCompleted {
                 completeWriteExpectation.fulfill()
-                connect.stop()
             }
             write.onFailed { error in
                 XCTFail("Write failed with error: \(error)")
             }
             write.start()
-        }
-        connect.onFailed { error in
+        }.catch { error in
             XCTFail("Connection failed with error: \(error)")
         }
-        connect.start()
 
         waitForExpectations(timeout: 1)
-        connect.stop()
         connections.stop()
     }
 
