@@ -75,7 +75,7 @@ public final class Socket: WritableIOStream, ReadableIOStream {
             queue: .main
         ) { error in
             // Close the file descriptor for the channel
-            // fd.close()
+            fd.close()
 
             // Throw any error
             if let systemError = SystemError(errorNumber: error) {
@@ -84,9 +84,9 @@ public final class Socket: WritableIOStream, ReadableIOStream {
         }
     }
 
-    // public func close() {
-    //     channel.close()
-    // }
+    public func close() {
+        channel.close()
+    }
 
     public func connect(host: String, port: Port) -> Promise<()> {
         return Promise { [socketFD, fd, channel = self.channel] resolve, reject in

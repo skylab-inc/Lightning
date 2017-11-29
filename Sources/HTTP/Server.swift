@@ -95,7 +95,9 @@ public final class Server {
 
     public func listen(host: String, port: POSIX.Port) {
         let clients = self.clients(host: host, port: port)
+        var connectedClients: [Socket] = []
         clients.onNext { socket in
+            connectedClients.append(socket)
             let requestStream = self.parse(data: socket.read())
             let responses = self.delegate.handle(requests: requestStream.signal)
             let data = self.serialize(responses: responses)
@@ -104,6 +106,9 @@ public final class Server {
         }
         disposable = ActionDisposable {
             clients.stop()
+            for socket in connectedClients {
+                socket.close()
+            }
         }
         clients.start()
     }
