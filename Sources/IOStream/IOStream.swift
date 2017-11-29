@@ -21,14 +21,13 @@ import POSIX
 #endif
 // swiftlint:enable variable_name
 
-public protocol WritableIOStream: class {
-
+public protocol IOStream: class {
     var fd: FileDescriptor { get }
-
     var channel: DispatchIO { get }
+}
 
+public protocol WritableIOStream: IOStream {
     func write(buffer: Data) -> Source<Data>
-
 }
 
 public extension WritableIOStream {
@@ -45,13 +44,13 @@ public extension WritableIOStream {
                 }
             }
 
+
             // Allocate dispatch data
             // TODO: This does not seem right.
             // Work around crash for now.
             let dispatchData = buffer.withUnsafeBytes {
                 return DispatchData(
-                    bytesNoCopy: UnsafeRawBufferPointer(start: $0, count: buffer.count),
-                    deallocator: .custom(nil, { })
+                    bytes: UnsafeRawBufferPointer(start: $0, count: buffer.count)
                 )
             }
 
@@ -62,16 +61,16 @@ public extension WritableIOStream {
                 queue: .main
             ) { done, data, error in
 
-                if let systemError = SystemError(errorNumber: error) {
-                    // If there was an error emit the error.
-                    observer.sendFailed(systemError)
-                }
-
                 if let data = data, !data.isEmpty {
                     // Get unwritten data
                     data.enumerateBytes { (buffer, byteIndex, stop) in
                         observer.sendNext(Data(buffer))
                     }
+                }
+
+                if let systemError = SystemError(errorNumber: error) {
+                    // If there was an error emit the error.
+                    observer.sendFailed(systemError)
                 }
 
                 if done {
@@ -80,12 +79,13 @@ public extension WritableIOStream {
                         // all data has been written, emit writing end.
                         // DO NOT emit end otherwise!
                         observer.sendCompleted()
-                    } else {
-                        // Must be an unrecoverable error, close the channel.
-                        // TODO: Maybe don't close if you want half-open channel
-                        // NOTE: This will be done by onCompleted or onError
-                        // dispatch_io_close(self.channel, 0)
                     }
+
+                    // Must be an unrecoverable error, close the channel.
+                    // TODO: Maybe don't close if you want half-open channel
+                    // NOTE: This will be done by onCompleted or onError
+                    // dispatch_io_close(self.channel, 0)
+                    writeChannel.close()
                 }
             }
 
@@ -96,14 +96,8 @@ public extension WritableIOStream {
     }
 }
 
-public protocol ReadableIOStream: class {
-
-    var fd: FileDescriptor { get }
-
-    var channel: DispatchIO { get }
-
+public protocol ReadableIOStream: IOStream {
     func read(minBytes: Int) -> Source<Data>
-
 }
 
 public extension ReadableIOStream {
@@ -125,11 +119,6 @@ public extension ReadableIOStream {
                 queue: .main
             ) { done, data, error in
 
-                if let systemError = SystemError(errorNumber: error) {
-                    // If there was an error emit the error.
-                    observer.sendFailed(systemError)
-                }
-
                 // Deliver data if it is non-empty
                 if let data = data, !data.isEmpty {
                     data.enumerateBytes { (buffer, byteIndex, stop) in
@@ -137,8 +126,13 @@ public extension ReadableIOStream {
                     }
                 }
 
+                if let systemError = SystemError(errorNumber: error) {
+                    // If there was an error emit the error.
+                    observer.sendFailed(systemError)
+                }
+
                 if done {
-                    if error == 0 {
+                     if error == 0 {
                         // If the done param is set and there is no error,
                         // all data has been read, emit end.
                         // DO NOT emit end otherwise!
@@ -149,6 +143,7 @@ public extension ReadableIOStream {
                     // TODO: Maybe don't close if you want half-open channel
                     // NOTE: This will be done by onCompleted or onError
                     // dispatch_io_close(readChannel, 0)
+                    readChannel.close()
                 }
             }
             return ActionDisposable {
