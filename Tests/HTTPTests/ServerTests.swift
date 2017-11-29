@@ -79,14 +79,14 @@ class ServerTests: XCTestCase {
         }
 
         let server = HTTP.Server(reusePort: true)
-        server.clientSource(host: "0.0.0.0", port: 3001).startWithNext { client in
+        server.clients(host: "0.0.0.0", port: 3001).startWithNext { client in
 
-            let requestStream = client
-                .read()
+            let requestStream = server.parse(data: client
+                .read())
                 .map(handleRequest)
 
             requestStream.onNext { response in
-                let writeStream = client.write(response)
+                let writeStream = client.write(buffer: response.serialized)
                 writeStream.onFailed { err in
                     XCTFail(String(describing: err))
                 }

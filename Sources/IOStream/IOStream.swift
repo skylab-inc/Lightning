@@ -27,12 +27,37 @@ public protocol IOStream: class {
 }
 
 public protocol WritableIOStream: IOStream {
-    func write(buffer: Data) -> Source<Data>
+    func write(buffer: Data) -> Source<Int>
 }
 
 public extension WritableIOStream {
 
-    func write(buffer: Data) -> Source<Data> {
+    func write(stream: Signal<Data>) -> Signal<Int> {
+        return Signal { observer in
+            var unwrittenByteCounts = [Int:Int]()
+            var globalIndex = 0
+            stream.onNext { data in
+                let dataIndex = globalIndex
+                globalIndex += 1
+
+                let writeSource = self.write(buffer: data)
+                writeSource.onNext { unwrittenBytes in
+                    unwrittenByteCounts[dataIndex] = unwrittenBytes
+                    observer.sendNext(unwrittenByteCounts.values.reduce(0, +))
+                }
+                writeSource.onCompleted {
+                    unwrittenByteCounts[dataIndex] = nil
+                }
+                writeSource.onFailed { _ in
+                    unwrittenByteCounts[dataIndex] = nil
+                }
+                writeSource.start()
+            }
+            return nil
+        }
+    }
+
+    func write(buffer: Data) -> Source<Int> {
         return Source { observer in
             let writeChannel = DispatchIO(
                 type: .stream,
@@ -43,7 +68,6 @@ public extension WritableIOStream {
                     observer.sendFailed(systemError)
                 }
             }
-
 
             // Allocate dispatch data
             // TODO: This does not seem right.
@@ -61,11 +85,9 @@ public extension WritableIOStream {
                 queue: .main
             ) { done, data, error in
 
-                if let data = data, !data.isEmpty {
-                    // Get unwritten data
-                    data.enumerateBytes { (buffer, byteIndex, stop) in
-                        observer.sendNext(Data(buffer))
-                    }
+                if let data = data {
+                    // Report number of unwritten bytes
+                    observer.sendNext(data.count)
                 }
 
                 if let systemError = SystemError(errorNumber: error) {
