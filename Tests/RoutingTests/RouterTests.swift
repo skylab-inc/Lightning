@@ -131,6 +131,25 @@ class RouterTests: XCTestCase {
         }
     }
 
+    func testRouteMatching() {
+        let app = Router()
+        let routeMatch = expectation(description: "Did not receive any request.")
+
+        app.get("/foo/:bar/*") { request -> Response in
+            routeMatch.fulfill()
+            return Response(status: .ok)
+        }
+
+        let server = HTTP.Server(delegate: app, reusePort: true)
+        server.listen(host: "0.0.0.0", port: 3000)
+
+        sendRequest(path: "/foo/users/", method: "GET")
+
+        waitForExpectations(timeout: 1) { error in
+            server.stop()
+        }
+    }
+
     func testParameters() {
         let sub = Router()
         let expectParams = self.expectation(description: "Expect to hit the API with params.")
@@ -227,6 +246,9 @@ class RouterTests: XCTestCase {
 extension RouterTests {
     static var allTests = [
         ("testRouting", testRouting),
+        ("testRouteMatching", testRouteMatching),
+        ("testParameters", testParameters),
+        ("testQueryParameters", testQueryParameters),
         ("testMiddleware", testMiddleware)
     ]
 }

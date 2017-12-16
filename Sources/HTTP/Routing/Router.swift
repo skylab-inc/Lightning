@@ -135,7 +135,9 @@ public final class Router: HandlerNode {
         if path == "/" || path == "*" {
             return true
         }
-        let urlPath = request.uri.path
+        let urlPath = String(request.uri.absoluteString.prefix(
+            upTo: request.uri.absoluteString.index(of: "?") ?? request.uri.absoluteString.endIndex
+        ))
         let regexPath = routePath
         let regex = try! Regex(path: regexPath, pathOptions: [])
         guard let match = regex.findFirst(in: urlPath) else {
