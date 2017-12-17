@@ -134,9 +134,15 @@ class RouterTests: XCTestCase {
     func testRouteMatching() {
         let app = Router()
         let routeMatch = expectation(description: "Did not receive any request.")
+        var count = 0
 
         app.get("/foo/:bar/*") { request -> Response in
-            routeMatch.fulfill()
+            count += 1
+            if count == 2 {
+                routeMatch.fulfill()
+            }
+            XCTAssertNotNil(request.parameters["bar"])
+            XCTAssertNotNil(request.parameters["0"])
             return Response(status: .ok)
         }
 
@@ -144,6 +150,7 @@ class RouterTests: XCTestCase {
         server.listen(host: "0.0.0.0", port: 3000)
 
         sendRequest(path: "/foo/users/", method: "GET")
+        sendRequest(path: "/foo/users/asdf", method: "GET")
 
         waitForExpectations(timeout: 1) { error in
             server.stop()

@@ -125,8 +125,8 @@ public final class Router: HandlerNode {
     func setParameters(on request: Request, match: Match, regex: Regex) {
         let valsArray = regex.groupNames.map { name in
             (name, match.group(named: name))
-        }.filter {$0.1 != nil} . map { tuple in
-            (tuple.0, tuple.1!)
+        }.map { tuple in
+            (tuple.0, tuple.1 ?? "")
         }
         request.parameters = Dictionary(uniqueKeysWithValues: valsArray)
     }
