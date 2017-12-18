@@ -59,20 +59,26 @@ extension Endpoint: ServerDelegate {
             case .sync(let syncTransform):
                 responses = requests.map { request -> Response in
                     do {
-                        return try syncTransform(request)
+                        let response = try syncTransform(request)
+                        response.request = request
+                        return response
                     } catch {
                         // TODO: Create a nice error handling scheme.
-                        return Response(status: .internalServerError)
+                        let response = Response(status: .internalServerError)
+                        response.request = request
+                        return response
                     }
                 }
             case .async(let asyncTransform):
                 responses = requests.flatMap { request -> Signal<Response> in
                     return Signal { observer in
                         asyncTransform(request).then {
+                            $0.request = request
                             observer.sendNext($0)
                             observer.sendCompleted()
                         }.catch { _ in
                             let errorResponse = Response(status: .internalServerError)
+                            errorResponse.request = request
                             observer.sendNext(errorResponse)
                             observer.sendCompleted()
                         }

@@ -23,6 +23,9 @@ public class Response: Serializable, HTTPMessage {
     public var rawHeaders: [String]
     public var body: Data
     public var storage: [String: Any] = [:]
+    public var request: Request? = nil
+    public var createdAt: Date
+    public var userData: [String: Any] = [:]
 
     public var serialized: Data {
         var headerString = ""
@@ -54,6 +57,7 @@ public class Response: Serializable, HTTPMessage {
         self.version = version
         self.status = status
         self.body = body
+        self.createdAt = Date()
         if !Response.noBodyStatuses.contains(self.status.code) &&
             !rawHeaders.contains("Content-Length") {
             self.rawHeaders = Array([

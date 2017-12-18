@@ -49,6 +49,8 @@ public class Request: Serializable, HTTPMessage {
     public var queryParameters: [String:String] {
         return uri.query?.urlDecodedFieldValuePairs ?? [:]
     }
+    public var createdAt: Date
+    public var userData: [String: Any] = [:]
 
     // Router dependent (refactor?)
     public var parameters: [String:String] = [:]
@@ -85,6 +87,7 @@ public class Request: Serializable, HTTPMessage {
         self.version = version
         self.rawHeaders = rawHeaders
         self.body = body
+        self.createdAt = Date()
         self.storage = [:]
     }
 
