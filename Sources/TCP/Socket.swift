@@ -56,7 +56,11 @@ public final class Socket: WritableIOStream, ReadableIOStream {
         // Set send/recv timeouts
         var timeout = timeval()
         timeout.tv_sec = timeoutMilliseconds / 1000
-        timeout.tv_usec = Int32(timeoutMilliseconds % 1000) * 1000
+        #if os(Linux)
+            timeout.tv_usec = timeoutMilliseconds % 1000 * 1000
+        #else
+            timeout.tv_usec = Int32(timeoutMilliseconds % 1000) * 1000
+        #endif
         do {
             let error = setsockopt(
                 self.socketFD.rawValue,
