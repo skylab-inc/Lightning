@@ -20,6 +20,7 @@ import PromiseKit
 public final class Socket: WritableIOStream, ReadableIOStream {
     public static let defaultReuseAddress = false
     public static let defaultReusePort = false
+    public static let defaultTimeout = 120000
 
     private let socketFD: SocketFileDescriptor
     public var fd: FileDescriptor {
@@ -27,16 +28,59 @@ public final class Socket: WritableIOStream, ReadableIOStream {
     }
     public let channel: DispatchIO
 
-    public convenience init(reuseAddress: Bool = defaultReuseAddress, reusePort: Bool = defaultReusePort) throws {
+    public convenience init(
+        reuseAddress: Bool = defaultReuseAddress,
+        reusePort: Bool = defaultReusePort,
+        timeoutMilliseconds: Int = defaultTimeout
+    ) throws {
         let fd = try SocketFileDescriptor(
             socketType: SocketType.stream,
             addressFamily: AddressFamily.inet
         )
-        try self.init(fd: fd, reuseAddress: reuseAddress, reusePort: reusePort)
+        try self.init(
+            fd: fd,
+            reuseAddress: reuseAddress,
+            reusePort: reusePort,
+            timeoutMilliseconds: timeoutMilliseconds
+        )
     }
 
-    public init(fd: SocketFileDescriptor, reuseAddress: Bool = defaultReuseAddress, reusePort: Bool = defaultReusePort) throws {
+    public init(
+        fd: SocketFileDescriptor,
+        reuseAddress: Bool = defaultReuseAddress,
+        reusePort: Bool = defaultReusePort,
+        timeoutMilliseconds: Int = defaultTimeout
+    ) throws {
         self.socketFD = fd
+
+        // Set send/recv timeouts
+        var timeout = timeval()
+        timeout.tv_sec = timeoutMilliseconds / 1000
+        timeout.tv_usec = Int32(timeoutMilliseconds % 1000) * 1000
+        do {
+            let error = setsockopt(
+                self.socketFD.rawValue,
+                SOL_SOCKET,
+                SO_RCVTIMEO,
+                &timeout,
+                socklen_t(MemoryLayout<timeval>.stride)
+            )
+            if error == -1, let systemError = SystemError.lastOperationError {
+                throw systemError
+            }
+        }
+        do {
+            let error = setsockopt(
+                self.socketFD.rawValue,
+                SOL_SOCKET,
+                SO_SNDTIMEO,
+                &timeout,
+                socklen_t(MemoryLayout<timeval>.stride)
+            )
+            if let systemError = SystemError(errorNumber: error) {
+                throw systemError
+            }
+        }
 
         if reuseAddress {
             // Set SO_REUSEADDR
