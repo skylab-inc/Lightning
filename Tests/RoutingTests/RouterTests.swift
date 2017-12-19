@@ -10,6 +10,8 @@ import Foundation
 import XCTest
 @testable import HTTP
 
+class TestError: Error {}
+
 class RouterTests: XCTestCase {
 
     private func sendRequest(path: String, method: String, status: Int = 200, queryString: String = "") {
@@ -248,6 +250,45 @@ class RouterTests: XCTestCase {
         }
     }
 
+    func testErrorHandling() {
+        func willHalt() -> Bool {
+            return true
+        }
+        let expectRequest = self.expectation(description: "Expect request")
+        let expectError = self.expectation(description: "Expect error")
+        let expectSecondError = self.expectation(description: "Expect second error")
+        let app = Router()
+        app.get("/foo") { request in
+            expectRequest.fulfill()
+            if willHalt() {
+                throw TestError()
+            }
+            return Response()
+        }
+        app.any { (request, error) -> Response in
+            expectError.fulfill()
+            XCTAssertNotNil(error as? TestError)
+            if willHalt() {
+                throw TestError()
+            }
+            return Response()
+        }
+        app.any { (request, error) -> Response in
+            expectSecondError.fulfill()
+            XCTAssertNotNil(error as? TestError)
+            return Response(status: .ok)
+        }
+
+        let server = HTTP.Server(delegate: app, reusePort: true)
+        server.listen(host: "0.0.0.0", port: 3000)
+
+        sendRequest(path: "/foo", method: "GET", queryString: "bar=true")
+
+        waitForExpectations(timeout: 1) { error in
+            server.stop()
+        }
+    }
+
 }
 
 extension RouterTests {
@@ -256,6 +297,7 @@ extension RouterTests {
         ("testRouteMatching", testRouteMatching),
         ("testParameters", testParameters),
         ("testQueryParameters", testQueryParameters),
+        ("testErrorHandling", testErrorHandling),
         ("testMiddleware", testMiddleware)
     ]
 }

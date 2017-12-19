@@ -25,12 +25,19 @@ enum RequestHandler {
     case async((Request) -> Promise<Response>)
 }
 
+enum ErrorHandler {
+    case sync((Request, Error) throws -> Response)
+    case async((Request, Error) -> Promise<Response>)
+}
+
 protocol HandlerNode: RouterNode, CustomStringConvertible {
     func handle(
         requests: Signal<Request>,
+        errors: Signal<(Request, Error)>,
         responses: Signal<Response>
     ) -> (
         handled: Signal<Response>,
+        errored: Signal<(Request, Error)>,
         unhandled: Signal<Request>
     )
 }
@@ -166,11 +173,24 @@ public final class Router: HandlerNode {
         nodes.append(.handler(subrouter))
     }
 
+    private func add(
+        path: String? = nil,
+        method: HTTP.Method? = nil,
+        _ handler: ErrorHandler
+    ) {
+        let subrouter = Router(parent: self, path: path)
+        let endpoint = ErrorEndpoint(parent: subrouter, method: method, handler)
+        subrouter.nodes.append(.handler(endpoint))
+        nodes.append(.handler(subrouter))
+    }
+
     func handle(
         requests: Signal<Request>,
+        errors: Signal<(Request, Error)>,
         responses: Signal<Response>
     ) -> (
         handled: Signal<Response>,
+        errored: Signal<(Request, Error)>,
         unhandled: Signal<Request>
     ) {
         let (unhandled, unhandledInput) = Signal<Request>.pipe()
@@ -181,6 +201,7 @@ public final class Router: HandlerNode {
 
         // Handle as yet unhandled
         var handled = responses
+        var errored = errors
         for node in nodes {
             switch node {
                 case .filter(let node):
@@ -191,11 +212,15 @@ public final class Router: HandlerNode {
                     (needsHandling, newlyFiltered) = node.filter(requests: needsHandling)
                     newlyFiltered.add(observer: unhandledInput)
                 case .handler(let node):
-                    (handled, needsHandling) = node.handle(requests: needsHandling, responses: handled)
+                    (handled, errored, needsHandling) = node.handle(
+                        requests: needsHandling,
+                        errors: errored,
+                        responses: handled
+                    )
             }
         }
         needsHandling.add(observer: unhandledInput)
-        return (handled: handled, unhandled: unhandled)
+        return (handled: handled, errored: errored, unhandled: unhandled)
     }
 
 }
@@ -213,7 +238,15 @@ extension Router: CustomStringConvertible {
 extension Router: ServerDelegate {
 
     public func handle(requests: Signal<Request>) -> Signal<Response> {
-        let (handled, unhandled) = handle(requests: requests, responses: Signal<Response>.empty)
+        let (handled, errors, unhandled) = handle(
+            requests: requests,
+            errors: Signal<(Request, Error)>.empty,
+            responses: Signal<Response>.empty
+        )
+        let errored = errors.map { (request, error) in
+            // TODO: warn about unhandled error
+            return Response(status: .internalServerError)
+        }
         let notFound = unhandled.map { request in
             // TODO: warn about unhandled request
             return Response(status: .notFound)
@@ -221,6 +254,7 @@ extension Router: ServerDelegate {
         let (responses, responsesInput) = Signal<Response>.pipe()
         handled.add(observer: responsesInput)
         notFound.add(observer: responsesInput)
+        errored.add(observer: responsesInput)
         return responses
     }
 
@@ -269,6 +303,27 @@ extension Router {
     public func delete(_ subpath: String? = nil, _ transform: @escaping (Request) -> Promise<Response>) {
         add(path: path, method: .delete, .async(transform))
     }
+
+    public func any(_ path: String? = nil, _ transform: @escaping (Request, Error) -> Promise<Response>) {
+        add(path: path, .async(transform))
+    }
+
+    public func get(_ path: String? = nil, _ transform: @escaping (Request, Error) -> Promise<Response>) {
+        add(path: path, method: .get, .async(transform))
+    }
+
+    public func post(_ path: String? = nil, _ transform: @escaping (Request, Error) -> Promise<Response>) {
+        add(path: path, method: .post, .async(transform))
+    }
+
+    public func put(_ path: String? = nil, _ transform: @escaping (Request, Error) -> Promise<Response>) {
+        add(path: path, method: .put, .async(transform))
+    }
+
+    public func delete(_ subpath: String? = nil, _ transform: @escaping (Request, Error) -> Promise<Response>) {
+        add(path: path, method: .delete, .async(transform))
+    }
+
 }
 
 /// Sync transforms
@@ -278,19 +333,39 @@ extension Router {
         add(path: path, .sync(transform))
     }
 
-    public func get(_ path: String? = nil, _ transform: @escaping (Request) -> Response) {
+    public func get(_ path: String? = nil, _ transform: @escaping (Request) throws -> Response) {
         add(path: path, method: .get, .sync(transform))
     }
 
-    public func post(_ path: String? = nil, _ transform: @escaping (Request) -> Response) {
+    public func post(_ path: String? = nil, _ transform: @escaping (Request) throws -> Response) {
         add(path: path, method: .post, .sync(transform))
     }
 
-    public func put(_ path: String? = nil, _ transform: @escaping (Request) -> Response) {
+    public func put(_ path: String? = nil, _ transform: @escaping (Request) throws -> Response) {
         add(path: path, method: .put, .sync(transform))
     }
 
-    public func delete(_ path: String? = nil, _ transform: @escaping (Request) -> Response) {
+    public func delete(_ path: String? = nil, _ transform: @escaping (Request) throws -> Response) {
+        add(path: path, method: .delete, .sync(transform))
+    }
+
+    public func any(_ path: String? = nil, _ transform: @escaping (Request, Error) throws -> Response) {
+        add(path: path, .sync(transform))
+    }
+
+    public func get(_ path: String? = nil, _ transform: @escaping (Request, Error) throws -> Response) {
+        add(path: path, method: .get, .sync(transform))
+    }
+
+    public func post(_ path: String? = nil, _ transform: @escaping (Request, Error) throws -> Response) {
+        add(path: path, method: .post, .sync(transform))
+    }
+
+    public func put(_ path: String? = nil, _ transform: @escaping (Request, Error) throws -> Response) {
+        add(path: path, method: .put, .sync(transform))
+    }
+
+    public func delete(_ path: String? = nil, _ transform: @escaping (Request, Error) throws -> Response) {
         add(path: path, method: .delete, .sync(transform))
     }
 

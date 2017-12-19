@@ -32,14 +32,16 @@ struct RequestMiddleware: HandlerNode {
 
     func handle(
         requests: Signal<Request>,
+        errors: Signal<(Request, Error)>,
         responses: Signal<Response>
     ) -> (
         handled: Signal<Response>,
+        errored: Signal<(Request, Error)>,
         unhandled: Signal<Request>
     ) {
         let (unhandled, unhandledInput) = Signal<Request>.pipe()
         map(requests: requests).add(observer: unhandledInput)
-        return (responses, unhandled)
+        return (responses, errors, unhandled)
     }
 
     init(parent: Router, _ transform: RequestMapper) {
