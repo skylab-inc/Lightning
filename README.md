@@ -5,44 +5,57 @@ Ask questions in our <a href="https://slackin-on-edge.herokuapp.com">Slack</a> c
 </p>
 
 
-# Edge
+# Lightning
+##### (formerly Edge)
 
 ![Swift](http://img.shields.io/badge/swift-4.0.2-brightgreen.svg)
-[![Build Status](https://travis-ci.org/skylab-inc/Edge.svg?branch=master)](https://travis-ci.org/skylab-inc/Edge)
-[![codecov](https://codecov.io/gh/skylab-inc/Edge/branch/master/graph/badge.svg)](https://codecov.io/gh/skylab-inc/Edge)
+[![Build Status](https://travis-ci.org/skylab-inc/Lightning.svg?branch=master)](https://travis-ci.org/skylab-inc/Lightning)
+[![codecov](https://codecov.io/gh/skylab-inc/Lightning/branch/master/graph/badge.svg)](https://codecov.io/gh/skylab-inc/Lightning)
 [![Slack Status](https://slackin-on-edge.herokuapp.com/badge.svg)](https://slackin-on-edge.herokuapp.com)
 
 #### Node
-Edge is an HTTP Server and TCP Client/Server framework written in Swift and inspired by [Node.js](https://nodejs.org). It runs on both OS X and Linux. Like Node.js, Edge uses an **event-driven, non-blocking I/O model**. In the same way that Node.js uses [libuv](http://libuv.org) to implement this model, Edge uses [libdispatch](https://github.com/apple/swift-corelibs-libdispatch). 
+Lightning is an HTTP Server and TCP Client/Server framework written in Swift and inspired by [Node.js](https://nodejs.org). It runs on both OS X and Linux. Like Node.js, Lightning uses an **event-driven, non-blocking I/O model**. In the same way that Node.js uses [libuv](http://libuv.org) to implement this model, Lightning uses [libdispatch](https://github.com/apple/swift-corelibs-libdispatch). 
 
-This makes Edge fast, efficient, and most crutially **single-threaded** by default. You simply do not need to worry about locks/mutexes/semaphores/etc if you have server-side state. Of course, Edge applications can make use of libdispatch to easily offload heavy processing to a background thread if necessary.
-
-> The name Edge is a play on the name Node, as they are both components of [graphs](https://en.wikipedia.org/wiki/Graph_(abstract_data_type)).
+This makes Lightning fast, efficient, and most crutially **single-threaded** by default. You simply do not need to worry about locks/mutexes/semaphores/etc if you have server-side state. Of course, Lightning applications can make use of libdispatch to easily offload heavy processing to a background thread if necessary.
 
 #### Reactive Programming
-Edge's event API embraces Functional Reactive Programming by generalizing the familiar concept of promises. This API is called [StreamKit](https://github.com/skylab-inc/StreamKit).
+Lightning's event API embraces Functional Reactive Programming by generalizing the familiar concept of promises. This API is called [StreamKit](https://github.com/skylab-inc/StreamKit).
 
 > StreamKit's architecture is inspired by both [ReactiveCocoa](https://github.com/ReactiveCocoa/ReactiveCocoa) and [RxSwift](https://github.com/ReactiveX/RxSwift).
 
 ##### Why did we reimplement?
-* Edge should be easy to use out of the box.
-* Edge is optimized for maximum performance, which requires careful tuning of the internals.
+* Lightning should be easy to use out of the box.
+* Lightning is optimized for maximum performance, which requires careful tuning of the internals.
 * The modified API is meant to be more similar to the familiar concepts of Futures and Promises.
-* We don't want to be opinionated about any one framework. We want it to be easy to integate Edge with either ReactiveCocoa or RxSwift.
+* We don't want to be opinionated about any one framework. We want it to be easy to integate Lightning with either ReactiveCocoa or RxSwift.
 
 >FRP, greatly simplies management of asynchronous events. The general concept is that we can build a spout which pushes out asynchronous events as they happen. Then we hookup a pipeline of transformations that operate on events and pass the transformed values along. We can even do things like merge streams in interesting ways! Take a look at some of these [operations](http://rxmarbles.com) or watch [this talk](https://www.youtube.com/watch?v=XRYN2xt11Ek) about how FRP is used at Netflix. 
 
 # Installation
 
-Edge is available as a Swift 3 package. Simply add Edge as a dependency to your Swift Package.
+Lightning is available as a Swift 3/4 package. Simply add Lightning as a dependency to your Swift Package.
 
+Swift 3
 ```Swift
 import PackageDescription
 
 let package = Package(
     name: "MyProject",
     dependencies: [
-        .Package(url: "https://github.com/SwiftOnEdge/Edge.git", majorVersion: 0, minor: 3)
+        .Package(url: "https://github.com/skylab-inc/Lightning.git", majorVersion: 0, minor: 3)
+    ]
+)
+```
+Swift 4
+```Swift
+// swift-tools-version:4.0
+// The swift-tools-version declares the minimum version of Swift required to build this package.
+import PackageDescription
+
+let package = Package(
+    name: "MyProject",
+    dependencies: [
+        .package(url: "https://github.com/skylab-inc/Lightning.git", from: "0.3.0"),
     ]
 )
 ```
@@ -51,7 +64,7 @@ let package = Package(
 
 ### Routing
 ```swift
-import Edge
+import Lightning
 import Foundation
 
 // Create an API router.
@@ -90,7 +103,7 @@ app.start(host: "0.0.0.0", port: 3000)
 
 ### Raw HTTP
 ```swift
-import Edge
+import Lightning
 import Foundation
 
 func handleRequest(request: Request) -> Response {
@@ -123,7 +136,7 @@ RunLoop.runAll()
 ### TCP
 ```Swift
 
-import Edge
+import Lightning
 import Foundation
 
 let server = try! TCP.Server()
@@ -152,6 +165,6 @@ RunLoop.runAll()
 ```
 
 
-### Edge is not Node.js
+### Lightning is not Node.js
 
-Edge is not meant to fulfill all of the roles of Node.js. Node.js is a JavaScript runtime, while Edge is a TCP/Web server framework. The Swift compiler and package manager, combined with third-party Swift packages, make it unnecessary to build that functionality into Edge.
+Lightning is not meant to fulfill all of the roles of Node.js. Node.js is a JavaScript runtime, while Lightning is a TCP/Web server framework. The Swift compiler and package manager, combined with third-party Swift packages, make it unnecessary to build that functionality into Lightning.
