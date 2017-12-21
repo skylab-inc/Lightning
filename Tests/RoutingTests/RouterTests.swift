@@ -22,7 +22,9 @@ class RouterTests: XCTestCase {
         let responseExpectation = expectation(
             description: "Did not receive a response for path: \(path)"
         )
-        let urlString = rootUrl + path + (queryString != "" ? "?" + queryString : "")
+        let urlString = (rootUrl +
+            path.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlPathAllowed)! +
+            (queryString != "" ? "?" + queryString : ""))
         let url = URL(string: urlString)!
         var req = URLRequest(url: url)
         req.httpMethod = method
@@ -164,7 +166,7 @@ class RouterTests: XCTestCase {
         let expectParams = self.expectation(description: "Expect to hit the API with params.")
         sub.get("/far") { request -> Response in
             expectParams.fulfill()
-            XCTAssertEqual(request.parameters["bar"], "users")
+            XCTAssertEqual(request.parameters["bar"], "users are")
             return Response()
         }
 
@@ -174,7 +176,7 @@ class RouterTests: XCTestCase {
         let server = HTTP.Server(delegate: app, reusePort: true)
         server.listen(host: "0.0.0.0", port: 3000)
 
-        sendRequest(path: "/foo/users/far", method: "GET")
+        sendRequest(path: "/foo/users are/far", method: "GET")
 
         waitForExpectations(timeout: 1) { error in
             server.stop()

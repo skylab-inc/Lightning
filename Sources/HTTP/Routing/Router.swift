@@ -129,9 +129,13 @@ public final class Router: HandlerNode {
         self.path = "/"
     }
 
+    func decodeParameter(_ parameter: String?) -> String? {
+        return parameter?.removingPercentEncoding
+    }
+
     func setParameters(on request: Request, match: Match, regex: Regex) {
         let valsArray = regex.groupNames.map { name in
-            (name, match.group(named: name))
+            (name, decodeParameter(match.group(named: name)))
         }.map { tuple in
             (tuple.0, tuple.1 ?? "")
         }
