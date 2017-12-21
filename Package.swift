@@ -4,12 +4,12 @@
 import PackageDescription
 
 let package = Package(
-    name: "Edge",
+    name: "Lightning",
     products: [
         .library(
-            name: "Edge",
+            name: "Lightning",
             targets: [
-                "Edge",
+                "Lightning",
                 "POSIX",
                 "TCP",
                 "HTTP",
@@ -29,7 +29,7 @@ let package = Package(
         .target(name: "TCP", dependencies: ["POSIX", "IOStream"]),
         .target(name: "HTTP", dependencies: [ "POSIX", "IOStream", "TCP", "CHTTPParser", "PromiseKit", "PathToRegex", "Regex"]),
         .target(name: "IOStream", dependencies: ["POSIX", "StreamKit"]),
-        .target(name: "Edge", dependencies: ["TCP", "IOStream", "HTTP"]),
+        .target(name: "Lightning", dependencies: ["TCP", "IOStream", "HTTP"]),
         .testTarget(name: "HTTPTests", dependencies: ["HTTP"]),
         .testTarget(name: "IOStreamTests", dependencies: ["IOStream"]),
         .testTarget(name: "TCPTests", dependencies: ["TCP"]),
