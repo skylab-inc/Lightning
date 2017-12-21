@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://cloud.githubusercontent.com/assets/6432361/15267819/634be4ee-1981-11e6-9ad6-71f47c633e50.png" width="224" alt="Edge">
+<img src="https://user-images.githubusercontent.com/6432361/34271845-06608678-e65c-11e7-896a-a4eeb2991300.png" height="224" alt="Edge">
 <br/>Serverside non-blocking IO <b>in Swift</b><br/>
 Ask questions in our <a href="https://slackin-on-edge.herokuapp.com">Slack</a> channel!<br/>
 </p>
