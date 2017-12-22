@@ -34,10 +34,6 @@ class PerformanceTests: XCTestCase {
     }
 
     private func postData(path: String) -> Promise<()> {
-        let responseExpectation = expectation(
-            description: "Did not receive a response for path: \(path)"
-        )
-
         let session = URLSession(configuration: .default)
 
         let urlString = rootUrl + path
@@ -49,10 +45,8 @@ class PerformanceTests: XCTestCase {
 
         return Promise { resolve, reject in
             session.dataTask(with: req) { (data, urlResp, err) in
-                responseExpectation.fulfill()
                 if let err = err {
                     reject(err)
-                    XCTFail("Error on response: \(err)")
                 }
                 resolve(())
             }.resume()
@@ -61,9 +55,6 @@ class PerformanceTests: XCTestCase {
 
     private func getData(path: String) -> Promise<Data> {
         let session = URLSession(configuration: .default)
-        let responseExpectation = expectation(
-            description: "Did not receive a response for path: \(path)"
-        )
 
         let urlString = rootUrl + path
         let url = URL(string: urlString)!
@@ -73,7 +64,6 @@ class PerformanceTests: XCTestCase {
 
         return Promise { resolve, reject in
             session.dataTask(with: req) { (data, urlResp, err) in
-                responseExpectation.fulfill()
                 if let err = err {
                     XCTFail("Error on response: \(err)")
                     reject(err)
@@ -84,6 +74,26 @@ class PerformanceTests: XCTestCase {
                     return
                 }
                 resolve(data)
+            }.resume()
+        }
+    }
+
+    private func emptyGet(path: String) -> Promise<()> {
+        let session = URLSession(configuration: .default)
+
+        let urlString = rootUrl + path
+        let url = URL(string: urlString)!
+        var req = URLRequest(url: url)
+
+        req.httpMethod = "GET"
+
+        return Promise { resolve, reject in
+            session.dataTask(with: req) { (data, urlResp, err) in
+                if let err = err {
+                    XCTFail("Error on response: \(err)")
+                    reject(err)
+                }
+                resolve(())
             }.resume()
         }
     }
@@ -107,6 +117,8 @@ class PerformanceTests: XCTestCase {
 
             postData(path: "/post").then {
                 expectSuccess.fulfill()
+            }.catch { error in
+                XCTFail(error.localizedDescription)
             }
 
             waitForExpectations(timeout: 5) { error in
@@ -134,6 +146,39 @@ class PerformanceTests: XCTestCase {
             getData(path: "/get").then { data in
                 expectSuccess.fulfill()
                 XCTAssertEqual(dataSize, data.count)
+            }.catch { error in
+                XCTFail(error.localizedDescription)
+            }
+
+            waitForExpectations(timeout: 5) { error in
+                self.stopMeasuring()
+                server.stop()
+            }
+        }
+    }
+
+    func testPerformanceConcurrentRequests() {
+        self.measureMetrics(XCTestCase.defaultPerformanceMetrics, automaticallyStartMeasuring: false) {
+            let app = Router()
+
+            app.get("/get") { request -> Response in
+                return Response()
+            }
+
+            let server = HTTP.Server(delegate: app, reusePort: true)
+            server.listen(host: "0.0.0.0", port: 3000)
+
+            self.startMeasuring()
+
+            for _ in 0..<150 {
+                let expectSuccess = self.expectation(description: "Request was not successful.")
+                DispatchQueue.global().async {
+                    self.emptyGet(path: "/get").then {
+                        expectSuccess.fulfill()
+                    }.catch { error in
+                        XCTFail(error.localizedDescription)
+                    }
+                }
             }
 
             waitForExpectations(timeout: 5) { error in
