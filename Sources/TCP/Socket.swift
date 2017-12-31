@@ -133,6 +133,7 @@ public final class Socket: WritableIOStream, ReadableIOStream {
     }
 
     public func close() {
+        
         channel.close()
     }
 

@@ -172,6 +172,7 @@ public final class Server {
             }
             // Close the socket when the source is canceled.
             listeningSource.setCancelHandler {
+                print("FUCKKKKKKK")
                 fd.close()
             }
             if #available(OSX 10.12, *) {
@@ -180,6 +181,7 @@ public final class Server {
                 listeningSource.resume()
             }
             return ActionDisposable {
+                print("CANCELLLLLLLLL")
                 listeningSource.cancel()
             }
         }

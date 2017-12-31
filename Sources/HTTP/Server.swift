@@ -96,16 +96,26 @@ public final class Server {
     public func listen(host: String, port: POSIX.Port) {
         let clients = self.clients(host: host, port: port)
         var connectedClients: [Socket] = []
+        var fuck: [Source<Request>] = []
         clients.onNext { socket in
+            print("CONNECTED")
             connectedClients.append(socket)
             let requestStream = self.parse(data: socket.read())
+            requestStream.onNext { req in
+                print(req)
+            }
             let responses = self.delegate.handle(requests: requestStream.signal)
             let data = self.serialize(responses: responses)
             _ = socket.write(stream: data)
             requestStream.start()
+            fuck.append(requestStream)
         }
         disposable = ActionDisposable {
+            print("TEARDOWN")
             clients.stop()
+            for f in fuck {
+                f.stop()
+            }
             for socket in connectedClients {
                 socket.close()
             }

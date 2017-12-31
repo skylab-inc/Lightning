@@ -22,7 +22,6 @@ import POSIX
 // swiftlint:enable variable_name
 
 public protocol IOStream: class {
-    var fd: FileDescriptor { get }
     var channel: DispatchIO { get }
 }
 

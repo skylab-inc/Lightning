@@ -24,8 +24,11 @@ func generateRandomBytes(_ num: Int) -> Data? {
     }
 }
 let dataSize = 10_000_000
+var bullshit: UInt16 = 0
+let modnum: UInt16 = 1
 let oneMBData = generateRandomBytes(dataSize)!
-let rootUrl = "http://localhost:3000"
+let rootUrl = "http://localhost:"
+let session = URLSession(configuration: URLSessionConfiguration.background(withIdentifier: "background"))
 
 class PerformanceTests: XCTestCase {
 
@@ -34,7 +37,6 @@ class PerformanceTests: XCTestCase {
     }
 
     private func postData(path: String) -> Promise<()> {
-        let session = URLSession(configuration: .default)
 
         let urlString = rootUrl + path
         let url = URL(string: urlString)!
@@ -54,7 +56,6 @@ class PerformanceTests: XCTestCase {
     }
 
     private func getData(path: String) -> Promise<Data> {
-        let session = URLSession(configuration: .default)
 
         let urlString = rootUrl + path
         let url = URL(string: urlString)!
@@ -79,23 +80,26 @@ class PerformanceTests: XCTestCase {
     }
 
     private func emptyGet(path: String) -> Promise<()> {
-        let session = URLSession(configuration: .default)
 
-        let urlString = rootUrl + path
+        let foo = rootUrl + String(3000 + (bullshit % modnum))
+        let urlString = foo + path
+        print(urlString)
         let url = URL(string: urlString)!
         var req = URLRequest(url: url)
 
         req.httpMethod = "GET"
 
         return Promise { resolve, reject in
-            session.dataTask(with: req) { (data, urlResp, err) in
+            print("ABOUT TO SEND")
+            NSURLConnection.sendAsynchronousRequest(req, queue: OperationQueue.main) {(response, data, err) in
                 if let err = err {
                     XCTFail("Error on response: \(err)")
                     reject(err)
                 }
                 resolve(())
-            }.resume()
+            }
         }
+
     }
 
     func testPerformanceReceivingData() {
@@ -165,26 +169,30 @@ class PerformanceTests: XCTestCase {
                 return Response()
             }
 
-            let server = HTTP.Server(delegate: app, reusePort: true)
-            server.listen(host: "0.0.0.0", port: 3000)
+            print(bullshit)
+            let server = HTTP.Server(delegate: app, reusePort: false)
+            server.listen(host: "0.0.0.0", port: 3000 + (bullshit % modnum))
+
 
             self.startMeasuring()
 
             for _ in 0..<150 {
                 let expectSuccess = self.expectation(description: "Request was not successful.")
-                DispatchQueue.global().async {
                     self.emptyGet(path: "/get").then {
+                        print("HAP")
                         expectSuccess.fulfill()
                     }.catch { error in
                         XCTFail(error.localizedDescription)
                     }
-                }
             }
 
             waitForExpectations(timeout: 5) { error in
-                self.stopMeasuring()
+                bullshit += 1
                 server.stop()
+                self.stopMeasuring()
+
             }
+
         }
     }
 
